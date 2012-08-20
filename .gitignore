@@ -1,0 +1,28 @@
+build/*
+
+# Exclude temp nibs and swap files
+*~.nib
+*.swp
+
+# Exclude OS X folder attributes
+.DS_Store
+
+# Exclude Idea project files
+*.idea
+
+# Exclude user-specific XCode 3 and 4 files
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+*.xcworkspace
+*.xcuserdata
+tapZombie.xcodeproj/project.xcworkspace/xcuserdata/z.xcuserdatad/UserInterfaceState.xcuserstate
+iphone/tapZombie.xcodeproj/xcuserdata/reenboog.xcuserdatad/
+tapZombie/Resources/game/.DS_Store
+
+.DS_Store
+
+tapZombie.xcodeproj/xcuserdata/z.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
