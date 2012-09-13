@@ -8,6 +8,9 @@
 
 #import "cocos2d.h"
 
+#import "LogicGameItemDelegate.h"
+#import "GameItemLogicDelegate.h"
+
 
 typedef enum 
 {
@@ -17,15 +20,27 @@ typedef enum
     gis_disappearing
 } GameItemState;
 
-@interface GameItem : CCNode
+@interface GameItem : CCNode <LogicGameItemDelegate>
 {
+    id<GameItemLogicDelegate> delegate;
+    
     CCSprite *sprite;
     
     GameItemState state;
+    
+    BOOL isCatched;
+    
+    int wave;
+    int index;
 }
 
-- (id) initWithStartPosition: (CGPoint) sp endPosition: (CGPoint) ep time: (ccTime) t;
-+ (id) gameItemWithStartPosition: (CGPoint) sp endPosition: (CGPoint) ep time: (ccTime) t;
+@property (nonatomic) int wave;
+@property (nonatomic) int index;
+
+- (id) initWithDelegate: (id<GameItemLogicDelegate>) delegate;
++ (id) gameItemWithDelegate: (id<GameItemLogicDelegate>) delegate;
+
+- (void) runWithStartPosition: (CGPoint) sp endPosition: (CGPoint) ep movingTime: (ccTime) mt standingTime: (ccTime) st;
 
 - (void) tap: (UITouch *) touch;
 

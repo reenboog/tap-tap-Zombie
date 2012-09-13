@@ -7,18 +7,31 @@
 //
 
 #import "cocos2d.h"
-#import "HUD.h"
+
+#import "GameLogicDelegate.h"
+#import "HUDDelegate.h"
+
+#import "GameLayerLogicDelegate.h"
+#import "GameLayerHUDDelegate.h"
+#import "GameItemLogicDelegate.h"
 
 
-@interface GameLayer : CCLayer
+@interface GameLayer : CCLayer <GameLogicDelegate, HUDDelegate>
 {
+    id<GameLayerLogicDelegate, GameItemLogicDelegate> logicDelegate;
+    id<GameLayerHUDDelegate> hudDelegate;
+    
     CCLayer *gameItems;
 }
+
+- (id) initWithLogicDelegate: (id<GameLayerLogicDelegate, GameItemLogicDelegate>) logicDelegate 
+                 hudDelegate: (id<GameLayerHUDDelegate>) hudDelegate;
+
++ (id) gameLayerWithLogicDelegate: (id<GameLayerLogicDelegate, GameItemLogicDelegate>) logicDelegate 
+                      hudDelegate: (id<GameLayerHUDDelegate>) hudDelegate;
 
 - (void) reset;
 - (void) pause;
 - (void) resume;
-
-- (void) runGameItemWithStartPosition: (CGPoint) sp endPosition: (CGPoint) ep time: (ccTime) t;
 
 @end

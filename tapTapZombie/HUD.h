@@ -8,11 +8,25 @@
 
 #import "cocos2d.h"
 
+#import "HUDDelegate.h"
+#import "GameLayerHUDDelegate.h"
 
-@interface HUD : CCLayer <CCPopupLayerDelegate>
+
+@interface HUD : CCLayer <CCPopupLayerDelegate, GameLayerHUDDelegate>
 {
+    id<HUDDelegate> delegate;
+    
     CCMenuItem *pauseBtn;
+    
+    CCProgressTimer *progressScale;
+    
+    // additional
+    CCLabelTTF *movingTimeLabel;
+    CCLabelTTF *standingTimeLabel;
+    CCLabelTTF *perfectWaysLabel;
 }
+
+@property (nonatomic, assign) id<HUDDelegate> delegate;
 
 + (id) hud;
 

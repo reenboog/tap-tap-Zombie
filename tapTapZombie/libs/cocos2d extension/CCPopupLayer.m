@@ -1,21 +1,15 @@
 //
-//  CCPopupLayer.m
+//  CCPopupLayer.c
 //  tapTapZombie
 //
-//  Created by Alexander on 17.08.12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Created by Alexander on 10.09.12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "CCPopupLayer.h"
 
 
 @implementation CCPopupLayer
-
-#pragma mark init and dealloc
-- (id) init
-{
-    assert(nil);
-}
 
 - (id) initWithDelegate: (id<CCPopupLayerDelegate>) delegate_
 {
@@ -29,7 +23,7 @@
 
 + (id) popupWithDelegate: (id<CCPopupLayerDelegate>) delegate
 {
-    return [[self alloc] initWithDelegate: delegate];
+    return [[[self alloc] initWithDelegate: delegate] autorelease];
 }
 
 + (void) showOnRunningSceneWithDelegate: (id<CCPopupLayerDelegate>) delegate
@@ -37,25 +31,18 @@
     [[[CCDirector sharedDirector] runningScene] addChild: [self popupWithDelegate: delegate] z: kPopupZOrder];
 }
 
-- (void) dealloc
-{
-    [super dealloc];
-}
-
-#pragma mark -
-
 - (void) onEnter
 {
-    [delegate onPopupOpened];
-    
     [super onEnter];
+    
+    [delegate popupWillOpen: self];
 }
 
 - (void) onExit
 {
     [super onExit];
     
-    [delegate onPopupClosed];
+    [delegate popupDidFinishClosing: self];
 }
 
 @end

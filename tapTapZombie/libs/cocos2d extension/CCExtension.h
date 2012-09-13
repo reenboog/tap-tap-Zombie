@@ -7,5 +7,6 @@
 //
 
 #import "CCNodeExtension.h"
-
 #import "CCPopupLayer.h"
+#import "CCLabelBMFontNumeric.h"
+#import "CCLabelBMFontMultiline.h"

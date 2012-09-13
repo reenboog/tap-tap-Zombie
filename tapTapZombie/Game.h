@@ -9,43 +9,27 @@
 #import <Foundation/Foundation.h>
 
 
-#define kGameMaxDifficulty 3
-
-@class GameLayer;
-@class HUD;
-
 @interface Game : NSObject
 {
+    BOOL isStarted;
     BOOL isActive;
     
-    GameLayer *gameLayer;
-    HUD *hud;
-    
-    float timer;
-    
+    int mapIndex;
     int difficulty;
-    
-    int nWays;
-    CGPoint *startPoints;
-    CGPoint *endPoints;
 }
 
+@property (nonatomic) BOOL isStarted;
 @property (nonatomic) BOOL isActive;
+
+@property (nonatomic) int mapIndex;
 @property (nonatomic) int difficulty;
 
-@property (nonatomic, readonly) int nWays;
-@property (nonatomic, readonly) CGPoint *startPoints;
-@property (nonatomic, readonly) CGPoint *endPoints;
-
 + (Game *) sharedGame;
++ (void) releaseGame;
 
-- (void) startGame;
-- (void) exitGame;
-- (void) resetGame;
-- (void) pauseGame;
-- (void) resumeGame;
-
-- (void) tick: (float) dt;
+- (void) runMainMenuScene;
+- (void) runSelectMapScene;
+- (void) runGameScene;
 
 - (void) reset;
 

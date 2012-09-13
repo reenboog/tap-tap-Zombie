@@ -7,7 +7,6 @@
 //
 
 #import "GameItem.h"
-
 #import "GameConfig.h"
 
 
@@ -15,36 +14,37 @@
 
 - (void) reset;
 
-- (void) runWithStartPosition: (CGPoint) sp endPosition: (CGPoint) ep time: (ccTime) t;
-- (void) stand;
-- (void) disappearBad;
-- (void) disappearGood;
+- (void) standWithTime: (NSNumber *) st;
+- (void) disappear;
 
 @end
 
 
 @implementation GameItem
 
+@synthesize wave;
+@synthesize index;
+
 #pragma mark init and dealloc
-- (id) initWithStartPosition: (CGPoint) sp endPosition: (CGPoint) ep time: (ccTime) t
+- (id) initWithDelegate: (id<GameItemLogicDelegate>) delegate_
 {
     if(self = [super init])
     {
+        delegate = delegate_;
+        
         sprite = [CCSprite spriteWithFile: @"Icon-Small.png"];
         [self addChild: sprite];
         [self setContentSize: CGSizeMake(sprite.contentSize.width, sprite.contentSize.height)];
         
         [self reset];
-        
-        [self runWithStartPosition: sp endPosition: ep time: t];
     }
     
     return self;
 }
 
-+ (id) gameItemWithStartPosition: (CGPoint) sp endPosition: (CGPoint) ep time: (ccTime) t
++ (id) gameItemWithDelegate: (id<GameItemLogicDelegate>) delegate
 {
-    return [[[self alloc] initWithStartPosition: sp endPosition: ep time: t] autorelease];
+    return [[[GameItem alloc] initWithDelegate: delegate] autorelease];
 }
 
 - (void) dealloc
@@ -58,6 +58,7 @@
 - (void) reset
 {
     state = gis_none;
+    isCatched = NO;
 }
 
 - (void) stop
@@ -69,7 +70,7 @@
 #pragma mark -
 
 #pragma mark states
-- (void) runWithStartPosition: (CGPoint) sp endPosition: (CGPoint) ep time: (ccTime) t
+- (void) runWithStartPosition: (CGPoint) sp endPosition: (CGPoint) ep movingTime: (ccTime) mt standingTime: (ccTime) st
 {
     [self stopAllActions];
     [sprite stopAllActions];
@@ -87,12 +88,14 @@
                 [CCSequence actions:
                                 [CCSpawn actions:
 //                                            [CCEaseSineOut actionWithAction:
-                                                                [CCBezierTo actionWithDuration: t
+                                                                [CCBezierTo actionWithDuration: mt
                                                                                         bezier: bezierConfig],
 //                                            ],
                                             nil
                                 ],
-                                [CCCallFunc actionWithTarget: self selector: @selector(stand)],
+                                [CCCallFuncO actionWithTarget: self 
+                                                     selector: @selector(standWithTime:)
+                                                       object: [NSNumber numberWithInt: st]],
                                 nil
                 ]
     ];
@@ -100,14 +103,16 @@
     [sprite runAction:
                 [CCSpawn actions:
                                 [CCFadeIn actionWithDuration: 0.3f],
-                                [CCScaleTo actionWithDuration: t scale: 1.0f],
+                                [CCScaleTo actionWithDuration: mt scale: 1.0f],
                                 nil
                 ]
     ];
 }
 
-- (void) stand
+- (void) standWithTime: (NSNumber *) st
 {
+    int standingTime = [st intValue];
+    
     [self stopAllActions];
     [sprite stopAllActions];
     
@@ -115,17 +120,21 @@
     
     [sprite runAction:
                 [CCSequence actions:
-                                [CCTintTo actionWithDuration: 1.0f red: 255 green: 0 blue: 0],
-                                [CCCallFunc actionWithTarget: self selector: @selector(disappearBad)],
+                                [CCTintTo actionWithDuration: standingTime red: 0 green: 0 blue: 255],
+                                [CCCallFunc actionWithTarget: self selector: @selector(disappear)],
                                 nil
                 ]
     ];
 }
 
-- (void) disappearBad
+- (void) disappear
 {
     [self stopAllActions];
     [sprite stopAllActions];
+    
+    [delegate gameItemDisappears: self];
+    
+    ccColor3B c = ((state == gis_standing) && isCatched) ? ccc3(0, 255, 0) : ccc3(255, 0, 0);
     
     state = gis_disappearing;
     
@@ -134,30 +143,9 @@
     [sprite runAction:
                 [CCSequence actions:
                                 [CCSpawn actions:
-                                            [CCTintTo actionWithDuration: 0.2f red: 255 green: 0 blue: 0],
-                                            [CCScaleTo actionWithDuration: 0.5f scale: scale],
-                                            [CCFadeOut actionWithDuration: 0.5f],
-                                            nil
-                                ],
-                                [CCCallFunc actionWithTarget: self selector: @selector(removeFromParentWithCleanup)],
-                                nil
-                ]
-    ];
-}
-
-- (void) disappearGood
-{
-    [self stopAllActions];
-    [sprite stopAllActions];
-    
-    state = gis_disappearing;
-    
-    [sprite runAction:
-                [CCSequence actions:
-                                [CCSpawn actions:
-                                            [CCTintTo actionWithDuration: 0.2f red: 0 green: 255 blue: 0],
-                                            [CCScaleTo actionWithDuration: 0.5f scale: 1.2f],
-                                            [CCFadeOut actionWithDuration: 0.5f],
+                                            [CCTintTo actionWithDuration: 0.2f red: c.r green: c.g blue: c.b],
+                                            [CCScaleTo actionWithDuration: 0.3f scale: scale],
+                                            [CCFadeOut actionWithDuration: 0.3f],
                                             nil
                                 ],
                                 [CCCallFunc actionWithTarget: self selector: @selector(removeFromParentWithCleanup)],
@@ -172,20 +160,27 @@
     {
         switch(state)
         {
-            case gis_disappearing:
-            case gis_none: break;
-                
-            case gis_moving:
-            {
-                [self disappearBad];
-            } break;
+            case gis_moving: break;
                 
             case gis_standing:
             {
-                [self disappearGood];
+                isCatched = YES;
             } break;
+                
+            default: return;
         }
+        
+        [self disappear];
     }
 }
+
+#pragma mark -
+
+#pragma mark LogicGameItemDelegate methods implementation
+- (BOOL) isMissing
+{
+    return ((state != gis_standing) || !isCatched);
+}
+
 
 @end

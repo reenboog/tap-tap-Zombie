@@ -7,10 +7,12 @@
 //
 
 #import "GameConfig.h"
-
 #import "MainMenuLayer.h"
 
-#import "SelectGameDifficultyPopup.h"
+#import "Game.h"
+
+#import "SelectMapLayer.h"
+#import "ShopPopup.h"
 
 
 @implementation MainMenuLayer
@@ -40,10 +42,15 @@
                                           target: self
                                         selector: @selector(playBtnCallback)];
         
-        menu = [CCMenu menuWithItems: playBtn, nil];
+        label = [CCLabelBMFont labelWithString: @"shop" fntFile: kDefaultGameFont];
+        shopBtn = [CCMenuItemLabel itemWithLabel: label
+                                          target: self
+                                        selector: @selector(shopBtnCallback)];
+        
+        menu = [CCMenu menuWithItems: playBtn, shopBtn, nil];
+        [menu alignItemsVertically];
         menu.position = kScreenCenter;
         [self addChild: menu];
-        
 	}
     
 	return self;
@@ -57,12 +64,12 @@
 #pragma mark -
 
 #pragma mark CCPopupLayerDelegate methods implementation
-- (void) onPopupOpened
+- (void) popupWillOpen: (CCPopupLayer *) popup
 {
     [self disableWithChildren];
 }
 
-- (void) onPopupClosed
+- (void) popupDidFinishClosing: (CCPopupLayer *) popup
 {
     [self enableWithChildren];
 }
@@ -72,7 +79,12 @@
 #pragma mark callbacks
 - (void) playBtnCallback
 {
-    [SelectGameDifficultyPopup showOnRunningSceneWithDelegate: self];
+    [[Game sharedGame] runSelectMapScene];
+}
+
+- (void) shopBtnCallback
+{
+    [ShopPopup showOnRunningSceneWithDelegate: self];
 }
 
 @end

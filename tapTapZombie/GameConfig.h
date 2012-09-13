@@ -52,5 +52,10 @@
 // font
 #define kDefaultGameFont @"font/bip_big.fnt"
 
+// game rules
+#define kMinGameWays 3
+#define kMaxGameWays 5
+#define kMaxGameDifficulty 3
+
 #endif // __GAME_CONFIG_H
 

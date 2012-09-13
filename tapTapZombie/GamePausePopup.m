@@ -78,7 +78,6 @@
     [super onEnter];
     
     [self disableWithChildren];
-    
     [self showAndEnable];
 }
 
@@ -209,22 +208,24 @@
 #pragma mark callbacks
 - (void) resetBtnCallback
 {
-    [[Game sharedGame] resetGame];
+    SEL resetSelector = @selector(reset);
+    if([delegate respondsToSelector: resetSelector])
+    {
+        [delegate performSelector: resetSelector];
+    }
     
     [self disableWithChildren];
-    
     [self hideAndClose];
 }
 
 - (void) exitBtnCallback
 {
-    [[Game sharedGame] exitGame];
+    [[Game sharedGame] runMainMenuScene];
 }
 
 - (void) closePopupBtnCallback
 {
     [self disableWithChildren];
-    
     [self hideAndClose];
 }
 

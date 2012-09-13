@@ -9,8 +9,7 @@
 #import "cocos2d.h"
 #import "CCPopupLayerDelegate.h"
 
-
-#define kPopupZOrder 1000000
+#define kPopupZOrder 1000
 
 @interface CCPopupLayer : CCLayer
 {

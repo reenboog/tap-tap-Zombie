@@ -12,6 +12,7 @@
 @interface MainMenuLayer : CCLayer <CCPopupLayerDelegate>
 {
     CCMenuItem *playBtn;
+    CCMenuItem *shopBtn;
 }
 
 + (CCScene *) scene;

@@ -123,14 +123,32 @@
 		19274B4715DD54390032D4F4 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B4615DD54390032D4F4 /* RootViewController.m */; };
 		19274B4A15DD54390032D4F4 /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B4915DD54390032D4F4 /* MainMenuLayer.m */; };
 		19274B5B15DD57E50032D4F4 /* CCNodeExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B5A15DD57E50032D4F4 /* CCNodeExtension.m */; };
-		19274B5E15DD61CE0032D4F4 /* CCPopupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B5D15DD61CE0032D4F4 /* CCPopupLayer.m */; };
-		19274B6515DD7CC30032D4F4 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B6415DD7CC30032D4F4 /* GameLayer.m */; };
 		19274B6815DD7D190032D4F4 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B6715DD7D190032D4F4 /* Game.m */; };
 		19274B6A15DD7EC40032D4F4 /* font in Resources */ = {isa = PBXBuildFile; fileRef = 19274B6915DD7EC40032D4F4 /* font */; };
-		19274B6D15DD94DA0032D4F4 /* SelectGameDifficultyPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B6C15DD94DA0032D4F4 /* SelectGameDifficultyPopup.m */; };
 		19274B7115DD9EB60032D4F4 /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B7015DD9EB60032D4F4 /* HUD.m */; };
 		19274B7515DDB3E10032D4F4 /* GamePausePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B7415DDB3E10032D4F4 /* GamePausePopup.m */; };
 		19274B7815DDE2B40032D4F4 /* GameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B7715DDE2B40032D4F4 /* GameItem.m */; };
+		19A0233915F921880023959B /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A0233815F921880023959B /* GameLayer.m */; };
+		19AC626D15FE3DB90074A101 /* GameDifficultyPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC626C15FE3DB90074A101 /* GameDifficultyPopup.m */; };
+		19AC626F15FE439B0074A101 /* CCPopupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC626E15FE439B0074A101 /* CCPopupLayer.m */; };
+		19AC627215FE4AF60074A101 /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC627115FE4AF60074A101 /* GameLogic.m */; };
+		19AC627D15FF5A6E0074A101 /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC627C15FF5A6E0074A101 /* Map.m */; };
+		19AC628015FF5A810074A101 /* MapCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC627F15FF5A810074A101 /* MapCache.m */; };
+		19AC628615FFE9F10074A101 /* SelectMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC628515FFE9F00074A101 /* SelectMapLayer.m */; };
+		19AC628915FFEF1B0074A101 /* maps.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19AC628815FFEF1B0074A101 /* maps.plist */; };
+		19AC628B15FFEF4B0074A101 /* HUD in Resources */ = {isa = PBXBuildFile; fileRef = 19AC628A15FFEF4B0074A101 /* HUD */; };
+		19AC629116000B000074A101 /* Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC629016000B000074A101 /* Wave.m */; };
+		19AD65F11601363700301994 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD65F01601363700301994 /* Shop.m */; };
+		19AD65F41601364F00301994 /* ShopPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD65F31601364F00301994 /* ShopPopup.m */; };
+		19AD65F6160136A800301994 /* shop.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19AD65F5160136A800301994 /* shop.plist */; };
+		19AD65F91601386600301994 /* ShopItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD65F81601386600301994 /* ShopItem.m */; };
+		19AD65FC1601456E00301994 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD65FB1601456E00301994 /* Settings.m */; };
+		19AD65FF16014CD200301994 /* CCLabelBMFontMultiline.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD65FE16014CD200301994 /* CCLabelBMFontMultiline.m */; };
+		19AD660116015A8400301994 /* shop in Resources */ = {isa = PBXBuildFile; fileRef = 19AD660016015A8400301994 /* shop */; };
+		19AD660416015B3800301994 /* ShopLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD660316015B3700301994 /* ShopLayer.m */; };
+		19AD6606160187DB00301994 /* buttons in Resources */ = {isa = PBXBuildFile; fileRef = 19AD6605160187DB00301994 /* buttons */; };
+		19AD66091601A0AC00301994 /* CCLabelBMFontNumeric.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD66081601A0AC00301994 /* CCLabelBMFontNumeric.m */; };
+		19AD660C1601A4A500301994 /* NotEnoughMoneyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD660B1601A4A300301994 /* NotEnoughMoneyAlert.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -373,21 +391,58 @@
 		19274B5915DD57E50032D4F4 /* CCNodeExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNodeExtension.h; sourceTree = "<group>"; };
 		19274B5A15DD57E50032D4F4 /* CCNodeExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNodeExtension.m; sourceTree = "<group>"; };
 		19274B5C15DD61CE0032D4F4 /* CCPopupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPopupLayer.h; sourceTree = "<group>"; };
-		19274B5D15DD61CE0032D4F4 /* CCPopupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPopupLayer.m; sourceTree = "<group>"; };
 		19274B5F15DD61ED0032D4F4 /* CCPopupLayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPopupLayerDelegate.h; sourceTree = "<group>"; };
 		19274B6315DD7CC30032D4F4 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
-		19274B6415DD7CC30032D4F4 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
 		19274B6615DD7D190032D4F4 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		19274B6715DD7D190032D4F4 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		19274B6915DD7EC40032D4F4 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; name = font; path = Resources/font; sourceTree = "<group>"; };
-		19274B6B15DD94DA0032D4F4 /* SelectGameDifficultyPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectGameDifficultyPopup.h; sourceTree = "<group>"; };
-		19274B6C15DD94DA0032D4F4 /* SelectGameDifficultyPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectGameDifficultyPopup.m; sourceTree = "<group>"; };
+		19274B6B15DD94DA0032D4F4 /* GameDifficultyPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDifficultyPopup.h; sourceTree = "<group>"; };
 		19274B6F15DD9EB60032D4F4 /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
 		19274B7015DD9EB60032D4F4 /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUD.m; sourceTree = "<group>"; };
 		19274B7315DDB3E10032D4F4 /* GamePausePopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePausePopup.h; sourceTree = "<group>"; };
 		19274B7415DDB3E10032D4F4 /* GamePausePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePausePopup.m; sourceTree = "<group>"; };
 		19274B7615DDE2B20032D4F4 /* GameItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameItem.h; sourceTree = "<group>"; };
 		19274B7715DDE2B40032D4F4 /* GameItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameItem.m; sourceTree = "<group>"; };
+		19A0233815F921880023959B /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
+		19AC626C15FE3DB90074A101 /* GameDifficultyPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDifficultyPopup.m; sourceTree = "<group>"; };
+		19AC626E15FE439B0074A101 /* CCPopupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPopupLayer.m; sourceTree = "<group>"; };
+		19AC627015FE4AF60074A101 /* GameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLogic.h; sourceTree = "<group>"; };
+		19AC627115FE4AF60074A101 /* GameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLogic.m; sourceTree = "<group>"; };
+		19AC627315FE56040074A101 /* GameLogicDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLogicDelegate.h; sourceTree = "<group>"; };
+		19AC627415FE56F00074A101 /* HUDDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDDelegate.h; sourceTree = "<group>"; };
+		19AC627515FE57CE0074A101 /* GameLayerHUDDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayerHUDDelegate.h; sourceTree = "<group>"; };
+		19AC627615FE57E40074A101 /* GameLayerLogicDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayerLogicDelegate.h; sourceTree = "<group>"; };
+		19AC627B15FF5A6E0074A101 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
+		19AC627C15FF5A6E0074A101 /* Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Map.m; sourceTree = "<group>"; };
+		19AC627E15FF5A810074A101 /* MapCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapCache.h; sourceTree = "<group>"; };
+		19AC627F15FF5A810074A101 /* MapCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCache.m; sourceTree = "<group>"; };
+		19AC628415FFE9F00074A101 /* SelectMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectMapLayer.h; sourceTree = "<group>"; };
+		19AC628515FFE9F00074A101 /* SelectMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectMapLayer.m; sourceTree = "<group>"; };
+		19AC628815FFEF1B0074A101 /* maps.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = maps.plist; sourceTree = "<group>"; };
+		19AC628A15FFEF4B0074A101 /* HUD */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HUD; sourceTree = "<group>"; };
+		19AC628D15FFF6870074A101 /* GameItemLogicDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameItemLogicDelegate.h; sourceTree = "<group>"; };
+		19AC628E15FFF75A0074A101 /* LogicGameItemDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicGameItemDelegate.h; sourceTree = "<group>"; };
+		19AC628F16000AFF0074A101 /* Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wave.h; sourceTree = "<group>"; };
+		19AC629016000B000074A101 /* Wave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wave.m; sourceTree = "<group>"; };
+		19AD65EF1601363700301994 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
+		19AD65F01601363700301994 /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
+		19AD65F21601364F00301994 /* ShopPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopPopup.h; sourceTree = "<group>"; };
+		19AD65F31601364F00301994 /* ShopPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopPopup.m; sourceTree = "<group>"; };
+		19AD65F5160136A800301994 /* shop.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = shop.plist; sourceTree = "<group>"; };
+		19AD65F71601386600301994 /* ShopItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopItem.h; sourceTree = "<group>"; };
+		19AD65F81601386600301994 /* ShopItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopItem.m; sourceTree = "<group>"; };
+		19AD65FA1601456E00301994 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		19AD65FB1601456E00301994 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		19AD65FD16014CD200301994 /* CCLabelBMFontMultiline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLabelBMFontMultiline.h; sourceTree = "<group>"; };
+		19AD65FE16014CD200301994 /* CCLabelBMFontMultiline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLabelBMFontMultiline.m; sourceTree = "<group>"; };
+		19AD660016015A8400301994 /* shop */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shop; sourceTree = "<group>"; };
+		19AD660216015B3700301994 /* ShopLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopLayer.h; sourceTree = "<group>"; };
+		19AD660316015B3700301994 /* ShopLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopLayer.m; sourceTree = "<group>"; };
+		19AD6605160187DB00301994 /* buttons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = buttons; sourceTree = "<group>"; };
+		19AD66071601A0AB00301994 /* CCLabelBMFontNumeric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLabelBMFontNumeric.h; sourceTree = "<group>"; };
+		19AD66081601A0AC00301994 /* CCLabelBMFontNumeric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLabelBMFontNumeric.m; sourceTree = "<group>"; };
+		19AD660A1601A4A200301994 /* NotEnoughMoneyAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotEnoughMoneyAlert.h; sourceTree = "<group>"; };
+		19AD660B1601A4A300301994 /* NotEnoughMoneyAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotEnoughMoneyAlert.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,7 +501,6 @@
 			children = (
 				19274B5115DD545D0032D4F4 /* Application */,
 				19274B5215DD54650032D4F4 /* Config and Settings */,
-				19274B6215DD7C8B0032D4F4 /* Menu */,
 				19274B6115DD7C670032D4F4 /* Game */,
 				192749F115DD54350032D4F4 /* Resources */,
 				19274A0515DD54350032D4F4 /* libs */,
@@ -458,6 +512,7 @@
 		192749F115DD54350032D4F4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				19AC628715FFEF1B0074A101 /* game */,
 				19274B6915DD7EC40032D4F4 /* font */,
 				192749F215DD54350032D4F4 /* Default.png */,
 				192749F415DD54350032D4F4 /* fps_images.png */,
@@ -799,6 +854,8 @@
 		19274B5215DD54650032D4F4 /* Config and Settings */ = {
 			isa = PBXGroup;
 			children = (
+				19AD65FA1601456E00301994 /* Settings.h */,
+				19AD65FB1601456E00301994 /* Settings.m */,
 				19274B4B15DD54390032D4F4 /* GameConfig.h */,
 			);
 			name = "Config and Settings";
@@ -811,8 +868,12 @@
 				19274B5915DD57E50032D4F4 /* CCNodeExtension.h */,
 				19274B5A15DD57E50032D4F4 /* CCNodeExtension.m */,
 				19274B5C15DD61CE0032D4F4 /* CCPopupLayer.h */,
-				19274B5D15DD61CE0032D4F4 /* CCPopupLayer.m */,
+				19AC626E15FE439B0074A101 /* CCPopupLayer.m */,
 				19274B5F15DD61ED0032D4F4 /* CCPopupLayerDelegate.h */,
+				19AD66071601A0AB00301994 /* CCLabelBMFontNumeric.h */,
+				19AD66081601A0AC00301994 /* CCLabelBMFontNumeric.m */,
+				19AD65FD16014CD200301994 /* CCLabelBMFontMultiline.h */,
+				19AD65FE16014CD200301994 /* CCLabelBMFontMultiline.m */,
 			);
 			name = "cocos2d extension";
 			path = "libs/cocos2d extension";
@@ -821,13 +882,15 @@
 		19274B6115DD7C670032D4F4 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				19274B6E15DD9E920032D4F4 /* HUD */,
+				19AC627A15FF5A2A0074A101 /* MapCache */,
+				19AD65ED1601362200301994 /* Shop */,
+				19274B6215DD7C8B0032D4F4 /* Menu */,
+				19AC627915FE58040074A101 /* HUD */,
+				19AC627715FE57ED0074A101 /* GameLogic */,
+				19AC627815FE57F50074A101 /* GameLayer */,
+				19AC628C15FFF62A0074A101 /* GameItem */,
 				19274B6615DD7D190032D4F4 /* Game.h */,
 				19274B6715DD7D190032D4F4 /* Game.m */,
-				19274B6315DD7CC30032D4F4 /* GameLayer.h */,
-				19274B6415DD7CC30032D4F4 /* GameLayer.m */,
-				19274B7615DDE2B20032D4F4 /* GameItem.h */,
-				19274B7715DDE2B40032D4F4 /* GameItem.m */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -837,21 +900,115 @@
 			children = (
 				19274B4815DD54390032D4F4 /* MainMenuLayer.h */,
 				19274B4915DD54390032D4F4 /* MainMenuLayer.m */,
-				19274B6B15DD94DA0032D4F4 /* SelectGameDifficultyPopup.h */,
-				19274B6C15DD94DA0032D4F4 /* SelectGameDifficultyPopup.m */,
+				19AC628415FFE9F00074A101 /* SelectMapLayer.h */,
+				19AC628515FFE9F00074A101 /* SelectMapLayer.m */,
+				19274B6B15DD94DA0032D4F4 /* GameDifficultyPopup.h */,
+				19AC626C15FE3DB90074A101 /* GameDifficultyPopup.m */,
+				19274B7315DDB3E10032D4F4 /* GamePausePopup.h */,
+				19274B7415DDB3E10032D4F4 /* GamePausePopup.m */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
 		};
-		19274B6E15DD9E920032D4F4 /* HUD */ = {
+		19AC627715FE57ED0074A101 /* GameLogic */ = {
 			isa = PBXGroup;
 			children = (
+				19AC628D15FFF6870074A101 /* GameItemLogicDelegate.h */,
+				19AC627615FE57E40074A101 /* GameLayerLogicDelegate.h */,
+				19AC627015FE4AF60074A101 /* GameLogic.h */,
+				19AC627115FE4AF60074A101 /* GameLogic.m */,
+				19AC628F16000AFF0074A101 /* Wave.h */,
+				19AC629016000B000074A101 /* Wave.m */,
+			);
+			name = GameLogic;
+			sourceTree = "<group>";
+		};
+		19AC627815FE57F50074A101 /* GameLayer */ = {
+			isa = PBXGroup;
+			children = (
+				19AC627315FE56040074A101 /* GameLogicDelegate.h */,
+				19AC627415FE56F00074A101 /* HUDDelegate.h */,
+				19274B6315DD7CC30032D4F4 /* GameLayer.h */,
+				19A0233815F921880023959B /* GameLayer.m */,
+			);
+			name = GameLayer;
+			sourceTree = "<group>";
+		};
+		19AC627915FE58040074A101 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				19AC627515FE57CE0074A101 /* GameLayerHUDDelegate.h */,
 				19274B6F15DD9EB60032D4F4 /* HUD.h */,
 				19274B7015DD9EB60032D4F4 /* HUD.m */,
-				19274B7315DDB3E10032D4F4 /* GamePausePopup.h */,
-				19274B7415DDB3E10032D4F4 /* GamePausePopup.m */,
 			);
 			name = HUD;
+			sourceTree = "<group>";
+		};
+		19AC627A15FF5A2A0074A101 /* MapCache */ = {
+			isa = PBXGroup;
+			children = (
+				19AC627B15FF5A6E0074A101 /* Map.h */,
+				19AC627C15FF5A6E0074A101 /* Map.m */,
+				19AC627E15FF5A810074A101 /* MapCache.h */,
+				19AC627F15FF5A810074A101 /* MapCache.m */,
+			);
+			name = MapCache;
+			sourceTree = "<group>";
+		};
+		19AC628715FFEF1B0074A101 /* game */ = {
+			isa = PBXGroup;
+			children = (
+				19AD6605160187DB00301994 /* buttons */,
+				19AD660016015A8400301994 /* shop */,
+				19AC628A15FFEF4B0074A101 /* HUD */,
+				19AC628815FFEF1B0074A101 /* maps.plist */,
+				19AD65F5160136A800301994 /* shop.plist */,
+			);
+			name = game;
+			path = Resources/game;
+			sourceTree = "<group>";
+		};
+		19AC628C15FFF62A0074A101 /* GameItem */ = {
+			isa = PBXGroup;
+			children = (
+				19AC628E15FFF75A0074A101 /* LogicGameItemDelegate.h */,
+				19274B7615DDE2B20032D4F4 /* GameItem.h */,
+				19274B7715DDE2B40032D4F4 /* GameItem.m */,
+			);
+			name = GameItem;
+			sourceTree = "<group>";
+		};
+		19AD65ED1601362200301994 /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				19AD660D1601A4C200301994 /* Logic */,
+				19AD660E1601A4E200301994 /* View */,
+			);
+			name = Shop;
+			sourceTree = "<group>";
+		};
+		19AD660D1601A4C200301994 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				19AD65EF1601363700301994 /* Shop.h */,
+				19AD65F01601363700301994 /* Shop.m */,
+				19AD65F71601386600301994 /* ShopItem.h */,
+				19AD65F81601386600301994 /* ShopItem.m */,
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
+		19AD660E1601A4E200301994 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				19AD660A1601A4A200301994 /* NotEnoughMoneyAlert.h */,
+				19AD660B1601A4A300301994 /* NotEnoughMoneyAlert.m */,
+				19AD660216015B3700301994 /* ShopLayer.h */,
+				19AD660316015B3700301994 /* ShopLayer.m */,
+				19AD65F21601364F00301994 /* ShopPopup.h */,
+				19AD65F31601364F00301994 /* ShopPopup.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -914,6 +1071,11 @@
 				19274A0115DD54350032D4F4 /* Icon@2x.png in Resources */,
 				19274A0415DD54350032D4F4 /* iTunesArtwork in Resources */,
 				19274B6A15DD7EC40032D4F4 /* font in Resources */,
+				19AC628915FFEF1B0074A101 /* maps.plist in Resources */,
+				19AC628B15FFEF4B0074A101 /* HUD in Resources */,
+				19AD65F6160136A800301994 /* shop.plist in Resources */,
+				19AD660116015A8400301994 /* shop in Resources */,
+				19AD6606160187DB00301994 /* buttons in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1023,13 +1185,26 @@
 				19274B4715DD54390032D4F4 /* RootViewController.m in Sources */,
 				19274B4A15DD54390032D4F4 /* MainMenuLayer.m in Sources */,
 				19274B5B15DD57E50032D4F4 /* CCNodeExtension.m in Sources */,
-				19274B5E15DD61CE0032D4F4 /* CCPopupLayer.m in Sources */,
-				19274B6515DD7CC30032D4F4 /* GameLayer.m in Sources */,
 				19274B6815DD7D190032D4F4 /* Game.m in Sources */,
-				19274B6D15DD94DA0032D4F4 /* SelectGameDifficultyPopup.m in Sources */,
 				19274B7115DD9EB60032D4F4 /* HUD.m in Sources */,
 				19274B7515DDB3E10032D4F4 /* GamePausePopup.m in Sources */,
 				19274B7815DDE2B40032D4F4 /* GameItem.m in Sources */,
+				19A0233915F921880023959B /* GameLayer.m in Sources */,
+				19AC626D15FE3DB90074A101 /* GameDifficultyPopup.m in Sources */,
+				19AC626F15FE439B0074A101 /* CCPopupLayer.m in Sources */,
+				19AC627215FE4AF60074A101 /* GameLogic.m in Sources */,
+				19AC627D15FF5A6E0074A101 /* Map.m in Sources */,
+				19AC628015FF5A810074A101 /* MapCache.m in Sources */,
+				19AC628615FFE9F10074A101 /* SelectMapLayer.m in Sources */,
+				19AC629116000B000074A101 /* Wave.m in Sources */,
+				19AD65F11601363700301994 /* Shop.m in Sources */,
+				19AD65F41601364F00301994 /* ShopPopup.m in Sources */,
+				19AD65F91601386600301994 /* ShopItem.m in Sources */,
+				19AD65FC1601456E00301994 /* Settings.m in Sources */,
+				19AD65FF16014CD200301994 /* CCLabelBMFontMultiline.m in Sources */,
+				19AD660416015B3800301994 /* ShopLayer.m in Sources */,
+				19AD66091601A0AC00301994 /* CCLabelBMFontNumeric.m in Sources */,
+				19AD660C1601A4A500301994 /* NotEnoughMoneyAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1125,6 +1300,7 @@
 				19274B5015DD54390032D4F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

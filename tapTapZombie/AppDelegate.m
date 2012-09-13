@@ -10,8 +10,11 @@
 
 #import "AppDelegate.h"
 #import "GameConfig.h"
-#import "MainMenuLayer.h"
 #import "RootViewController.h"
+
+#import "MapCache.h"
+#import "Game.h"
+#import "Shop.h"
 
 @implementation AppDelegate
 
@@ -112,9 +115,13 @@
 	
 	// Removes the startup flicker
 	[self removeStartupFlicker];
+    
+    [[MapCache sharedMapCache] loadMapsWithPlistFile: @"maps"];
+    [[Shop sharedShop] loadShopWithPlistFile: @"shop"];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [MainMenuLayer scene]];
+    [[Game sharedGame] runMainMenuScene];
+//	[[CCDirector sharedDirector] runWithScene: [MainMenuLayer scene]];
 }
 
 
@@ -150,11 +157,17 @@
 	[director end];	
 }
 
-- (void)applicationSignificantTimeChange:(UIApplication *)application {
+- (void)applicationSignificantTimeChange:(UIApplication *)application 
+{
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
 
-- (void)dealloc {
+- (void)dealloc 
+{
+    [MapCache releaseMapCache];
+    [Shop releaseShop];
+    [Game releaseGame];
+    
 	[[CCDirector sharedDirector] end];
 	[window release];
 	[super dealloc];

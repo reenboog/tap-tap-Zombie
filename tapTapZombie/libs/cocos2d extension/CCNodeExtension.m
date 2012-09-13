@@ -12,38 +12,29 @@
 @implementation CCNode(CCExtension)
 
 #pragma mark pause/resume
-- (void) pauseNodeWithChildren
+- (void) pauseSchedulerAndActionsWithChildren
 {
     [self pauseSchedulerAndActions];
     
     for(CCNode *child in [self children])
     {
-        [child pauseNodeWithChildren];
+        [child pauseSchedulerAndActionsWithChildren];
     }
 }
 
-- (void) resumeNodeWithChildren
+- (void) resumeSchedulerAndActionsWithChildren
 {
     [self resumeSchedulerAndActions];
     
     for(CCNode *child in [self children])
     {
-        [child resumeNodeWithChildren];
+        [child resumeSchedulerAndActionsWithChildren];
     }
 }
 
-- (void) pauseSchedulerAndActionsWithChildren
-{
-    [self pauseNodeWithChildren];
-}
-
-- (void) resumeSchedulerAndActionsWithChildren
-{
-    [self resumeNodeWithChildren];
-}
-
 #pragma mark enable/disable
-- (void) disableNodeWithChildren
+
+- (void) disableWithChildren
 {
     if([self isKindOfClass: [CCMenuItem class]])
     {
@@ -57,11 +48,11 @@
     
     for(CCNode *child in [self children])
     {
-        [child disableNodeWithChildren];
+        [child disableWithChildren];
     }
 }
 
-- (void) enableNodeWithChildren
+- (void) enableWithChildren
 {
     if([self isKindOfClass: [CCMenuItem class]])
     {
@@ -75,18 +66,8 @@
     
     for(CCNode *child in [self children])
     {
-        [child enableNodeWithChildren];
+        [child enableWithChildren];
     }
-}
-
-- (void) disableWithChildren
-{
-    [self disableNodeWithChildren];
-}
-
-- (void) enableWithChildren
-{
-    [self enableNodeWithChildren];
 }
 
 #pragma mark removing from parent
