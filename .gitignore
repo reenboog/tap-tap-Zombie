@@ -19,6 +19,7 @@ build/*
 *.pbxuser
 *.xcworkspace
 *.xcuserdata
+xcuserdata
 tapZombie.xcodeproj/project.xcworkspace/xcuserdata/z.xcuserdatad/UserInterfaceState.xcuserstate
 iphone/tapZombie.xcodeproj/xcuserdata/reenboog.xcuserdatad/
 tapZombie/Resources/game/.DS_Store
