@@ -32,6 +32,12 @@ typedef enum
     
     int wave;
     int index;
+    
+    NSArray *keyPoints;
+    int nCurrentKeyPoint;
+    
+    float movingTime;
+    float standingTime;
 }
 
 @property (nonatomic) int wave;
@@ -40,7 +46,7 @@ typedef enum
 - (id) initWithDelegate: (id<GameItemLogicDelegate>) delegate;
 + (id) gameItemWithDelegate: (id<GameItemLogicDelegate>) delegate;
 
-- (void) runWithStartPosition: (CGPoint) sp endPosition: (CGPoint) ep movingTime: (ccTime) mt standingTime: (ccTime) st;
+- (void) runWithKeyPoints: (NSArray *) keyPoints movingTime: (ccTime) mt standingTime: (ccTime) st;
 
 - (void) tap: (UITouch *) touch;
 

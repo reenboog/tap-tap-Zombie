@@ -50,7 +50,7 @@
 #define kScreenCenter ccp(kScreenCenterX, kScreenCenterY)
 
 // font
-#define kDefaultGameFont @"font/bip_big.fnt"
+#define kDefaultGameFont @"font/gameFont.fnt"
 
 // game rules
 #define kMinGameWays 3

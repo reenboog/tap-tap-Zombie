@@ -22,7 +22,7 @@
 {
     if(self = [super init])
     {
-        NSAssert((([t count]%2 == 0) && (([t count] >= kMinGameWays*2) && ([t count] <= kMaxGameWays*2))),
+        NSAssert(((([t count] >= kMinGameWays) && ([t count] <= kMaxGameWays))),
                  @"invalid dictionary structure: ['%@' count] return wrong value %i.", 
                  kMapTracksKey, [t count]);
         
@@ -32,13 +32,14 @@
         
         difficulty = d;
         background = [b retain];
-        nTracks = [t count]/2;
+        nTracks = [t count];
     
         tracks = malloc(sizeof(Track)*nTracks);
-        for(int i = 0, j = 0; i < nTracks; i++, j += 2)
+        for(int i = 0; i < nTracks; i++)
         {
-            tracks[i].spi = [[t objectAtIndex: j] intValue];
-            tracks[i].epi = [[t objectAtIndex: j + 1] intValue];
+            tracks[i].keyPoints = [[t objectAtIndex: i] retain];
+            
+//            NSLog(@"%@", tracks[i].keyPoints);
         }
     }
     
@@ -85,6 +86,12 @@
 - (void) dealloc
 {
     [background release];
+    
+    for(int i = 0; i < nTracks; i++)
+    {
+        [tracks[i].keyPoints release];
+    }
+    
     free(tracks);
     
     [super dealloc];

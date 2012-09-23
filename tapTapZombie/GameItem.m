@@ -14,7 +14,7 @@
 
 - (void) reset;
 
-- (void) standWithTime: (NSNumber *) st;
+- (void) stand;
 - (void) disappear;
 
 @end
@@ -32,9 +32,12 @@
     {
         delegate = delegate_;
         
-        sprite = [CCSprite spriteWithFile: @"Icon-Small.png"];
+        NSString *filename = [NSString stringWithFormat: @"zombies/zombie%i.png", arc4random()%4];
+        sprite = [CCSprite spriteWithFile: filename];
         [self addChild: sprite];
         [self setContentSize: CGSizeMake(sprite.contentSize.width, sprite.contentSize.height)];
+        
+        sprite.anchorPoint = ccp(0.5f, 0);
         
         [self reset];
     }
@@ -49,6 +52,8 @@
 
 - (void) dealloc
 {
+    [keyPoints release];
+    
     [super dealloc];
 }
 
@@ -70,49 +75,63 @@
 #pragma mark -
 
 #pragma mark states
-- (void) runWithStartPosition: (CGPoint) sp endPosition: (CGPoint) ep movingTime: (ccTime) mt standingTime: (ccTime) st
+- (void) moveToNextKeyPoint
 {
+    assert(keyPoints);
+    
+    if(state == gis_standing) return;
+    
+    if(++nCurrentKeyPoint < [keyPoints count])
+    {
+        state = gis_moving;
+        
+        CGPoint newPosition = [[keyPoints objectAtIndex: nCurrentKeyPoint] CGPointValue];
+        
+        float fullWayLength = [[keyPoints objectAtIndex: 0] CGPointValue].y - [[keyPoints lastObject] CGPointValue].y;
+        float stepLength = self.position.y - newPosition.y;
+        float wayLength = [[keyPoints objectAtIndex: 0] CGPointValue].y - newPosition.y;
+        
+        float p = stepLength/fullWayLength;
+        
+        [self runAction:
+                    [CCSequence actions:
+                                    [CCMoveTo actionWithDuration: movingTime*p position: newPosition],
+                                    [CCCallFunc actionWithTarget: self selector: @selector(moveToNextKeyPoint)],
+                                    nil
+                    ]
+        ];
+        
+        [sprite runAction: [CCScaleTo actionWithDuration: movingTime*p scale: wayLength/fullWayLength]];
+    
+        return;
+    }
+    
+    [self stand];
+}
+
+- (void) runWithKeyPoints: (NSArray *) keyPoints_  movingTime: (ccTime) mt standingTime: (ccTime) st
+{
+    if(state != gis_none) return;
+    
+    keyPoints = [keyPoints_ retain];
+    nCurrentKeyPoint = 0;
+    self.position = [[keyPoints objectAtIndex: 0] CGPointValue];
+    movingTime = mt;
+    standingTime = st;
+    
     [self stopAllActions];
     [sprite stopAllActions];
-    
-    state = gis_moving;
-    
-    ccBezierConfig bezierConfig = {ccp(ep.x, ep.y), ccp(sp.x, kScreenCenterY), ccp(ep.x, kScreenCenterY)};
-    
-    self.position = ccp(sp.x, sp.y);
     
     sprite.scale = 0.2f;
     sprite.opacity = 0;
     
-    [self runAction:
-                [CCSequence actions:
-                                [CCSpawn actions:
-//                                            [CCEaseSineOut actionWithAction:
-                                                                [CCBezierTo actionWithDuration: mt
-                                                                                        bezier: bezierConfig],
-//                                            ],
-                                            nil
-                                ],
-                                [CCCallFuncO actionWithTarget: self 
-                                                     selector: @selector(standWithTime:)
-                                                       object: [NSNumber numberWithInt: st]],
-                                nil
-                ]
-    ];
+    [sprite runAction: [CCFadeIn actionWithDuration: 0.3f]];
     
-    [sprite runAction:
-                [CCSpawn actions:
-                                [CCFadeIn actionWithDuration: 0.3f],
-                                [CCScaleTo actionWithDuration: mt scale: 1.0f],
-                                nil
-                ]
-    ];
+    [self moveToNextKeyPoint];
 }
 
-- (void) standWithTime: (NSNumber *) st
+- (void) stand
 {
-    int standingTime = [st intValue];
-    
     [self stopAllActions];
     [sprite stopAllActions];
     
@@ -181,6 +200,5 @@
 {
     return ((state != gis_standing) || !isCatched);
 }
-
 
 @end

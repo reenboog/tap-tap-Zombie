@@ -151,7 +151,6 @@
 - (void) updatePerfectWays: (int) pw
 {
     [perfectWaysLabel setString: [NSString stringWithFormat: @"%i", pw]];
-    CCLOG(@"%i", pw);
 }
 
 @end

@@ -72,7 +72,10 @@
 						];
 	
 	// attach the openglView to the director
-	[director setOpenGLView:glView];
+	[director setOpenGLView: glView];
+    
+    // enable retina display
+    [director enableRetinaDisplay: YES];
     
     [glView setMultipleTouchEnabled: YES];
 	
@@ -95,12 +98,12 @@
 	[director setDeviceOrientation:kCCDeviceOrientationLandscapeLeft];
 #endif
 	
-	[director setAnimationInterval:1.0/60];
-	[director setDisplayFPS:YES];
+	[director setAnimationInterval: 1.0/60];
+	[director setDisplayFPS: YES];
 	
 	
 	// make the OpenGLView a child of the view controller
-	[viewController setView:glView];
+	[viewController setView: glView];
 	
 	// make the View Controller a child of the main window
 	[window addSubview: viewController.view];

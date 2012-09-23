@@ -20,6 +20,8 @@
 #import "GameLayer.h"
 #import "HUD.h"
 
+#import "Backgrounds.h"
+
 
 @implementation Game
 
@@ -106,6 +108,10 @@ static Game *sharedGame = nil;
     
     [gameScene addChild: gameLayer z: 0];
     [gameScene addChild: hud z: 1];
+    
+    int numberOfRoads = [[MapCache sharedMapCache] mapAtIndex: mapIndex withDifficulty: difficulty].nTracks;
+    CCNode *background = [Level00Background backgroundWithNumberOfRoads: numberOfRoads];
+    [gameLayer addChild: background z: -1];
     
     [self runScene: gameScene];
 }

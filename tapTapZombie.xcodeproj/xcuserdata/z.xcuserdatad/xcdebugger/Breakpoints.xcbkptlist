@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "tapTapZombie/GameLayer.m"
-         timestampString = "369104501.543364"
+         timestampString = "370098420.45606"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "138"
-         endingLineNumber = "138"
+         startingLineNumber = "133"
+         endingLineNumber = "133"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -65,26 +65,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "tapTapZombie/Game.m"
-         timestampString = "369094024.232382"
+         timestampString = "370090827.784433"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "110"
-         endingLineNumber = "110"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
          landmarkName = "-runGameScene"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "tapTapZombie/GameLayer.m"
-         timestampString = "369105189.32102"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "157"
-         endingLineNumber = "157"
-         landmarkName = "-draw"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -107,11 +93,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "tapTapZombie/GameLayer.m"
-         timestampString = "369105802.131006"
+         timestampString = "370098420.45606"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "150"
-         endingLineNumber = "150"
+         startingLineNumber = "145"
+         endingLineNumber = "145"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -121,12 +107,68 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "tapTapZombie/HUD.m"
-         timestampString = "369105885.511509"
+         timestampString = "370088911.767172"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "157"
-         endingLineNumber = "157"
-         landmarkName = "-updatePerfectWays:"
+         startingLineNumber = "156"
+         endingLineNumber = "156"
+         landmarkName = "@implementation HUD"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "tapTapZombie/Map.m"
+         timestampString = "370096109.890891"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-initWithDifficulty:tracks:background:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "tapTapZombie/Map.m"
+         timestampString = "370095208.577859"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
+         landmarkName = "-initWithDifficulty:tracks:background:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "tapTapZombie/MapCache.m"
+         timestampString = "370096109.890891"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
+         landmarkName = "parseTracks()"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "tapTapZombie/GameItem.m"
+         timestampString = "370099555.022622"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "180"
+         endingLineNumber = "180"
+         landmarkName = "-tap:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

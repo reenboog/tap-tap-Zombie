@@ -59,11 +59,21 @@ NSArray* parseTracks(NSArray *tracks)
 {
     NSMutableArray *ts = [[NSMutableArray alloc] init];
     
-    for(NSString *s in tracks)
+    for(NSArray *track in tracks)
     {
-        NSArray *t = [s componentsSeparatedByString: @","];
+        NSMutableArray *keyPoints = [[NSMutableArray alloc] initWithCapacity: 10];
         
-        [ts addObjectsFromArray: t];
+        for(NSString *s in track)
+        {
+            NSArray *ap = [s componentsSeparatedByString: @","];
+            CGPoint p = CGPointMake([[ap objectAtIndex: 0] floatValue], [[ap objectAtIndex: 1] floatValue]);
+            
+            [keyPoints addObject: [NSValue valueWithCGPoint: p]];
+        }
+        
+        [ts addObject: [NSArray arrayWithArray: keyPoints]];
+        
+        [keyPoints release];
     }
     
     NSArray *r = [NSArray arrayWithArray: ts];

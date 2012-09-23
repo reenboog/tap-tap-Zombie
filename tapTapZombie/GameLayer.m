@@ -104,13 +104,8 @@
 #pragma mark game items
 - (id<LogicGameItemDelegate>) runGameItemWithTrack: (Track) track movingTime: (float) mt standingTime: (float) st
 {            
-    float sy = kScreenHeight + 24.0f;
-    float ey = 48.0f;
-    float sx = (kScreenWidth - 48.0f*logicDelegate.map.nTracks)/2 + track.spi*48.0f + 24.0f;
-    float ex = (kScreenWidth - 72.0f*logicDelegate.map.nTracks)/2 + track.epi*72.0f + 36.0f;
-
     GameItem *item = [GameItem gameItemWithDelegate: logicDelegate];
-    [item runWithStartPosition: ccp(sx, sy)  endPosition: ccp(ex, ey) movingTime: mt standingTime: st];
+    [item runWithKeyPoints: track.keyPoints movingTime: mt standingTime: st];
     [gameItems addChild: item];
     
     return item;
@@ -156,18 +151,18 @@
 {
     for(int i = 0; i < logicDelegate.map.nTracks; i++)
     {
-        int spi = logicDelegate.map.tracks[i].spi;
-        int epi = logicDelegate.map.tracks[i].epi;
+        NSArray *keyPoints = logicDelegate.map.tracks[i].keyPoints;
+        int n = [keyPoints count];
         
-        float sy = kScreenHeight + 24.0f;
-        float ey = 48.0f;
-        float sx = (kScreenWidth - 48.0f*logicDelegate.map.nTracks)/2 + spi*48.0f + 24.0f;
-        float ex = (kScreenWidth - 72.0f*logicDelegate.map.nTracks)/2 + epi*72.0f + 36.0f;
+        CGPoint *vertices = malloc(sizeof(CGPoint)*n);
+        for(int i = 0; i < n; i++)
+        {
+            vertices[i] = [[keyPoints objectAtIndex: i] CGPointValue];
+        }
         
-        CGPoint sp = ccp(sx, sy);
-        CGPoint ep = ccp(ex, ey);
+        ccDrawPoly(vertices, n, NO);
         
-        ccDrawCubicBezier(sp, ccp(sp.x, kScreenCenterY), ccp(ep.x, kScreenCenterY), ep, 100);   
+        free(vertices);
     }
 }
 

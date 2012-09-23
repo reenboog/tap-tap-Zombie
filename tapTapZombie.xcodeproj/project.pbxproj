@@ -149,6 +149,10 @@
 		19AD6606160187DB00301994 /* buttons in Resources */ = {isa = PBXBuildFile; fileRef = 19AD6605160187DB00301994 /* buttons */; };
 		19AD66091601A0AC00301994 /* CCLabelBMFontNumeric.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD66081601A0AC00301994 /* CCLabelBMFontNumeric.m */; };
 		19AD660C1601A4A500301994 /* NotEnoughMoneyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD660B1601A4A300301994 /* NotEnoughMoneyAlert.m */; };
+		19CE67DC160F175F00755852 /* levels in Resources */ = {isa = PBXBuildFile; fileRef = 19CE67DB160F175F00755852 /* levels */; };
+		19CE67DF160F177F00755852 /* Level00Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CE67DE160F177F00755852 /* Level00Background.m */; };
+		19CE67E6160F218800755852 /* clouds in Resources */ = {isa = PBXBuildFile; fileRef = 19CE67E5160F218800755852 /* clouds */; };
+		19CE67E8160F444800755852 /* zombies in Resources */ = {isa = PBXBuildFile; fileRef = 19CE67E7160F444800755852 /* zombies */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -443,6 +447,12 @@
 		19AD66081601A0AC00301994 /* CCLabelBMFontNumeric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLabelBMFontNumeric.m; sourceTree = "<group>"; };
 		19AD660A1601A4A200301994 /* NotEnoughMoneyAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotEnoughMoneyAlert.h; sourceTree = "<group>"; };
 		19AD660B1601A4A300301994 /* NotEnoughMoneyAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotEnoughMoneyAlert.m; sourceTree = "<group>"; };
+		19CE67DB160F175F00755852 /* levels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = levels; sourceTree = "<group>"; };
+		19CE67DD160F177F00755852 /* Level00Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level00Background.h; sourceTree = "<group>"; };
+		19CE67DE160F177F00755852 /* Level00Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level00Background.m; sourceTree = "<group>"; };
+		19CE67E0160F19B700755852 /* Backgrounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Backgrounds.h; sourceTree = "<group>"; };
+		19CE67E5160F218800755852 /* clouds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = clouds; sourceTree = "<group>"; };
+		19CE67E7160F444800755852 /* zombies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = zombies; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -926,6 +936,7 @@
 		19AC627815FE57F50074A101 /* GameLayer */ = {
 			isa = PBXGroup;
 			children = (
+				19CE67D9160F173D00755852 /* Backgrounds */,
 				19AC627315FE56040074A101 /* GameLogicDelegate.h */,
 				19AC627415FE56F00074A101 /* HUDDelegate.h */,
 				19274B6315DD7CC30032D4F4 /* GameLayer.h */,
@@ -958,6 +969,9 @@
 		19AC628715FFEF1B0074A101 /* game */ = {
 			isa = PBXGroup;
 			children = (
+				19CE67E7160F444800755852 /* zombies */,
+				19CE67E5160F218800755852 /* clouds */,
+				19CE67DB160F175F00755852 /* levels */,
 				19AD6605160187DB00301994 /* buttons */,
 				19AD660016015A8400301994 /* shop */,
 				19AC628A15FFEF4B0074A101 /* HUD */,
@@ -1009,6 +1023,16 @@
 				19AD65F31601364F00301994 /* ShopPopup.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		19CE67D9160F173D00755852 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				19CE67E0160F19B700755852 /* Backgrounds.h */,
+				19CE67DD160F177F00755852 /* Level00Background.h */,
+				19CE67DE160F177F00755852 /* Level00Background.m */,
+			);
+			name = Backgrounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1076,6 +1100,9 @@
 				19AD65F6160136A800301994 /* shop.plist in Resources */,
 				19AD660116015A8400301994 /* shop in Resources */,
 				19AD6606160187DB00301994 /* buttons in Resources */,
+				19CE67DC160F175F00755852 /* levels in Resources */,
+				19CE67E6160F218800755852 /* clouds in Resources */,
+				19CE67E8160F444800755852 /* zombies in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1205,6 +1232,7 @@
 				19AD660416015B3800301994 /* ShopLayer.m in Sources */,
 				19AD66091601A0AC00301994 /* CCLabelBMFontNumeric.m in Sources */,
 				19AD660C1601A4A500301994 /* NotEnoughMoneyAlert.m in Sources */,
+				19CE67DF160F177F00755852 /* Level00Background.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

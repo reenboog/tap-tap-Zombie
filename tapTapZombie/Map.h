@@ -15,8 +15,7 @@
 
 typedef struct
 {
-    int spi;    // start point index
-    int epi;    // end point index
+    NSArray *keyPoints;
 } Track;
 
 @interface Map : NSObject
