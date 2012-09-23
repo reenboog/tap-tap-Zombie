@@ -58,7 +58,7 @@ Settings *sharedSettings = nil;
     coins = data ? [data intValue] : 635;
     
     data = [defaults objectForKey: kPurchasesKey];
-    purchases = data ? [data retain] : [[NSDictionary alloc] init];
+    purchases = data ? [data retain] : [[NSMutableDictionary alloc] init];
 }
 
 - (void) save
