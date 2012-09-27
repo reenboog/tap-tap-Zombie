@@ -111,6 +111,11 @@
     return item;
 }
 
+- (void) gameOver
+{
+    [hudDelegate showGameOverPopup];
+}
+
 #pragma mark -
 
 #pragma mark touches

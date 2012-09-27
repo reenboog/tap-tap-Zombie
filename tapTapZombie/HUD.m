@@ -13,6 +13,8 @@
 
 #import "Game.h"
 
+#import "GameOverPopup.h"
+
 
 @interface HUD()
 - (void) setValueForProgressScale: (float) value;
@@ -28,24 +30,37 @@
     if(self = [super init])
     {
         CCMenu *menu;
-        CCLabelBMFont *label;
+//        CCLabelBMFont *label;
+        CCSprite *btnSprite;
+        CCSprite *btnOnSprite;
         
         // pause btn
-        label = [CCLabelBMFont labelWithString: @"pause" fntFile: kDefaultGameFont];
-        pauseBtn = [CCMenuItemLabel itemWithLabel: label
-                                           target: self
-                                         selector: @selector(pauseBtnCallback)];
+        float pbs = 0.75f;
+        btnSprite = [CCSprite spriteWithFile: @"buttons/pauseBtn.png"];
+        btnOnSprite = [CCSprite spriteWithFile: @"buttons/pauseBtnOn.png"];
+        pauseBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
+                                           selectedSprite: btnOnSprite
+                                                   target: self
+                                                 selector: @selector(pauseBtnCallback)];
+        pauseBtn.scale = pbs;
         
         menu = [CCMenu menuWithItems: pauseBtn, nil];
-        menu.position = ccp(8.0f + pauseBtn.contentSize.width/2, kScreenHeight - 8.0f - pauseBtn.contentSize.height/2);
+        menu.position = ccp(8.0f + pauseBtn.contentSize.width/2*pbs, kScreenHeight - 8.0f - pauseBtn.contentSize.height/2*pbs);
         [self addChild: menu];
         
         // progress scale
+        CCSprite *progressScaleWrapper = [CCSprite spriteWithFile: @"HUD/damageScaleOuter.png"];
+        progressScaleWrapper.position = ccp(kScreenCenterX, kScreenHeight - 8.0f - progressScaleWrapper.contentSize.height/2);
+        [self addChild: progressScaleWrapper];
+        progressScaleWrapper.scaleX = 0.8f;
+        
         progressScale = [CCProgressTimer progressWithFile: @"HUD/damageScaleInner.png"];
         progressScale.type = kCCProgressTimerTypeHorizontalBarLR;
-        progressScale.position = ccp(kScreenCenterX, 16.0f);
+        float w = progressScaleWrapper.contentSize.width;
+        float h = progressScaleWrapper.contentSize.height;
+        progressScale.position = ccp(w/2, h/2);
         [self setValueForProgressScale: 0];
-        [self addChild: progressScale];
+        [progressScaleWrapper addChild: progressScale];
         
         // additional
         movingTimeLabel = [CCLabelTTF labelWithString: @"" fontName: @"Arial" fontSize: 16];
@@ -125,6 +140,11 @@
 - (void) reset
 {
     [delegate reset];
+}
+
+- (void) showGameOverPopup
+{
+    [GameOverPopup showOnRunningSceneWithDelegate: self];
 }
 
 #pragma mark -

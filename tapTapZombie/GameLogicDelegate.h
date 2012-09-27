@@ -16,5 +16,6 @@
 @protocol GameLogicDelegate <NSObject>
 
 - (id<LogicGameItemDelegate>) runGameItemWithTrack: (Track) track movingTime: (float) mt standingTime: (float) st;
+- (void) gameOver;
 
 @end

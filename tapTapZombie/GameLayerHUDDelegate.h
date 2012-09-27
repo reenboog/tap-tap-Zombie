@@ -21,4 +21,6 @@
 
 - (void) setValueForProgressScale: (float) value;
 
+- (void) showGameOverPopup;
+
 @end

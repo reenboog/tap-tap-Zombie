@@ -128,6 +128,8 @@
 		19274B7115DD9EB60032D4F4 /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B7015DD9EB60032D4F4 /* HUD.m */; };
 		19274B7515DDB3E10032D4F4 /* GamePausePopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B7415DDB3E10032D4F4 /* GamePausePopup.m */; };
 		19274B7815DDE2B40032D4F4 /* GameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B7715DDE2B40032D4F4 /* GameItem.m */; };
+		1927E9A91614730A00B85EDE /* globalMap in Resources */ = {isa = PBXBuildFile; fileRef = 1927E9A81614730A00B85EDE /* globalMap */; };
+		1927E9AD161484AB00B85EDE /* GameOverPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1927E9AC161484AB00B85EDE /* GameOverPopup.m */; };
 		19A0233915F921880023959B /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A0233815F921880023959B /* GameLayer.m */; };
 		19AC626D15FE3DB90074A101 /* GameDifficultyPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC626C15FE3DB90074A101 /* GameDifficultyPopup.m */; };
 		19AC626F15FE439B0074A101 /* CCPopupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC626E15FE439B0074A101 /* CCPopupLayer.m */; };
@@ -407,6 +409,9 @@
 		19274B7415DDB3E10032D4F4 /* GamePausePopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePausePopup.m; sourceTree = "<group>"; };
 		19274B7615DDE2B20032D4F4 /* GameItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameItem.h; sourceTree = "<group>"; };
 		19274B7715DDE2B40032D4F4 /* GameItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameItem.m; sourceTree = "<group>"; };
+		1927E9A81614730A00B85EDE /* globalMap */ = {isa = PBXFileReference; lastKnownFileType = folder; path = globalMap; sourceTree = "<group>"; };
+		1927E9AB161484AB00B85EDE /* GameOverPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverPopup.h; sourceTree = "<group>"; };
+		1927E9AC161484AB00B85EDE /* GameOverPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverPopup.m; sourceTree = "<group>"; };
 		19A0233815F921880023959B /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
 		19AC626C15FE3DB90074A101 /* GameDifficultyPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDifficultyPopup.m; sourceTree = "<group>"; };
 		19AC626E15FE439B0074A101 /* CCPopupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPopupLayer.m; sourceTree = "<group>"; };
@@ -916,6 +921,8 @@
 				19AC626C15FE3DB90074A101 /* GameDifficultyPopup.m */,
 				19274B7315DDB3E10032D4F4 /* GamePausePopup.h */,
 				19274B7415DDB3E10032D4F4 /* GamePausePopup.m */,
+				1927E9AB161484AB00B85EDE /* GameOverPopup.h */,
+				1927E9AC161484AB00B85EDE /* GameOverPopup.m */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -969,6 +976,7 @@
 		19AC628715FFEF1B0074A101 /* game */ = {
 			isa = PBXGroup;
 			children = (
+				1927E9A81614730A00B85EDE /* globalMap */,
 				19CE67E7160F444800755852 /* zombies */,
 				19CE67E5160F218800755852 /* clouds */,
 				19CE67DB160F175F00755852 /* levels */,
@@ -1103,6 +1111,7 @@
 				19CE67DC160F175F00755852 /* levels in Resources */,
 				19CE67E6160F218800755852 /* clouds in Resources */,
 				19CE67E8160F444800755852 /* zombies in Resources */,
+				1927E9A91614730A00B85EDE /* globalMap in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1233,6 +1242,7 @@
 				19AD66091601A0AC00301994 /* CCLabelBMFontNumeric.m in Sources */,
 				19AD660C1601A4A500301994 /* NotEnoughMoneyAlert.m in Sources */,
 				19CE67DF160F177F00755852 /* Level00Background.m in Sources */,
+				1927E9AD161484AB00B85EDE /* GameOverPopup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

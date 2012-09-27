@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 
 
+typedef struct
+{
+    BOOL isFailed;
+    float score;
+    int perfectWaves;
+} GameOverStatus;
+
 @interface Game : NSObject
 {
     BOOL isStarted;
@@ -16,6 +23,8 @@
     
     int mapIndex;
     int difficulty;
+    
+    GameOverStatus gameOverStatus;
 }
 
 @property (nonatomic) BOOL isStarted;
@@ -23,6 +32,8 @@
 
 @property (nonatomic) int mapIndex;
 @property (nonatomic) int difficulty;
+
+@property (nonatomic, readonly) GameOverStatus gameOverStatus;
 
 + (Game *) sharedGame;
 + (void) releaseGame;
@@ -32,5 +43,8 @@
 - (void) runGameScene;
 
 - (void) reset;
+
+- (void) setGameOverStatus: (GameOverStatus *) status;
+- (void) dropGameOverStatus;
 
 @end
