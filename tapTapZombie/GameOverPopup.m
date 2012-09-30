@@ -1,19 +1,19 @@
 //
-//  GamePausePopup.m
+//  GameOverPopup.m
 //  tapTapZombie
 //
-//  Created by Alexander on 17.08.12.
+//  Created by Alexander on 27.09.12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "GamePausePopup.h"
+#import "GameOverPopup.h"
 
 #import "GameConfig.h"
 
 #import "Game.h"
 
 
-@interface GamePausePopup()
+@interface GameOverPopup()
 
 - (void) showAndEnable;
 - (void) hideAndClose;
@@ -21,13 +21,14 @@
 @end
 
 
-@implementation GamePausePopup
+@implementation GameOverPopup
 
 #pragma mark init and dealloc
 - (id) initWithDelegate: (id<CCPopupLayerDelegate>) delegate_
 {
     if(self = [super initWithDelegate: delegate_])
     {
+        
         CCMenu *menu;
         CCSprite *btnSprite;
         CCSprite *btnOnSprite;
@@ -36,14 +37,13 @@
         background = [CCLayerColor layerWithColor: ccc4(0, 0, 0, 255)];
         [self addChild: background];
         
-        // buttons
-        btnSprite = [CCSprite spriteWithFile: @"buttons/returnBtn.png"];
-        btnOnSprite = [CCSprite spriteWithFile: @"buttons/returnBtnOn.png"];
-        closePopupBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
-                                                selectedSprite: btnOnSprite
-                                                        target: self
-                                                      selector: @selector(closePopupBtnCallback)];
+        // game over status
+        NSString *statusStr = [Game sharedGame].gameOverStatus.isFailed ? @"Game over" : @"You are winner!";
+        statusLabel = [CCLabelBMFont labelWithString: statusStr fntFile: kDefaultGameFont];
+        statusLabel.position = ccp(kScreenCenterX, kScreenCenterY + 64.0f);
+        [self addChild: statusLabel];
         
+        // buttons
         btnSprite = [CCSprite spriteWithFile: @"buttons/resetBtn.png"];
         btnOnSprite = [CCSprite spriteWithFile: @"buttons/resetBtnOn.png"];
         resetBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
@@ -58,7 +58,7 @@
                                                   target: self 
                                                 selector: @selector(exitBtnCallback)];
         
-        menu = [CCMenu menuWithItems: closePopupBtn, resetBtn, exitBtn, nil];
+        menu = [CCMenu menuWithItems: resetBtn, exitBtn, nil];
         [menu alignItemsHorizontally];
         menu.position = kScreenCenter;
         [self addChild: menu];
@@ -97,9 +97,8 @@
                     ]
     ];
     
-    
-    closePopupBtn.scale = 0;
-    [closePopupBtn runAction:
+    resetBtn.scale = 0;
+    [resetBtn runAction:
                     [CCSequence actions:
                                     [CCDelayTime actionWithDuration: 0],
                                     [CCSpawn actions:
@@ -114,28 +113,10 @@
                     ]
     ];
     
-    
-    resetBtn.scale = 0;
-    [resetBtn runAction:
-                    [CCSequence actions:
-                                    [CCDelayTime actionWithDuration: 0.03f],
-                                    [CCSpawn actions:
-                                                [CCEaseBackOut actionWithAction:
-                                                                    [CCScaleTo actionWithDuration: 0.2f 
-                                                                                            scale: 1]
-                                                ],
-                                                [CCFadeIn actionWithDuration: 0.15f],
-                                                nil
-                                    ],
-                                    nil
-                    ]
-    ];
-    
-    
     exitBtn.scale = 0;
     [exitBtn runAction:
                     [CCSequence actions:
-                                    [CCDelayTime actionWithDuration: 0.06f],
+                                    [CCDelayTime actionWithDuration: 0.03f],
                                     [CCSpawn actions:
                                                 [CCEaseBackOut actionWithAction:
                                                                     [CCScaleTo actionWithDuration: 0.2f 
@@ -159,7 +140,7 @@
                     ]
     ];
     
-    [closePopupBtn runAction:
+    [resetBtn runAction:
                     [CCSequence actions:
                                     [CCDelayTime actionWithDuration: 0],
                                     [CCSpawn actions:
@@ -174,24 +155,9 @@
                     ]
     ];
     
-    [resetBtn runAction:
-                    [CCSequence actions:
-                                    [CCDelayTime actionWithDuration: 0.03f],
-                                    [CCSpawn actions:
-                                                [CCEaseBackIn actionWithAction:
-                                                                    [CCScaleTo actionWithDuration: 0.2f 
-                                                                                            scale: 0]
-                                                ],
-                                                [CCFadeOut actionWithDuration: 0.2f],
-                                                nil
-                                    ],
-                                    nil
-                    ]
-    ];
-    
     [exitBtn runAction:
                     [CCSequence actions:
-                                    [CCDelayTime actionWithDuration: 0.06f],
+                                    [CCDelayTime actionWithDuration: 0.03f],
                                     [CCSpawn actions:
                                                 [CCEaseBackIn actionWithAction:
                                                                     [CCScaleTo actionWithDuration: 0.2f 
@@ -225,10 +191,6 @@
     [[Game sharedGame] runMainMenuScene];
 }
 
-- (void) closePopupBtnCallback
-{
-    [self disableWithChildren];
-    [self hideAndClose];
-}
+#pragma mark -
 
 @end

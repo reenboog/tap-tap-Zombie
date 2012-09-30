@@ -34,22 +34,30 @@
 	if(self = [super init])
     {
         CCMenu *menu;
-        CCLabelBMFont *label;
+        CCSprite *btnSprite;
+        CCSprite *btnOnSprite;
         
         // main menu
-        label = [CCLabelBMFont labelWithString: @"play" fntFile: kDefaultGameFont];
-        playBtn = [CCMenuItemLabel itemWithLabel: label
-                                          target: self
-                                        selector: @selector(playBtnCallback)];
+        btnSprite = [CCSprite spriteWithFile: @"buttons/playBtn.png"];
+        btnOnSprite = [CCSprite spriteWithFile: @"buttons/playBtnOn.png"];
+        playBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
+                                          selectedSprite: btnOnSprite
+                                                  target: self
+                                                selector: @selector(playBtnCallback)];
+        playBtn.anchorPoint = ccp(0.5f, 0);
         
-        label = [CCLabelBMFont labelWithString: @"shop" fntFile: kDefaultGameFont];
-        shopBtn = [CCMenuItemLabel itemWithLabel: label
-                                          target: self
-                                        selector: @selector(shopBtnCallback)];
+        btnSprite = [CCSprite spriteWithFile: @"buttons/shopBtn.png"];
+        btnOnSprite = [CCSprite spriteWithFile: @"buttons/shopBtnOn.png"];
+        shopBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
+                                          selectedSprite: btnOnSprite
+                                                  target: self
+                                                selector: @selector(shopBtnCallback)];
+        shopBtn.anchorPoint = ccp(0.5f, 0);
+        shopBtn.scale = 0.7f;
         
-        menu = [CCMenu menuWithItems: playBtn, shopBtn, nil];
-        [menu alignItemsVertically];
-        menu.position = kScreenCenter;
+        menu = [CCMenu menuWithItems: shopBtn, playBtn, nil];
+        [menu alignItemsHorizontally];
+        menu.position = ccp(kScreenWidth + 8.0f - playBtn.contentSize.width, 8.0f);
         [self addChild: menu];
 	}
     

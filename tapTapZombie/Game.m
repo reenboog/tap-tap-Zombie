@@ -31,6 +31,8 @@
 @synthesize mapIndex;
 @synthesize difficulty;
 
+@synthesize gameOverStatus;
+
 static Game *sharedGame = nil;
 
 #pragma mark singleton methods
@@ -126,6 +128,8 @@ static Game *sharedGame = nil;
     
     mapIndex = 0;
     difficulty = 0;
+    
+    [self dropGameOverStatus];
 }
 
 #pragma mark -
@@ -137,5 +141,18 @@ static Game *sharedGame = nil;
 }
 
 #pragma mark -
+
+#pragma mark game over status
+- (void) setGameOverStatus: (GameOverStatus *) status
+{
+    assert(status);
+    
+    gameOverStatus = *status;
+}
+
+- (void) dropGameOverStatus
+{
+    [self setGameOverStatus: &((GameOverStatus){NO, 0, 0})];
+}
 
 @end

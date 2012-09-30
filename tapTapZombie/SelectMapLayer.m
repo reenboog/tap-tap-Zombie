@@ -15,6 +15,8 @@
 #import "GameDifficultyPopup.h"
 
 
+#define kMaxMaps 7
+
 @implementation SelectMapLayer
 
 #pragma mark scene
@@ -33,26 +35,49 @@
 {
     if(self = [super init])
     {
-        CCLabelBMFont *label;
+        CCSprite *backgroundSprite = [CCSprite spriteWithFile: @"globalMap/mapBackground.png"];
+        backgroundSprite.position = kScreenCenter;
+        [self addChild: backgroundSprite];
         
-        label = [CCLabelBMFont labelWithString: @"main menu" fntFile: kDefaultGameFont];
-        backBtn = [CCMenuItemLabel itemWithLabel: label target: self selector: @selector(backBtnCallback)];
-        CCMenu *menu = [CCMenu menuWithItems: backBtn, nil];
-        menu.position = ccp(kScreenCenterX, 24.0f);
+        CCMenu *menu;
+//        CCLabelBMFont *label;
+        CCSprite *btnSprite;
+        CCSprite *btnOnSprite;
+        
+        // back btn
+        btnSprite = [CCSprite spriteWithFile: @"buttons/returnBtn.png"];
+        btnOnSprite = [CCSprite spriteWithFile: @"buttons/returnBtnOn.png"];
+        backBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
+                                          selectedSprite: btnOnSprite 
+                                                  target: self 
+                                                selector: @selector(backBtnCallback)];
+        menu = [CCMenu menuWithItems: backBtn, nil];
+        menu.position = ccp(8.0f + backBtn.contentSize.width/2, 8.0f + backBtn.contentSize.height/2);
         [self addChild: menu];
         
-        selectMapMenu = [CCMenu menuWithItems: nil];
-        selectMapMenu.position = ccp(kScreenCenterX, kScreenCenterY + 24.0f);
-        [self addChild: selectMapMenu];
-        for(int i = 0; i < [[MapCache sharedMapCache] count]; i++)
+        // maps btns
+        CGPoint mapsPositions[kMaxMaps] = {
+            ccp(330, 16), ccp(357, 39), ccp(249, 48), ccp(223, 79), ccp(273, 93), ccp(311, 93), ccp(350, 83)
+        };
+        
+        menu = [CCMenu menuWithItems: nil];
+        menu.position = ccp(0, 0);
+        [self addChild: menu];
+        for(int i = 0; i < MIN([[MapCache sharedMapCache] count], kMaxMaps); i++)
         {
-            label = [CCLabelBMFont labelWithString: [NSString stringWithFormat: @"map %i", i] fntFile: kDefaultGameFont];
-            CCMenuItem *item = [CCMenuItemLabel itemWithLabel: label target: self selector: @selector(selectMapBtnCallback:)];
+            btnSprite = [CCSprite spriteWithFile: @"globalMap/mapBtn.png"];
+            btnOnSprite = [CCSprite spriteWithFile: @"globalMap/mapBtnOn.png"];
+            CCMenuItem *item = [CCMenuItemSprite itemFromNormalSprite: btnSprite
+                                                       selectedSprite: btnOnSprite 
+                                                               target: self 
+                                                             selector: @selector(selectMapBtnCallback:)];
             item.tag = i;
             
-            [selectMapMenu addChild: item];
+            [menu addChild: item];
+            
+            CGPoint p = mapsPositions[i];
+            item.position = ccp(p.x, p.y);//ccp(p.x + item.contentSize.width/2, p.y + item.contentSize.height/2);
         }
-        [selectMapMenu alignItemsVertically];
     }
     
     return self;

@@ -14,6 +14,8 @@
 
 #import "Wave.h"
 
+#import "Game.h"
+
 
 static const float minMovingTime[kMaxGameDifficulty + 1] = {1.5f, 1.3f, 1.2f, 1.0f};
 static const float maxMovingTime[kMaxGameDifficulty + 1] = {2.5f, 2.3f, 2.1f, 1.8f};
@@ -75,6 +77,8 @@ static const float timeForDifficultyGrowth[kMaxGameDifficulty + 1] = {180.0f, 16
     currentStandingTime = maxStandingTime[map.difficulty];
     
     perfectWaves = 0;
+    
+    [[Game sharedGame] dropGameOverStatus];
 }
 
 #pragma mark -
@@ -161,6 +165,17 @@ void shuffleArray(int *arr, int size)
     }
     
     [self increaseDifficulty: dt];
+    
+    if(success <= kMinSuccess)
+    {
+        [[Game sharedGame] setGameOverStatus: &((GameOverStatus){YES, 0, perfectWaves})];
+        [delegate gameOver];
+    }
+    else if(success >= kMaxSuccess)
+    {
+        [[Game sharedGame] setGameOverStatus: &((GameOverStatus){NO, 0, perfectWaves})];
+        [delegate gameOver];
+    }
 }
 
 #pragma mark -
