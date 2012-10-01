@@ -89,7 +89,6 @@
         
         float fullWayLength = [[keyPoints objectAtIndex: 0] CGPointValue].y - [[keyPoints lastObject] CGPointValue].y;
         float stepLength = self.position.y - newPosition.y;
-        float wayLength = [[keyPoints objectAtIndex: 0] CGPointValue].y - newPosition.y;
         
         float p = stepLength/fullWayLength;
         
@@ -100,8 +99,6 @@
                                     nil
                     ]
         ];
-        
-        [sprite runAction: [CCScaleTo actionWithDuration: movingTime*p scale: wayLength/fullWayLength]];
     
         return;
     }
@@ -126,6 +123,7 @@
     sprite.opacity = 0;
     
     [sprite runAction: [CCFadeIn actionWithDuration: 0.3f]];
+    [sprite runAction: [CCEaseSineIn actionWithAction: [CCScaleTo actionWithDuration: movingTime scale: 0.8f]]];
     
     [self moveToNextKeyPoint];
 }
@@ -139,7 +137,7 @@
     
     [sprite runAction:
                 [CCSequence actions:
-                                [CCTintTo actionWithDuration: standingTime red: 0 green: 0 blue: 255],
+                                [CCDelayTime actionWithDuration: standingTime],
                                 [CCCallFunc actionWithTarget: self selector: @selector(disappear)],
                                 nil
                 ]
@@ -163,8 +161,8 @@
                 [CCSequence actions:
                                 [CCSpawn actions:
                                             [CCTintTo actionWithDuration: 0.2f red: c.r green: c.g blue: c.b],
-                                            [CCScaleTo actionWithDuration: 0.3f scale: scale],
-                                            [CCFadeOut actionWithDuration: 0.3f],
+                                            [CCScaleTo actionWithDuration: 0.2f scale: scale],
+                                            [CCFadeOut actionWithDuration: 0.2f],
                                             nil
                                 ],
                                 [CCCallFunc actionWithTarget: self selector: @selector(removeFromParentWithCleanup)],

@@ -22,6 +22,7 @@ typedef struct
     BOOL isActive;
     
     int mapIndex;
+    int backgroundIndex;
     int difficulty;
     
     GameOverStatus gameOverStatus;
@@ -31,6 +32,7 @@ typedef struct
 @property (nonatomic) BOOL isActive;
 
 @property (nonatomic) int mapIndex;
+@property (nonatomic) int backgroundIndex;
 @property (nonatomic) int difficulty;
 
 @property (nonatomic, readonly) GameOverStatus gameOverStatus;

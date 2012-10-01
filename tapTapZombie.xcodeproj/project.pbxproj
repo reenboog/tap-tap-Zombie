@@ -130,7 +130,10 @@
 		19274B7815DDE2B40032D4F4 /* GameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19274B7715DDE2B40032D4F4 /* GameItem.m */; };
 		1927E9A91614730A00B85EDE /* globalMap in Resources */ = {isa = PBXBuildFile; fileRef = 1927E9A81614730A00B85EDE /* globalMap */; };
 		1927E9AD161484AB00B85EDE /* GameOverPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1927E9AC161484AB00B85EDE /* GameOverPopup.m */; };
+		1927E9AF161616D000B85EDE /* Background0.m in Sources */ = {isa = PBXBuildFile; fileRef = 1927E9AE161616D000B85EDE /* Background0.m */; };
 		19A0233915F921880023959B /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A0233815F921880023959B /* GameLayer.m */; };
+		19A5059D16162057009348DD /* Background1.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5059C16162057009348DD /* Background1.m */; };
+		19A505A016162980009348DD /* Background2.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5059F16162980009348DD /* Background2.m */; };
 		19AC626D15FE3DB90074A101 /* GameDifficultyPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC626C15FE3DB90074A101 /* GameDifficultyPopup.m */; };
 		19AC626F15FE439B0074A101 /* CCPopupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC626E15FE439B0074A101 /* CCPopupLayer.m */; };
 		19AC627215FE4AF60074A101 /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC627115FE4AF60074A101 /* GameLogic.m */; };
@@ -152,7 +155,6 @@
 		19AD66091601A0AC00301994 /* CCLabelBMFontNumeric.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD66081601A0AC00301994 /* CCLabelBMFontNumeric.m */; };
 		19AD660C1601A4A500301994 /* NotEnoughMoneyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD660B1601A4A300301994 /* NotEnoughMoneyAlert.m */; };
 		19CE67DC160F175F00755852 /* levels in Resources */ = {isa = PBXBuildFile; fileRef = 19CE67DB160F175F00755852 /* levels */; };
-		19CE67DF160F177F00755852 /* Level00Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CE67DE160F177F00755852 /* Level00Background.m */; };
 		19CE67E6160F218800755852 /* clouds in Resources */ = {isa = PBXBuildFile; fileRef = 19CE67E5160F218800755852 /* clouds */; };
 		19CE67E8160F444800755852 /* zombies in Resources */ = {isa = PBXBuildFile; fileRef = 19CE67E7160F444800755852 /* zombies */; };
 /* End PBXBuildFile section */
@@ -412,7 +414,12 @@
 		1927E9A81614730A00B85EDE /* globalMap */ = {isa = PBXFileReference; lastKnownFileType = folder; path = globalMap; sourceTree = "<group>"; };
 		1927E9AB161484AB00B85EDE /* GameOverPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverPopup.h; sourceTree = "<group>"; };
 		1927E9AC161484AB00B85EDE /* GameOverPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverPopup.m; sourceTree = "<group>"; };
+		1927E9AE161616D000B85EDE /* Background0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background0.m; sourceTree = "<group>"; };
 		19A0233815F921880023959B /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
+		19A5059B16162057009348DD /* Background1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background1.h; sourceTree = "<group>"; };
+		19A5059C16162057009348DD /* Background1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background1.m; sourceTree = "<group>"; };
+		19A5059E16162980009348DD /* Background2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background2.h; sourceTree = "<group>"; };
+		19A5059F16162980009348DD /* Background2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background2.m; sourceTree = "<group>"; };
 		19AC626C15FE3DB90074A101 /* GameDifficultyPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDifficultyPopup.m; sourceTree = "<group>"; };
 		19AC626E15FE439B0074A101 /* CCPopupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPopupLayer.m; sourceTree = "<group>"; };
 		19AC627015FE4AF60074A101 /* GameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLogic.h; sourceTree = "<group>"; };
@@ -453,8 +460,7 @@
 		19AD660A1601A4A200301994 /* NotEnoughMoneyAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotEnoughMoneyAlert.h; sourceTree = "<group>"; };
 		19AD660B1601A4A300301994 /* NotEnoughMoneyAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotEnoughMoneyAlert.m; sourceTree = "<group>"; };
 		19CE67DB160F175F00755852 /* levels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = levels; sourceTree = "<group>"; };
-		19CE67DD160F177F00755852 /* Level00Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level00Background.h; sourceTree = "<group>"; };
-		19CE67DE160F177F00755852 /* Level00Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level00Background.m; sourceTree = "<group>"; };
+		19CE67DD160F177F00755852 /* Background0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background0.h; sourceTree = "<group>"; };
 		19CE67E0160F19B700755852 /* Backgrounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Backgrounds.h; sourceTree = "<group>"; };
 		19CE67E5160F218800755852 /* clouds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = clouds; sourceTree = "<group>"; };
 		19CE67E7160F444800755852 /* zombies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = zombies; sourceTree = "<group>"; };
@@ -1037,8 +1043,12 @@
 			isa = PBXGroup;
 			children = (
 				19CE67E0160F19B700755852 /* Backgrounds.h */,
-				19CE67DD160F177F00755852 /* Level00Background.h */,
-				19CE67DE160F177F00755852 /* Level00Background.m */,
+				19CE67DD160F177F00755852 /* Background0.h */,
+				1927E9AE161616D000B85EDE /* Background0.m */,
+				19A5059B16162057009348DD /* Background1.h */,
+				19A5059C16162057009348DD /* Background1.m */,
+				19A5059E16162980009348DD /* Background2.h */,
+				19A5059F16162980009348DD /* Background2.m */,
 			);
 			name = Backgrounds;
 			sourceTree = "<group>";
@@ -1241,8 +1251,10 @@
 				19AD660416015B3800301994 /* ShopLayer.m in Sources */,
 				19AD66091601A0AC00301994 /* CCLabelBMFontNumeric.m in Sources */,
 				19AD660C1601A4A500301994 /* NotEnoughMoneyAlert.m in Sources */,
-				19CE67DF160F177F00755852 /* Level00Background.m in Sources */,
 				1927E9AD161484AB00B85EDE /* GameOverPopup.m in Sources */,
+				1927E9AF161616D000B85EDE /* Background0.m in Sources */,
+				19A5059D16162057009348DD /* Background1.m in Sources */,
+				19A505A016162980009348DD /* Background2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,6 +29,7 @@
 @synthesize isActive;
 
 @synthesize mapIndex;
+@synthesize backgroundIndex;
 @synthesize difficulty;
 
 @synthesize gameOverStatus;
@@ -98,7 +99,7 @@ static Game *sharedGame = nil;
 {
     CCScene *selectMapScene = [SelectMapLayer scene];
     [self runScene: selectMapScene];
-}
+} 
 
 - (void) runGameScene
 {
@@ -112,7 +113,14 @@ static Game *sharedGame = nil;
     [gameScene addChild: hud z: 1];
     
     int numberOfRoads = [[MapCache sharedMapCache] mapAtIndex: mapIndex withDifficulty: difficulty].nTracks;
-    CCNode *background = [Level00Background backgroundWithNumberOfRoads: numberOfRoads];
+    CCNode *background;
+    switch(backgroundIndex)
+    {
+        case 0: background = [Background0 backgroundWithNumberOfRoads: numberOfRoads]; break;
+        case 1: background = [Background1 backgroundWithNumberOfRoads: numberOfRoads]; break;
+        case 2: background = [Background2 backgroundWithNumberOfRoads: numberOfRoads]; break;
+        default: background = [Background0 backgroundWithNumberOfRoads: numberOfRoads]; break;
+    }
     [gameLayer addChild: background z: -1];
     
     [self runScene: gameScene];
@@ -127,6 +135,7 @@ static Game *sharedGame = nil;
     isStarted = NO;
     
     mapIndex = 0;
+    backgroundIndex = 0;
     difficulty = 0;
     
     [self dropGameOverStatus];

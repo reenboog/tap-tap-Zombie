@@ -6,4 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Level00Background.h"
+#import "Background0.h"
+#import "Background1.h"
+#import "Background2.h"

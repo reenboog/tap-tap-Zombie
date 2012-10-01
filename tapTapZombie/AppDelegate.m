@@ -16,6 +16,8 @@
 #import "Game.h"
 #import "Shop.h"
 
+#import "Backgrounds.h"
+
 @implementation AppDelegate
 
 @synthesize window;
@@ -124,7 +126,9 @@
 	
 	// Run the intro Scene
     [[Game sharedGame] runMainMenuScene];
-//	[[CCDirector sharedDirector] runWithScene: [MainMenuLayer scene]];
+//    CCScene *scene = [CCScene node];
+//    [scene addChild: [Background2 backgroundWithNumberOfRoads: 3]];
+//	[[CCDirector sharedDirector] runWithScene: scene];
 }
 
 

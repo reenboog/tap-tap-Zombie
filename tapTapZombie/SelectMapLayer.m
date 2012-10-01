@@ -102,6 +102,12 @@
     
     [Game sharedGame].mapIndex = mapIndex;
     
+    int bi = 0;
+    if(mapIndex < 2) bi = 0;
+    else if(mapIndex < 4) bi = 1;
+    else bi = 2;
+    [Game sharedGame].backgroundIndex = bi;
+    
     [GameDifficultyPopup showOnRunningSceneWithDelegate: self];
 }
 
