@@ -114,8 +114,8 @@ void shuffleArray(int *arr, int size)
         int index = indices[i];
         Track track = map.tracks[index];
         id<LogicGameItemDelegate> item = [delegate runGameItemWithTrack: track 
-                                                             movingTime: currentMovingTime 
-                                                           standingTime: currentStandingTime];
+                                                             movingTime: 2.0f//currentMovingTime 
+                                                           standingTime: 0.6f];//currentStandingTime];
         
         [wave addItem: item];
     }
@@ -143,8 +143,7 @@ void shuffleArray(int *arr, int size)
 #pragma mark GameLayerLogicDelegate methods implementation
 - (void) tick: (float) dt
 {
-    const static int timePerGameIteration = 2.0f;
-    static BOOL flag = NO;
+    const static float timePerGameIteration = 0.8f;
     
     timer -= dt;
     
@@ -152,16 +151,7 @@ void shuffleArray(int *arr, int size)
     {
         timer = timePerGameIteration;
         
-        if(arc4random()%2 || flag)
-        {
-            [self newGameWave];
-            
-            flag = NO;
-        }
-        else
-        {
-            flag = YES;
-        }
+        [self newGameWave];
     }
     
     [self increaseDifficulty: dt];
@@ -183,7 +173,7 @@ void shuffleArray(int *arr, int size)
 #pragma mark GameItemLogicDelegate methods implementation
 - (void) gameItemDisappears: (id<LogicGameItemDelegate>) item
 {
-    float award = 5;
+    float award = 1;
     
     if([item isMissing])
     {
