@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 
 
+typedef enum
+{
+    tes_void,
+    tes_good,
+    tes_bad
+} TraceEndStatus;
+
 @protocol GameLogicDelegate;
 @class Map;
 
@@ -23,6 +30,7 @@
 - (float) success;
 
 @property (nonatomic, readonly) int perfectWaves;
+@property (nonatomic, readonly) TraceEndStatus *tracesEnds;
 
 // additional
 - (float) currentMovingTime;

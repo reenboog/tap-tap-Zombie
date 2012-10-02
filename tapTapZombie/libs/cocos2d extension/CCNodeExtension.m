@@ -88,9 +88,13 @@
 - (BOOL) worldPointInNode: (CGPoint) worldPoint
 {
     // scale the bounding rect of the node to world coordinates so we can see if the worldPoint is in the node.
-    CGRect bbox = CGRectMake( 0.0f, 0.0f, self.contentSize.width, self.contentSize.height );    // get bounding box in local 
-    bbox = CGRectApplyAffineTransform(bbox, [self nodeToWorldTransform] );      // convert box to world coordinates, scaling etc.
-    return CGRectContainsPoint( bbox, worldPoint );
+//    CGRect bbox = CGRectMake( 0.0f, 0.0f, self.contentSize.width, self.contentSize.height );    // get bounding box in local 
+//    bbox = CGRectApplyAffineTransform(bbox, [self nodeToWorldTransform] );      // convert box to world coordinates, scaling etc.
+//    return CGRectContainsPoint( bbox, worldPoint );
+    
+    CGRect bbox = CGRectMake(0.0f, 0.0f, self.contentSize.width, self.contentSize.height);
+    CGPoint p = [self convertToNodeSpaceAR: worldPoint];
+    return CGRectContainsPoint(bbox, p);
 }
 
 @end

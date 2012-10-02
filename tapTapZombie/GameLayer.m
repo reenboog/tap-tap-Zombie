@@ -14,6 +14,8 @@
 
 #import "LogicGameItemDelegate.h"
 
+#import "Trap.h"
+
 
 @implementation GameLayer
 
@@ -29,6 +31,19 @@
         [hudDelegate setDelegate: self];
         
         self.isTouchEnabled = YES;
+        
+        traps = [CCLayer node];
+        [self addChild: traps];
+        for(int i = 0; i < [logicDelegate map].nTracks; i++)
+        {
+            NSArray *keyPoints = [logicDelegate map].tracks[i].keyPoints;
+            CGPoint p = [[keyPoints lastObject] CGPointValue];
+            
+            Trap *t = [Trap node];
+            t.position = ccp(p.x, 0);
+            [traps addChild: t];
+            t.tag = i;
+        }
         
         [self reset];
         
@@ -148,27 +163,48 @@
     [hudDelegate setValueForProgressScale: [logicDelegate success]];
     
     [hudDelegate updatePerfectWays: logicDelegate.perfectWaves];
+    
+    for(Trap *trap in [traps children])
+    {
+        switch(logicDelegate.tracesEnds[trap.tag])
+        {
+            case tes_void:
+            {
+                [trap makeNormal];
+            } break;
+                
+            case tes_good:
+            {
+                [trap makeGreen];
+            } break;
+                
+            case tes_bad:
+            {
+                [trap makeRed];
+            } break;
+        }
+    }
 }
 
 #pragma mark -
 
 - (void) draw
 {
-    for(int i = 0; i < logicDelegate.map.nTracks; i++)
-    {
-        NSArray *keyPoints = logicDelegate.map.tracks[i].keyPoints;
-        int n = [keyPoints count];
-        
-        CGPoint *vertices = malloc(sizeof(CGPoint)*n);
-        for(int i = 0; i < n; i++)
-        {
-            vertices[i] = [[keyPoints objectAtIndex: i] CGPointValue];
-        }
-        
-        ccDrawPoly(vertices, n, NO);
-        
-        free(vertices);
-    }
+//    for(int i = 0; i < logicDelegate.map.nTracks; i++)
+//    {
+//        NSArray *keyPoints = logicDelegate.map.tracks[i].keyPoints;
+//        int n = [keyPoints count];
+//        
+//        CGPoint *vertices = malloc(sizeof(CGPoint)*n);
+//        for(int i = 0; i < n; i++)
+//        {
+//            vertices[i] = [[keyPoints objectAtIndex: i] CGPointValue];
+//        }
+//        
+//        ccDrawPoly(vertices, n, NO);
+//        
+//        free(vertices);
+//    }
 }
 
 @end

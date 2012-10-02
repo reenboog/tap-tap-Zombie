@@ -16,12 +16,16 @@
 #import "GameItemLogicDelegate.h"
 
 
+@class Trap;
+
 @interface GameLayer : CCLayer <GameLogicDelegate, HUDDelegate>
 {
     id<GameLayerLogicDelegate, GameItemLogicDelegate> logicDelegate;
     id<GameLayerHUDDelegate> hudDelegate;
     
     CCLayer *gameItems;
+    
+    CCLayer *traps;
 }
 
 - (id) initWithLogicDelegate: (id<GameLayerLogicDelegate, GameItemLogicDelegate>) logicDelegate 

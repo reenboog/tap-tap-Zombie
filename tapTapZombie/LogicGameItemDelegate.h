@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+
+typedef enum 
+{
+    gis_none,
+    gis_moving,
+    gis_standing,
+    gis_disappearing
+} GameItemState;
+
 @protocol LogicGameItemDelegate <NSObject>
 
 //- (int) wave;
@@ -18,5 +27,12 @@
 @property (nonatomic) int index;
 
 - (BOOL) isMissing;
+
+- (void) reorder: (int) index;
+
+@property(nonatomic,readwrite,assign) NSInteger tag;
+@property (nonatomic, readonly) GameItemState state;
+@property (nonatomic, readonly) float award;
+
 
 @end

@@ -36,6 +36,7 @@ static const float timeForDifficultyGrowth[kMaxGameDifficulty + 1] = {180.0f, 16
 @synthesize map;
 @synthesize success;
 @synthesize perfectWaves;
+@synthesize tracesEnds;
 
 - (id) initWithMap: (Map *) map_
 {
@@ -44,6 +45,8 @@ static const float timeForDifficultyGrowth[kMaxGameDifficulty + 1] = {180.0f, 16
         map = [map_ retain];
         
         waves = [[NSMutableArray alloc] init];
+        
+        tracesEnds = malloc(map.nTracks);
         
         [self reset];
     }
@@ -60,6 +63,7 @@ static const float timeForDifficultyGrowth[kMaxGameDifficulty + 1] = {180.0f, 16
 {
     [map release];
     [waves release];
+    free(tracesEnds);
     
     [super dealloc];
 }
@@ -79,6 +83,8 @@ static const float timeForDifficultyGrowth[kMaxGameDifficulty + 1] = {180.0f, 16
     perfectWaves = 0;
     
     [[Game sharedGame] dropGameOverStatus];
+    
+    for(int i = 0; i < map.nTracks; i++) tracesEnds[i] = tes_void;
 }
 
 #pragma mark -
@@ -116,6 +122,7 @@ void shuffleArray(int *arr, int size)
         id<LogicGameItemDelegate> item = [delegate runGameItemWithTrack: track 
                                                              movingTime: 2.0f//currentMovingTime 
                                                            standingTime: 0.6f];//currentStandingTime];
+        item.tag = index;
         
         [wave addItem: item];
     }
@@ -123,6 +130,14 @@ void shuffleArray(int *arr, int size)
     [wave run];
     
     free(indices);
+    
+    int i = [waves count];
+    for(Wave *w in waves)
+    {
+        [w setOrderIndex: i];
+        
+        i--;
+    }
 }
 
 - (void) increaseDifficulty: (float) dt
@@ -143,7 +158,7 @@ void shuffleArray(int *arr, int size)
 #pragma mark GameLayerLogicDelegate methods implementation
 - (void) tick: (float) dt
 {
-    const static float timePerGameIteration = 0.8f;
+    const static float timePerGameIteration = 1.0f;
     
     timer -= dt;
     
@@ -180,6 +195,11 @@ void shuffleArray(int *arr, int size)
         award = -award;
     }
     
+    if(item.state == gis_standing)
+    {
+        tracesEnds[item.tag] = tes_void;
+    }
+    
     success += award;
     
     success = success < kMinSuccess ? kMinSuccess : success > kMaxSuccess ? kMaxSuccess : success;
@@ -204,6 +224,12 @@ void shuffleArray(int *arr, int size)
         
 //        CCLOG(@"wave ended");
     }
+}
+
+- (void) gameItemStands: (id<LogicGameItemDelegate>) item
+{
+    NSInteger index = item.tag;
+    tracesEnds[index] = item.award >= 0 ? tes_good : tes_bad;
 }
 
 #pragma mark -

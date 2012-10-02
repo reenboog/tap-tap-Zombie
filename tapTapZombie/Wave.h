@@ -18,6 +18,8 @@
     NSMutableDictionary *items;
     float firstTouchTime;
     int nMissingItems;
+    
+    int orderIndex;
 }
 
 @property (nonatomic, readonly) int index;
@@ -29,5 +31,7 @@
 - (void) run;
 - (int) count;
 - (void) removeItem: (id<LogicGameItemDelegate>) item;
+
+- (void) setOrderIndex: (int) i;
 
 @end

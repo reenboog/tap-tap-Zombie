@@ -154,6 +154,7 @@
 		19AD6606160187DB00301994 /* buttons in Resources */ = {isa = PBXBuildFile; fileRef = 19AD6605160187DB00301994 /* buttons */; };
 		19AD66091601A0AC00301994 /* CCLabelBMFontNumeric.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD66081601A0AC00301994 /* CCLabelBMFontNumeric.m */; };
 		19AD660C1601A4A500301994 /* NotEnoughMoneyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD660B1601A4A300301994 /* NotEnoughMoneyAlert.m */; };
+		19B7685F161B06DD006C8C78 /* Trap.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B7685E161B06DD006C8C78 /* Trap.m */; };
 		19CE67DC160F175F00755852 /* levels in Resources */ = {isa = PBXBuildFile; fileRef = 19CE67DB160F175F00755852 /* levels */; };
 		19CE67E6160F218800755852 /* clouds in Resources */ = {isa = PBXBuildFile; fileRef = 19CE67E5160F218800755852 /* clouds */; };
 		19CE67E8160F444800755852 /* zombies in Resources */ = {isa = PBXBuildFile; fileRef = 19CE67E7160F444800755852 /* zombies */; };
@@ -459,6 +460,8 @@
 		19AD66081601A0AC00301994 /* CCLabelBMFontNumeric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLabelBMFontNumeric.m; sourceTree = "<group>"; };
 		19AD660A1601A4A200301994 /* NotEnoughMoneyAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotEnoughMoneyAlert.h; sourceTree = "<group>"; };
 		19AD660B1601A4A300301994 /* NotEnoughMoneyAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotEnoughMoneyAlert.m; sourceTree = "<group>"; };
+		19B7685D161B06DD006C8C78 /* Trap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trap.h; sourceTree = "<group>"; };
+		19B7685E161B06DD006C8C78 /* Trap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trap.m; sourceTree = "<group>"; };
 		19CE67DB160F175F00755852 /* levels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = levels; sourceTree = "<group>"; };
 		19CE67DD160F177F00755852 /* Background0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background0.h; sourceTree = "<group>"; };
 		19CE67E0160F19B700755852 /* Backgrounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Backgrounds.h; sourceTree = "<group>"; };
@@ -949,6 +952,7 @@
 		19AC627815FE57F50074A101 /* GameLayer */ = {
 			isa = PBXGroup;
 			children = (
+				19B7685B161B06B9006C8C78 /* Trap */,
 				19CE67D9160F173D00755852 /* Backgrounds */,
 				19AC627315FE56040074A101 /* GameLogicDelegate.h */,
 				19AC627415FE56F00074A101 /* HUDDelegate.h */,
@@ -1037,6 +1041,15 @@
 				19AD65F31601364F00301994 /* ShopPopup.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		19B7685B161B06B9006C8C78 /* Trap */ = {
+			isa = PBXGroup;
+			children = (
+				19B7685D161B06DD006C8C78 /* Trap.h */,
+				19B7685E161B06DD006C8C78 /* Trap.m */,
+			);
+			name = Trap;
 			sourceTree = "<group>";
 		};
 		19CE67D9160F173D00755852 /* Backgrounds */ = {
@@ -1255,6 +1268,7 @@
 				1927E9AF161616D000B85EDE /* Background0.m in Sources */,
 				19A5059D16162057009348DD /* Background1.m in Sources */,
 				19A505A016162980009348DD /* Background2.m in Sources */,
+				19B7685F161B06DD006C8C78 /* Trap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

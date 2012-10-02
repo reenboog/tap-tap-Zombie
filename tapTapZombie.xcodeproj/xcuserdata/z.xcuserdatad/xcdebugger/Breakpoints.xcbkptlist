@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "tapTapZombie/GameLayer.m"
-         timestampString = "370444313.061019"
+         timestampString = "370878421.792984"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "138"
-         endingLineNumber = "138"
+         startingLineNumber = "153"
+         endingLineNumber = "153"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "tapTapZombie/GameLayer.m"
-         timestampString = "369104501.543364"
+         timestampString = "370878421.792984"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "35"
-         endingLineNumber = "35"
+         startingLineNumber = "50"
+         endingLineNumber = "50"
          landmarkName = "-initWithLogicDelegate:hudDelegate:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -51,11 +51,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "tapTapZombie/GameLayer.m"
-         timestampString = "369104501.543364"
+         timestampString = "370878421.792984"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "43"
-         endingLineNumber = "43"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
          landmarkName = "+gameLayerWithLogicDelegate:hudDelegate:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -79,11 +79,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "tapTapZombie/GameLogic.m"
-         timestampString = "370552212.490944"
+         timestampString = "370878977.253146"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "195"
-         endingLineNumber = "195"
+         startingLineNumber = "215"
+         endingLineNumber = "215"
          landmarkName = "-gameItemDisappears:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -93,11 +93,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "tapTapZombie/GameLayer.m"
-         timestampString = "370444313.061019"
+         timestampString = "370878421.792984"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "150"
-         endingLineNumber = "150"
+         startingLineNumber = "167"
+         endingLineNumber = "167"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -163,11 +163,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "tapTapZombie/GameItem.m"
-         timestampString = "370645106.696199"
+         timestampString = "370878874.273579"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "178"
-         endingLineNumber = "178"
+         startingLineNumber = "221"
+         endingLineNumber = "221"
          landmarkName = "-tap:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -197,6 +197,20 @@
          startingLineNumber = "112"
          endingLineNumber = "112"
          landmarkName = "-purchaseItem:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "tapTapZombie/GameLogic.m"
+         timestampString = "370878977.253146"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "231"
+         endingLineNumber = "231"
+         landmarkName = "-gameItemStands:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -24,6 +24,8 @@
 
 @synthesize wave;
 @synthesize index;
+@synthesize state;
+@synthesize award;
 
 #pragma mark init and dealloc
 - (id) initWithDelegate: (id<GameItemLogicDelegate>) delegate_
@@ -32,10 +34,20 @@
     {
         delegate = delegate_;
         
-        NSString *filename = [NSString stringWithFormat: @"zombies/zombie%i.png", arc4random()%4];
+        int zombieType = arc4random()%4;
+        NSString *filename = [NSString stringWithFormat: @"zombies/zombie%i.png", zombieType];
         sprite = [CCSprite spriteWithFile: filename];
         [self addChild: sprite];
         [self setContentSize: CGSizeMake(sprite.contentSize.width, sprite.contentSize.height)];
+        
+        if(zombieType != 3)
+        {
+            award = 1;
+        }
+        else
+        {
+            award = -1;
+        }
         
         sprite.anchorPoint = ccp(0.5f, 0);
         
@@ -133,6 +145,8 @@
     [self stopAllActions];
     [sprite stopAllActions];
     
+    [delegate gameItemStands: self];
+    
     state = gis_standing;
     
     [sprite runAction:
@@ -151,16 +165,13 @@
     
     [delegate gameItemDisappears: self];
     
-    ccColor3B c = ((state == gis_standing) && isCatched) ? ccc3(0, 255, 0) : ccc3(255, 0, 0);
-    
-    state = gis_disappearing;
-    
     float scale = sprite.scale + 0.2f;
     
-    [sprite runAction:
+    if((state == gis_standing) && isCatched)
+    {
+        [sprite runAction:
                 [CCSequence actions:
                                 [CCSpawn actions:
-                                            [CCTintTo actionWithDuration: 0.2f red: c.r green: c.g blue: c.b],
                                             [CCScaleTo actionWithDuration: 0.2f scale: scale],
                                             [CCFadeOut actionWithDuration: 0.2f],
                                             nil
@@ -168,7 +179,39 @@
                                 [CCCallFunc actionWithTarget: self selector: @selector(removeFromParentWithCleanup)],
                                 nil
                 ]
-    ];
+        ];
+    }
+    else if(state == gis_standing)
+    {
+        [self runAction:
+                    [CCSequence actions:
+                                    [CCSpawn actions:
+                                                [CCScaleTo actionWithDuration: 0.2f scale: scale],
+                                                [CCMoveBy actionWithDuration: 0.3f position: ccp(0, -150.0f)], 
+                                                nil
+                                    ], 
+                                    [CCCallFunc actionWithTarget: self selector: @selector(removeFromParentWithCleanup)],
+                                    nil
+                    ]
+        ];
+    }
+    else
+    {
+        [sprite runAction:
+                [CCSequence actions:
+                                [CCSpawn actions:
+                                            [CCTintTo actionWithDuration: 0.2f red: 255 green: 0 blue: 0],
+                                            [CCScaleTo actionWithDuration: 0.2f scale: scale],
+                                            [CCFadeOut actionWithDuration: 0.2f],
+                                            nil
+                                ],
+                                [CCCallFunc actionWithTarget: self selector: @selector(removeFromParentWithCleanup)],
+                                nil
+                ]
+        ];
+    }
+    
+    state = gis_disappearing;
 }
 
 - (void) tap: (UITouch *) touch
@@ -196,7 +239,20 @@
 #pragma mark LogicGameItemDelegate methods implementation
 - (BOOL) isMissing
 {
-    return ((state != gis_standing) || !isCatched);
+    if(award >= 0)
+    {
+        return ((state != gis_standing) || !isCatched);
+    }
+    
+    return (isCatched);
+}
+
+- (void) reorder: (int) i
+{
+    if(self.parent)
+    {
+        [self.parent reorderChild: self z: i];
+    }
 }
 
 @end

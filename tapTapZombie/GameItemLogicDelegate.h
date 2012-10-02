@@ -14,5 +14,6 @@
 @protocol GameItemLogicDelegate <NSObject>
 
 - (void) gameItemDisappears: (id<LogicGameItemDelegate>) item;
+- (void) gameItemStands: (id<LogicGameItemDelegate>) item;
 
 @end

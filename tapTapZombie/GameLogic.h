@@ -30,6 +30,8 @@
     
     NSMutableArray *waves;
     int perfectWaves;
+    
+    TraceEndStatus *tracesEnds;
 }
 
 @property (nonatomic, assign) id<GameLogicDelegate> delegate;
@@ -37,6 +39,7 @@
 @property (nonatomic, readonly) Map *map;
 @property (nonatomic, readonly) float success;
 @property (nonatomic, readonly) int perfectWaves;
+@property (nonatomic, readonly) TraceEndStatus *tracesEnds;
 
 - (id) initWithMap: (Map *) map;
 + (id) gameLogicWithMap: (Map *) map;

@@ -12,14 +12,6 @@
 #import "GameItemLogicDelegate.h"
 
 
-typedef enum 
-{
-    gis_none,
-    gis_moving,
-    gis_standing,
-    gis_disappearing
-} GameItemState;
-
 @interface GameItem : CCNode <LogicGameItemDelegate>
 {
     id<GameItemLogicDelegate> delegate;
@@ -38,10 +30,14 @@ typedef enum
     
     float movingTime;
     float standingTime;
+    
+    float award;
 }
 
 @property (nonatomic) int wave;
 @property (nonatomic) int index;
+@property (nonatomic, readonly) GameItemState state;
+@property (nonatomic, readonly) float award;
 
 - (id) initWithDelegate: (id<GameItemLogicDelegate>) delegate;
 + (id) gameItemWithDelegate: (id<GameItemLogicDelegate>) delegate;

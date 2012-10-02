@@ -80,4 +80,16 @@
     [items removeObjectForKey: [NSNumber numberWithInt: item.index]];
 }
 
+- (void) setOrderIndex: (int) i
+{
+    orderIndex = i;
+    
+    id<LogicGameItemDelegate> gameItem = nil;
+    NSEnumerator *e = [items objectEnumerator];
+    while(gameItem = [e nextObject])
+    {
+        [gameItem reorder: orderIndex];
+    }
+}
+
 @end
