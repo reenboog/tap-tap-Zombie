@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>shop</key>
+	<array>
+		<dict>
+			<key>isMoneyPack</key>
+			<false/>
+			<key>isConsumable</key>
+			<true/>
+			<key>packSize</key>
+			<integer>2</integer>
+			<key>cost</key>
+			<integer>100</integer>
+			<key>header</key>
+			<string>Default0</string>
+			<key>description</key>
+			<string>Default description</string>
+		</dict>
+		<dict>
+			<key>isMoneyPack</key>
+			<false/>
+			<key>isConsumable</key>
+			<true/>
+			<key>packSize</key>
+			<integer>2</integer>
+			<key>cost</key>
+			<integer>100</integer>
+			<key>header</key>
+			<string>Default1</string>
+			<key>description</key>
+			<string>Default description</string>
+		</dict>
+		<dict>
+			<key>isMoneyPack</key>
+			<false/>
+			<key>isConsumable</key>
+			<true/>
+			<key>packSize</key>
+			<integer>2</integer>
+			<key>cost</key>
+			<integer>999</integer>
+			<key>header</key>
+			<string>Default2</string>
+			<key>description</key>
+			<string>Default description</string>
+		</dict>
+		<dict>
+			<key>isMoneyPack</key>
+			<false/>
+			<key>isConsumable</key>
+			<true/>
+			<key>packSize</key>
+			<integer>2</integer>
+			<key>cost</key>
+			<integer>100</integer>
+			<key>header</key>
+			<string>Default3</string>
+			<key>description</key>
+			<string>Default description</string>
+		</dict>
+		<dict>
+			<key>isMoneyPack</key>
+			<false/>
+			<key>isConsumable</key>
+			<true/>
+			<key>packSize</key>
+			<integer>2</integer>
+			<key>cost</key>
+			<integer>100</integer>
+			<key>header</key>
+			<string>Default4</string>
+			<key>description</key>
+			<string>Default description</string>
+		</dict>
+		<dict>
+			<key>isMoneyPack</key>
+			<true/>
+			<key>isConsumable</key>
+			<true/>
+			<key>packSize</key>
+			<integer>1000</integer>
+			<key>cost</key>
+			<real>0.99</real>
+			<key>header</key>
+			<string>MoneyPack0</string>
+			<key>description</key>
+			<string>Default description</string>
+		</dict>
+		<dict>
+			<key>isMoneyPack</key>
+			<true/>
+			<key>isConsumable</key>
+			<true/>
+			<key>packSize</key>
+			<integer>3000</integer>
+			<key>cost</key>
+			<real>1.99</real>
+			<key>header</key>
+			<string>MoneyPack1</string>
+			<key>description</key>
+			<string>Default description</string>
+		</dict>
+	</array>
+</dict>
+</plist>
