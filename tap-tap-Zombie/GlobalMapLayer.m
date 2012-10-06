@@ -65,7 +65,7 @@ static CCSprite *movableSprite = nil;
             ccp(330, 16), ccp(357, 39), ccp(249, 48), ccp(223, 79), ccp(273, 93), ccp(311, 93), ccp(350, 83),
             ccp(391, 85), ccp(429, 95), ccp(442, 126), ccp(408, 139), ccp(371, 133), ccp(344, 156), ccp(305, 146),
             ccp(213, 131), ccp(176, 138), ccp(141, 152), ccp(134, 185), ccp(171, 200), ccp(275, 201), ccp(310, 209),
-            ccp(342, 230), ccp(374, 249), ccp(0, 0), ccp(0, 0)
+            ccp(342, 230), ccp(374, 249)
         };
         
         menu = [CCMenu menuWithItems: nil];

@@ -139,8 +139,7 @@ NSArray* parseTracks(NSArray *tracks)
             NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
             [dict setObject: [NSNumber numberWithBool: NO] forKey: @"isPassed"];
             
-            MapInfo *mi = [MapInfo mapInfoWithDictionary: dict];
-            [data addObject: mi];
+            [data addObject: dict];
             
             [dict release];
             
@@ -148,7 +147,15 @@ NSArray* parseTracks(NSArray *tracks)
         }
     }
     
-    mapsInfo = [[NSArray arrayWithArray: data] retain];
+    NSMutableArray *mi = [[NSMutableArray alloc] initWithCapacity: [data count]];
+    for(NSDictionary *dict in data)
+    {
+        [mi addObject: [MapInfo mapInfoWithDictionary: dict]];
+    }
+    
+    mapsInfo = [[NSArray arrayWithArray: mi] retain];
+    
+    [mi release];
 }
 
 - (void) saveMapsInfo

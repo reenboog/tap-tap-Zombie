@@ -159,7 +159,6 @@
 		19BAA6DA161CAD8F00A43A5F /* Background2.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAA6D6161CAD8F00A43A5F /* Background2.m */; };
 		19BAA6E2161CB10200A43A5F /* ZombiesWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAA6E1161CB10200A43A5F /* ZombiesWave.m */; };
 		19BAA6E5161CB11900A43A5F /* Zombie.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAA6E4161CB11900A43A5F /* Zombie.m */; };
-		19BAA6EB161D522E00A43A5F /* CCMoveWith.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAA6EA161D522E00A43A5F /* CCMoveWith.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -473,8 +472,6 @@
 		19BAA6E4161CB11900A43A5F /* Zombie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Zombie.m; sourceTree = "<group>"; };
 		19BAA6E7161CB20900A43A5F /* ZombieDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZombieDelegate.h; sourceTree = "<group>"; };
 		19BAA6E8161CB40D00A43A5F /* ZombiesWaveDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZombiesWaveDelegate.h; sourceTree = "<group>"; };
-		19BAA6E9161D522E00A43A5F /* CCMoveWith.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMoveWith.h; sourceTree = "<group>"; };
-		19BAA6EA161D522E00A43A5F /* CCMoveWith.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMoveWith.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -885,8 +882,6 @@
 				19BAA667161C826D00A43A5F /* CCPopupLayer.h */,
 				19BAA668161C826D00A43A5F /* CCPopupLayer.m */,
 				19BAA669161C826D00A43A5F /* CCPopupLayerDelegate.h */,
-				19BAA6E9161D522E00A43A5F /* CCMoveWith.h */,
-				19BAA6EA161D522E00A43A5F /* CCMoveWith.m */,
 			);
 			name = "cocos2d extension";
 			path = "libs/cocos2d extension";
@@ -1304,7 +1299,6 @@
 				19BAA6DA161CAD8F00A43A5F /* Background2.m in Sources */,
 				19BAA6E2161CB10200A43A5F /* ZombiesWave.m in Sources */,
 				19BAA6E5161CB11900A43A5F /* Zombie.m in Sources */,
-				19BAA6EB161D522E00A43A5F /* CCMoveWith.m in Sources */,
 				1989073E161D767F002E47C0 /* TrapsLayer.m in Sources */,
 				19890742161D769E002E47C0 /* Trap.m in Sources */,
 				19890746161D8B56002E47C0 /* GameOverPopup.m in Sources */,

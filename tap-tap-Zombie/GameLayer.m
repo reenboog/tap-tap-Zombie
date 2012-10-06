@@ -113,6 +113,8 @@
                 [zombie capture];
                 
                 [delegate giveAward: zombie.award];
+                
+                [traps setTrapState: TrapStateNormal atIndex: zombie.tag];
             }
         }
     }
