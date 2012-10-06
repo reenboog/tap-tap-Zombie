@@ -11,7 +11,7 @@
 
 @interface GlobalMapBackgroundLayer : CCLayer
 {
-    
+    CCSprite *clouds;
 }
 
 @end

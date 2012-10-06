@@ -22,6 +22,8 @@
 #define kTracksKey      @"tracks"
 #define kBackgroundKey  @"background"
 
+#define kMapsInfoKey    @"mapsInfo"
+
 @implementation MapCache
 
 #pragma mark singleton part
@@ -56,7 +58,10 @@ static MapCache *sharedMapCache = nil;
 
 - (void) dealloc
 {
+    [self saveMapsInfo];
+    
     [maps release];
+    [mapsInfo release];
     
     [super dealloc];
 }
@@ -99,25 +104,73 @@ NSArray* parseTracks(NSArray *tracks)
     
     NSArray *m = [plistDict objectForKey: kMapsKey];
     
+    int mapIndex = 0;
     for(NSDictionary *d in m)
     {
         NSMutableArray *mapsPack = [[NSMutableArray alloc] init];
         
-        NSString *background = [d objectForKey: kBackgroundKey];
         NSArray *tracks = [d objectForKey: kTracksKey];
         
         int i = 0;
         for(NSArray *ts in tracks)
         {
             NSArray *t = parseTracks(ts);
-            [mapsPack addObject: [Map mapWithDifficulty: i tracks: t background: background]];
+            [mapsPack addObject: [Map mapWithDifficulty: i tracks: t index: mapIndex]];
             i++;
         }
         
         [maps addObject: [NSArray arrayWithArray: mapsPack]];
         
         [mapsPack release];
+        
+        mapIndex++;
     }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *data = [defaults objectForKey: kMapsInfoKey];
+    if(!data)
+    {
+        int i = [maps count];
+        data = [NSMutableArray arrayWithCapacity: i];
+     
+//        BOOL isFirstMap = YES;
+        while(i > 0)
+        {
+            NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+            [dict setObject: [NSNumber numberWithBool: NO] forKey: @"isPassed"];
+            
+            MapInfo *mi = [MapInfo mapInfoWithDictionary: dict];
+            [data addObject: mi];
+            
+            [dict release];
+            
+            i--;
+        }
+    }
+    
+    mapsInfo = [[NSArray arrayWithArray: data] retain];
+}
+
+- (void) saveMapsInfo
+{
+    NSMutableArray *data = [[NSMutableArray alloc] initWithCapacity: [mapsInfo count]];
+    for(MapInfo *mi in mapsInfo)
+    {
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        [dict setObject: [NSNumber numberWithBool: mi.isPassed] forKey: @"isPassed"];
+        
+        [data addObject: dict];
+        
+        [dict release];
+    }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject: data forKey: kMapsInfoKey];
+    
+    [defaults synchronize];
+    
+    [data release];
 }
 
 - (Map *) mapAtIndex: (int) index withDifficulty: (int) difficulty
@@ -131,6 +184,11 @@ NSArray* parseTracks(NSArray *tracks)
 - (int) count
 {
     return [maps count];
+}
+
+- (MapInfo *) mapInfoAtIndex: (int) index
+{
+    return [mapsInfo objectAtIndex: index];
 }
 
 @end

@@ -19,9 +19,11 @@
 #import "GameScene.h"
 
 
-#define kMapsCount 7
+#define kMapsCount 23
 
 @implementation GlobalMapLayer
+
+static CCSprite *movableSprite = nil;
 
 + (CCScene *) scene
 {
@@ -38,6 +40,8 @@
 {
     if(self = [super init])
     {
+        self.isTouchEnabled = YES;
+        
         // background
         [self addChild: [GlobalMapBackgroundLayer node]];
         
@@ -58,12 +62,16 @@
         
         // map's points
         CGPoint mapsPositions[kMapsCount] = {
-            ccp(330, 16), ccp(357, 39), ccp(249, 48), ccp(223, 79), ccp(273, 93), ccp(311, 93), ccp(350, 83)
+            ccp(330, 16), ccp(357, 39), ccp(249, 48), ccp(223, 79), ccp(273, 93), ccp(311, 93), ccp(350, 83),
+            ccp(391, 85), ccp(429, 95), ccp(442, 126), ccp(408, 139), ccp(371, 133), ccp(344, 156), ccp(305, 146),
+            ccp(213, 131), ccp(176, 138), ccp(141, 152), ccp(134, 185), ccp(171, 200), ccp(275, 201), ccp(310, 209),
+            ccp(342, 230), ccp(374, 249), ccp(0, 0), ccp(0, 0)
         };
         
         menu = [CCMenu menuWithItems: nil];
         menu.position = ccp(0, 0);
         [self addChild: menu];
+        BOOL isOldMapPassed = YES;
         for(int i = 0; i < MIN([[MapCache sharedMapCache] count], kMapsCount); i++)
         {
             btnSprite = [CCSprite spriteWithFile: @"globalMap/mapBtn.png"];
@@ -78,6 +86,24 @@
             
             CGPoint p = mapsPositions[i];
             item.position = ccp(p.x, p.y);
+            
+            BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: i].isPassed;
+            if(!isMapPassed)
+            {
+                if(isOldMapPassed)
+                {
+                    [(CCSprite *)item setColor: ccc3(0, 255, 0)];
+                }
+                else
+                {
+                    [(CCSprite *)item setOpacity: 100];
+                    item.isEnabled = NO;
+                }
+            } 
+            
+            isOldMapPassed = isMapPassed;
+            
+//            movableSprite = (CCSprite *)item;
         }
     }
     
@@ -139,5 +165,25 @@
     
     [MapDifficultyPopup showOnRunningSceneWithDelegate: self];
 }
+
+#pragma mark -
+
+#pragma mark touches
+- (void) ccTouchesMoved: (NSSet *) touches withEvent: (UIEvent *) event
+{
+    if(!movableSprite) return;
+    
+    UITouch *touch = [touches anyObject];
+	CGPoint location = [touch locationInView: [touch view]];
+	location = [[CCDirector sharedDirector] convertToGL: location];
+    
+    CGPoint p = [movableSprite.parent convertToNodeSpace: location];
+    
+    CCLOG(@"%.0f, %.0f", p.x, p.y);
+    
+    movableSprite.position = ccp(p.x, p.y);
+}
+
+#pragma mark -
 
 @end

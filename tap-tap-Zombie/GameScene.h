@@ -34,6 +34,8 @@
     GameOverStatus gameOverStatus;
     
     BOOL isGameOver;
+    
+    Map *map;
 }
 
 @property (nonatomic, readonly) GameOverStatus gameOverStatus;

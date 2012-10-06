@@ -14,6 +14,7 @@
 @interface MapCache : NSObject
 {
     NSMutableArray *maps;
+    NSArray *mapsInfo;
 }
 
 + (MapCache *) sharedMapCache;
@@ -21,5 +22,9 @@
 
 - (Map *) mapAtIndex: (int) index withDifficulty: (int) difficulty;
 - (int) count;
+
+- (MapInfo *) mapInfoAtIndex: (int) index;
+
+- (void) saveMapsInfo;
 
 @end

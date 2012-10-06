@@ -18,21 +18,25 @@
 #import "GamePausePopup.h"
 #import "GameOverPopup.h"
 
+#import "MapCache.h"
+
 
 @implementation GameScene
 
 @synthesize gameOverStatus;
 
 #pragma mark init and dealloc
-- (id) initWithMap: (Map *) map
+- (id) initWithMap: (Map *) map_
 {
     if(self = [super init])
     {
-        gameLayer = [GameLayer gameLayerWithDelegate: self andMap: map];
+        gameLayer = [GameLayer gameLayerWithDelegate: self andMap: map_];
         [self addChild: gameLayer];
         
         hudLayer = [HUDLayer hudLayerWithDelegate: self];
         [self addChild: hudLayer];
+        
+        map = [map_ retain];
     }
     
     return self;
@@ -45,6 +49,8 @@
 
 - (void) dealloc
 {
+    [map release];
+    
     [super dealloc];
 }
 
@@ -53,6 +59,17 @@
     isGameOver = NO;
     success = 0;
     gameOverStatus.isFailed = NO;
+}
+
+#pragma mark -
+
+- (void) gameOver
+{
+    isGameOver = YES;
+    gameOverStatus.isFailed = success == kMinSuccess;
+    [[MapCache sharedMapCache] mapInfoAtIndex: map.index].isPassed = !gameOverStatus.isFailed;
+    [[MapCache sharedMapCache] saveMapsInfo];
+    [GameOverPopup showOnRunningSceneWithDelegate: self];
 }
 
 #pragma mark -
@@ -113,9 +130,7 @@
     
     if((success == kMinSuccess) || (success == kMaxSuccess))
     {
-        isGameOver = YES;
-        gameOverStatus.isFailed = success == kMinSuccess;
-        [GameOverPopup showOnRunningSceneWithDelegate: self];
+        [self gameOver];
     }
 }
 

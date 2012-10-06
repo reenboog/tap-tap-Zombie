@@ -16,9 +16,9 @@
 @synthesize difficulty;
 @synthesize nTracks;
 @synthesize tracks;
-@synthesize background;
+@synthesize index;
 
-- (id) initWithDifficulty: (int) d tracks: (NSArray *) t background: (NSString *) b
+- (id) initWithDifficulty: (int) d tracks: (NSArray *) t index: (int) i
 {
     if(self = [super init])
     {
@@ -31,7 +31,7 @@
                  kMapDifficultyKey, d);
         
         difficulty = d;
-        background = [b retain];
+        index = i;
         nTracks = [t count];
     
         tracks = malloc(sizeof(Track)*nTracks);
@@ -44,9 +44,9 @@
     return self;
 }
 
-+ (id) mapWithDifficulty: (int) d tracks: (NSArray *) t background: (NSString *) b
++ (id) mapWithDifficulty: (int) d tracks: (NSArray *) t index: (int) index
 {
-    return [[[self alloc] initWithDifficulty: d tracks: t background: b] autorelease];
+    return [[[self alloc] initWithDifficulty: d tracks: t index: index] autorelease];
 }
 
 - (id) initWithDictionary: (NSDictionary *) dict
@@ -67,13 +67,13 @@
     
     int d = [n intValue];
         
-    // background
-    NSString *b = [dict objectForKey: kMapBackgroundKey];
-    NSAssert(b, 
+    // index
+    NSNumber *ni = [dict objectForKey: kMapIndexKey];
+    NSAssert(ni, 
             @"invalid dictionary structure: object for key '%@' is nil.", 
-            kMapBackgroundKey);
+            kMapIndexKey);
     
-    return [self initWithDifficulty: d tracks: t background: b];
+    return [self initWithDifficulty: d tracks: t index: [ni intValue]];
 }
 
 + (id) mapWithDictionary: (NSDictionary *) dict
@@ -83,8 +83,6 @@
 
 - (void) dealloc
 {
-    [background release];
-    
     for(int i = 0; i < nTracks; i++)
     {
         [tracks[i].keyPoints release];
@@ -93,6 +91,30 @@
     free(tracks);
     
     [super dealloc];
+}
+
+@end
+
+
+
+@implementation MapInfo
+
+@synthesize isPassed;
+//@synthesize isEnable;
+
+- (id) initWithDictionary: (NSDictionary *) dict
+{
+    if(self = [super init])
+    {
+        isPassed = [[dict objectForKey: @"isPassed"] boolValue];
+    }
+    
+    return self;
+}
+
++ (id) mapInfoWithDictionary: (NSDictionary *) dict
+{
+    return [[[self alloc] initWithDictionary: dict] autorelease];
 }
 
 @end

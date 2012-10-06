@@ -184,6 +184,8 @@
 {
     [self stopAllActions];
     
+    [delegate zombieLeftFinish: self];
+    
     [sprite runAction:
                     [CCSequence actions:
                                     [CCSpawn actions:

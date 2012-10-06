@@ -11,30 +11,47 @@
 
 #define kMapDifficultyKey   @"difficulty"
 #define kMapTracksKey       @"tracks"
-#define kMapBackgroundKey   @"background"
+#define kMapIndexKey        @"mapIndex"
 
 typedef struct
 {
     NSArray *keyPoints;
 } Track;
 
+@class MapInfo;
+
 @interface Map : NSObject
 {
     int difficulty;
     int nTracks;
     Track *tracks;
-    NSString *background;
+    int index;
 }
 
 @property (nonatomic, readonly) int difficulty;
 @property (nonatomic, readonly) int nTracks;
 @property (nonatomic, readonly) Track *tracks;
-@property (nonatomic, readonly) NSString *background;
+@property (nonatomic, readonly) int index;
 
-- (id) initWithDifficulty: (int) difficulty tracks: (NSArray *) tracks background: (NSString *) background;
-+ (id) mapWithDifficulty: (int) difficulty tracks: (NSArray *) tracks background: (NSString *) background;
+- (id) initWithDifficulty: (int) difficulty tracks: (NSArray *) tracks index: (int) index;
++ (id) mapWithDifficulty: (int) difficulty tracks: (NSArray *) tracks index: (int) index;
 
 - (id) initWithDictionary: (NSDictionary *) dict;
 + (id) mapWithDictionary: (NSDictionary *) dict;
+
+@end
+
+
+@interface MapInfo : NSObject
+{
+    BOOL isPassed;
+//    BOOL isEnable;
+}
+
+@property (nonatomic) BOOL isPassed;
+//@property (nonatomic, readonly) BOOL isEnable;
+
+- (id) initWithDictionary: (NSDictionary *) dict;
++ (id) mapInfoWithDictionary: (NSDictionary *) dict;
 
 @end
