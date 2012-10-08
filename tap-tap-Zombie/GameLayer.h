@@ -31,10 +31,11 @@
     
     ccTime timer;
     
-//    float *finishLine;
+    float award;
 }
 
 @property (nonatomic, readonly) Map *map;
+@property (nonatomic, readonly) BOOL isShieldModActivated;
 
 - (id) initWithDelegate: (id<GameLayerDelegate>) delegate andMap: (Map *) map;
 + (id) gameLayerWithDelegate: (id<GameLayerDelegate>) delegate andMap: (Map *) map;

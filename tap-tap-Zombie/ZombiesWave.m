@@ -51,12 +51,77 @@ static void shuffleArray(int *arr, int size)
         for(int i = 0; i < N; i++)
         {
             int index = indices[i];
+            
+            if(index < 0) continue;
+            
             Track track = map.tracks[index];
-            Zombie *zombie = [Zombie zombieWithDelegate: self];
+            NSArray *keyPoints = track.keyPoints;
+            
+            ZombieType zombieType;
+            
+            if((i == 0) && (arc4random()%4 == 0))
+            {
+                zombieType = ZombieTypeJumper;
+                
+                NSMutableArray *kp = [NSMutableArray array];
+                int si = arc4random()%2 ? index - 1 : index + 1;
+                si = si < 0 ? 1 : si > map.nTracks - 1 ? map.nTracks - 2 : si;
+                
+                for(int j = 0; j < N; j++)
+                {
+                    if(indices[j] == si)
+                    {
+                        indices[j] = -1;
+                        break;
+                    }
+                }
+                
+                NSArray *kp0 = map.tracks[si].keyPoints;
+                
+                int sep0 = [keyPoints count]*2/3;
+                int sep1 = 0;
+                
+                float y0 = [[keyPoints objectAtIndex: sep0] CGPointValue].y;
+                while(true)
+                {
+                    float y1 = [[kp0 objectAtIndex: sep1] CGPointValue].y;
+                    
+                    if(y0 > y1) break;
+                    
+                    sep1++;
+                }
+                
+                for(int j = 0; j < sep0; j++)
+                {
+                    [kp addObject: [keyPoints objectAtIndex: j]];
+                }
+                
+                for(int j = sep1; j < [kp0 count]; j++)
+                {
+                    [kp addObject: [kp0 objectAtIndex: j]];
+                }
+                
+                keyPoints = [NSArray arrayWithArray: kp];
+                index = si;
+            } 
+            else if(arc4random()%3)
+            {
+                zombieType = ZombieTypeNormal;
+            }
+            else if(!(arc4random()%5) && !delegate.isShieldModActivated)
+            {
+                zombieType = ZombieTypeShield;
+            }
+            else
+            {
+                zombieType = ZombieTypeBad;
+            }
+            
+            Zombie *zombie = [Zombie zombieWithDelegate: self type: zombieType];
             zombie.tag = index;
             [self addChild: zombie];
             
-            [zombie runWithKeyPoints: track.keyPoints movingTime: 2.0f standingTime: 0.6f];
+            [zombie runWithKeyPoints: keyPoints movingTime: 2.0f standingTime: 0.6f];
         }
         
         free(indices);
@@ -97,6 +162,11 @@ static void shuffleArray(int *arr, int size)
     {
         [delegate zombiesWavePassed: self];
     }
+}
+
+- (void) zombieCaptured: (Zombie *) zombie
+{
+    [delegate zombieCaptured: zombie];
 }
 
 @end

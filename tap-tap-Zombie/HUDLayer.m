@@ -51,6 +51,12 @@
         progressScale.position = ccp(w/2, h/2);
         [self setProgressScaleValue: 0];
         [progressScaleWrapper addChild: progressScale];
+        
+        // score label
+        scoreLabel = [CCLabelBMFont labelWithString: @"0" fntFile: kFontDefault];
+        scoreLabel.anchorPoint = ccp(1, 1);
+        scoreLabel.position = ccp(kScreenWidth - 8.0f, kScreenHeight - 8.0f);
+        [self addChild: scoreLabel];
     }
     
     return self;
@@ -90,6 +96,11 @@
     }
     
     [progressScale.sprite setColor: ccc3(c.r, c.g, c.b)];
+}
+
+- (void) setScoreValue: (float) value
+{
+    [scoreLabel setString: [NSString stringWithFormat: @"%.0f", value]];
 }
 
 #pragma mark -

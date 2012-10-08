@@ -15,6 +15,7 @@
 
 - (void) zombieFinished: (Zombie *) zombie;
 - (void) zombieLeftFinish: (Zombie *) zombie;
+- (void) zombieCaptured: (Zombie *) zombie;
 - (void) zombiePassed: (Zombie *) zombie;
 
 @end

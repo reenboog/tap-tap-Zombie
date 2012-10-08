@@ -34,9 +34,6 @@
         background = [Background0 backgroundWithNumberOfTracks: map.nTracks];
         [self addChild: background];
         
-//        finishLine = malloc(sizeof(float)*map.nTracks);
-//        for(int i = 0; i < map.nTracks; i++) finishLine[i] = 0;
-        
         [self reset];
         
         [self scheduleUpdate];
@@ -59,6 +56,15 @@
     [super dealloc];
 }
 
+- (BOOL) isShieldModActivated
+{
+    return traps.isShieldModActivated;
+}
+
+#pragma mark -
+
+#pragma mark award
+
 #pragma mark -
 
 #pragma mark reset
@@ -71,6 +77,8 @@
     [self removeChild: waves cleanup: YES];
     waves = [CCLayer node];
     [self addChild: waves];
+    
+    [traps reset];
 }
 
 #pragma mark -
@@ -78,25 +86,88 @@
 #pragma mark ZombiesWaveDelegate methods implementation
 - (void) zombieFinished: (Zombie *) zombie
 {
-    if(zombie.award < 0)
+    if(traps.isShieldModActivated)
     {
-        [traps setTrapState: TrapStateRed atIndex: zombie.tag];
+        switch(zombie.type)
+        { 
+            case ZombieTypeNormal:
+            case ZombieTypeJumper:
+            case ZombieTypeShield:
+            {
+                [zombie capture];
+            } break;
+                
+            default: break;
+        }
+        
+        return;
     }
-    else
+    
+    switch(zombie.type)
     {
-        [traps setTrapState: TrapStateGreen atIndex: zombie.tag];
+        case ZombieTypeBad:
+        {
+            [traps setTrapState: TrapStateRed atIndex: zombie.tag];
+        } break;
+            
+        default:
+        {
+            [traps setTrapState: TrapStateGreen atIndex: zombie.tag];
+        } break;
     }
 }
 
 - (void) zombieLeftFinish: (Zombie *) zombie
 {
-    [delegate giveAward: -zombie.award];
+    switch(zombie.type)
+    {
+        case ZombieTypeBad:
+        {
+            [delegate increaseSuccess];
+            [delegate giveAward: zombie.award];
+        } break;
+            
+        case ZombieTypeNormal:
+        case ZombieTypeJumper:
+        {
+            [delegate decreaseSuccess];
+        } break;
+            
+        default: break;
+    }
+    
     [traps setTrapState: TrapStateNormal atIndex: zombie.tag];
 }
 
 - (void) zombiesWavePassed: (ZombiesWave *) zombiesWave
 {
     [waves removeChild: zombiesWave cleanup: YES];
+    [delegate updateGameState];
+}
+
+- (void) zombieCaptured: (Zombie *) zombie
+{
+    switch(zombie.type)
+    {
+        case ZombieTypeBad:
+        {
+            [delegate decreaseSuccess];
+        } break;
+            
+        case ZombieTypeNormal:
+        case ZombieTypeJumper:
+        {
+            [delegate increaseSuccess];
+            [delegate giveAward: zombie.award];
+        } break;
+            
+        case ZombieTypeShield:
+        {
+            [traps activateShieldModWithDuration: 5.0f];
+        } break;
+    }
+    
+    [traps setTrapState: TrapStateNormal atIndex: zombie.tag];
 }
 
 #pragma mark -
@@ -112,12 +183,13 @@
             {
                 [zombie capture];
                 
-                [delegate giveAward: zombie.award];
-                
-                [traps setTrapState: TrapStateNormal atIndex: zombie.tag];
+                return;
             }
         }
     }
+    
+    // if player tap empty trap
+    [delegate decreaseSuccess];
 }
 
 #pragma mark -

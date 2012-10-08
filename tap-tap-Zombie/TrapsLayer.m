@@ -17,6 +17,8 @@
 
 @implementation TrapsLayer
 
+@synthesize isShieldModActivated;
+
 #pragma mark init and dealloc
 - (id) initWithDelegate: (id<TrapsLayerDelegate>) delegate_
 {
@@ -35,6 +37,8 @@
             trap.tag = i;
             [self addChild: trap];
         }
+        
+        [self reset];
     }
     
     return self;
@@ -50,10 +54,55 @@
     [super dealloc];
 }
 
+- (void) reset
+{
+    [self stopAllActions];
+    
+    isShieldModActivated = NO;
+    
+    for(Trap *trap in [self children])
+    {
+        [trap makeNormal];
+        [trap deactivateShieldMod];
+    }
+}
+
 - (void) setTrapState: (TrapState) state atIndex: (int) index
 {
     Trap *trap = (Trap *)[self getChildByTag: index];
     [trap setState: state];
+}
+
+- (void) deactivateShieldMod
+{
+    if(!isShieldModActivated) return;
+    
+    isShieldModActivated = NO;
+    
+    for(Trap *trap in [self children])
+    {
+        [trap deactivateShieldMod];
+    }
+}
+
+- (void) activateShieldModWithDuration: (ccTime) time
+{
+    if(isShieldModActivated) return;
+    
+    isShieldModActivated = YES;
+    
+    for(Trap *trap in [self children])
+    {
+        [trap activateShieldMod];
+    }
+    
+    [self runAction:
+                [CCSequence actions:
+                                [CCDelayTime actionWithDuration: time],
+                                [CCCallFunc actionWithTarget: self selector: @selector(deactivateShieldMod)],
+                                nil
+                ]
+    ];
 }
 
 #pragma mark -

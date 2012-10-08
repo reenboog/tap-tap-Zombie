@@ -30,15 +30,18 @@
     HUDLayer *hudLayer;
     
     float success;
+    float score;
     
-    GameOverStatus gameOverStatus;
-    
+    BOOL isGameFailed;
     BOOL isGameOver;
     
     Map *map;
+    
+    float successIncrementValue;
+    float successDecrementValue;
 }
 
-@property (nonatomic, readonly) GameOverStatus gameOverStatus;
+@property (nonatomic, readonly) BOOL isGameFailed;
 
 - (id) initWithMap: (Map *) map;
 + (id) gameSceneWithMap: (Map *) map;

@@ -17,11 +17,19 @@
 @interface TrapsLayer : CCLayer
 {
     id<TrapsLayerDelegate> delegate;
+    
+    BOOL isShieldModActivated;
 }
+
+@property (nonatomic, readonly) BOOL isShieldModActivated;
 
 - (id) initWithDelegate: (id<TrapsLayerDelegate>) delegate;
 + (id) trapsLayerWithDelegate: (id<TrapsLayerDelegate>) delegate;
 
+- (void) reset;
+
 - (void) setTrapState: (TrapState) state atIndex: (int) index;
+
+- (void) activateShieldModWithDuration: (ccTime) time;
 
 @end

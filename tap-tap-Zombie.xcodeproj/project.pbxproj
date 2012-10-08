@@ -1021,9 +1021,9 @@
 		19BAA6BC161C9E0500A43A5F /* GameLayer */ = {
 			isa = PBXGroup;
 			children = (
+				19BAA6CE161CAD3A00A43A5F /* BackgroundLayer */,
 				19BAA6DF161CB0E100A43A5F /* ZombiesWave */,
 				19BAA6CF161CAD4D00A43A5F /* TrapsLayer */,
-				19BAA6CE161CAD3A00A43A5F /* BackgroundLayer */,
 				19BAA6C2161CA05900A43A5F /* GameLayer.h */,
 				19BAA6C3161CA05900A43A5F /* GameLayer.m */,
 				19BAA6C8161CA09E00A43A5F /* GameLayerDelegate.h */,

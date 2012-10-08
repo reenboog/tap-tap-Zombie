@@ -18,11 +18,13 @@
     
     CCMenuItem *pauseBtn;
     CCProgressTimer *progressScale;
+    CCLabelBMFont *scoreLabel;
 }
 
 - (id) initWithDelegate: (id<HUDLayerDelegate>) delegate;
 + (id) hudLayerWithDelegate: (id<HUDLayerDelegate>) delegate;
 
 - (void) setProgressScaleValue: (float) value;
+- (void) setScoreValue: (float) value;
 
 @end

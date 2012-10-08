@@ -12,4 +12,9 @@
 
 - (void) giveAward: (float) award;
 
+- (void) increaseSuccess;
+- (void) decreaseSuccess;
+
+- (void) updateGameState;
+
 @end
