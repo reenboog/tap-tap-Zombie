@@ -23,7 +23,7 @@
 
 @implementation GameScene
 
-@synthesize gameOverStatus;
+@synthesize isGameFailed;
 
 #pragma mark init and dealloc
 - (id) initWithMap: (Map *) map_
@@ -37,6 +37,9 @@
         [self addChild: hudLayer];
         
         map = [map_ retain];
+        
+        successIncrementValue = 2;
+        successDecrementValue = 2;
     }
     
     return self;
@@ -58,7 +61,8 @@
 {
     isGameOver = NO;
     success = 0;
-    gameOverStatus.isFailed = NO;
+    score = 0;
+    isGameFailed = NO;
 }
 
 #pragma mark -
@@ -66,9 +70,12 @@
 - (void) gameOver
 {
     isGameOver = YES;
-    gameOverStatus.isFailed = success == kMinSuccess;
-    [[MapCache sharedMapCache] mapInfoAtIndex: map.index].isPassed = !gameOverStatus.isFailed;
-    [[MapCache sharedMapCache] saveMapsInfo];
+    isGameFailed = success == kMinSuccess;
+    if(!isGameFailed)
+    {
+        [[MapCache sharedMapCache] mapInfoAtIndex: map.index].isPassed = true;
+        [[MapCache sharedMapCache] saveMapsInfo];
+    }
     [GameOverPopup showOnRunningSceneWithDelegate: self];
 }
 
@@ -118,16 +125,38 @@
 }
 
 #pragma mark GameLayerDelegate methods implementation
-- (void) giveAward: (float) award
+- (void) giveAward: (float) award_
 {
-    if(isGameOver) return;
+    score += award_;
     
-    success += award;
-    
+    [hudLayer setScoreValue: score];
+}
+
+- (void) checkSuccess
+{
     success = success < kMinSuccess ? kMinSuccess : success > kMaxSuccess ? kMaxSuccess : success;
     
     [hudLayer setProgressScaleValue: success];
+}
+
+- (void) increaseSuccess
+{
+    if(isGameOver) return;
     
+    success += successIncrementValue;
+    [self checkSuccess];
+}
+
+- (void) decreaseSuccess
+{
+    if(isGameOver) return;
+    
+    success -= successDecrementValue;
+    [self checkSuccess];
+}
+
+- (void) updateGameState
+{
     if((success == kMinSuccess) || (success == kMaxSuccess))
     {
         [self gameOver];

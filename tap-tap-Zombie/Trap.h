@@ -24,6 +24,8 @@ typedef enum
     CCSprite *light;
     
     TrapState state;
+    
+    BOOL isShieldModActivated;
 }
 
 + (id) trap;
@@ -35,5 +37,8 @@ typedef enum
 - (void) makeRed;
 
 - (BOOL) tap: (UITouch *) touch;
+
+- (void) activateShieldMod;
+- (void) deactivateShieldMod;
 
 @end

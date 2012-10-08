@@ -12,6 +12,15 @@
 #import "ZombieDelegate.h"
 
 
+typedef enum
+{
+    ZombieTypeNormal,
+    ZombieTypeBad,
+    ZombieTypeJumper,
+    ZombieTypeShield
+} ZombieType;
+
+
 @interface Zombie : CCNode
 {
     id<ZombieDelegate> delegate;
@@ -28,13 +37,16 @@
     BOOL onFinish;
     
     float award;
+    
+    ZombieType type;
 }
 
 @property (nonatomic, readonly) BOOL onFinish;
 @property (nonatomic, readonly) float award;
+@property (nonatomic, readonly) ZombieType type;
 
-- (id) initWithDelegate: (id<ZombieDelegate>) delegate;
-+ (id) zombieWithDelegate: (id<ZombieDelegate>) delegate;
+- (id) initWithDelegate: (id<ZombieDelegate>) delegate type: (ZombieType) type;
++ (id) zombieWithDelegate: (id<ZombieDelegate>) delegate type: (ZombieType) type;
 
 - (void) runWithKeyPoints: (NSArray *) keyPoints movingTime: (ccTime) mt standingTime: (ccTime) st;
 

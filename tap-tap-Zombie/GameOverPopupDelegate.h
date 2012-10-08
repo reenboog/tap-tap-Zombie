@@ -20,6 +20,6 @@ typedef struct
 - (void) restart;
 - (void) exit;
 
-@property (nonatomic, readonly) GameOverStatus gameOverStatus;
+@property (nonatomic, readonly) BOOL isGameFailed;
 
 @end

@@ -24,38 +24,52 @@
 
 @synthesize onFinish;
 @synthesize award;
+@synthesize type;
 
 #pragma mark init and dealloc
-- (id) initWithDelegate: (id<ZombieDelegate>) delegate_
+- (id) initWithDelegate: (id<ZombieDelegate>) delegate_  type: (ZombieType) type_
 {
     if(self = [super init])
     {
         delegate = delegate_;
+        type = type_;
         
         int zombieType = arc4random()%4;
         sprite = [CCSprite spriteWithFile: [NSString stringWithFormat: @"zombies/zombie%i.png", zombieType]];
         sprite.anchorPoint = ccp(0.5f, 0);
         [self addChild: sprite];
         
+        NSString *labelStr;
+        switch(type)
+        {
+            case ZombieTypeNormal:  labelStr = @"normal"; break;
+            case ZombieTypeBad:     labelStr = @"bad"; break;
+            case ZombieTypeJumper:  labelStr = @"jumper"; break;
+            case ZombieTypeShield:  labelStr = @"shield"; break;
+        }
+        CCLabelBMFont *label = [CCLabelBMFont labelWithString: labelStr fntFile: kFontDefault];
+        label.anchorPoint = ccp(0.5f, 0);
+        switch(type)
+        {
+            case ZombieTypeJumper:
+            case ZombieTypeNormal:  label.color = ccc3(0, 255, 0); break;
+            case ZombieTypeBad:     label.color = ccc3(255, 0, 0); break;
+            case ZombieTypeShield:  label.color = ccc3(0, 0, 255); break;
+        }
+        [self addChild: label];
+        
         isStarting = NO;
         onFinish = NO;
         
-        if(zombieType == 3)
-        {
-            award = -5;
-        }
-        else
-        {
-            award = 5;
-        }
+        award = 10;
     }
     
     return self;
 }
 
-+ (id) zombieWithDelegate: (id<ZombieDelegate>) delegate
++ (id) zombieWithDelegate: (id<ZombieDelegate>) delegate type: (ZombieType) type
 {
-    return [[[self alloc] initWithDelegate: delegate] autorelease];
+    return [[[self alloc] initWithDelegate: delegate type: type] autorelease];
 }
 
 - (void) dealloc
@@ -110,8 +124,6 @@
     
     onFinish = YES;
     
-    [delegate zombieFinished: self];
-    
     [self stopAllActions];
     
     [self runAction:
@@ -121,13 +133,13 @@
                                 nil
                 ]
     ];
+    
+    [delegate zombieFinished: self];
 }
 
 - (void) runAway
 {
     onFinish = NO;
-    
-    [delegate zombieLeftFinish: self];
     
     [self runAction:
                     [CCSequence actions:
@@ -147,6 +159,8 @@
                                     nil
                     ]
     ];
+    
+    [delegate zombieLeftFinish: self];
 }
 
 - (void) runWithKeyPoints: (NSArray *) kp movingTime: (ccTime) mt standingTime: (ccTime) st
@@ -200,6 +214,8 @@
                                     nil
                     ]
     ];
+    
+    [delegate zombieCaptured: self];
 }
 
 @end

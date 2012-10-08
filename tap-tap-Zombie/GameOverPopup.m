@@ -36,7 +36,7 @@
         [self addChild: background];
         
         // game over status
-        NSString *statusStr = self.delegate.gameOverStatus.isFailed ? @"Game over" : @"You are winner!";
+        NSString *statusStr = self.delegate.isGameFailed ? @"Game over" : @"You are winner!";
         statusLabel = [CCLabelBMFont labelWithString: statusStr fntFile: kFontDefault];
         statusLabel.position = ccp(kScreenCenterX, kScreenCenterY + 64.0f);
         [self addChild: statusLabel];

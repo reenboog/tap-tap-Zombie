@@ -27,8 +27,9 @@
         [self addChild: light];
         
         self.contentSize = CGSizeMake(body.contentSize.width, body.contentSize.height);
-        
         self.anchorPoint = ccp(0.5f, 0);
+        
+        isShieldModActivated = NO;
         
         [self makeNormal];
     }
@@ -50,6 +51,8 @@
 
 - (void) setState: (TrapState) st
 {
+    if(state == st) return;
+    
     switch(st)
     {
         case TrapStateGreen: [self makeGreen]; break;
@@ -60,7 +63,9 @@
 
 - (void) makeNormal
 {
-    if(state == TrapStateNormal) return;
+    state = TrapStateNormal;
+    
+    if(isShieldModActivated) return;
         
     [light stopAllActions];
     light.opacity = 255;
@@ -74,24 +79,24 @@
                                         ]
                 ]
     ];
-    
-    state = TrapStateNormal;
 }
 
 - (void) makeGreen
 {
-    if(state == TrapStateGreen) return;
+    state = TrapStateGreen;
+    
+    if(isShieldModActivated) return;
         
     [light stopAllActions];
     light.opacity = 255;
     light.color = ccc3(0, 255, 0);
-    
-    state = TrapStateGreen;
 }
 
 - (void) makeRed
 {
-    if(state == TrapStateRed) return;
+    state = TrapStateRed;
+    
+    if(isShieldModActivated) return;
         
     [light stopAllActions];
     light.opacity = 255;
@@ -106,8 +111,31 @@
                                         ]
                 ]
     ];
+}
+
+- (void) activateShieldMod
+{
+    if(isShieldModActivated) return;
     
-    state = TrapStateRed;
+    isShieldModActivated = YES;
+    
+    [light stopAllActions];
+    light.opacity = 255;
+    light.color = ccc3(0, 0, 255);
+}
+
+- (void) deactivateShieldMod
+{
+    if(!isShieldModActivated) return;
+    
+    isShieldModActivated = NO;
+    
+    switch(state)
+    {
+        case TrapStateGreen: [self makeGreen]; break;
+        case TrapStateRed: [self makeRed]; break;
+        default: [self makeNormal]; break;
+    }
 }
 
 #pragma mark -

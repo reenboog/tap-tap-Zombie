@@ -21,7 +21,9 @@
 
 - (void) zombieFinished: (Zombie *) zombie;
 - (void) zombieLeftFinish: (Zombie *) zombie;
+- (void) zombieCaptured: (Zombie *) zombie;
 
 @property (nonatomic, readonly) Map *map;
+@property (nonatomic, readonly) BOOL isShieldModActivated;
 
 @end
