@@ -29,6 +29,7 @@
 - (void) reset;
 
 - (void) setTrapState: (TrapState) state atIndex: (int) index;
+- (void) activateTrapAtIndex: (int) index;
 
 - (void) activateShieldModWithDuration: (ccTime) time;
 

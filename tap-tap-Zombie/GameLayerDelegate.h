@@ -17,4 +17,7 @@
 
 - (void) updateGameState;
 
+- (void) perfectWave;
+- (void) failedWave;
+
 @end

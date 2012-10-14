@@ -31,8 +31,31 @@
         
         map = [map_ retain];
         
-        background = [Background0 backgroundWithNumberOfTracks: map.nTracks];
+        if(map.index < 2)
+        {
+            background = [Background0 backgroundWithNumberOfTracks: map.nTracks];
+        }
+        else if(map.index < 4)
+        {
+            background = [Background1 backgroundWithNumberOfTracks: map.nTracks];
+        }
+        else if(map.index < 14)
+        {
+            background = [Background2 backgroundWithNumberOfTracks: map.nTracks];
+        }
+        else if(map.index < 19)
+        {
+            background = [Background3 backgroundWithNumberOfTracks: map.nTracks];
+        }
+        else
+        {
+            background = [Background4 backgroundWithNumberOfTracks: map.nTracks];
+        }
         [self addChild: background];
+        
+        timeBetweenWaves = 1.0f - ((float)map.index)/100.0f - ((float)map.difficulty)/20.0f;
+        movingTime = 1.5f - ((float)map.index)/100.0f - ((float)map.difficulty)/20.0f;
+        standingTime = 0.6f - (((float)map.index)/100.0f - ((float)map.difficulty + 1.0f)/20.0f)/3.5f;
         
         [self reset];
         
@@ -79,6 +102,9 @@
     [self addChild: waves];
     
     [traps reset];
+    
+    waveWeight = 1;
+    wavesCounter = 1;
 }
 
 #pragma mark -
@@ -93,8 +119,10 @@
             case ZombieTypeNormal:
             case ZombieTypeJumper:
             case ZombieTypeShield:
+            case ZombieTypeBonus:
             {
                 [zombie capture];
+                [traps activateTrapAtIndex: zombie.tag];
             } break;
                 
             default: break;
@@ -141,6 +169,15 @@
 
 - (void) zombiesWavePassed: (ZombiesWave *) zombiesWave
 {
+    if(zombiesWave.isPerfect)
+    {
+        [delegate perfectWave];
+    }
+    else
+    {
+        [delegate failedWave];
+    }
+    
     [waves removeChild: zombiesWave cleanup: YES];
     [delegate updateGameState];
 }
@@ -161,9 +198,29 @@
             [delegate giveAward: zombie.award];
         } break;
             
+        case ZombieTypeBonus:
+        {
+            [delegate giveAward: zombie.award];
+        } break;
+            
         case ZombieTypeShield:
         {
             [traps activateShieldModWithDuration: 5.0f];
+            
+            for(int index = 0; index < map.nTracks; index++)
+            {
+                for(ZombiesWave *wave in [waves children])
+                {
+                    for(Zombie *zombie in [wave children])
+                    {
+                        if(zombie.onFinish && (zombie.tag == index) && (zombie.type != ZombieTypeBad))
+                        {
+                            [zombie capture];
+                            [traps activateTrapAtIndex: index];
+                        }
+                    }
+                }
+            }
         } break;
     }
     
@@ -175,6 +232,8 @@
 #pragma mark TrapsLayer methods implementation
 - (void) activatedTrapAtIndex: (int) index
 {
+    if(traps.isShieldModActivated) return;
+    
     for(ZombiesWave *wave in [waves children])
     {
         for(Zombie *zombie in [wave children])
@@ -194,6 +253,34 @@
 
 #pragma mark -
 
+- (NSArray *) getAllowedObjects
+{
+    NSMutableArray *a = [[NSMutableArray alloc] initWithCapacity: 5];
+    
+    [a addObject: @"bad"];
+    
+    if(map.index > 4)
+    {
+        [a addObject: @"jumper"];
+        [a addObject: @"bonus"];
+    }
+    
+    if(map.index > 10)
+    {
+        [a addObject: @"shield"];
+    }
+    
+    NSArray *allowedObjects = [NSArray arrayWithArray: a];
+    [a release];
+    
+    return allowedObjects;
+}
+
+- (float) getAwardFactor
+{
+    return 1.0f + ((float)map.index)/100.0f + ((float)map.difficulty)/4.0f;
+}
+
 #pragma mark zombie's wave
 - (void) addNewZombiesWave
 {
@@ -210,15 +297,52 @@
     static NSInteger t = 0;
     t--;
     
-    ZombiesWave *zombiesWave = [ZombiesWave zombieWaveWithDelegate: self];
+    ZombiesWave *zombiesWave = [ZombiesWave zombieWaveWithDelegate: self 
+                                                            weight: waveWeight 
+                                                    allowedObjects: [self getAllowedObjects]
+                                                       awardFactor: [self getAwardFactor]
+                                                        movingTime: movingTime
+                                                      standingTime: standingTime];
     [waves addChild: zombiesWave z: t];
+    
+    wavesCounter++;
 }
 
 #pragma mark update
+- (void) updateDifficulty
+{
+    static int nextUpdate = 10; 
+    
+    if(wavesCounter%nextUpdate == 0)
+    {
+        if(waveWeight == map.nTracks)
+        {
+            waveWeight--;
+        }
+        else
+        {
+            if(arc4random()%2 > 0)
+            {
+                waveWeight++;
+            }
+            else if(arc4random()%4 == 0)
+            {
+                waveWeight--;
+            }
+        }
+        
+        waveWeight = waveWeight < 1 ? 1 : waveWeight > map.nTracks ? map.nTracks : waveWeight;
+        
+        nextUpdate = arc4random()%2 ? 5.0f : 10.0f;
+        if(waveWeight == map.nTracks)
+        {
+            nextUpdate = 3.0f;
+        }
+    }
+}
+
 - (void) update: (ccTime) dt
 {
-    const static float timeBetweenWaves = 1.0f;
-    
     timer -= dt;
     
     if(timer < 0)
@@ -226,6 +350,8 @@
         timer = timeBetweenWaves;
         
         [self addNewZombiesWave];
+        
+        [self updateDifficulty];
     }
 }
 

@@ -21,5 +21,6 @@ typedef struct
 - (void) exit;
 
 @property (nonatomic, readonly) BOOL isGameFailed;
+@property (nonatomic, readonly) float score;
 
 @end

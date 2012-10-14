@@ -19,6 +19,7 @@
     CCMenuItem *pauseBtn;
     CCProgressTimer *progressScale;
     CCLabelBMFont *scoreLabel;
+    CCLabelBMFont *superModeLabel;
 }
 
 - (id) initWithDelegate: (id<HUDLayerDelegate>) delegate;
@@ -26,5 +27,9 @@
 
 - (void) setProgressScaleValue: (float) value;
 - (void) setScoreValue: (float) value;
+
+- (void) updateSuperModeLabelWithValue: (int) value;
+- (void) showSuperModeLabel;
+- (void) hideSuperModeLabel;
 
 @end

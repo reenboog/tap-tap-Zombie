@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191D0EE41626CCE000B6235B /* AnimationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 191D0EE31626CCE000B6235B /* AnimationLoader.m */; };
+		191D0EEA1626F4C400B6235B /* waves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 191D0EE91626F4C400B6235B /* waves.plist */; };
 		1989073E161D767F002E47C0 /* TrapsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1989073D161D767F002E47C0 /* TrapsLayer.m */; };
 		19890742161D769E002E47C0 /* Trap.m in Sources */ = {isa = PBXBuildFile; fileRef = 19890741161D769D002E47C0 /* Trap.m */; };
 		19890746161D8B56002E47C0 /* GameOverPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19890745161D8B56002E47C0 /* GameOverPopup.m */; };
+		1995629A162AF6FF0030811F /* Background3.m in Sources */ = {isa = PBXBuildFile; fileRef = 19956297162AF6FF0030811F /* Background3.m */; };
+		1995629B162AF6FF0030811F /* Background4.m in Sources */ = {isa = PBXBuildFile; fileRef = 19956299162AF6FF0030811F /* Background4.m */; };
+		19A5D90E1627FB1F006E4A95 /* Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D90D1627FB1F006E4A95 /* Wave.m */; };
+		19A5D9111627FB3A006E4A95 /* WaveCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D9101627FB3A006E4A95 /* WaveCache.m */; };
 		19BAA4EF161C825100A43A5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BAA4EE161C825100A43A5F /* QuartzCore.framework */; };
 		19BAA4F1161C825100A43A5F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BAA4F0161C825100A43A5F /* OpenGLES.framework */; };
 		19BAA4F3161C825100A43A5F /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BAA4F2161C825100A43A5F /* OpenAL.framework */; };
@@ -162,6 +168,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		191D0EE21626CCE000B6235B /* AnimationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationLoader.h; sourceTree = "<group>"; };
+		191D0EE31626CCE000B6235B /* AnimationLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationLoader.m; sourceTree = "<group>"; };
+		191D0EE91626F4C400B6235B /* waves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = waves.plist; path = Resources/game/waves.plist; sourceTree = "<group>"; };
 		1989073C161D767F002E47C0 /* TrapsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrapsLayer.h; sourceTree = "<group>"; };
 		1989073D161D767F002E47C0 /* TrapsLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrapsLayer.m; sourceTree = "<group>"; };
 		19890740161D769D002E47C0 /* Trap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trap.h; sourceTree = "<group>"; };
@@ -170,6 +179,14 @@
 		19890744161D8B56002E47C0 /* GameOverPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverPopup.h; sourceTree = "<group>"; };
 		19890745161D8B56002E47C0 /* GameOverPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverPopup.m; sourceTree = "<group>"; };
 		19890747161D8B67002E47C0 /* GameOverPopupDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverPopupDelegate.h; sourceTree = "<group>"; };
+		19956296162AF6FF0030811F /* Background3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background3.h; sourceTree = "<group>"; };
+		19956297162AF6FF0030811F /* Background3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background3.m; sourceTree = "<group>"; };
+		19956298162AF6FF0030811F /* Background4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background4.h; sourceTree = "<group>"; };
+		19956299162AF6FF0030811F /* Background4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background4.m; sourceTree = "<group>"; };
+		19A5D90C1627FB1F006E4A95 /* Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wave.h; sourceTree = "<group>"; };
+		19A5D90D1627FB1F006E4A95 /* Wave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wave.m; sourceTree = "<group>"; };
+		19A5D90F1627FB3A006E4A95 /* WaveCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveCache.h; sourceTree = "<group>"; };
+		19A5D9101627FB3A006E4A95 /* WaveCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveCache.m; sourceTree = "<group>"; };
 		19BAA4EA161C825100A43A5F /* tap-tap-Zombie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tap-tap-Zombie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19BAA4EE161C825100A43A5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		19BAA4F0161C825100A43A5F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -493,6 +510,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		191D0EE01626CCC000B6235B /* Animation Loader */ = {
+			isa = PBXGroup;
+			children = (
+				191D0EE21626CCE000B6235B /* AnimationLoader.h */,
+				191D0EE31626CCE000B6235B /* AnimationLoader.m */,
+			);
+			name = "Animation Loader";
+			sourceTree = "<group>";
+		};
+		19A5D90A1627FAE9006E4A95 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				19A5D90C1627FB1F006E4A95 /* Wave.h */,
+				19A5D90D1627FB1F006E4A95 /* Wave.m */,
+				19A5D90F1627FB3A006E4A95 /* WaveCache.h */,
+				19A5D9101627FB3A006E4A95 /* WaveCache.m */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		19BAA4DF161C825000A43A5F = {
 			isa = PBXGroup;
 			children = (
@@ -911,6 +948,8 @@
 		19BAA670161C82BF00A43A5F /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				191D0EE01626CCC000B6235B /* Animation Loader */,
+				19A5D90A1627FAE9006E4A95 /* New Group */,
 				19BAA69B161C8BAE00A43A5F /* MapCache */,
 				19BAA6A2161C8E4D00A43A5F /* Shop */,
 				19BAA67B161C84EB00A43A5F /* MainMenuScene */,
@@ -950,6 +989,7 @@
 				19BAA689161C895600A43A5F /* HUD */,
 				19BAA68A161C895600A43A5F /* levels */,
 				19BAA68B161C895600A43A5F /* maps.plist */,
+				191D0EE91626F4C400B6235B /* waves.plist */,
 				19BAA68C161C895600A43A5F /* shop */,
 				19BAA68D161C895600A43A5F /* shop.plist */,
 				19BAA68E161C895600A43A5F /* zombies */,
@@ -1060,6 +1100,10 @@
 				19BAA6D4161CAD8F00A43A5F /* Background1.m */,
 				19BAA6D5161CAD8F00A43A5F /* Background2.h */,
 				19BAA6D6161CAD8F00A43A5F /* Background2.m */,
+				19956296162AF6FF0030811F /* Background3.h */,
+				19956297162AF6FF0030811F /* Background3.m */,
+				19956298162AF6FF0030811F /* Background4.h */,
+				19956299162AF6FF0030811F /* Background4.m */,
 				19BAA6D7161CAD8F00A43A5F /* Backgrounds.h */,
 			);
 			name = BackgroundLayer;
@@ -1167,6 +1211,7 @@
 				19BAA695161C895600A43A5F /* shop in Resources */,
 				19BAA696161C895600A43A5F /* shop.plist in Resources */,
 				19BAA697161C895600A43A5F /* zombies in Resources */,
+				191D0EEA1626F4C400B6235B /* waves.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1302,6 +1347,11 @@
 				1989073E161D767F002E47C0 /* TrapsLayer.m in Sources */,
 				19890742161D769E002E47C0 /* Trap.m in Sources */,
 				19890746161D8B56002E47C0 /* GameOverPopup.m in Sources */,
+				191D0EE41626CCE000B6235B /* AnimationLoader.m in Sources */,
+				19A5D90E1627FB1F006E4A95 /* Wave.m in Sources */,
+				19A5D9111627FB3A006E4A95 /* WaveCache.m in Sources */,
+				1995629A162AF6FF0030811F /* Background3.m in Sources */,
+				1995629B162AF6FF0030811F /* Background4.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,10 +22,14 @@ typedef enum
 {
     CCSprite *body;
     CCSprite *light;
+    CCSprite *backLight;
+    CCSprite *gate;
     
     TrapState state;
     
     BOOL isShieldModActivated;
+    
+    BOOL isTrapActivated;
 }
 
 + (id) trap;
@@ -40,5 +44,7 @@ typedef enum
 
 - (void) activateShieldMod;
 - (void) deactivateShieldMod;
+
+- (void) activateTrap;
 
 @end

@@ -73,6 +73,12 @@
     [trap setState: state];
 }
 
+- (void) activateTrapAtIndex: (int) index
+{
+    Trap *trap = (Trap *)[self getChildByTag: index];
+    [trap activateTrap];
+}
+
 - (void) deactivateShieldMod
 {
     if(!isShieldModActivated) return;
@@ -114,9 +120,10 @@
     {
         for(Trap *trap in [self children])
         {
-            if([trap tap: touch])
+            if([trap tap: touch] && !isShieldModActivated)
             {
                 [delegate activatedTrapAtIndex: trap.tag];
+                [trap activateTrap];
             }
         }
     }
