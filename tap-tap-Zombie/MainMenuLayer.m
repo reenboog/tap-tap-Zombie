@@ -15,6 +15,14 @@
 
 #import "WaveCache.h"
 
+#import "AnimationLoader.h"
+
+
+
+@interface MainMenuLayer()
+- (void) runStartAnimation;
+@end
+
 
 @implementation MainMenuLayer
 
@@ -28,25 +36,29 @@
     return scene;
 }
 
++ (void) initialize
+{
+    [[CCTextureCache sharedTextureCache] addImage: @"mainMenu/evilDoctor.png"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctor.plist"];
+    
+    [AnimationLoader loadAnimationsWithPlist: @"mainMenu/animations"];
+}
+
 #pragma mark init and dealloc
 - (id) init
 {
     if(self = [super init])
     {
-        [WaveCache sharedWaveCache];
+        [[CCDirector sharedDirector] purgeCachedData];
+    
+        globalMap = [GlobalMapLayer globalMapLayerWithDelegate: self];
+        [self addChild: globalMap z: -1];
+        [globalMap disableWithChildren];
         
         // main menu
         CCMenu *menu;
         CCSprite *btnSprite;
         CCSprite *btnOnSprite;
-        
-        btnSprite = [CCSprite spriteWithFile: @"buttons/playBtn.png"];
-        btnOnSprite = [CCSprite spriteWithFile: @"buttons/playBtnOn.png"];
-        playBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
-                                          selectedSprite: btnOnSprite
-                                                  target: self
-                                                selector: @selector(playBtnCallback)];
-        playBtn.anchorPoint = ccp(0.5f, 0);
         
         btnSprite = [CCSprite spriteWithFile: @"buttons/shopBtn.png"];
         btnOnSprite = [CCSprite spriteWithFile: @"buttons/shopBtnOn.png"];
@@ -54,13 +66,24 @@
                                           selectedSprite: btnOnSprite
                                                   target: self
                                                 selector: @selector(shopBtnCallback)];
-        shopBtn.anchorPoint = ccp(0.5f, 0);
+        shopBtn.anchorPoint = ccp(1, 0);
         shopBtn.scale = 0.7f;
         
-        menu = [CCMenu menuWithItems: shopBtn, playBtn, nil];
+        menu = [CCMenu menuWithItems: shopBtn, nil];
         [menu alignItemsHorizontally];
-        menu.position = ccp(kScreenWidth + 8.0f - playBtn.contentSize.width, 8.0f);
+        menu.position = ccp(kScreenWidth - 8.0f, 8.0f);
         [self addChild: menu];
+        
+        // evil doctor
+        evilDoctor = [CCSprite node];
+        evilDoctor.anchorPoint = ccp(0, 0);
+        evilDoctor.position = ccp(-kScreenCenterX, 0);
+        [self addChild: evilDoctor];
+        [evilDoctor runAction: 
+                    [CCAnimate actionWithAnimation: [[CCAnimationCache sharedAnimationCache] animationByName: @"evilDoctorStand"]
+                               restoreOriginalFrame: NO
+                    ]
+        ];
     }
     
     return self;
@@ -69,6 +92,21 @@
 - (void) dealloc
 {
     [super dealloc];
+}
+
+#pragma mark -
+
+- (void) onEnter
+{
+    [super onEnter];
+    
+    [self runAction:
+                [CCSequence actions:
+                                [CCDelayTime actionWithDuration: 1.0f],
+                                [CCCallFunc actionWithTarget: self selector: @selector(runStartAnimation)],
+                                nil
+                ]
+    ];
 }
 
 #pragma mark -
@@ -87,18 +125,48 @@
 #pragma mark -
 
 #pragma mark callbacks
-- (void) playBtnCallback
-{
-    CCTransitionFade *sceneTransition = [CCTransitionFade transitionWithDuration: 0.3f
-                                                                           scene: [GlobalMapLayer scene]
-                                                                       withColor: ccc3(0, 0, 0)];
-    
-    [[CCDirector sharedDirector] replaceScene: sceneTransition];
-}
-
 - (void) shopBtnCallback
 {
     [ShopPopup showOnRunningSceneWithDelegate: self];
+}
+
+#pragma mark -
+
+#pragma mark evil doctor
+- (void) runStartAnimation
+{
+    CCAnimationCache *ac = [CCAnimationCache sharedAnimationCache];
+    
+    CCAction *eyesAnimation = [CCAnimate actionWithAnimation: [ac animationByName: @"evilDoctorEyes"]
+                                        restoreOriginalFrame: NO];
+    CCAction *laughAnimation = [CCAnimate actionWithAnimation: [ac animationByName: @"evilDoctorLaugh"]
+                                        restoreOriginalFrame: NO];
+    CCAction *switchAnimation = [CCAnimate actionWithAnimation: [ac animationByName: @"evilDoctorSwitch"]
+                                        restoreOriginalFrame: NO];
+    
+    [evilDoctor runAction:
+                    [CCSequence actions:
+                                    [CCEaseBackOut actionWithAction:
+                                                        [CCMoveTo actionWithDuration: 0.5f
+                                                                            position: ccp(8.0f, 0)
+                                                        ]
+                                    ],
+                                    [CCDelayTime actionWithDuration: 0.5f],
+                                    eyesAnimation,
+                                    [CCDelayTime actionWithDuration: 0.5f],
+                                    laughAnimation,
+                                    switchAnimation,
+                                    [CCDelayTime actionWithDuration: 0.5f],
+                                    [CCCallFunc actionWithTarget: globalMap selector: @selector(showMapPoints)],
+                                    [CCCallFunc actionWithTarget: globalMap selector: @selector(enableWithChildren)],
+                                    [CCEaseBackIn actionWithAction:
+                                                        [CCMoveTo actionWithDuration: 0.5f
+                                                                            position: ccp(-kScreenCenterX, 0)
+                                                        ]
+                                    ],
+                                    nil
+                    ]
+    ];
 }
 
 @end

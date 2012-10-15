@@ -165,6 +165,7 @@
 		19BAA6DA161CAD8F00A43A5F /* Background2.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAA6D6161CAD8F00A43A5F /* Background2.m */; };
 		19BAA6E2161CB10200A43A5F /* ZombiesWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAA6E1161CB10200A43A5F /* ZombiesWave.m */; };
 		19BAA6E5161CB11900A43A5F /* Zombie.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAA6E4161CB11900A43A5F /* Zombie.m */; };
+		19C0C1E8162C3ED000F46DE9 /* mainMenu in Resources */ = {isa = PBXBuildFile; fileRef = 19C0C1E7162C3ED000F46DE9 /* mainMenu */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -489,6 +490,8 @@
 		19BAA6E4161CB11900A43A5F /* Zombie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Zombie.m; sourceTree = "<group>"; };
 		19BAA6E7161CB20900A43A5F /* ZombieDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZombieDelegate.h; sourceTree = "<group>"; };
 		19BAA6E8161CB40D00A43A5F /* ZombiesWaveDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZombiesWaveDelegate.h; sourceTree = "<group>"; };
+		19C0C1E6162C2D6800F46DE9 /* GlobalMapLayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalMapLayerDelegate.h; sourceTree = "<group>"; };
+		19C0C1E7162C3ED000F46DE9 /* mainMenu */ = {isa = PBXFileReference; lastKnownFileType = folder; name = mainMenu; path = Resources/game/mainMenu; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -953,7 +956,6 @@
 				19BAA69B161C8BAE00A43A5F /* MapCache */,
 				19BAA6A2161C8E4D00A43A5F /* Shop */,
 				19BAA67B161C84EB00A43A5F /* MainMenuScene */,
-				19BAA67C161C84F500A43A5F /* GlobalMapScene */,
 				19BAA6BA161C9DE000A43A5F /* GameScene */,
 			);
 			name = Game;
@@ -962,13 +964,14 @@
 		19BAA67B161C84EB00A43A5F /* MainMenuScene */ = {
 			isa = PBXGroup;
 			children = (
+				19BAA67C161C84F500A43A5F /* GlobalMapLayer */,
 				19BAA67D161C855E00A43A5F /* MainMenuLayer.h */,
 				19BAA67E161C855E00A43A5F /* MainMenuLayer.m */,
 			);
 			name = MainMenuScene;
 			sourceTree = "<group>";
 		};
-		19BAA67C161C84F500A43A5F /* GlobalMapScene */ = {
+		19BAA67C161C84F500A43A5F /* GlobalMapLayer */ = {
 			isa = PBXGroup;
 			children = (
 				19BAA6AD161C8F2600A43A5F /* MapDifficultyPopup */,
@@ -976,13 +979,15 @@
 				19BAA681161C857100A43A5F /* GlobalMapLayer.m */,
 				19BAA698161C8A7E00A43A5F /* GlobalMapBackgroundLayer.h */,
 				19BAA699161C8A7E00A43A5F /* GlobalMapBackgroundLayer.m */,
+				19C0C1E6162C2D6800F46DE9 /* GlobalMapLayerDelegate.h */,
 			);
-			name = GlobalMapScene;
+			name = GlobalMapLayer;
 			sourceTree = "<group>";
 		};
 		19BAA685161C894100A43A5F /* game */ = {
 			isa = PBXGroup;
 			children = (
+				19C0C1E7162C3ED000F46DE9 /* mainMenu */,
 				19BAA686161C895600A43A5F /* buttons */,
 				19BAA687161C895600A43A5F /* clouds */,
 				19BAA688161C895600A43A5F /* globalMap */,
@@ -1212,6 +1217,7 @@
 				19BAA696161C895600A43A5F /* shop.plist in Resources */,
 				19BAA697161C895600A43A5F /* zombies in Resources */,
 				191D0EEA1626F4C400B6235B /* waves.plist in Resources */,
+				19C0C1E8162C3ED000F46DE9 /* mainMenu in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -86,7 +86,11 @@
 
 #pragma mark -
 
-#pragma mark award
+#pragma mark on enter
+- (void) onEnter
+{
+    [super onEnter];
+}
 
 #pragma mark -
 
