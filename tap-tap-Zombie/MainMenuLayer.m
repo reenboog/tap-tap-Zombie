@@ -69,6 +69,9 @@
         shopBtn.anchorPoint = ccp(1, 0);
         shopBtn.scale = 0.7f;
         
+        shopBtn.visible = NO;
+        shopBtn.isEnabled = NO;
+        
         menu = [CCMenu menuWithItems: shopBtn, nil];
         [menu alignItemsHorizontally];
         menu.position = ccp(kScreenWidth - 8.0f, 8.0f);
@@ -84,6 +87,8 @@
                                restoreOriginalFrame: NO
                     ]
         ];
+        
+        [self scheduleUpdate];
     }
     
     return self;
@@ -115,11 +120,41 @@
 - (void) popupWillOpen: (CCPopupLayer *) popup
 {
     [self disableWithChildren];
+    
+    CCAnimationCache *ac = [CCAnimationCache sharedAnimationCache];
+    CCFiniteTimeAction *animation = [CCAnimate actionWithAnimation: [ac animationByName: @"evilDoctorStand"]
+                                              restoreOriginalFrame: NO];
+    
+    [evilDoctor stopAllActions];
+    [evilDoctor runAction:
+                    [CCSequence actions:
+                                    [CCEaseBackIn actionWithAction:
+                                                    [CCMoveTo actionWithDuration: 0.3f 
+                                                                        position: ccp(-kScreenCenterX, 0)
+                                                    ]
+                                    ],
+                                    animation,
+                                    nil
+                    ]
+    ];
 }
 
 - (void) popupDidFinishClosing: (CCPopupLayer *) popup
 {
     [self enableWithChildren];
+    
+    [evilDoctor stopAllActions];
+    [evilDoctor runAction:
+                    [CCSequence actions:
+                                    [CCEaseBackOut actionWithAction:
+                                                    [CCMoveTo actionWithDuration: 0.3f 
+                                                                        position: ccp(-24.0f, 0)
+                                                    ]
+                                    ],
+                                    [CCCallFunc actionWithTarget: self selector: @selector(runRandomAnimation)],
+                                    nil
+                    ]
+    ];
 }
 
 #pragma mark -
@@ -133,6 +168,52 @@
 #pragma mark -
 
 #pragma mark evil doctor
+- (void) runRandomAnimation
+{
+    CCAnimationCache *ac = [CCAnimationCache sharedAnimationCache];
+    CCFiniteTimeAction *animation = nil;
+    
+    int dice = arc4random()%3;
+    
+    switch(dice)
+    {
+        case 0:
+        {
+            animation = [CCAnimate actionWithAnimation: [ac animationByName: @"evilDoctorEyes"]
+                                  restoreOriginalFrame: NO];
+        } break;
+            
+        case 1:
+        {
+            animation = [CCAnimate actionWithAnimation: [ac animationByName: @"evilDoctorLaugh"]
+                                  restoreOriginalFrame: NO];
+        } break;
+            
+        default:
+        {
+            animation = [CCAnimate actionWithAnimation: [ac animationByName: @"evilDoctorSwitch"]
+                                  restoreOriginalFrame: NO];
+            
+            [self runAction:
+                        [CCSequence actions:
+                                        [CCDelayTime actionWithDuration: 0.56f],
+                                        [CCCallFunc actionWithTarget: globalMap selector: @selector(animateMapPoints)],
+                                        nil
+                        ]
+            ];
+        } break;
+    }
+    
+    [evilDoctor runAction:
+                    [CCSequence actions:
+                                    animation,
+                                    [CCDelayTime actionWithDuration: 0.5f],
+                                    [CCCallFunc actionWithTarget: self selector: @selector(runRandomAnimation)],
+                                    nil
+                    ]
+    ];
+}
+
 - (void) runStartAnimation
 {
     CCAnimationCache *ac = [CCAnimationCache sharedAnimationCache];
@@ -148,7 +229,7 @@
                     [CCSequence actions:
                                     [CCEaseBackOut actionWithAction:
                                                         [CCMoveTo actionWithDuration: 0.5f
-                                                                            position: ccp(8.0f, 0)
+                                                                            position: ccp(-24.0f, 0)
                                                         ]
                                     ],
                                     [CCDelayTime actionWithDuration: 0.5f],
@@ -159,14 +240,32 @@
                                     [CCDelayTime actionWithDuration: 0.5f],
                                     [CCCallFunc actionWithTarget: globalMap selector: @selector(showMapPoints)],
                                     [CCCallFunc actionWithTarget: globalMap selector: @selector(enableWithChildren)],
-                                    [CCEaseBackIn actionWithAction:
-                                                        [CCMoveTo actionWithDuration: 0.5f
-                                                                            position: ccp(-kScreenCenterX, 0)
-                                                        ]
-                                    ],
+//                                    [CCEaseBackIn actionWithAction:
+//                                                        [CCMoveTo actionWithDuration: 0.5f
+//                                                                            position: ccp(-kScreenCenterX, 0)
+//                                                        ]
+//                                    ],
+                                    [CCCallFunc actionWithTarget: self selector: @selector(runRandomAnimation)],
                                     nil
                     ]
     ];
+}
+
+#pragma mark -
+
+#pragma mark update
+- (void) update: (ccTime) dt
+{
+//    static float mapPointAnimationDelayTime = 5.0f;
+//    
+//    mapPointAnimationDelayTime -= dt;
+//    
+//    if(mapPointAnimationDelayTime < 0)
+//    {
+//        mapPointAnimationDelayTime = 4.0f + (float)(arc4random()%200)/100.0f;
+//        
+//        [globalMap animateMapPoints];
+//    }
 }
 
 @end
