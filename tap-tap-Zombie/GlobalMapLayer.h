@@ -14,6 +14,8 @@
 #import "GlobalMapLayerDelegate.h"
 
 
+#define kMaxFirs 3
+
 @interface GlobalMapLayer : CCLayer <MapDifficultyPopupDelegate>
 {
     id<GlobalMapLayerDelegate> delegate;
@@ -22,6 +24,9 @@
 //    CCMenuItem *backBtn;
     
     int mapIndex;
+    
+    CCSprite *firs[kMaxFirs];
+    BOOL isFirsShown;
 }
 
 - (id) initWithDelegate: (id<GlobalMapLayerDelegate>) delegate;
@@ -29,5 +34,7 @@
 
 - (void) showMapPoints;
 - (void) animateMapPoints;
+
+- (void) showFirs;
 
 @end

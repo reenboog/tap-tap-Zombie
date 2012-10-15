@@ -86,6 +86,25 @@ static CCSprite *movableSprite = nil;
             
             isOldMapPassed = isMapPassed;
         }
+        
+        // firs
+        CGPoint positions[kMaxFirs] = {ccp(429, 162), ccp(387, 154), ccp(472, 139)};
+        isFirsShown = NO;
+        for(int i = 0; i < kMaxFirs; i++)
+        {
+            CCSprite *fir;
+            
+            NSInteger tag = i;
+            fir = [CCSprite node];
+            fir.tag = tag;
+            fir.anchorPoint = ccp(0.5f, 0);
+            fir.position = positions[i];
+            [self addChild: fir];
+            
+            movableSprite = fir;
+            
+            firs[i] = fir;
+        }
     }
     
     return self;
@@ -195,5 +214,34 @@ static CCSprite *movableSprite = nil;
         delayTime -= 0.06f;
     }
 }
+
+#pragma mark -
+
+- (void) showFirs
+{
+    if(isFirsShown) return;
+    
+    isFirsShown = YES;
+    
+    for(int i = 0; i < kMaxFirs; i++)
+    {
+        CCSprite *fir = firs[i];
+        
+        NSString *animationName = [NSString stringWithFormat: @"firEmergence%i", fir.tag];
+        CCAnimationCache *ac = [CCAnimationCache sharedAnimationCache];
+        CCAction *animation = [CCAnimate actionWithAnimation: [ac animationByName: animationName]
+                                            restoreOriginalFrame: NO];
+        
+        [fir runAction:
+                [CCSequence actions:
+                                [CCDelayTime actionWithDuration: 0.3f*i],
+                                animation,
+                                nil
+                ]
+        ];
+    }
+}
+
+#pragma mark -
 
 @end

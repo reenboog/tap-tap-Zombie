@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+
 @interface GlobalMapBackgroundLayer : CCLayer
 {
     CCSprite *clouds;

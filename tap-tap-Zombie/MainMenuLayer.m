@@ -202,6 +202,11 @@
                                         nil
                         ]
             ];
+            
+            if(arc4random()%3 == 0)
+            {
+                [globalMap showFirs];
+            }
         } break;
     }
     
