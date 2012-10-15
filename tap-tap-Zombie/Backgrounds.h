@@ -9,3 +9,5 @@
 #import "Background0.h"
 #import "Background1.h"
 #import "Background2.h"
+#import "Background3.h"
+#import "Background4.h"

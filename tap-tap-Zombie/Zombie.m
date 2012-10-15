@@ -27,7 +27,7 @@
 @synthesize type;
 
 #pragma mark init and dealloc
-- (id) initWithDelegate: (id<ZombieDelegate>) delegate_  type: (ZombieType) type_
+- (id) initWithDelegate: (id<ZombieDelegate>) delegate_  type: (ZombieType) type_ awardFactor: (float) af
 {
     if(self = [super init])
     {
@@ -40,36 +40,60 @@
         [self addChild: sprite];
         
         NSString *labelStr;
+        ccColor3B c;
         switch(type)
         {
-            case ZombieTypeNormal:  labelStr = @"normal"; break;
-            case ZombieTypeBad:     labelStr = @"bad"; break;
-            case ZombieTypeJumper:  labelStr = @"jumper"; break;
-            case ZombieTypeShield:  labelStr = @"shield"; break;
+            case ZombieTypeNormal:  
+            {
+                labelStr = @"normal";
+                c = ccc3(0, 255, 0);
+                award = 10*af;
+            } break;
+                
+            case ZombieTypeBad:
+            {
+                labelStr = @"bad";
+                c = ccc3(255, 0, 0);
+                award = 5*af;
+            } break;
+                
+            case ZombieTypeBonus: 
+            {
+                labelStr = @"bonus"; 
+                c = ccc3(0, 255, 0);
+                award = 20*af;
+            } break;
+                
+            case ZombieTypeJumper:
+            {
+                labelStr = @"jumper";
+                c = ccc3(0, 255, 0);
+                award = 15*af;
+            } break;
+                
+            case ZombieTypeShield:
+            {
+                labelStr = @"shield";
+                c = ccc3(0, 0, 255);
+                award = 0;
+            } break;
         }
         CCLabelBMFont *label = [CCLabelBMFont labelWithString: labelStr fntFile: kFontDefault];
+        label.color = c;
         label.anchorPoint = ccp(0.5f, 0);
-        switch(type)
-        {
-            case ZombieTypeJumper:
-            case ZombieTypeNormal:  label.color = ccc3(0, 255, 0); break;
-            case ZombieTypeBad:     label.color = ccc3(255, 0, 0); break;
-            case ZombieTypeShield:  label.color = ccc3(0, 0, 255); break;
-        }
         [self addChild: label];
         
         isStarting = NO;
         onFinish = NO;
-        
-        award = 10;
+        isCaptured = NO;
     }
     
     return self;
 }
 
-+ (id) zombieWithDelegate: (id<ZombieDelegate>) delegate type: (ZombieType) type
++ (id) zombieWithDelegate: (id<ZombieDelegate>) delegate type: (ZombieType) type awardFactor: (float) af
 {
-    return [[[self alloc] initWithDelegate: delegate type: type] autorelease];
+    return [[[self alloc] initWithDelegate: delegate type: type awardFactor: af] autorelease];
 }
 
 - (void) dealloc
@@ -86,6 +110,11 @@
     [super stopAllActions];
     
     [sprite stopAllActions];
+}
+
+- (void) setOpacity: (float) opacity
+{
+    [sprite setOpacity: opacity];
 }
 
 #pragma mark -
@@ -144,10 +173,10 @@
     [self runAction:
                     [CCSequence actions:
                                     [CCSpawn actions:
-                                                    [CCScaleTo actionWithDuration: 0.3f 
+                                                    [CCScaleTo actionWithDuration: 0.2f 
                                                                             scale: 1.2f
                                                     ],
-                                                    [CCMoveTo actionWithDuration: 0.5f
+                                                    [CCMoveTo actionWithDuration: 0.3f
                                                                         position: ccp(self.position.x, -150.0f)
                                                     ],
                                                     nil
@@ -196,6 +225,10 @@
 
 - (void) capture
 {
+    if(isCaptured) return;
+    
+    isCaptured = YES;
+    
     [self stopAllActions];
     
     [sprite runAction:

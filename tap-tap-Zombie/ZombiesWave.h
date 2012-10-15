@@ -17,9 +17,26 @@
 @interface ZombiesWave : CCLayer <ZombieDelegate>
 {
     id<ZombiesWaveDelegate> delegate;
+    
+    int capturedZombieCounter;
+    int zombiesCounter;
+    
+    BOOL isPerfect;
 }
 
-- (id) initWithDelegate: (id<ZombiesWaveDelegate>) delegate;
-+ (id) zombieWaveWithDelegate: (id<ZombiesWaveDelegate>) delegate;
+@property (nonatomic, readonly) BOOL isPerfect;
+
+- (id) initWithDelegate: (id<ZombiesWaveDelegate>) delegate 
+                 weight: (int) weight 
+         allowedObjects: (NSArray *) allowed
+            awardFactor: (float) af
+             movingTime: (float) mt
+           standingTime: (float) st;
++ (id) zombieWaveWithDelegate: (id<ZombiesWaveDelegate>) delegate 
+                       weight: (int) weight 
+               allowedObjects: (NSArray *) allowed
+                  awardFactor: (float) af
+                   movingTime: (float) mt
+                 standingTime: (float) st;
 
 @end

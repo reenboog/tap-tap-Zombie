@@ -16,6 +16,7 @@ typedef enum
 {
     ZombieTypeNormal,
     ZombieTypeBad,
+    ZombieTypeBonus,
     ZombieTypeJumper,
     ZombieTypeShield
 } ZombieType;
@@ -35,6 +36,7 @@ typedef enum
     
     BOOL isStarting;
     BOOL onFinish;
+    BOOL isCaptured;
     
     float award;
     
@@ -45,8 +47,8 @@ typedef enum
 @property (nonatomic, readonly) float award;
 @property (nonatomic, readonly) ZombieType type;
 
-- (id) initWithDelegate: (id<ZombieDelegate>) delegate type: (ZombieType) type;
-+ (id) zombieWithDelegate: (id<ZombieDelegate>) delegate type: (ZombieType) type;
+- (id) initWithDelegate: (id<ZombieDelegate>) delegate type: (ZombieType) type awardFactor: (float) af;
++ (id) zombieWithDelegate: (id<ZombieDelegate>) delegate type: (ZombieType) type awardFactor: (float) af;
 
 - (void) runWithKeyPoints: (NSArray *) keyPoints movingTime: (ccTime) mt standingTime: (ccTime) st;
 

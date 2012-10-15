@@ -21,9 +21,16 @@
 #import "MapCache.h"
 
 
+@interface GameScene()
+- (void) increaseSuperMode;
+- (void) dropSuperMode;
+@end
+
+
 @implementation GameScene
 
 @synthesize isGameFailed;
+@synthesize score;
 
 #pragma mark init and dealloc
 - (id) initWithMap: (Map *) map_
@@ -38,8 +45,14 @@
         
         map = [map_ retain];
         
-        successIncrementValue = 2;
-        successDecrementValue = 2;
+        float n = ((map.difficulty + 1.0f)/2.0f + 1.0f)*(25.0f + map.index);
+        
+//        NSLog(@">> %f", n);
+        
+        successIncrementValue = 100.0f/n;
+        successDecrementValue = 1.0f + map.difficulty;
+        
+        [self scheduleUpdate];
     }
     
     return self;
@@ -63,6 +76,9 @@
     success = 0;
     score = 0;
     isGameFailed = NO;
+    perfectWaves = 0;
+    superMode = -1;
+    superModeTimer = 0;
 }
 
 #pragma mark -
@@ -127,7 +143,10 @@
 #pragma mark GameLayerDelegate methods implementation
 - (void) giveAward: (float) award_
 {
-    score += award_;
+    float awardFactor = superMode == 0 ? 2.0f : superMode == 1 ? 3.0f : superMode == 2 ? 5.0f : 1.0f;
+    awardFactor = award_ > 0 ? awardFactor : 1.0f;
+    
+    score += award_*awardFactor;
     
     [hudLayer setScoreValue: score];
 }
@@ -163,6 +182,80 @@
     }
 }
 
+- (void) perfectWave
+{
+    perfectWaves++;
+    
+    if(((superMode == -1) && (perfectWaves >= 4)) || 
+       ((superMode == 0) && (perfectWaves >= 6)) || 
+       ((superMode == 1) && (perfectWaves >= 8)))
+    {
+        [self increaseSuperMode];
+    }
+}
+
+- (void) failedWave
+{
+    if(superMode < 0) return;
+    
+    failedWaves++;
+    
+    if(failedWaves > 2)
+    {
+        [self dropSuperMode];
+    }
+}
+
 #pragma mark -
+
+#pragma mark super mode
+- (void) increaseSuperMode
+{
+    if(superMode > 1) return;
+    
+    superMode++;
+    perfectWaves = 0;
+    failedWaves = 0;
+    
+    [hudLayer updateSuperModeLabelWithValue: superMode];
+    
+    if(superMode == 0)
+    {
+        [hudLayer showSuperModeLabel];
+        superModeTimer = 10.0f;
+    }
+    else if(superMode == 1)
+    {
+        superModeTimer = 10.0f;
+    }
+    else if(superMode == 2)
+    {
+        superModeTimer = 15.0f;
+    }
+}
+
+- (void) dropSuperMode
+{
+    perfectWaves = 0;
+    superMode = -1;
+    failedWaves = 0;
+    
+    [hudLayer hideSuperModeLabel];
+}
+
+#pragma mark -
+
+#pragma mark update
+- (void) update: (ccTime) dt
+{
+    superModeTimer -= dt;
+    
+    if((superModeTimer <= 0) && (superMode >= 0))
+    {
+        [self dropSuperMode];
+    }
+    
+    superModeTimer = superModeTimer < 0 ? 0 : superModeTimer;
+}
 
 @end

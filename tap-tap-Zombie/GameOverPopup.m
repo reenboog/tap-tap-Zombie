@@ -38,8 +38,18 @@
         // game over status
         NSString *statusStr = self.delegate.isGameFailed ? @"Game over" : @"You are winner!";
         statusLabel = [CCLabelBMFont labelWithString: statusStr fntFile: kFontDefault];
-        statusLabel.position = ccp(kScreenCenterX, kScreenCenterY + 64.0f);
+        statusLabel.position = ccp(kScreenCenterX, kScreenCenterY + 96.0f);
         [self addChild: statusLabel];
+        
+        NSString *scoreStr = [NSString stringWithFormat: @"score: %.0f", self.delegate.score];
+        scoreLabel = [CCLabelBMFont labelWithString: scoreStr fntFile: kFontDefault];
+        scoreLabel.position = ccp(kScreenCenterX, kScreenCenterY + 64.0f);
+        [self addChild: scoreLabel];
+        
+        if(self.delegate.isGameFailed)
+        {
+            scoreLabel.visible = NO;
+        }
         
         // buttons
         btnSprite = [CCSprite spriteWithFile: @"buttons/resetBtn.png"];
@@ -134,6 +144,28 @@
                                     nil
                     ]
     ];
+    
+    statusLabel.scale = 0;
+    [statusLabel runAction:
+                    [CCSpawn actions:
+                                [CCFadeIn actionWithDuration: 0.2f],
+                                [CCEaseBackOut actionWithAction:
+                                                    [CCScaleTo actionWithDuration: 0.3f scale: 1.0f]
+                                ],
+                                nil
+                    ]
+    ];
+    
+    scoreLabel.scale = 0;
+    [scoreLabel runAction:
+                    [CCSpawn actions:
+                                [CCFadeIn actionWithDuration: 0.2f],
+                                [CCEaseBackOut actionWithAction:
+                                                    [CCScaleTo actionWithDuration: 0.3f scale: 1.0f]
+                                ],
+                                nil
+                    ]
+    ];
 }
 
 - (void) hideAndClose
@@ -173,6 +205,26 @@
                                                 nil
                                     ],
                                     nil
+                    ]
+    ];
+    
+    [statusLabel runAction:
+                    [CCSpawn actions:
+                                [CCFadeOut actionWithDuration: 0.2f],
+                                [CCEaseBackIn actionWithAction:
+                                                    [CCScaleTo actionWithDuration: 0.2f scale: 0]
+                                ],
+                                nil
+                    ]
+    ];
+    
+    [scoreLabel runAction:
+                    [CCSpawn actions:
+                                [CCFadeOut actionWithDuration: 0.2f],
+                                [CCEaseBackIn actionWithAction:
+                                                    [CCScaleTo actionWithDuration: 0.2f scale: 0]
+                                ],
+                                nil
                     ]
     ];
 }

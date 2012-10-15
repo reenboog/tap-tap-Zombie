@@ -6,23 +6,47 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "GameConfig.h"
+
 #import "Trap.h"
 
-#import "GameConfig.h"
+#import "AnimationLoader.h"
 
 
 @implementation Trap
+
++ (void) initialize
+{
+    [[CCTextureCache sharedTextureCache] addImage: @"levels/traps/0/gate.png"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"levels/traps/0/gate.plist"];
+    
+    [AnimationLoader loadAnimationsWithPlist: @"levels/traps/animations"];
+
+}
 
 #pragma mark init and dealloc
 - (id) init
 {
     if(self = [super init])
     {
-        body = [CCSprite spriteWithFile: @"levels/traps/trap.png"];
+        backLight = [CCSprite spriteWithFile: @"levels/traps/0/back_light.png"];
+        backLight.anchorPoint = ccp(0, 0);
+        [self addChild: backLight];
+        
+        gate = [CCSprite node];
+        gate.anchorPoint = ccp(0, 0);
+        [self addChild: gate];
+        [gate runAction: 
+                    [CCAnimate actionWithAnimation: [[CCAnimationCache sharedAnimationCache] animationByName: @"gate0"]
+                               restoreOriginalFrame: NO
+                    ]
+        ];
+        
+        body = [CCSprite spriteWithFile: @"levels/traps/0/body.png"];
         body.anchorPoint = ccp(0, 0);
         [self addChild: body];
         
-        light = [CCSprite spriteWithFile: @"levels/traps/trap_light.png"];
+        light = [CCSprite spriteWithFile: @"levels/traps/0/light.png"];
         light.anchorPoint = ccp(0, 0);
         [self addChild: light];
         
@@ -30,6 +54,7 @@
         self.anchorPoint = ccp(0.5f, 0);
         
         isShieldModActivated = NO;
+        isTrapActivated = NO;
         
         [self makeNormal];
     }
@@ -69,7 +94,7 @@
         
     [light stopAllActions];
     light.opacity = 255;
-    light.color = ccc3(255, 255, 255);
+    light.color = ccc3(255, 250, 65);
     [light runAction: 
                 [CCRepeatForever actionWithAction:
                                         [CCSequence actions:
@@ -79,6 +104,8 @@
                                         ]
                 ]
     ];
+    
+    backLight.color = ccc3(255, 250, 65);
 }
 
 - (void) makeGreen
@@ -90,6 +117,7 @@
     [light stopAllActions];
     light.opacity = 255;
     light.color = ccc3(0, 255, 0);
+    backLight.color = ccc3(0, 255, 0);
 }
 
 - (void) makeRed
@@ -111,6 +139,39 @@
                                         ]
                 ]
     ];
+    
+    backLight.color = ccc3(255, 0, 0);
+}
+
+- (void) activateTrap
+{
+    if(isTrapActivated) return;
+    
+    CCAnimate *closeAnimation = [CCAnimate actionWithAnimation: 
+                                                    [[CCAnimationCache sharedAnimationCache] animationByName: @"closeGate0"]
+                                           restoreOriginalFrame: NO];
+    
+    CCAnimate *openAnimation = [CCAnimate actionWithAnimation: 
+                                                    [[CCAnimationCache sharedAnimationCache] animationByName: @"openGate0"]
+                                          restoreOriginalFrame: NO];
+    
+    isTrapActivated = YES;
+    
+    void (^deactivate)(void) = ^(void) { isTrapActivated = NO; };
+    
+    void (^showLight)(void) = ^(void) { light.visible = YES; };
+    void (^hideLight)(void) = ^(void) { light.visible = NO; };
+    
+    [gate runAction:
+                [CCSequence actions:
+                                [CCCallBlock actionWithBlock: hideLight],
+                                closeAnimation,
+                                openAnimation,
+                                [CCCallBlock actionWithBlock: showLight],
+                                [CCCallBlock actionWithBlock: deactivate],
+                                nil
+                ]
+    ];
 }
 
 - (void) activateShieldMod
@@ -122,6 +183,7 @@
     [light stopAllActions];
     light.opacity = 255;
     light.color = ccc3(0, 0, 255);
+    backLight.color = ccc3(0, 0, 255);
 }
 
 - (void) deactivateShieldMod

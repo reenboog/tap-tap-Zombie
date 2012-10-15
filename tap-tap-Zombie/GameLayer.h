@@ -31,7 +31,16 @@
     
     ccTime timer;
     
-    float award;
+//    float award;
+    
+    int waveWeight;
+    
+    float timeBetweenWaves;
+    
+    int wavesCounter;
+    
+    float movingTime;
+    float standingTime;
 }
 
 @property (nonatomic, readonly) Map *map;

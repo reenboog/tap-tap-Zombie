@@ -39,9 +39,15 @@
     
     float successIncrementValue;
     float successDecrementValue;
+    
+    int superMode;
+    int perfectWaves;
+    int failedWaves;
+    float superModeTimer;
 }
 
 @property (nonatomic, readonly) BOOL isGameFailed;
+@property (nonatomic, readonly) float score;
 
 - (id) initWithMap: (Map *) map;
 + (id) gameSceneWithMap: (Map *) map;

@@ -90,15 +90,15 @@ static CCSprite *movableSprite = nil;
             BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: i].isPassed;
             if(!isMapPassed)
             {
-                if(isOldMapPassed)
-                {
-                    [(CCSprite *)item setColor: ccc3(0, 255, 0)];
-                }
-                else
-                {
-                    [(CCSprite *)item setOpacity: 100];
-                    item.isEnabled = NO;
-                }
+//                if(isOldMapPassed)
+//                {
+//                    [(CCSprite *)item setColor: ccc3(0, 255, 0)];
+//                }
+//                else
+//                {
+//                    [(CCSprite *)item setOpacity: 100];
+//                    item.isEnabled = NO;
+//                }
             } 
             
             isOldMapPassed = isMapPassed;

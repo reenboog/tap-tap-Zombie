@@ -13,6 +13,8 @@
 
 #import "GlobalMapLayer.h"
 
+#import "WaveCache.h"
+
 
 @implementation MainMenuLayer
 
@@ -31,6 +33,8 @@
 {
     if(self = [super init])
     {
+        [WaveCache sharedWaveCache];
+        
         // main menu
         CCMenu *menu;
         CCSprite *btnSprite;

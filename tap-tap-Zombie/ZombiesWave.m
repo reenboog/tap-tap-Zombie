@@ -14,6 +14,8 @@
 
 #import "Map.h"
 
+#import "WaveCache.h"
+
 
 static void shuffleArray(int *arr, int size)
 {
@@ -30,8 +32,15 @@ static void shuffleArray(int *arr, int size)
 
 @implementation ZombiesWave
 
+@synthesize isPerfect;
+
 #pragma mark init and dealloc
-- (id) initWithDelegate: (id<ZombiesWaveDelegate>) delegate_
+- (id) initWithDelegate: (id<ZombiesWaveDelegate>) delegate_ 
+                 weight: (int) weight 
+         allowedObjects: (NSArray *) allowed
+            awardFactor: (float) af
+             movingTime: (float) mt 
+           standingTime: (float) st
 {
     if(self = [super init])
     {
@@ -39,101 +48,137 @@ static void shuffleArray(int *arr, int size)
         
         Map *map = delegate.map;
         
-        int N = arc4random()%(map.nTracks) + 1;
-        int *indices = malloc(map.nTracks*sizeof(int));
-        for(int i = 0; i < map.nTracks; i++)
-        {
-            indices[i] = i;
-        }
+        BOOL isJumpersAllowed = [allowed containsObject: @"jumper"];
+        BOOL isBadAllowed = [allowed containsObject: @"bad"];
+        BOOL isShieldAllowed = [allowed containsObject: @"shield"];
+        BOOL isBonusAllowed = [allowed containsObject: @"bonus"];
         
-        shuffleArray(indices, map.nTracks);
+        BOOL isBadUsed = NO;
+        BOOL isShieldUsed = NO;
+        BOOL isBonusUsed = NO;
         
-        for(int i = 0; i < N; i++)
+        Wave *wave = [[WaveCache sharedWaveCache] randomWaveWithWeight: weight 
+                                                             maxTracks: map.nTracks 
+                                                        jumpersAllowed: isJumpersAllowed];
+        
+        for(int i = 0; i < [wave.paths count]; i++)
         {
-            int index = indices[i];
-            
-            if(index < 0) continue;
-            
+            NSArray *path = [wave.paths objectAtIndex: i];
+            int index = [[path lastObject] intValue];
             Track track = map.tracks[index];
             NSArray *keyPoints = track.keyPoints;
             
-            ZombieType zombieType;
+            ZombieType zombieType = ZombieTypeNormal;
             
-            if((i == 0) && (arc4random()%4 == 0))
+            if([path count] > 1)
             {
                 zombieType = ZombieTypeJumper;
                 
-                NSMutableArray *kp = [NSMutableArray array];
-                int si = arc4random()%2 ? index - 1 : index + 1;
-                si = si < 0 ? 1 : si > map.nTracks - 1 ? map.nTracks - 2 : si;
+                NSMutableArray *kp = [[NSMutableArray alloc] init];
+                float h = [[keyPoints objectAtIndex: 0] CGPointValue].y - [[keyPoints lastObject] CGPointValue].y;
                 
+                int N = [path count];
                 for(int j = 0; j < N; j++)
                 {
-                    if(indices[j] == si)
+                    int pi = [[path objectAtIndex: j] intValue];
+                    
+                    int s = 0;
+                    if(j > 0)
                     {
-                        indices[j] = -1;
-                        break;
+                        while(true)
+                        {
+                            float hh = [[map.tracks[pi].keyPoints objectAtIndex: s] CGPointValue].y;
+                            
+                            if(hh <= h*(N - j)/(float)N) break;
+                            
+                            s++;
+                        }
+                    }
+                    
+                    int e = s + 1;
+                    if(j < N - 1)
+                    {
+                        while(true)
+                        {
+                            float hh = [[map.tracks[pi].keyPoints objectAtIndex: e] CGPointValue].y;
+                            
+                            if(hh < h*(N - j - 1)/(float)N) break;
+                            
+                            e++;
+                        }
+                    }
+                    else
+                    {
+                        e = [map.tracks[pi].keyPoints count];
+                    }
+                    
+                    for(int k = s; k < e; k++)
+                    {
+                        [kp addObject: [map.tracks[pi].keyPoints objectAtIndex: k]];
+//                        CGPoint p = [[map.tracks[pi].keyPoints objectAtIndex: k] CGPointValue];
+//                        NSLog(@"%i: (%i, %i] p(%.0f, %.0f)", j, s, e, p.x, p.y);
                     }
                 }
                 
-                NSArray *kp0 = map.tracks[si].keyPoints;
-                
-                int sep0 = [keyPoints count]*2/3;
-                int sep1 = 0;
-                
-                float y0 = [[keyPoints objectAtIndex: sep0] CGPointValue].y;
-                while(true)
-                {
-                    float y1 = [[kp0 objectAtIndex: sep1] CGPointValue].y;
-                    
-                    if(y0 > y1) break;
-                    
-                    sep1++;
-                }
-                
-                for(int j = 0; j < sep0; j++)
-                {
-                    [kp addObject: [keyPoints objectAtIndex: j]];
-                }
-                
-                for(int j = sep1; j < [kp0 count]; j++)
-                {
-                    [kp addObject: [kp0 objectAtIndex: j]];
-                }
-                
                 keyPoints = [NSArray arrayWithArray: kp];
-                index = si;
-            } 
-            else if(arc4random()%3)
-            {
-                zombieType = ZombieTypeNormal;
-            }
-            else if(!(arc4random()%5) && !delegate.isShieldModActivated)
-            {
-                zombieType = ZombieTypeShield;
+                [kp release];
             }
             else
             {
-                zombieType = ZombieTypeBad;
+                if(isBonusAllowed && !isBonusUsed && !(arc4random()%10))
+                {
+                    zombieType = ZombieTypeBonus;
+                    isBonusUsed = YES;
+                }
+                else if(isBadAllowed && !isBadUsed && !(arc4random()%10))
+                {
+                    zombieType = ZombieTypeBad;
+                    isBadUsed = YES;
+                }
+                else if(isShieldAllowed && !isShieldUsed && !delegate.isShieldModActivated && !(arc4random()%30))
+                {
+                    zombieType = ZombieTypeShield;
+                    isShieldUsed = YES;
+                }
             }
             
-            Zombie *zombie = [Zombie zombieWithDelegate: self type: zombieType];
+            Zombie *zombie = [Zombie zombieWithDelegate: self type: zombieType awardFactor: af];
             zombie.tag = index;
             [self addChild: zombie];
             
-            [zombie runWithKeyPoints: keyPoints movingTime: 2.0f standingTime: 0.6f];
+            [zombie runWithKeyPoints: keyPoints movingTime: mt standingTime: st];
         }
         
-        free(indices);
+        zombiesCounter = 0;
+        for(Zombie *zombie in [self children])
+        {
+            if(zombie.type != ZombieTypeBad)
+            {
+                zombiesCounter++;
+            }
+        }
+        
+        capturedZombieCounter = 0;
+        isPerfect = NO;
     }
     
     return self;
 }
 
 
-+ (id) zombieWaveWithDelegate: (id<ZombiesWaveDelegate>) delegate
++ (id) zombieWaveWithDelegate: (id<ZombiesWaveDelegate>) delegate 
+                       weight: (int) weight 
+               allowedObjects: (NSArray *) allowed
+                  awardFactor: (float) af
+                   movingTime: (float) mt
+                 standingTime: (float) st
 {
-    return [[[self alloc] initWithDelegate: delegate] autorelease];
+    return [[[self alloc] initWithDelegate: delegate 
+                                    weight: weight 
+                            allowedObjects: allowed 
+                               awardFactor: af
+                                movingTime: mt 
+                              standingTime: st] autorelease];
 }
 
 - (void) dealloc
@@ -159,7 +204,12 @@ static void shuffleArray(int *arr, int size)
     [self removeChild: zombie cleanup: YES];
     
     if([[self children] count] < 1)
-    {
+    { 
+        if((capturedZombieCounter >= zombiesCounter) && (zombiesCounter > 0))
+        {
+            isPerfect = YES;
+        }
+        
         [delegate zombiesWavePassed: self];
     }
 }
@@ -167,6 +217,11 @@ static void shuffleArray(int *arr, int size)
 - (void) zombieCaptured: (Zombie *) zombie
 {
     [delegate zombieCaptured: zombie];
+    
+    if(zombie.type != ZombieTypeBad)
+    {
+        capturedZombieCounter++;
+    }
 }
 
 @end

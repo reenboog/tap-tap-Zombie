@@ -57,6 +57,11 @@
         scoreLabel.anchorPoint = ccp(1, 1);
         scoreLabel.position = ccp(kScreenWidth - 8.0f, kScreenHeight - 8.0f);
         [self addChild: scoreLabel];
+        
+        // super mode label
+        superModeLabel = [CCLabelBMFont labelWithString: @"" fntFile: kFontDefault];
+        superModeLabel.position = ccp(kScreenCenterX, kScreenHeight - 48.f);
+        [self addChild: superModeLabel];
     }
     
     return self;
@@ -112,5 +117,44 @@
 }
 
 #pragma mark -
+
+- (void) updateSuperModeLabelWithValue: (int) value
+{
+    [superModeLabel setString: [NSString stringWithFormat: @"super mode %i", value]];
+    
+    switch(value)
+    {
+        case 0:
+        {
+            superModeLabel.color = ccc3(255, 255, 255);
+        } break;
+            
+        case 1:
+        {
+            superModeLabel.color = ccc3(255, 255, 0);
+        } break;
+            
+        case 2:
+        {
+            superModeLabel.color = ccc3(0, 255, 0);
+        } break;
+            
+        default: break;
+    }
+}
+
+- (void) showSuperModeLabel
+{
+    [superModeLabel stopAllActions];
+    
+    [superModeLabel runAction: [CCFadeIn actionWithDuration: 0.2f]];
+}
+
+- (void) hideSuperModeLabel
+{
+    [superModeLabel stopAllActions];
+    
+    [superModeLabel runAction: [CCFadeOut actionWithDuration: 0.2f]];
+}
 
 @end
