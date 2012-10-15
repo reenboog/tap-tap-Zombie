@@ -178,4 +178,22 @@ static CCSprite *movableSprite = nil;
     }
 }
 
+- (void) animateMapPoints
+{
+    ccTime delayTime = ([[selectMapMenu children] count] - 1)*0.06f;
+    for(CCSprite *item in [selectMapMenu children])
+    {
+        [item runAction:
+                    [CCSequence actions:
+                                    [CCDelayTime actionWithDuration: delayTime],
+                                    [CCScaleTo actionWithDuration: 0.2f scale: 1.2f],
+                                    [CCScaleTo actionWithDuration: 0.2f scale: 1.0f],
+                                    nil
+                    ]
+        ];
+        
+        delayTime -= 0.06f;
+    }
+}
+
 @end

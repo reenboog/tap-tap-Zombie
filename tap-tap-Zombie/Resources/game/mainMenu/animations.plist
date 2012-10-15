@@ -26,7 +26,7 @@
 	<key>evilDoctorSwitch</key>
 	<dict>
 		<key>frames</key>
-		<string>0,1,2,3,4,5,6</string>
+		<string>0,1,2,3,4,5,6,5,4,3,2,1,0</string>
 		<key>delay</key>
 		<real>0.08</real>
 	</dict>

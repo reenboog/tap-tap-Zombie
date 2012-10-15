@@ -28,5 +28,6 @@
 + (id) globalMapLayerWithDelegate: (id<GlobalMapLayerDelegate>) delegate;
 
 - (void) showMapPoints;
+- (void) animateMapPoints;
 
 @end
