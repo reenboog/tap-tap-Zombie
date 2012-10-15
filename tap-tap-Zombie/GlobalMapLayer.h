@@ -14,7 +14,7 @@
 #import "GlobalMapLayerDelegate.h"
 
 
-#define kMaxFirs 3
+#define kMaxFirs 2
 
 @interface GlobalMapLayer : CCLayer <MapDifficultyPopupDelegate>
 {

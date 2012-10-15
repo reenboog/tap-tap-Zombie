@@ -88,14 +88,14 @@ static CCSprite *movableSprite = nil;
         }
         
         // firs
-        CGPoint positions[kMaxFirs] = {ccp(429, 162), ccp(387, 154), ccp(472, 139)};
+        CGPoint positions[kMaxFirs] = {ccp(429, 162), /*ccp(387, 154),*/ ccp(472, 139)};
         isFirsShown = NO;
         for(int i = 0; i < kMaxFirs; i++)
         {
             CCSprite *fir;
             
             NSInteger tag = i;
-            fir = [CCSprite node];
+            fir = [CCSprite spriteWithSpriteFrameName: [NSString stringWithFormat: @"firEmergence%i0.png", tag]];
             fir.tag = tag;
             fir.anchorPoint = ccp(0.5f, 0);
             fir.position = positions[i];
@@ -199,7 +199,7 @@ static CCSprite *movableSprite = nil;
 
 - (void) animateMapPoints
 {
-    ccTime delayTime = ([[selectMapMenu children] count] - 1)*0.06f;
+    ccTime delayTime = ([[selectMapMenu children] count] - 1)*0.03f;
     for(CCSprite *item in [selectMapMenu children])
     {
         [item runAction:
@@ -211,7 +211,7 @@ static CCSprite *movableSprite = nil;
                     ]
         ];
         
-        delayTime -= 0.06f;
+        delayTime -= 0.03f;
     }
 }
 
@@ -223,19 +223,32 @@ static CCSprite *movableSprite = nil;
     
     isFirsShown = YES;
     
+    [self runAction:
+                [CCSequence actions:
+                                [CCDelayTime actionWithDuration: 5.5f],
+                                [CCCallBlock actionWithBlock: ^(void) { isFirsShown = NO; }],
+                                nil
+                ]
+    ];
+    
     for(int i = 0; i < kMaxFirs; i++)
     {
         CCSprite *fir = firs[i];
         
-        NSString *animationName = [NSString stringWithFormat: @"firEmergence%i", fir.tag];
+        NSString *animationInName = [NSString stringWithFormat: @"firEmergence%i", fir.tag];
+        NSString *animationOutName = [NSString stringWithFormat: @"firDisappearence%i", fir.tag];
         CCAnimationCache *ac = [CCAnimationCache sharedAnimationCache];
-        CCAction *animation = [CCAnimate actionWithAnimation: [ac animationByName: animationName]
-                                            restoreOriginalFrame: NO];
+        CCAction *animationIn = [CCAnimate actionWithAnimation: [ac animationByName: animationInName]
+                                          restoreOriginalFrame: NO];
+        CCAction *animationOut = [CCAnimate actionWithAnimation: [ac animationByName: animationOutName]
+                                           restoreOriginalFrame: NO];
         
         [fir runAction:
                 [CCSequence actions:
                                 [CCDelayTime actionWithDuration: 0.3f*i],
-                                animation,
+                                animationIn,
+                                [CCDelayTime actionWithDuration: 4.0f],
+                                animationOut,
                                 nil
                 ]
         ];

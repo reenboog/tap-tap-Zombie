@@ -203,7 +203,7 @@
                         ]
             ];
             
-            if(arc4random()%3 == 0)
+            if(arc4random()%2 == 0)
             {
                 [globalMap showFirs];
             }
