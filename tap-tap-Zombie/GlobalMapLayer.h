@@ -11,15 +11,22 @@
 
 #import "MapDifficultyPopupDelegate.h"
 
+#import "GlobalMapLayerDelegate.h"
+
 
 @interface GlobalMapLayer : CCLayer <MapDifficultyPopupDelegate>
 {
+    id<GlobalMapLayerDelegate> delegate;
+    
     CCMenu *selectMapMenu;
-    CCMenuItem *backBtn;
+//    CCMenuItem *backBtn;
     
     int mapIndex;
 }
 
-+ (CCScene *) scene;
+- (id) initWithDelegate: (id<GlobalMapLayerDelegate>) delegate;
++ (id) globalMapLayerWithDelegate: (id<GlobalMapLayerDelegate>) delegate;
+
+- (void) showMapPoints;
 
 @end

@@ -25,40 +25,21 @@
 
 static CCSprite *movableSprite = nil;
 
-+ (CCScene *) scene
-{
-    CCScene *scene = [CCScene node];
-    GlobalMapLayer *globalMapLayer = [GlobalMapLayer node];
-    
-    [scene addChild: globalMapLayer];
-    
-    return scene;
-}
-
 #pragma mark init and dealloc
-- (id) init
+- (id) initWithDelegate: (id<GlobalMapLayerDelegate>) delegate_
 {
     if(self = [super init])
     {
+        delegate = delegate_;
+        
         self.isTouchEnabled = YES;
         
         // background
         [self addChild: [GlobalMapBackgroundLayer node]];
         
-        CCMenu *menu;
+//        CCMenu *menu;
         CCSprite *btnSprite;
         CCSprite *btnOnSprite;
-        
-        // back btn
-        btnSprite = [CCSprite spriteWithFile: @"buttons/returnBtn.png"];
-        btnOnSprite = [CCSprite spriteWithFile: @"buttons/returnBtnOn.png"];
-        backBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
-                                          selectedSprite: btnOnSprite 
-                                                  target: self 
-                                                selector: @selector(backBtnCallback)];
-        menu = [CCMenu menuWithItems: backBtn, nil];
-        menu.position = ccp(8.0f + backBtn.contentSize.width/2, 8.0f + backBtn.contentSize.height/2);
-        [self addChild: menu];
         
         // map's points
         CGPoint mapsPositions[kMapsCount] = {
@@ -68,9 +49,9 @@ static CCSprite *movableSprite = nil;
             ccp(342, 230), ccp(374, 249)
         };
         
-        menu = [CCMenu menuWithItems: nil];
-        menu.position = ccp(0, 0);
-        [self addChild: menu];
+        selectMapMenu = [CCMenu menuWithItems: nil];
+        selectMapMenu.position = ccp(0, 0);
+        [self addChild: selectMapMenu];
         BOOL isOldMapPassed = YES;
         for(int i = 0; i < MIN([[MapCache sharedMapCache] count], kMapsCount); i++)
         {
@@ -82,10 +63,12 @@ static CCSprite *movableSprite = nil;
                                                              selector: @selector(selectMapBtnCallback:)];
             item.tag = i;
             
-            [menu addChild: item];
+            [selectMapMenu addChild: item];
             
             CGPoint p = mapsPositions[i];
             item.position = ccp(p.x, p.y);
+            item.scale = 0;
+            [(CCSprite *)item setOpacity: 0];
             
             BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: i].isPassed;
             if(!isMapPassed)
@@ -102,12 +85,15 @@ static CCSprite *movableSprite = nil;
             } 
             
             isOldMapPassed = isMapPassed;
-            
-//            movableSprite = (CCSprite *)item;
         }
     }
     
     return self;
+}
+
++ (id) globalMapLayerWithDelegate: (id<GlobalMapLayerDelegate>) delegate
+{
+    return [[[self alloc] initWithDelegate: delegate] autorelease];
 }
 
 - (void) dealloc
@@ -120,23 +106,16 @@ static CCSprite *movableSprite = nil;
 #pragma mark GameDifficultyPopupDelegate methods implementation
 - (void) popupWillOpen: (CCPopupLayer *) popup
 {
-    [self pauseSchedulerAndActionsWithChildren];
-    [self disableWithChildren];
+    [delegate popupWillOpen: popup];
 }
 
 - (void) popupDidFinishClosing: (CCPopupLayer *) popup
 {
-    [self resumeSchedulerAndActionsWithChildren];
-    [self enableWithChildren];
+    [delegate popupDidFinishClosing: popup];
 }
 
 - (void) setMapDifficulty: (GameDifficulty) mapDifficulty
 {
-//    int backgroundIndex = 0;
-//    if(mapIndex < 2) backgroundIndex = 0;
-//    else if(mapIndex < 4) backgroundIndex = 1;
-//    else backgroundIndex = 2;
-    
     // start game on map
     Map *map = [[MapCache sharedMapCache] mapAtIndex: mapIndex withDifficulty: mapDifficulty];
     CCTransitionFade *sceneTransition = [CCTransitionFade transitionWithDuration: 0.3f
@@ -149,16 +128,6 @@ static CCSprite *movableSprite = nil;
 #pragma mark -
 
 #pragma mark callbacks
-- (void) backBtnCallback
-{
-    // go back to main menu
-    CCTransitionFade *sceneTransition = [CCTransitionFade transitionWithDuration: 0.3f
-                                                                           scene: [MainMenuLayer scene]
-                                                                       withColor: ccc3(0, 0, 0)];
-    
-    [[CCDirector sharedDirector] replaceScene: sceneTransition];
-}
-
 - (void) selectMapBtnCallback: (CCNode *) sender
 {
     mapIndex = sender.tag;
@@ -185,5 +154,28 @@ static CCSprite *movableSprite = nil;
 }
 
 #pragma mark -
+
+- (void) showMapPoints
+{
+    ccTime delayTime = 0;
+    for(CCSprite *item in [selectMapMenu children])
+    {
+        [item runAction:
+                    [CCSequence actions:
+                                    [CCDelayTime actionWithDuration: delayTime],
+                                    [CCSpawn actions:
+                                                [CCFadeIn actionWithDuration: 0.2f],
+                                                [CCEaseBackOut actionWithAction:
+                                                                    [CCScaleTo actionWithDuration: 0.3f scale: 1.0f]
+                                                ],
+                                                nil
+                                    ],
+                                    nil
+                    ]
+        ];
+        
+        delayTime += 0.02f;
+    }
+}
 
 @end

@@ -21,7 +21,6 @@
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"levels/traps/0/gate.plist"];
     
     [AnimationLoader loadAnimationsWithPlist: @"levels/traps/animations"];
-
 }
 
 #pragma mark init and dealloc

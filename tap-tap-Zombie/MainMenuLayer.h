@@ -9,11 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+#import "GlobalMapLayer.h"
 
-@interface MainMenuLayer : CCLayer <CCPopupLayerDelegate>
+
+@interface MainMenuLayer : CCLayer <CCPopupLayerDelegate, GlobalMapLayerDelegate>
 {
-    CCMenuItem *playBtn;
+//    CCMenuItem *playBtn;
     CCMenuItem *shopBtn;
+    
+    GlobalMapLayer *globalMap;
+    
+    CCSprite *evilDoctor;
 }
 
 + (CCScene *) scene;

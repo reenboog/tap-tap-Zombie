@@ -37,6 +37,8 @@
 {
     if(self = [super init])
     {
+        [[CCDirector sharedDirector] purgeCachedData];
+
         gameLayer = [GameLayer gameLayerWithDelegate: self andMap: map_];
         [self addChild: gameLayer];
         
