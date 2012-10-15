@@ -6,9 +6,11 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "GameConfig.h"
+
 #import "GlobalMapBackgroundLayer.h"
 
-#import "GameConfig.h"
+#import "AnimationLoader.h"
 
 
 @interface GlobalMapBackgroundLayer()
@@ -21,6 +23,16 @@
 @end
 
 @implementation GlobalMapBackgroundLayer
+
+static CCSprite *movableSprite = nil;
+
++ (void) initialize
+{
+    [[CCTextureCache sharedTextureCache] addImage: @"globalMap/fir.png"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"globalMap/fir.plist"];
+    
+    [AnimationLoader loadAnimationsWithPlist: @"globalMap/animations"];
+}
 
 #pragma mark init and dealloc
 - (id) init
@@ -132,6 +144,24 @@
 - (void) dealloc
 {
     [super dealloc];
+}
+
+#pragma mark -
+
+#pragma mark touches
+- (void) ccTouchesMoved: (NSSet *) touches withEvent: (UIEvent *) event
+{
+    if(!movableSprite) return;
+    
+    UITouch *touch = [touches anyObject];
+	CGPoint location = [touch locationInView: [touch view]];
+	location = [[CCDirector sharedDirector] convertToGL: location];
+    
+    CGPoint p = [movableSprite.parent convertToNodeSpace: location];
+    
+    CCLOG(@"%.0f, %.0f", p.x, p.y);
+    
+    movableSprite.position = ccp(p.x, p.y);
 }
 
 #pragma mark -

@@ -107,7 +107,8 @@
     
     [self runAction:
                 [CCSequence actions:
-                                [CCDelayTime actionWithDuration: 1.0f],
+                                [CCDelayTime actionWithDuration: 0.5f],
+                                [CCCallFunc actionWithTarget: globalMap selector: @selector(showMapPoints)],
                                 [CCCallFunc actionWithTarget: self selector: @selector(runStartAnimation)],
                                 nil
                 ]
@@ -201,6 +202,11 @@
                                         nil
                         ]
             ];
+            
+            if(arc4random()%3 == 0)
+            {
+                [globalMap showFirs];
+            }
         } break;
     }
     
@@ -232,19 +238,14 @@
                                                                             position: ccp(-24.0f, 0)
                                                         ]
                                     ],
+                                    [CCCallFunc actionWithTarget: globalMap selector: @selector(enableWithChildren)],
                                     [CCDelayTime actionWithDuration: 0.5f],
                                     eyesAnimation,
                                     [CCDelayTime actionWithDuration: 0.5f],
                                     laughAnimation,
                                     switchAnimation,
+                                    [CCCallFunc actionWithTarget: globalMap selector: @selector(animateMapPoints)],
                                     [CCDelayTime actionWithDuration: 0.5f],
-                                    [CCCallFunc actionWithTarget: globalMap selector: @selector(showMapPoints)],
-                                    [CCCallFunc actionWithTarget: globalMap selector: @selector(enableWithChildren)],
-//                                    [CCEaseBackIn actionWithAction:
-//                                                        [CCMoveTo actionWithDuration: 0.5f
-//                                                                            position: ccp(-kScreenCenterX, 0)
-//                                                        ]
-//                                    ],
                                     [CCCallFunc actionWithTarget: self selector: @selector(runRandomAnimation)],
                                     nil
                     ]
