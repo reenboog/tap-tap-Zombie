@@ -19,8 +19,9 @@
     CCMenuItem *exitBtn;
     
     CCLabelBMFont *statusLabel;
+    CCLabelBMFont *timeLabel;
+    CCLabelBMFont *perfectTapsLabel;
     CCLabelBMFont *scoreLabel;
-    CCLabelBMFont *perfectWavesLabel;
 }
 
 @property (nonatomic, readonly) id<GameOverPopupDelegate> delegate;

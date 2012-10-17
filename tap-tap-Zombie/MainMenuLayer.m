@@ -14,8 +14,12 @@
 #import "GlobalMapLayer.h"
 
 #import "WaveCache.h"
-
 #import "AnimationLoader.h"
+#import "MapCache.h"
+
+#import "GameScene.h"
+
+#import "MapDifficultyPopup.h"
 
 
 
@@ -72,8 +76,17 @@
         shopBtn.visible = NO;
         shopBtn.isEnabled = NO;
         
-        menu = [CCMenu menuWithItems: shopBtn, nil];
-        [menu alignItemsHorizontally];
+        btnSprite = [CCSprite spriteWithFile: @"buttons/playBtn.png"];
+        btnOnSprite = [CCSprite spriteWithFile: @"buttons/playBtnOn.png"];
+        playBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
+                                          selectedSprite: btnOnSprite
+                                                  target: self
+                                                selector: @selector(playBtnCallback)];
+        playBtn.anchorPoint = ccp(1, 0);
+        playBtn.scale = 0.7f;
+        
+        menu = [CCMenu menuWithItems: shopBtn, playBtn, nil];
+//        [menu alignItemsHorizontally];
         menu.position = ccp(kScreenWidth - 8.0f, 8.0f);
         [self addChild: menu];
         
@@ -87,6 +100,11 @@
                                restoreOriginalFrame: NO
                     ]
         ];
+        
+        // blackout
+        blackOut = [CCLayerColor layerWithColor: ccc4(0, 0, 0, 255)];
+        [blackOut setOpacity: 0];
+        [self addChild: blackOut];
         
         [self scheduleUpdate];
     }
@@ -104,6 +122,9 @@
 - (void) onEnter
 {
     [super onEnter];
+    
+    gameStatus.isStarted = NO;
+    gameStatus.isActive = NO;
     
     [self runAction:
                 [CCSequence actions:
@@ -160,10 +181,27 @@
 
 #pragma mark -
 
-#pragma mark callbacks
-- (void) shopBtnCallback
+#pragma mark GlobalMapDelegate methods implementation
+
+- (void) mapChanged: (int) mapIndex_
 {
-    [ShopPopup showOnRunningSceneWithDelegate: self];
+    mapIndex = mapIndex_;
+    
+    [MapDifficultyPopup showOnRunningSceneWithDelegate: self];
+}
+
+#pragma mark -
+
+#pragma mark GameDifficultyPopupDelegate methods implementation
+- (void) mapDifficultyChanged: (GameDifficulty) mapDifficulty
+{
+    // start game on map
+    Map *map = [[MapCache sharedMapCache] mapAtIndex: mapIndex withDifficulty: mapDifficulty];
+    CCTransitionFade *sceneTransition = [CCTransitionFade transitionWithDuration: 0.3f
+                                                                           scene: [GameScene gameSceneWithMap: map]
+                                                                       withColor: ccc3(0, 0, 0)];
+    
+    [[CCDirector sharedDirector] replaceScene: sceneTransition];
 }
 
 #pragma mark -
@@ -206,6 +244,19 @@
             if(arc4random()%2 == 0)
             {
                 [globalMap showFirs];
+            }
+            
+            if(arc4random()%4 == 0)
+            {
+                [blackOut runAction:
+                                [CCSequence actions:
+                                                [CCDelayTime actionWithDuration: 0.5f],
+                                                [CCFadeTo actionWithDuration: 0.06f opacity: 200],
+                                                [CCDelayTime actionWithDuration: 0.5f],
+                                                [CCFadeTo actionWithDuration: 0.06f opacity: 0],
+                                                nil
+                                ]
+                ];
             }
         } break;
     }
@@ -250,6 +301,20 @@
                                     nil
                     ]
     ];
+}
+
+#pragma mark -
+
+#pragma mark callbacks
+- (void) shopBtnCallback
+{
+    [ShopPopup showOnRunningSceneWithDelegate: self];
+}
+
+- (void) playBtnCallback
+{
+    // mapIndex == 0 for arcade game
+    [self mapChanged: 0];
 }
 
 #pragma mark -

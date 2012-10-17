@@ -117,7 +117,6 @@
 	[[CCDirector sharedDirector] runWithScene: [MainMenuLayer scene]];
 }
 
-
 - (void)applicationWillResignActive:(UIApplication *)application {
 	[[CCDirector sharedDirector] pause];
 }

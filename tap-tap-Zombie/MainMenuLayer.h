@@ -10,16 +10,20 @@
 #import "cocos2d.h"
 
 #import "GlobalMapLayer.h"
+#import "MapDifficultyPopupDelegate.h"
 
 
-@interface MainMenuLayer : CCLayer <CCPopupLayerDelegate, GlobalMapLayerDelegate>
+@interface MainMenuLayer : CCLayer <CCPopupLayerDelegate, GlobalMapLayerDelegate, MapDifficultyPopupDelegate>
 {
-//    CCMenuItem *playBtn;
+    CCMenuItem *playBtn;
     CCMenuItem *shopBtn;
     
     GlobalMapLayer *globalMap;
     
     CCSprite *evilDoctor;
+    CCLayerColor *blackOut;
+    
+    int mapIndex;
 }
 
 + (CCScene *) scene;

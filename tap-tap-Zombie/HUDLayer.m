@@ -11,6 +11,17 @@
 #import "HUDLayer.h"
 
 
+// return string with format "mm:ss"
+static NSString* ccTimeToString(ccTime time)
+{
+    int t = (int)time;
+    int h = t/3600;
+    int m = (t - h*3600)/60;
+    int s = t - h*3600 - m*60;
+    
+    return [NSString stringWithFormat: @"%.2d:%.2d", m, s];
+}
+
 @implementation HUDLayer
 
 #pragma mark init and dealloc
@@ -38,19 +49,30 @@
         menu.position = ccp(8.0f + pauseBtn.contentSize.width/2*pbs, kScreenHeight - 8.0f - pauseBtn.contentSize.height/2*pbs);
         [self addChild: menu];
         
+        if(!delegate.isArcadeGame)
+        {
         // progress scale
-        CCSprite *progressScaleWrapper = [CCSprite spriteWithFile: @"HUD/damageScaleOuter.png"];
-        progressScaleWrapper.position = ccp(kScreenCenterX, kScreenHeight - 8.0f - progressScaleWrapper.contentSize.height/2);
-        [self addChild: progressScaleWrapper];
-        progressScaleWrapper.scaleX = 0.8f;
-        
-        progressScale = [CCProgressTimer progressWithFile: @"HUD/damageScaleInner.png"];
-        progressScale.type = kCCProgressTimerTypeHorizontalBarLR;
-        float w = progressScaleWrapper.contentSize.width;
-        float h = progressScaleWrapper.contentSize.height;
-        progressScale.position = ccp(w/2, h/2);
-        [self setProgressScaleValue: 0];
-        [progressScaleWrapper addChild: progressScale];
+            CCSprite *progressScaleWrapper = [CCSprite spriteWithFile: @"HUD/damageScaleOuter.png"];
+            progressScaleWrapper.anchorPoint = ccp(0.5f, 1);
+            progressScaleWrapper.position = ccp(kScreenCenterX, kScreenHeight - 8.0f);
+            [self addChild: progressScaleWrapper];
+            progressScaleWrapper.scaleX = 0.8f;
+            
+            progressScale = [CCProgressTimer progressWithFile: @"HUD/damageScaleInner.png"];
+            progressScale.type = kCCProgressTimerTypeHorizontalBarLR;
+            float w = progressScaleWrapper.contentSize.width;
+            float h = progressScaleWrapper.contentSize.height;
+            progressScale.position = ccp(w/2, h/2);
+            [self setProgressScaleValue: 0];
+            [progressScaleWrapper addChild: progressScale];
+        }
+        else
+        {
+            timerLabel = [CCLabelBMFont labelWithString: @"00:00" fntFile: kFontDefault];
+            timerLabel.anchorPoint = ccp(0.5f, 1);
+            timerLabel.position = ccp(kScreenCenterX, kScreenHeight - 8.0f);
+            [self addChild: timerLabel];
+        }
         
         // score label
         scoreLabel = [CCLabelBMFont labelWithString: @"0" fntFile: kFontDefault];
@@ -82,6 +104,8 @@
 #pragma mark progress scale
 - (void) setProgressScaleValue: (float) value
 {
+    assert(!delegate.isArcadeGame);
+    
     float v = value/2 + 50.0f;
     v = v < 0 ? 0 : v > 100 ? 100 : v;
     
@@ -106,6 +130,16 @@
 - (void) setScoreValue: (float) value
 {
     [scoreLabel setString: [NSString stringWithFormat: @"%.0f", value]];
+}
+
+#pragma mark -
+
+#pragma mark timer (arcade game mode)
+- (void) setTimerValue: (float) timer
+{
+    assert(delegate.isArcadeGame);
+    
+    [timerLabel setString: ccTimeToString(timer)];
 }
 
 #pragma mark -

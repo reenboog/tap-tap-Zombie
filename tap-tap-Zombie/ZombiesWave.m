@@ -37,7 +37,7 @@ static void shuffleArray(int *arr, int size)
 #pragma mark init and dealloc
 - (id) initWithDelegate: (id<ZombiesWaveDelegate>) delegate_ 
                  weight: (int) weight 
-         allowedObjects: (NSArray *) allowed
+         allowedObjects: (NSSet *) allowed
             awardFactor: (float) af
              movingTime: (float) mt 
            standingTime: (float) st
@@ -52,10 +52,12 @@ static void shuffleArray(int *arr, int size)
         BOOL isBadAllowed = [allowed containsObject: @"bad"];
         BOOL isShieldAllowed = [allowed containsObject: @"shield"];
         BOOL isBonusAllowed = [allowed containsObject: @"bonus"];
+        BOOL isTimeBonusAllowed = [allowed containsObject: @"timeBonus"];
         
         BOOL isBadUsed = NO;
         BOOL isShieldUsed = NO;
         BOOL isBonusUsed = NO;
+        BOOL isTimeBonusUsed = NO;
         
         Wave *wave = [[WaveCache sharedWaveCache] randomWaveWithWeight: weight 
                                                              maxTracks: map.nTracks 
@@ -125,20 +127,25 @@ static void shuffleArray(int *arr, int size)
             }
             else
             {
-                if(isBonusAllowed && !isBonusUsed && !(arc4random()%10))
+                if(isBonusAllowed && !isBonusUsed && chance(20))
                 {
                     zombieType = ZombieTypeBonus;
                     isBonusUsed = YES;
                 }
-                else if(isBadAllowed && !isBadUsed && !(arc4random()%10))
+                else if(isBadAllowed && !isBadUsed && chance(10))
                 {
                     zombieType = ZombieTypeBad;
                     isBadUsed = YES;
                 }
-                else if(isShieldAllowed && !isShieldUsed && !delegate.isShieldModActivated && !(arc4random()%30))
+                else if(isShieldAllowed && !isShieldUsed && !delegate.isShieldModActivated && chance(30))
                 {
                     zombieType = ZombieTypeShield;
                     isShieldUsed = YES;
+                }
+                if(isTimeBonusAllowed && !isTimeBonusUsed && chance(30))
+                {
+                    zombieType = ZombieTypeTimeBonus;
+                    isTimeBonusUsed = YES;
                 }
             }
             
@@ -168,7 +175,7 @@ static void shuffleArray(int *arr, int size)
 
 + (id) zombieWaveWithDelegate: (id<ZombiesWaveDelegate>) delegate 
                        weight: (int) weight 
-               allowedObjects: (NSArray *) allowed
+               allowedObjects: (NSSet *) allowed
                   awardFactor: (float) af
                    movingTime: (float) mt
                  standingTime: (float) st

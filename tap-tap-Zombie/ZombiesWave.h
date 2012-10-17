@@ -28,13 +28,13 @@
 
 - (id) initWithDelegate: (id<ZombiesWaveDelegate>) delegate 
                  weight: (int) weight 
-         allowedObjects: (NSArray *) allowed
+         allowedObjects: (NSSet *) allowed
             awardFactor: (float) af
              movingTime: (float) mt
            standingTime: (float) st;
 + (id) zombieWaveWithDelegate: (id<ZombiesWaveDelegate>) delegate 
                        weight: (int) weight 
-               allowedObjects: (NSArray *) allowed
+               allowedObjects: (NSSet *) allowed
                   awardFactor: (float) af
                    movingTime: (float) mt
                  standingTime: (float) st;

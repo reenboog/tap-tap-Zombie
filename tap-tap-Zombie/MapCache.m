@@ -182,8 +182,8 @@ NSArray* parseTracks(NSArray *tracks)
 
 - (Map *) mapAtIndex: (int) index withDifficulty: (int) difficulty
 {
-    NSAssert(((index < [maps count]) && (index >= 0)), @"wrong map's index value %i", index);
-    NSAssert(((difficulty >= 0) && (difficulty <= kMaxGameDifficulty)),  @"wrong difficulty value %i", difficulty);
+    NSAssert(((index < [maps count]) && (index >= 0)), @"wrong map's index %i", index);
+    NSAssert(((difficulty >= 0) && (difficulty <= kMaxGameDifficulty)),  @"wrong map's difficulty %i", difficulty);
     
     return [[maps objectAtIndex: index] objectAtIndex: difficulty];
 }

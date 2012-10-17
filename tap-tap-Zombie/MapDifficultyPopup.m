@@ -193,7 +193,7 @@
 #pragma mark callbacks
 - (void) difficultyBtnCallback: (CCNode *) sender
 {
-    [self.delegate setMapDifficulty: sender.tag];
+    [self.delegate mapDifficultyChanged: sender.tag];
 }
 
 - (void) closePopupBtnCallback

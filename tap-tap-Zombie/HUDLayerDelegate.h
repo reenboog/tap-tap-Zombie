@@ -13,4 +13,6 @@
 
 - (void) pause;
 
+@property (nonatomic, readonly) BOOL isArcadeGame;
+
 @end

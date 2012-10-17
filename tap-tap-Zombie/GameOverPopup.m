@@ -11,6 +11,8 @@
 #import "GameConfig.h"
 
 
+#define kMaxLabelPositionIndex 4
+
 @interface GameOverPopup()
 
 - (void) showAndEnable;
@@ -18,6 +20,16 @@
 
 @end
 
+// return string with format "mm:ss"
+static NSString* ccTimeToString(ccTime time)
+{
+    int t = (int)time;
+    int h = t/3600;
+    int m = (t - h*3600)/60;
+    int s = t - h*3600 - m*60;
+    
+    return [NSString stringWithFormat: @"%.2d:%.2d", m, s];
+}
 
 @implementation GameOverPopup
 
@@ -26,7 +38,13 @@
 {
     if(self = [super initWithDelegate: delegate_])
     {
-    
+        CGPoint labelPositions[kMaxLabelPositionIndex] = {
+            ccp(kScreenCenterX, kScreenCenterY + 96.0f),
+            ccp(kScreenCenterX, kScreenCenterY + 64.0f),
+            ccp(kScreenCenterX, kScreenCenterY + 32.0f),
+            ccp(kScreenCenterX, kScreenCenterY + 0.0f),
+        };
+        
         CCMenu *menu;
         CCSprite *btnSprite;
         CCSprite *btnOnSprite;
@@ -35,21 +53,41 @@
         background = [CCLayerColor layerWithColor: ccc4(0, 0, 0, 255)];
         [self addChild: background];
         
+        int positionIndex = kMaxLabelPositionIndex - 1;
+        
         // game over status
-        NSString *statusStr = self.delegate.isGameFailed ? @"Game over" : @"You are winner!";
-        statusLabel = [CCLabelBMFont labelWithString: statusStr fntFile: kFontDefault];
-        statusLabel.position = ccp(kScreenCenterX, kScreenCenterY + 96.0f);
-        [self addChild: statusLabel];
         
         NSString *scoreStr = [NSString stringWithFormat: @"score: %.0f", self.delegate.score];
         scoreLabel = [CCLabelBMFont labelWithString: scoreStr fntFile: kFontDefault];
-        scoreLabel.position = ccp(kScreenCenterX, kScreenCenterY + 64.0f);
+        scoreLabel.position = labelPositions[positionIndex--];
         [self addChild: scoreLabel];
         
         if(self.delegate.isGameFailed)
         {
             scoreLabel.visible = NO;
+            positionIndex++;
         }
+        
+        NSString *perfectTapsStr = [NSString stringWithFormat: @"perfect taps: %i", self.delegate.longestPerfectCycleLength];
+        perfectTapsLabel = [CCLabelBMFont labelWithString: perfectTapsStr fntFile: kFontDefault];
+        perfectTapsLabel.position = labelPositions[positionIndex--];
+        [self addChild: perfectTapsLabel];
+        
+        NSString *timeStr = [NSString stringWithFormat: @"time %@", ccTimeToString(self.delegate.timer)];
+        timeLabel = [CCLabelBMFont labelWithString: timeStr fntFile: kFontDefault];
+        timeLabel.position = labelPositions[positionIndex--];
+        [self addChild: timeLabel];
+        
+        if(self.delegate.isArcadeGame)
+        {
+            timeLabel.visible = NO;
+            positionIndex++;
+        }
+        
+        NSString *statusStr = self.delegate.isGameFailed || self.delegate.isArcadeGame ? @"Game over" : @"You are winner!";
+        statusLabel = [CCLabelBMFont labelWithString: statusStr fntFile: kFontDefault];
+        statusLabel.position = labelPositions[positionIndex];
+        [self addChild: statusLabel];
         
         // buttons
         btnSprite = [CCSprite spriteWithFile: @"buttons/resetBtn.png"];
@@ -68,7 +106,7 @@
         
         menu = [CCMenu menuWithItems: resetBtn, exitBtn, nil];
         [menu alignItemsHorizontally];
-        menu.position = kScreenCenter;
+        menu.position = ccp(kScreenCenterX, kScreenCenterY - 48.0f);
         [self addChild: menu];
     }
     
@@ -156,6 +194,28 @@
                     ]
     ];
     
+    timeLabel.scale = 0;
+    [timeLabel runAction:
+                    [CCSpawn actions:
+                                [CCFadeIn actionWithDuration: 0.2f],
+                                [CCEaseBackOut actionWithAction:
+                                                    [CCScaleTo actionWithDuration: 0.3f scale: 1.0f]
+                                ],
+                                nil
+                    ]
+    ];
+    
+    perfectTapsLabel.scale = 0;
+    [perfectTapsLabel runAction:
+                    [CCSpawn actions:
+                                [CCFadeIn actionWithDuration: 0.2f],
+                                [CCEaseBackOut actionWithAction:
+                                                    [CCScaleTo actionWithDuration: 0.3f scale: 1.0f]
+                                ],
+                                nil
+                    ]
+    ];
+    
     scoreLabel.scale = 0;
     [scoreLabel runAction:
                     [CCSpawn actions:
@@ -209,6 +269,26 @@
     ];
     
     [statusLabel runAction:
+                    [CCSpawn actions:
+                                [CCFadeOut actionWithDuration: 0.2f],
+                                [CCEaseBackIn actionWithAction:
+                                                    [CCScaleTo actionWithDuration: 0.2f scale: 0]
+                                ],
+                                nil
+                    ]
+    ];
+    
+    [timeLabel runAction:
+                    [CCSpawn actions:
+                                [CCFadeOut actionWithDuration: 0.2f],
+                                [CCEaseBackIn actionWithAction:
+                                                    [CCScaleTo actionWithDuration: 0.2f scale: 0]
+                                ],
+                                nil
+                    ]
+    ];
+    
+    [perfectTapsLabel runAction:
                     [CCSpawn actions:
                                 [CCFadeOut actionWithDuration: 0.2f],
                                 [CCEaseBackIn actionWithAction:

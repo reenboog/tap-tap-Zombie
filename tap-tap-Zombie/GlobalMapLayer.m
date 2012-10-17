@@ -13,9 +13,6 @@
 #import "GlobalMapLayer.h"
 #import "GlobalMapBackgroundLayer.h"
 
-#import "MapDifficultyPopup.h"
-
-#import "MainMenuLayer.h"
 #import "GameScene.h"
 
 
@@ -61,27 +58,25 @@ static CCSprite *movableSprite = nil;
                                                        selectedSprite: btnOnSprite 
                                                                target: self 
                                                              selector: @selector(selectMapBtnCallback:)];
-            item.tag = i;
+            item.tag = i + 1;
             
             [selectMapMenu addChild: item];
             
             CGPoint p = mapsPositions[i];
             item.position = ccp(p.x, p.y);
             item.scale = 0;
-            [(CCSprite *)item setOpacity: 0];
             
             BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: i].isPassed;
             if(!isMapPassed)
             {
-//                if(isOldMapPassed)
-//                {
-//                    [(CCSprite *)item setColor: ccc3(0, 255, 0)];
-//                }
-//                else
-//                {
-//                    [(CCSprite *)item setOpacity: 100];
-//                    item.isEnabled = NO;
-//                }
+                if(isOldMapPassed)
+                {
+                    [(CCSprite *)item setColor: ccc3(0, 255, 0)];
+                }
+                else
+                {
+                    [(CCSprite *)item setOpacity: 100];
+                }
             } 
             
             isOldMapPassed = isMapPassed;
@@ -100,8 +95,6 @@ static CCSprite *movableSprite = nil;
             fir.anchorPoint = ccp(0.5f, 0);
             fir.position = positions[i];
             [self addChild: fir];
-            
-            movableSprite = fir;
             
             firs[i] = fir;
         }
@@ -122,36 +115,17 @@ static CCSprite *movableSprite = nil;
 
 #pragma mark -
 
-#pragma mark GameDifficultyPopupDelegate methods implementation
-- (void) popupWillOpen: (CCPopupLayer *) popup
-{
-    [delegate popupWillOpen: popup];
-}
-
-- (void) popupDidFinishClosing: (CCPopupLayer *) popup
-{
-    [delegate popupDidFinishClosing: popup];
-}
-
-- (void) setMapDifficulty: (GameDifficulty) mapDifficulty
-{
-    // start game on map
-    Map *map = [[MapCache sharedMapCache] mapAtIndex: mapIndex withDifficulty: mapDifficulty];
-    CCTransitionFade *sceneTransition = [CCTransitionFade transitionWithDuration: 0.3f
-                                                                           scene: [GameScene gameSceneWithMap: map]
-                                                                       withColor: ccc3(0, 0, 0)];
-    
-    [[CCDirector sharedDirector] replaceScene: sceneTransition];
-}
-
-#pragma mark -
-
 #pragma mark callbacks
 - (void) selectMapBtnCallback: (CCNode *) sender
 {
-    mapIndex = sender.tag;
+    int mapIndex = sender.tag;
     
-    [MapDifficultyPopup showOnRunningSceneWithDelegate: self];
+    BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex].isPassed;
+    BOOL isOldMapPassed = mapIndex > 1 ? [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex].isPassed : YES;
+    
+    if((!isMapPassed && !isOldMapPassed)) return;
+    
+    [delegate mapChanged: mapIndex];
 }
 
 #pragma mark -
@@ -183,7 +157,6 @@ static CCSprite *movableSprite = nil;
                     [CCSequence actions:
                                     [CCDelayTime actionWithDuration: delayTime],
                                     [CCSpawn actions:
-                                                [CCFadeIn actionWithDuration: 0.2f],
                                                 [CCEaseBackOut actionWithAction:
                                                                     [CCScaleTo actionWithDuration: 0.3f scale: 1.0f]
                                                 ],
