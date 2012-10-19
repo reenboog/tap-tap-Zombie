@@ -1404,6 +1404,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey McLeod (ZKHCZ235BN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeffrey McLeod (ZKHCZ235BN)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1413,6 +1415,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2936297B-67B8-4EA2-95F1-5E041F021B30";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2936297B-67B8-4EA2-95F1-5E041F021B30";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
