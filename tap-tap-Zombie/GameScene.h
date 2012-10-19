@@ -35,19 +35,34 @@
     BOOL isGameFailed;
     BOOL isGameOver;
     
+    BOOL isArcadeGame;
+    
     Map *map;
     
     float successIncrementValue;
     float successDecrementValue;
     
     int superMode;
-    int perfectWaves;
-    int failedWaves;
+    int superModePerfectWavesCounter;
+    int superModeFailedWavesCounter;
     float superModeTimer;
+    
+    int totalPerfectWavesCounter;
+    int totalFailedWavesCounter;
+    
+    int longestPerfectCycleLength;
+    int currentPerfectCycleLength;
+    
+    ccTime timer;
 }
 
 @property (nonatomic, readonly) BOOL isGameFailed;
 @property (nonatomic, readonly) float score;
+@property (nonatomic, readonly) int totalPerfectWavesCounter;
+@property (nonatomic, readonly) int totalFailedWavesCounter;
+@property (nonatomic, readonly) int longestPerfectCycleLength;
+@property (nonatomic, readonly) float timer;
+@property (nonatomic, readonly) BOOL isArcadeGame;
 
 - (id) initWithMap: (Map *) map;
 + (id) gameSceneWithMap: (Map *) map;

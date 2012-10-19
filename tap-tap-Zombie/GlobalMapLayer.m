@@ -13,9 +13,6 @@
 #import "GlobalMapLayer.h"
 #import "GlobalMapBackgroundLayer.h"
 
-#import "MapDifficultyPopup.h"
-
-#import "MainMenuLayer.h"
 #import "GameScene.h"
 
 
@@ -61,47 +58,43 @@ static CCSprite *movableSprite = nil;
                                                        selectedSprite: btnOnSprite 
                                                                target: self 
                                                              selector: @selector(selectMapBtnCallback:)];
-            item.tag = i;
+            item.tag = i + 1;
             
             [selectMapMenu addChild: item];
             
             CGPoint p = mapsPositions[i];
             item.position = ccp(p.x, p.y);
             item.scale = 0;
-            [(CCSprite *)item setOpacity: 0];
             
             BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: i].isPassed;
             if(!isMapPassed)
             {
-//                if(isOldMapPassed)
-//                {
-//                    [(CCSprite *)item setColor: ccc3(0, 255, 0)];
-//                }
-//                else
-//                {
-//                    [(CCSprite *)item setOpacity: 100];
-//                    item.isEnabled = NO;
-//                }
+                if(isOldMapPassed)
+                {
+                    [(CCSprite *)item setColor: ccc3(0, 255, 0)];
+                }
+                else
+                {
+                    [(CCSprite *)item setOpacity: 100];
+                }
             } 
             
             isOldMapPassed = isMapPassed;
         }
         
         // firs
-        CGPoint positions[kMaxFirs] = {ccp(429, 162), ccp(387, 154), ccp(472, 139)};
+        CGPoint positions[kMaxFirs] = {ccp(429, 162), /*ccp(387, 154),*/ ccp(472, 139)};
         isFirsShown = NO;
         for(int i = 0; i < kMaxFirs; i++)
         {
             CCSprite *fir;
             
             NSInteger tag = i;
-            fir = [CCSprite node];
+            fir = [CCSprite spriteWithSpriteFrameName: [NSString stringWithFormat: @"firEmergence%i0.png", tag]];
             fir.tag = tag;
             fir.anchorPoint = ccp(0.5f, 0);
             fir.position = positions[i];
             [self addChild: fir];
-            
-            movableSprite = fir;
             
             firs[i] = fir;
         }
@@ -122,36 +115,17 @@ static CCSprite *movableSprite = nil;
 
 #pragma mark -
 
-#pragma mark GameDifficultyPopupDelegate methods implementation
-- (void) popupWillOpen: (CCPopupLayer *) popup
-{
-    [delegate popupWillOpen: popup];
-}
-
-- (void) popupDidFinishClosing: (CCPopupLayer *) popup
-{
-    [delegate popupDidFinishClosing: popup];
-}
-
-- (void) setMapDifficulty: (GameDifficulty) mapDifficulty
-{
-    // start game on map
-    Map *map = [[MapCache sharedMapCache] mapAtIndex: mapIndex withDifficulty: mapDifficulty];
-    CCTransitionFade *sceneTransition = [CCTransitionFade transitionWithDuration: 0.3f
-                                                                           scene: [GameScene gameSceneWithMap: map]
-                                                                       withColor: ccc3(0, 0, 0)];
-    
-    [[CCDirector sharedDirector] replaceScene: sceneTransition];
-}
-
-#pragma mark -
-
 #pragma mark callbacks
 - (void) selectMapBtnCallback: (CCNode *) sender
 {
-    mapIndex = sender.tag;
+    int mapIndex = sender.tag;
     
-    [MapDifficultyPopup showOnRunningSceneWithDelegate: self];
+    BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex].isPassed;
+    BOOL isOldMapPassed = mapIndex > 1 ? [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex].isPassed : YES;
+    
+    if((!isMapPassed && !isOldMapPassed)) return;
+    
+    [delegate mapChanged: mapIndex];
 }
 
 #pragma mark -
@@ -183,7 +157,6 @@ static CCSprite *movableSprite = nil;
                     [CCSequence actions:
                                     [CCDelayTime actionWithDuration: delayTime],
                                     [CCSpawn actions:
-                                                [CCFadeIn actionWithDuration: 0.2f],
                                                 [CCEaseBackOut actionWithAction:
                                                                     [CCScaleTo actionWithDuration: 0.3f scale: 1.0f]
                                                 ],
@@ -199,7 +172,7 @@ static CCSprite *movableSprite = nil;
 
 - (void) animateMapPoints
 {
-    ccTime delayTime = ([[selectMapMenu children] count] - 1)*0.06f;
+    ccTime delayTime = ([[selectMapMenu children] count] - 1)*0.03f;
     for(CCSprite *item in [selectMapMenu children])
     {
         [item runAction:
@@ -211,7 +184,7 @@ static CCSprite *movableSprite = nil;
                     ]
         ];
         
-        delayTime -= 0.06f;
+        delayTime -= 0.03f;
     }
 }
 
@@ -223,19 +196,32 @@ static CCSprite *movableSprite = nil;
     
     isFirsShown = YES;
     
+    [self runAction:
+                [CCSequence actions:
+                                [CCDelayTime actionWithDuration: 5.5f],
+                                [CCCallBlock actionWithBlock: ^(void) { isFirsShown = NO; }],
+                                nil
+                ]
+    ];
+    
     for(int i = 0; i < kMaxFirs; i++)
     {
         CCSprite *fir = firs[i];
         
-        NSString *animationName = [NSString stringWithFormat: @"firEmergence%i", fir.tag];
+        NSString *animationInName = [NSString stringWithFormat: @"firEmergence%i", fir.tag];
+        NSString *animationOutName = [NSString stringWithFormat: @"firDisappearence%i", fir.tag];
         CCAnimationCache *ac = [CCAnimationCache sharedAnimationCache];
-        CCAction *animation = [CCAnimate actionWithAnimation: [ac animationByName: animationName]
-                                            restoreOriginalFrame: NO];
+        CCAction *animationIn = [CCAnimate actionWithAnimation: [ac animationByName: animationInName]
+                                          restoreOriginalFrame: NO];
+        CCAction *animationOut = [CCAnimate actionWithAnimation: [ac animationByName: animationOutName]
+                                           restoreOriginalFrame: NO];
         
         [fir runAction:
                 [CCSequence actions:
                                 [CCDelayTime actionWithDuration: 0.3f*i],
-                                animation,
+                                animationIn,
+                                [CCDelayTime actionWithDuration: 4.0f],
+                                animationOut,
                                 nil
                 ]
         ];

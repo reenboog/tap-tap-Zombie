@@ -64,6 +64,13 @@
                 award = 20*af;
             } break;
                 
+            case ZombieTypeTimeBonus: 
+            {
+                labelStr = @"time bonus"; 
+                c = ccc3(0, 255, 0);
+                award = 5.0f;
+            } break;
+                
             case ZombieTypeJumper:
             {
                 labelStr = @"jumper";

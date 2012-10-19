@@ -20,6 +20,8 @@
     CCProgressTimer *progressScale;
     CCLabelBMFont *scoreLabel;
     CCLabelBMFont *superModeLabel;
+    
+    CCLabelBMFont *timerLabel;
 }
 
 - (id) initWithDelegate: (id<HUDLayerDelegate>) delegate;
@@ -31,5 +33,8 @@
 - (void) updateSuperModeLabelWithValue: (int) value;
 - (void) showSuperModeLabel;
 - (void) hideSuperModeLabel;
+
+// for arcade game mode
+- (void) setTimerValue: (float) timer;
 
 @end

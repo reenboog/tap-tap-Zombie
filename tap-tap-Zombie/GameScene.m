@@ -21,9 +21,12 @@
 #import "MapCache.h"
 
 
+#define kTimeForArcadeGame 30.0f
+
 @interface GameScene()
 - (void) increaseSuperMode;
 - (void) dropSuperMode;
+- (void) reset;
 @end
 
 
@@ -31,6 +34,11 @@
 
 @synthesize isGameFailed;
 @synthesize score;
+@synthesize totalPerfectWavesCounter;
+@synthesize totalFailedWavesCounter;
+@synthesize longestPerfectCycleLength;
+@synthesize timer;
+@synthesize isArcadeGame;
 
 #pragma mark init and dealloc
 - (id) initWithMap: (Map *) map_
@@ -38,14 +46,16 @@
     if(self = [super init])
     {
         [[CCDirector sharedDirector] purgeCachedData];
+        
+        map = [map_ retain];
+        
+        isArcadeGame = map.index == 0;
 
-        gameLayer = [GameLayer gameLayerWithDelegate: self andMap: map_];
+        gameLayer = [GameLayer gameLayerWithDelegate: self andMap: map];
         [self addChild: gameLayer];
         
         hudLayer = [HUDLayer hudLayerWithDelegate: self];
         [self addChild: hudLayer];
-        
-        map = [map_ retain];
         
         float n = ((map.difficulty + 1.0f)/2.0f + 1.0f)*(25.0f + map.index);
         
@@ -53,6 +63,8 @@
         
         successIncrementValue = 100.0f/n;
         successDecrementValue = 1.0f + map.difficulty;
+        
+        [self reset];
         
         [self scheduleUpdate];
     }
@@ -72,15 +84,38 @@
     [super dealloc];
 }
 
+#pragma mark -
+
+#pragma mark reset
 - (void) reset
 {
     isGameOver = NO;
     success = 0;
     score = 0;
     isGameFailed = NO;
-    perfectWaves = 0;
+    superModePerfectWavesCounter = 0;
+    superModeFailedWavesCounter = 0;
     superMode = -1;
     superModeTimer = 0;
+    
+    totalPerfectWavesCounter = 0;
+    totalFailedWavesCounter = 0;
+    
+    longestPerfectCycleLength = 0;
+    currentPerfectCycleLength = 0;
+    
+    timer = isArcadeGame ? kTimeForArcadeGame : 0;
+}
+
+#pragma mark -
+
+#pragma mark onEnter
+- (void) onEnter
+{
+    [super onEnter];
+    
+    gameStatus.isStarted = YES;
+    gameStatus.isActive = YES;
 }
 
 #pragma mark -
@@ -107,6 +142,8 @@
     
     [hudLayer pauseSchedulerAndActionsWithChildren];
     [hudLayer disableWithChildren];
+    
+    gameStatus.isActive = NO;
 }
 
 - (void) popupDidFinishClosing:(CCPopupLayer *)popup
@@ -116,7 +153,11 @@
     
     [hudLayer resumeSchedulerAndActionsWithChildren];
     [hudLayer enableWithChildren];
+    
+    gameStatus.isActive = YES;
 }
+
+#pragma mark -
 
 #pragma mark HUDLayerDelegate methods implementation
 - (void) pause
@@ -139,7 +180,15 @@
 {
     [self reset];
     [gameLayer reset];
-    [hudLayer setProgressScaleValue: success];
+    
+    if(!isArcadeGame)
+    {
+        [hudLayer setProgressScaleValue: success];
+    }
+    else
+    {
+        [hudLayer setTimerValue: timer];
+    }
 }
 
 #pragma mark GameLayerDelegate methods implementation
@@ -155,6 +204,8 @@
 
 - (void) checkSuccess
 {
+    if(isArcadeGame) return;
+    
     success = success < kMinSuccess ? kMinSuccess : success > kMaxSuccess ? kMaxSuccess : success;
     
     [hudLayer setProgressScaleValue: success];
@@ -162,7 +213,7 @@
 
 - (void) increaseSuccess
 {
-    if(isGameOver) return;
+    if(isGameOver || isArcadeGame) return;
     
     success += successIncrementValue;
     [self checkSuccess];
@@ -170,7 +221,7 @@
 
 - (void) decreaseSuccess
 {
-    if(isGameOver) return;
+    if(isGameOver || isArcadeGame) return;
     
     success -= successDecrementValue;
     [self checkSuccess];
@@ -178,19 +229,37 @@
 
 - (void) updateGameState
 {
-    if((success == kMinSuccess) || (success == kMaxSuccess))
+    if(!isArcadeGame)
     {
-        [self gameOver];
+        if((success == kMinSuccess) || (success == kMaxSuccess))
+        {
+            [self gameOver];
+        }
+    }
+    else
+    {
+        if(timer <= 0)
+        {
+            [self gameOver];
+        }
     }
 }
 
 - (void) perfectWave
 {
-    perfectWaves++;
+    currentPerfectCycleLength++;
     
-    if(((superMode == -1) && (perfectWaves >= 4)) || 
-       ((superMode == 0) && (perfectWaves >= 6)) || 
-       ((superMode == 1) && (perfectWaves >= 8)))
+    if(longestPerfectCycleLength < currentPerfectCycleLength)
+    {
+        longestPerfectCycleLength = currentPerfectCycleLength;
+    }
+    
+    totalPerfectWavesCounter++;
+    superModePerfectWavesCounter++;
+    
+    if(((superMode == -1) && (superModePerfectWavesCounter >= 10)) || 
+       ((superMode == 0) && (superModePerfectWavesCounter >= 8)) || 
+       ((superMode == 1) && (superModePerfectWavesCounter >= 8)))
     {
         [self increaseSuperMode];
     }
@@ -198,14 +267,25 @@
 
 - (void) failedWave
 {
+    currentPerfectCycleLength = 0;
+    
+    totalFailedWavesCounter++;
+    
     if(superMode < 0) return;
     
-    failedWaves++;
+    superModeFailedWavesCounter++;
     
-    if(failedWaves > 2)
+    if(superModeFailedWavesCounter > 2)
     {
         [self dropSuperMode];
     }
+}
+
+- (void) addTimeBonus: (float) timeBonus
+{
+    assert(isArcadeGame);
+    
+    timer += timeBonus;
 }
 
 #pragma mark -
@@ -216,8 +296,8 @@
     if(superMode > 1) return;
     
     superMode++;
-    perfectWaves = 0;
-    failedWaves = 0;
+    superModePerfectWavesCounter = 0;
+    superModeFailedWavesCounter = 0;
     
     [hudLayer updateSuperModeLabelWithValue: superMode];
     
@@ -225,22 +305,28 @@
     {
         [hudLayer showSuperModeLabel];
         superModeTimer = 10.0f;
+        
+        if(isArcadeGame) [self addTimeBonus: 5.0f];
     }
     else if(superMode == 1)
     {
         superModeTimer = 10.0f;
+        
+        if(isArcadeGame) [self addTimeBonus: 5.0f];
     }
     else if(superMode == 2)
     {
         superModeTimer = 15.0f;
+        
+        if(isArcadeGame) [self addTimeBonus: 10.0f];
     }
 }
 
 - (void) dropSuperMode
 {
-    perfectWaves = 0;
+    superModePerfectWavesCounter = 0;
+    superModeFailedWavesCounter = 0;
     superMode = -1;
-    failedWaves = 0;
     
     [hudLayer hideSuperModeLabel];
 }
@@ -258,6 +344,18 @@
     }
     
     superModeTimer = superModeTimer < 0 ? 0 : superModeTimer;
+    
+    if(gameStatus.isActive)
+    {
+        timer += isArcadeGame ? -dt : dt;
+    }
+    
+    if(isArcadeGame)
+    {
+        timer = timer < 0 ? 0 : timer;
+        
+        [hudLayer setTimerValue: timer];
+    }
 }
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1909A4AC162EACA600F52B43 /* GameConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1909A4AB162EACA600F52B43 /* GameConfig.m */; };
 		191D0EE41626CCE000B6235B /* AnimationLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 191D0EE31626CCE000B6235B /* AnimationLoader.m */; };
 		191D0EEA1626F4C400B6235B /* waves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 191D0EE91626F4C400B6235B /* waves.plist */; };
 		1989073E161D767F002E47C0 /* TrapsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1989073D161D767F002E47C0 /* TrapsLayer.m */; };
@@ -169,6 +170,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1909A4AB162EACA600F52B43 /* GameConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameConfig.m; sourceTree = "<group>"; };
 		191D0EE21626CCE000B6235B /* AnimationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationLoader.h; sourceTree = "<group>"; };
 		191D0EE31626CCE000B6235B /* AnimationLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationLoader.m; sourceTree = "<group>"; };
 		191D0EE91626F4C400B6235B /* waves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = waves.plist; path = Resources/game/waves.plist; sourceTree = "<group>"; };
@@ -522,7 +524,7 @@
 			name = "Animation Loader";
 			sourceTree = "<group>";
 		};
-		19A5D90A1627FAE9006E4A95 /* New Group */ = {
+		19A5D90A1627FAE9006E4A95 /* WaveCache */ = {
 			isa = PBXGroup;
 			children = (
 				19A5D90C1627FB1F006E4A95 /* Wave.h */,
@@ -530,7 +532,7 @@
 				19A5D90F1627FB3A006E4A95 /* WaveCache.h */,
 				19A5D9101627FB3A006E4A95 /* WaveCache.m */,
 			);
-			name = "New Group";
+			name = WaveCache;
 			sourceTree = "<group>";
 		};
 		19BAA4DF161C825000A43A5F = {
@@ -944,6 +946,7 @@
 				19BAA6B2161C980300A43A5F /* Settings.h */,
 				19BAA6B3161C980300A43A5F /* Settings.m */,
 				19BAA659161C825400A43A5F /* GameConfig.h */,
+				1909A4AB162EACA600F52B43 /* GameConfig.m */,
 			);
 			name = "Config&Settings";
 			sourceTree = "<group>";
@@ -952,7 +955,7 @@
 			isa = PBXGroup;
 			children = (
 				191D0EE01626CCC000B6235B /* Animation Loader */,
-				19A5D90A1627FAE9006E4A95 /* New Group */,
+				19A5D90A1627FAE9006E4A95 /* WaveCache */,
 				19BAA69B161C8BAE00A43A5F /* MapCache */,
 				19BAA6A2161C8E4D00A43A5F /* Shop */,
 				19BAA67B161C84EB00A43A5F /* MainMenuScene */,
@@ -964,6 +967,7 @@
 		19BAA67B161C84EB00A43A5F /* MainMenuScene */ = {
 			isa = PBXGroup;
 			children = (
+				19BAA6AD161C8F2600A43A5F /* MapDifficultyPopup */,
 				19BAA67C161C84F500A43A5F /* GlobalMapLayer */,
 				19BAA67D161C855E00A43A5F /* MainMenuLayer.h */,
 				19BAA67E161C855E00A43A5F /* MainMenuLayer.m */,
@@ -974,7 +978,6 @@
 		19BAA67C161C84F500A43A5F /* GlobalMapLayer */ = {
 			isa = PBXGroup;
 			children = (
-				19BAA6AD161C8F2600A43A5F /* MapDifficultyPopup */,
 				19BAA680161C857100A43A5F /* GlobalMapLayer.h */,
 				19BAA681161C857100A43A5F /* GlobalMapLayer.m */,
 				19BAA698161C8A7E00A43A5F /* GlobalMapBackgroundLayer.h */,
@@ -1358,6 +1361,7 @@
 				19A5D9111627FB3A006E4A95 /* WaveCache.m in Sources */,
 				1995629A162AF6FF0030811F /* Background3.m in Sources */,
 				1995629B162AF6FF0030811F /* Background4.m in Sources */,
+				1909A4AC162EACA600F52B43 /* GameConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

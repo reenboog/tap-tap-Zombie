@@ -12,4 +12,6 @@
 
 @protocol GlobalMapLayerDelegate <CCPopupLayerDelegate>
 
+- (void) mapChanged: (int) mapIndex;
+
 @end

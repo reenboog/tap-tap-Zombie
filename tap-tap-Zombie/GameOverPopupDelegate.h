@@ -9,12 +9,6 @@
 #import <Foundation/Foundation.h>
 
 
-typedef struct 
-{
-    BOOL isFailed;
-} GameOverStatus;
-
-
 @protocol GameOverPopupDelegate <CCPopupLayerDelegate>
 
 - (void) restart;
@@ -22,5 +16,10 @@ typedef struct
 
 @property (nonatomic, readonly) BOOL isGameFailed;
 @property (nonatomic, readonly) float score;
+@property (nonatomic, readonly) int totalPerfectWavesCounter;
+@property (nonatomic, readonly) int totalFailedWavesCounter;
+@property (nonatomic, readonly) int longestPerfectCycleLength;
+@property (nonatomic, readonly) float timer;
+@property (nonatomic, readonly) BOOL isArcadeGame;
 
 @end

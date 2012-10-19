@@ -124,6 +124,7 @@
             case ZombieTypeJumper:
             case ZombieTypeShield:
             case ZombieTypeBonus:
+            case ZombieTypeTimeBonus:
             {
                 [zombie capture];
                 [traps activateTrapAtIndex: zombie.tag];
@@ -207,6 +208,11 @@
             [delegate giveAward: zombie.award];
         } break;
             
+        case ZombieTypeTimeBonus:
+        {
+            [delegate addTimeBonus: zombie.award];
+        } break;
+            
         case ZombieTypeShield:
         {
             [traps activateShieldModWithDuration: 5.0f];
@@ -257,9 +263,14 @@
 
 #pragma mark -
 
-- (NSArray *) getAllowedObjects
+- (NSSet *) getAllowedObjects
 {
-    NSMutableArray *a = [[NSMutableArray alloc] initWithCapacity: 5];
+    if(delegate.isArcadeGame)
+    {
+        return [NSSet setWithObjects: @"bad", @"jumper", @"bonus", @"timeBonus", @"shield", nil];
+    }
+    
+    NSMutableSet *a = [[NSMutableSet alloc] initWithCapacity: 5];
     
     [a addObject: @"bad"];
     
@@ -274,7 +285,7 @@
         [a addObject: @"shield"];
     }
     
-    NSArray *allowedObjects = [NSArray arrayWithArray: a];
+    NSSet *allowedObjects = [NSSet setWithSet: a];
     [a release];
     
     return allowedObjects;
@@ -315,7 +326,7 @@
 #pragma mark update
 - (void) updateDifficulty
 {
-    static int nextUpdate = 10; 
+    static int nextUpdate = 5; 
     
     if(wavesCounter%nextUpdate == 0)
     {
@@ -325,22 +336,26 @@
         }
         else
         {
-            if(arc4random()%2 > 0)
-            {
-                waveWeight++;
-            }
-            else if(arc4random()%4 == 0)
+            if(arc4random()%3 == 0)
             {
                 waveWeight--;
+            }
+            else if(arc4random()%6 == 0)
+            {
+                waveWeight -= 2;
+            }
+            else
+            {
+                waveWeight++;
             }
         }
         
         waveWeight = waveWeight < 1 ? 1 : waveWeight > map.nTracks ? map.nTracks : waveWeight;
         
-        nextUpdate = arc4random()%2 ? 5.0f : 10.0f;
+        nextUpdate = arc4random()%2 ? 5 : 10;
         if(waveWeight == map.nTracks)
         {
-            nextUpdate = 3.0f;
+            nextUpdate = 3;
         }
     }
 }

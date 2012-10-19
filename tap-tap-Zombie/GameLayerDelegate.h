@@ -20,4 +20,9 @@
 - (void) perfectWave;
 - (void) failedWave;
 
+// for arcade game mode
+- (void) addTimeBonus: (float) timeBonus;
+
+@property (nonatomic, readonly) BOOL isArcadeGame;
+
 @end

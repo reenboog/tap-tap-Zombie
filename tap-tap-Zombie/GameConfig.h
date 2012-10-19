@@ -63,5 +63,15 @@ typedef enum
     GameDifficultyVeryHard
 } GameDifficulty;
 
+typedef struct
+{
+    BOOL isStarted;
+    BOOL isActive;
+} GameStatus;
+extern GameStatus gameStatus;
+
+// return YES in one case from N
+extern BOOL chance(unsigned N);
+
 #endif // __GAME_CONFIG_H
 

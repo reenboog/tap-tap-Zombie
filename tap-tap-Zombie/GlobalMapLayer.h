@@ -14,16 +14,14 @@
 #import "GlobalMapLayerDelegate.h"
 
 
-#define kMaxFirs 3
+#define kMaxFirs 2
 
-@interface GlobalMapLayer : CCLayer <MapDifficultyPopupDelegate>
+@interface GlobalMapLayer : CCLayer
 {
     id<GlobalMapLayerDelegate> delegate;
     
     CCMenu *selectMapMenu;
 //    CCMenuItem *backBtn;
-    
-    int mapIndex;
     
     CCSprite *firs[kMaxFirs];
     BOOL isFirsShown;
