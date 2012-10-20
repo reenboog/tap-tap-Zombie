@@ -92,17 +92,7 @@
     if(isShieldModActivated) return;
         
     [light stopAllActions];
-    light.opacity = 255;
-    light.color = ccc3(255, 250, 65);
-    [light runAction: 
-                [CCRepeatForever actionWithAction:
-                                        [CCSequence actions:
-                                                        [CCFadeOut actionWithDuration: 0.5f],
-                                                        [CCFadeIn actionWithDuration: 0.3f],
-                                                        nil
-                                        ]
-                ]
-    ];
+    light.opacity = 0;
     
     backLight.color = ccc3(255, 250, 65);
 }

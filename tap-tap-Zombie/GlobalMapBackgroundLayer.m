@@ -69,7 +69,7 @@ static CCSprite *movableSprite = nil;
 - (void) updateClouds: (ccTime) dt
 {
     static float shift = 0;
-    shift += 24.0f*dt;
+    shift += 16.0f*dt;
     if(shift > clouds.contentSize.width)
     {
         shift = shift - clouds.contentSize.width;

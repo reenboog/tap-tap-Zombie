@@ -4,10 +4,88 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>evilDoctorEyes0.png</key>
+            <key>evilDoctorAfterGhost0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,794},{387,393}}</string>
+                <string>{{2,1205},{387,399}}</string>
+                <key>offset</key>
+                <string>{-4,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,2},{387,399}}</string>
+                <key>sourceSize</key>
+                <string>{395,401}</string>
+            </dict>
+            <key>evilDoctorAfterGhost1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,804},{387,399}}</string>
+                <key>offset</key>
+                <string>{-4,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,2},{387,399}}</string>
+                <key>sourceSize</key>
+                <string>{395,401}</string>
+            </dict>
+            <key>evilDoctorAfterGhost2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,403},{387,399}}</string>
+                <key>offset</key>
+                <string>{-4,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,2},{387,399}}</string>
+                <key>sourceSize</key>
+                <string>{395,401}</string>
+            </dict>
+            <key>evilDoctorAfterGhost3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{387,399}}</string>
+                <key>offset</key>
+                <string>{-4,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,2},{387,399}}</string>
+                <key>sourceSize</key>
+                <string>{395,401}</string>
+            </dict>
+            <key>evilDoctorAfterGhost4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{391,2},{387,397}}</string>
+                <key>offset</key>
+                <string>{-4,-2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,4},{387,397}}</string>
+                <key>sourceSize</key>
+                <string>{395,401}</string>
+            </dict>
+            <key>evilDoctorAfterGhost5.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,1606},{387,397}}</string>
+                <key>offset</key>
+                <string>{-4,-2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,4},{387,397}}</string>
+                <key>sourceSize</key>
+                <string>{395,401}</string>
+            </dict>
+            <key>evilDoctorAfterGhost6.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{391,1576},{387,393}}</string>
                 <key>offset</key>
                 <string>{-4,-4}</string>
                 <key>rotated</key>
@@ -17,10 +95,62 @@
                 <key>sourceSize</key>
                 <string>{395,401}</string>
             </dict>
-            <key>evilDoctorEyes1.png</key>
+            <key>evilDoctorAfterGhost7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{782,2},{387,393}}</string>
+                <string>{{391,1181},{387,393}}</string>
+                <key>offset</key>
+                <string>{-4,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,8},{387,393}}</string>
+                <key>sourceSize</key>
+                <string>{395,401}</string>
+            </dict>
+            <key>evilDoctorBecomesGhost0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{391,786},{387,393}}</string>
+                <key>offset</key>
+                <string>{-4,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,8},{387,393}}</string>
+                <key>sourceSize</key>
+                <string>{395,401}</string>
+            </dict>
+            <key>evilDoctorBecomesGhost1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{391,391},{387,393}}</string>
+                <key>offset</key>
+                <string>{-4,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,8},{387,393}}</string>
+                <key>sourceSize</key>
+                <string>{395,401}</string>
+            </dict>
+            <key>evilDoctorBecomesGhost10.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1570,760},{307,393}}</string>
+                <key>offset</key>
+                <string>{36,-4}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{80,8},{307,393}}</string>
+                <key>sourceSize</key>
+                <string>{395,401}</string>
+            </dict>
+            <key>evilDoctorBecomesGhost2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1580,2},{387,393}}</string>
                 <key>offset</key>
                 <string>{-4,-4}</string>
                 <key>rotated</key>
@@ -30,23 +160,10 @@
                 <key>sourceSize</key>
                 <string>{395,401}</string>
             </dict>
-            <key>evilDoctorEyes2.png</key>
+            <key>evilDoctorBecomesGhost3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,399},{387,393}}</string>
-                <key>offset</key>
-                <string>{-4,-4}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
-                <key>sourceSize</key>
-                <string>{395,401}</string>
-            </dict>
-            <key>evilDoctorEyes3.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{1572,391},{387,393}}</string>
+                <string>{{1185,2},{387,393}}</string>
                 <key>offset</key>
                 <string>{-4,-4}</string>
                 <key>rotated</key>
@@ -56,10 +173,10 @@
                 <key>sourceSize</key>
                 <string>{395,401}</string>
             </dict>
-            <key>evilDoctorLaugh0.png</key>
+            <key>evilDoctorBecomesGhost4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1177,391},{387,393}}</string>
+                <string>{{790,2},{387,393}}</string>
                 <key>offset</key>
                 <string>{-4,-4}</string>
                 <key>rotated</key>
@@ -69,211 +186,81 @@
                 <key>sourceSize</key>
                 <string>{395,401}</string>
             </dict>
-            <key>evilDoctorLaugh1.png</key>
+            <key>evilDoctorBecomesGhost5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{389,395}}</string>
+                <string>{{780,391},{379,393}}</string>
                 <key>offset</key>
-                <string>{-3,-3}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,6},{389,395}}</string>
-                <key>sourceSize</key>
-                <string>{395,401}</string>
-            </dict>
-            <key>evilDoctorLaugh2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{782,391},{387,393}}</string>
-                <key>offset</key>
-                <string>{-4,-4}</string>
+                <string>{0,-4}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
+                <string>{{8,8},{379,393}}</string>
                 <key>sourceSize</key>
                 <string>{395,401}</string>
             </dict>
-            <key>evilDoctorLaugh3.png</key>
+            <key>evilDoctorBecomesGhost6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1572,2},{387,393}}</string>
+                <string>{{1570,391},{367,393}}</string>
                 <key>offset</key>
-                <string>{-4,-4}</string>
+                <string>{6,-4}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
+                <string>{{20,8},{367,393}}</string>
                 <key>sourceSize</key>
                 <string>{395,401}</string>
             </dict>
-            <key>evilDoctorLaugh4.png</key>
+            <key>evilDoctorBecomesGhost7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1177,2},{387,393}}</string>
+                <string>{{1175,391},{367,393}}</string>
                 <key>offset</key>
-                <string>{-4,-4}</string>
+                <string>{6,-4}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
+                <string>{{20,8},{367,393}}</string>
                 <key>sourceSize</key>
                 <string>{395,401}</string>
             </dict>
-            <key>evilDoctorLaugh5.png</key>
+            <key>evilDoctorBecomesGhost8.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{780,780},{387,387}}</string>
+                <string>{{780,772},{361,393}}</string>
                 <key>offset</key>
-                <string>{-4,-7}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,14},{387,387}}</string>
-                <key>sourceSize</key>
-                <string>{395,401}</string>
-            </dict>
-            <key>evilDoctorLaugh6.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{780,1169},{387,385}}</string>
-                <key>offset</key>
-                <string>{-4,-8}</string>
+                <string>{9,-4}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,16},{387,385}}</string>
+                <string>{{26,8},{361,393}}</string>
                 <key>sourceSize</key>
                 <string>{395,401}</string>
             </dict>
-            <key>evilDoctorLaugh7.png</key>
+            <key>evilDoctorBecomesGhost9.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{780,780},{387,387}}</string>
+                <string>{{1175,760},{361,393}}</string>
                 <key>offset</key>
-                <string>{-4,-7}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,14},{387,387}}</string>
-                <key>sourceSize</key>
-                <string>{395,401}</string>
-            </dict>
-            <key>evilDoctorLaugh8.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{1177,2},{387,393}}</string>
-                <key>offset</key>
-                <string>{-4,-4}</string>
+                <string>{9,-4}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
+                <string>{{26,8},{361,393}}</string>
                 <key>sourceSize</key>
                 <string>{395,401}</string>
             </dict>
-            <key>evilDoctorStand0.png</key>
+            <key>evilDoctorGhost0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{782,2},{387,393}}</string>
+                <string>{{1570,760},{307,393}}</string>
                 <key>offset</key>
-                <string>{-4,-4}</string>
+                <string>{36,-4}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
-                <key>sourceSize</key>
-                <string>{395,401}</string>
-            </dict>
-            <key>evilDoctorSwitch0.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{391,1584},{387,393}}</string>
-                <key>offset</key>
-                <string>{-4,-4}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
-                <key>sourceSize</key>
-                <string>{395,401}</string>
-            </dict>
-            <key>evilDoctorSwitch1.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{391,1189},{387,393}}</string>
-                <key>offset</key>
-                <string>{-4,-4}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
-                <key>sourceSize</key>
-                <string>{395,401}</string>
-            </dict>
-            <key>evilDoctorSwitch2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{391,794},{387,393}}</string>
-                <key>offset</key>
-                <string>{-4,-4}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
-                <key>sourceSize</key>
-                <string>{395,401}</string>
-            </dict>
-            <key>evilDoctorSwitch3.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{393,2},{387,393}}</string>
-                <key>offset</key>
-                <string>{-4,-4}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
-                <key>sourceSize</key>
-                <string>{395,401}</string>
-            </dict>
-            <key>evilDoctorSwitch4.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{391,399},{387,393}}</string>
-                <key>offset</key>
-                <string>{-4,-4}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
-                <key>sourceSize</key>
-                <string>{395,401}</string>
-            </dict>
-            <key>evilDoctorSwitch5.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,1584},{387,393}}</string>
-                <key>offset</key>
-                <string>{-4,-4}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
-                <key>sourceSize</key>
-                <string>{395,401}</string>
-            </dict>
-            <key>evilDoctorSwitch6.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,1189},{387,393}}</string>
-                <key>offset</key>
-                <string>{-4,-4}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,8},{387,393}}</string>
+                <string>{{80,8},{307,393}}</string>
                 <key>sourceSize</key>
                 <string>{395,401}</string>
             </dict>
@@ -283,13 +270,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>evilDoctor-hd.png</string>
+            <string>evilDoctorGhost-hd.png</string>
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8ab0164b04e3b3cb50af0fd6fc9a03f7$</string>
+            <string>$TexturePacker:SmartUpdate:f3cdc78f1c36277daa8bd27950be3b32$</string>
             <key>textureFileName</key>
-            <string>evilDoctor-hd.png</string>
+            <string>evilDoctorGhost-hd.png</string>
         </dict>
     </dict>
 </plist>

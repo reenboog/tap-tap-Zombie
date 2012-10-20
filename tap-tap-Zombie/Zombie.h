@@ -42,6 +42,8 @@ typedef enum
     float award;
     
     ZombieType type;
+    
+    int skinIndex;
 }
 
 @property (nonatomic, readonly) BOOL onFinish;

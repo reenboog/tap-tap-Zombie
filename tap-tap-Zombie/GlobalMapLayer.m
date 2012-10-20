@@ -66,7 +66,7 @@ static CCSprite *movableSprite = nil;
             item.position = ccp(p.x, p.y);
             item.scale = 0;
             
-            BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: i].isPassed;
+            BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: item.tag].isPassed;
             if(!isMapPassed)
             {
                 if(isOldMapPassed)
@@ -81,6 +81,12 @@ static CCSprite *movableSprite = nil;
             
             isOldMapPassed = isMapPassed;
         }
+        
+        // global map's background top layer
+        CCSprite *backgroundTop = [CCSprite spriteWithFile: @"globalMap/globalMapTop.png"];
+        backgroundTop.anchorPoint = ccp(0, 0);
+        backgroundTop.position = ccp(0, 0);
+        [self addChild: backgroundTop];
         
         // firs
         CGPoint positions[kMaxFirs] = {ccp(429, 162), /*ccp(387, 154),*/ ccp(472, 139)};
@@ -121,11 +127,12 @@ static CCSprite *movableSprite = nil;
     int mapIndex = sender.tag;
     
     BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex].isPassed;
-    BOOL isOldMapPassed = mapIndex > 1 ? [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex].isPassed : YES;
+    BOOL isOldMapPassed = mapIndex > 1 ? [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex - 1].isPassed : YES;
     
-    if((!isMapPassed && !isOldMapPassed)) return;
-    
-    [delegate mapChanged: mapIndex];
+    if(isOldMapPassed || isMapPassed)
+    {
+        [delegate mapChanged: mapIndex];
+    }
 }
 
 #pragma mark -
