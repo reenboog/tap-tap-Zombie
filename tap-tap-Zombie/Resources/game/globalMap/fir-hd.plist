@@ -7,6 +7,19 @@
             <key>firDisappearence00.png</key>
             <dict>
                 <key>frame</key>
+                <string>{{202,161},{0,0}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{0,0}}</string>
+                <key>sourceSize</key>
+                <string>{153,200}</string>
+            </dict>
+            <key>firDisappearence01.png</key>
+            <dict>
+                <key>frame</key>
                 <string>{{111,592},{27,28}}</string>
                 <key>offset</key>
                 <string>{4,-84}</string>
@@ -17,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firDisappearence01.png</key>
+            <key>firDisappearence02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{383,724},{57,56}}</string>
@@ -30,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firDisappearence02.png</key>
+            <key>firDisappearence03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{442,740},{67,72}}</string>
@@ -43,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firDisappearence03.png</key>
+            <key>firDisappearence04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{346,626},{97,96}}</string>
@@ -56,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firDisappearence04.png</key>
+            <key>firDisappearence05.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{390,245},{107,120}}</string>
@@ -69,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firDisappearence05.png</key>
+            <key>firDisappearence06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{350,485},{139,152}}</string>
@@ -82,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firDisappearence06.png</key>
+            <key>firDisappearence07.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{202,298},{149,174}}</string>
@@ -95,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firDisappearence07.png</key>
+            <key>firDisappearence08.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,161},{151,198}}</string>
@@ -111,6 +124,19 @@
             <key>firDisappearence10.png</key>
             <dict>
                 <key>frame</key>
+                <string>{{202,161},{0,0}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{0,0}}</string>
+                <key>sourceSize</key>
+                <string>{167,200}</string>
+            </dict>
+            <key>firDisappearence11.png</key>
+            <dict>
+                <key>frame</key>
                 <string>{{305,608},{39,28}}</string>
                 <key>offset</key>
                 <string>{1,-86}</string>
@@ -121,7 +147,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firDisappearence11.png</key>
+            <key>firDisappearence12.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{445,626},{65,50}}</string>
@@ -134,7 +160,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firDisappearence12.png</key>
+            <key>firDisappearence13.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,592},{107,82}}</string>
@@ -147,7 +173,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firDisappearence13.png</key>
+            <key>firDisappearence14.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{404,2},{117,104}}</string>
@@ -160,7 +186,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firDisappearence14.png</key>
+            <key>firDisappearence15.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{378,354},{129,130}}</string>
@@ -173,7 +199,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firDisappearence15.png</key>
+            <key>firDisappearence16.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{154,576},{149,148}}</string>
@@ -186,7 +212,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firDisappearence16.png</key>
+            <key>firDisappearence17.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,314},{149,172}}</string>
@@ -199,7 +225,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firDisappearence17.png</key>
+            <key>firDisappearence18.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{204,2},{167,198}}</string>
@@ -215,6 +241,19 @@
             <key>firDisappearence20.png</key>
             <dict>
                 <key>frame</key>
+                <string>{{202,161},{0,0}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{0,0}}</string>
+                <key>sourceSize</key>
+                <string>{157,200}</string>
+            </dict>
+            <key>firDisappearence21.png</key>
+            <dict>
+                <key>frame</key>
                 <string>{{305,576},{39,30}}</string>
                 <key>offset</key>
                 <string>{-9,-85}</string>
@@ -225,7 +264,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firDisappearence21.png</key>
+            <key>firDisappearence22.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{445,678},{61,60}}</string>
@@ -238,7 +277,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firDisappearence22.png</key>
+            <key>firDisappearence23.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{305,724},{75,76}}</string>
@@ -251,7 +290,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firDisappearence23.png</key>
+            <key>firDisappearence24.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,676},{99,94}}</string>
@@ -264,7 +303,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firDisappearence24.png</key>
+            <key>firDisappearence25.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{404,121},{103,122}}</string>
@@ -277,7 +316,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firDisappearence25.png</key>
+            <key>firDisappearence26.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,465},{125,150}}</string>
@@ -290,7 +329,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firDisappearence26.png</key>
+            <key>firDisappearence27.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{176,449},{125,172}}</string>
@@ -303,7 +342,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firDisappearence27.png</key>
+            <key>firDisappearence28.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{202,171},{125,186}}</string>
@@ -316,7 +355,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firDisappearence28.png</key>
+            <key>firDisappearence29.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{157,200}}</string>
@@ -332,6 +371,19 @@
             <key>firEmergence00.png</key>
             <dict>
                 <key>frame</key>
+                <string>{{202,161},{0,0}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{0,0}}</string>
+                <key>sourceSize</key>
+                <string>{153,200}</string>
+            </dict>
+            <key>firEmergence01.png</key>
+            <dict>
+                <key>frame</key>
                 <string>{{111,592},{27,28}}</string>
                 <key>offset</key>
                 <string>{4,-84}</string>
@@ -342,7 +394,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firEmergence01.png</key>
+            <key>firEmergence02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{383,724},{57,56}}</string>
@@ -355,7 +407,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firEmergence02.png</key>
+            <key>firEmergence03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{442,740},{67,72}}</string>
@@ -368,7 +420,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firEmergence03.png</key>
+            <key>firEmergence04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{346,626},{97,96}}</string>
@@ -381,7 +433,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firEmergence04.png</key>
+            <key>firEmergence05.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{390,245},{107,120}}</string>
@@ -394,7 +446,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firEmergence05.png</key>
+            <key>firEmergence06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{350,485},{139,152}}</string>
@@ -407,7 +459,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firEmergence06.png</key>
+            <key>firEmergence07.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{202,298},{149,174}}</string>
@@ -420,7 +472,7 @@
                 <key>sourceSize</key>
                 <string>{153,200}</string>
             </dict>
-            <key>firEmergence07.png</key>
+            <key>firEmergence08.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,161},{151,198}}</string>
@@ -436,6 +488,19 @@
             <key>firEmergence10.png</key>
             <dict>
                 <key>frame</key>
+                <string>{{202,161},{0,0}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{0,0}}</string>
+                <key>sourceSize</key>
+                <string>{167,200}</string>
+            </dict>
+            <key>firEmergence11.png</key>
+            <dict>
+                <key>frame</key>
                 <string>{{305,608},{39,28}}</string>
                 <key>offset</key>
                 <string>{1,-86}</string>
@@ -446,7 +511,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firEmergence11.png</key>
+            <key>firEmergence12.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{445,626},{65,50}}</string>
@@ -459,7 +524,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firEmergence12.png</key>
+            <key>firEmergence13.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,592},{107,82}}</string>
@@ -472,7 +537,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firEmergence13.png</key>
+            <key>firEmergence14.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{404,2},{117,104}}</string>
@@ -485,7 +550,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firEmergence14.png</key>
+            <key>firEmergence15.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{378,354},{129,130}}</string>
@@ -498,7 +563,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firEmergence15.png</key>
+            <key>firEmergence16.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{154,576},{149,148}}</string>
@@ -511,7 +576,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firEmergence16.png</key>
+            <key>firEmergence17.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,314},{149,172}}</string>
@@ -524,7 +589,7 @@
                 <key>sourceSize</key>
                 <string>{167,200}</string>
             </dict>
-            <key>firEmergence17.png</key>
+            <key>firEmergence18.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{204,2},{167,198}}</string>
@@ -540,6 +605,19 @@
             <key>firEmergence20.png</key>
             <dict>
                 <key>frame</key>
+                <string>{{202,161},{0,0}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{0,0}}</string>
+                <key>sourceSize</key>
+                <string>{157,200}</string>
+            </dict>
+            <key>firEmergence21.png</key>
+            <dict>
+                <key>frame</key>
                 <string>{{305,576},{39,30}}</string>
                 <key>offset</key>
                 <string>{-9,-85}</string>
@@ -550,7 +628,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firEmergence21.png</key>
+            <key>firEmergence22.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{445,678},{61,60}}</string>
@@ -563,7 +641,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firEmergence22.png</key>
+            <key>firEmergence23.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{305,724},{75,76}}</string>
@@ -576,7 +654,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firEmergence23.png</key>
+            <key>firEmergence24.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,676},{99,94}}</string>
@@ -589,7 +667,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firEmergence24.png</key>
+            <key>firEmergence25.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{404,121},{103,122}}</string>
@@ -602,7 +680,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firEmergence25.png</key>
+            <key>firEmergence26.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,465},{125,150}}</string>
@@ -615,7 +693,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firEmergence26.png</key>
+            <key>firEmergence27.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{176,449},{125,172}}</string>
@@ -628,7 +706,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firEmergence27.png</key>
+            <key>firEmergence28.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{202,171},{125,186}}</string>
@@ -641,7 +719,7 @@
                 <key>sourceSize</key>
                 <string>{157,200}</string>
             </dict>
-            <key>firEmergence28.png</key>
+            <key>firEmergence29.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{157,200}}</string>
@@ -664,7 +742,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ec75e1dad48facdeadff061682ac3507$</string>
+            <string>$TexturePacker:SmartUpdate:8c6fdd11b53b1d43af1abe361d55e3aa$</string>
             <key>textureFileName</key>
             <string>fir-hd.png</string>
         </dict>

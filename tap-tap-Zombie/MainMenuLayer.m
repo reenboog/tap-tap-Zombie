@@ -44,6 +44,10 @@
 {
     [[CCTextureCache sharedTextureCache] addImage: @"mainMenu/evilDoctor.png"];
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctor.plist"];
+    [[CCTextureCache sharedTextureCache] addImage: @"mainMenu/evilDoctorGhost.png"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctorGhost.plist"];
+    [[CCTextureCache sharedTextureCache] addImage: @"mainMenu/evilDoctorGhost1.png"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctorGhost1.plist"];
     
     [AnimationLoader loadAnimationsWithPlist: @"mainMenu/animations"];
 }
@@ -210,6 +214,7 @@
 - (void) runRandomAnimation
 {
     CCAnimationCache *ac = [CCAnimationCache sharedAnimationCache];
+    
     CCFiniteTimeAction *animation = nil;
     
     int dice = arc4random()%3;
@@ -241,22 +246,59 @@
                         ]
             ];
             
-            if(arc4random()%2 == 0)
+            int d = arc4random()%20;
+            
+            if(d < 8)
             {
                 [globalMap showFirs];
             }
-            
-            if(arc4random()%4 == 0)
+            else if(d < 13)
             {
                 [blackOut runAction:
                                 [CCSequence actions:
                                                 [CCDelayTime actionWithDuration: 0.5f],
-                                                [CCFadeTo actionWithDuration: 0.06f opacity: 200],
-                                                [CCDelayTime actionWithDuration: 0.5f],
+                                                [CCFadeTo actionWithDuration: 0.06f opacity: 255],
+                                                [CCDelayTime actionWithDuration: 0.06f],
+                                                [CCFadeTo actionWithDuration: 0.06f opacity: 0],
+                                                [CCDelayTime actionWithDuration: 0.06f],
+                                                [CCFadeTo actionWithDuration: 0.06f opacity: 255],
+                                                [CCDelayTime actionWithDuration: 0.06f],
                                                 [CCFadeTo actionWithDuration: 0.06f opacity: 0],
                                                 nil
                                 ]
                 ];
+            }
+            else if(d < 18)
+            {
+                CCFiniteTimeAction *becomesGhost = [CCAnimate actionWithAnimation: [ac animationByName: @"evilDoctorBecomesGhost"]
+                                                             restoreOriginalFrame: NO];
+                CCFiniteTimeAction *ghost = [CCAnimate actionWithAnimation: [ac animationByName: @"evilDoctorGhost"]
+                                                      restoreOriginalFrame: NO];
+                CCFiniteTimeAction *afterGhost = [CCAnimate actionWithAnimation: [ac animationByName: @"evilDoctorAfterGhost"]
+                                                           restoreOriginalFrame: NO];
+                CCFiniteTimeAction *becomesHuman = [CCAnimate actionWithAnimation: [ac animationByName: @"evilDoctorBecomesHuman"]
+                                                             restoreOriginalFrame: NO];
+                
+                CCFiniteTimeAction *ghostAnimation = [CCSequence actions:
+                        animation,
+                        becomesGhost,
+                        ghost,
+                        becomesHuman,
+                        afterGhost,
+                        nil
+                ];
+                
+                
+                [evilDoctor runAction:
+                                [CCSequence actions:
+                                                ghostAnimation,
+                                                [CCDelayTime actionWithDuration: 0.5f],
+                                                [CCCallFunc actionWithTarget: self selector: @selector(runRandomAnimation)],
+                                                nil
+                                ]
+                ];
+                
+                return;
             }
         } break;
     }

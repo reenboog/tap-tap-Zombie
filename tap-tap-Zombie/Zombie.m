@@ -6,9 +6,11 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "GameConfig.h"
+
 #import "Zombie.h"
 
-#import "GameConfig.h"
+#import "AnimationLoader.h"
 
 
 @interface Zombie()
@@ -26,6 +28,14 @@
 @synthesize award;
 @synthesize type;
 
++ (void) initialize
+{
+    [[CCTextureCache sharedTextureCache] addImage: @"zombies/zombies.png"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"zombies/zombies.plist"];
+    
+    [AnimationLoader loadAnimationsWithPlist: @"zombies/animations"];
+}
+
 #pragma mark init and dealloc
 - (id) initWithDelegate: (id<ZombieDelegate>) delegate_  type: (ZombieType) type_ awardFactor: (float) af
 {
@@ -34,8 +44,8 @@
         delegate = delegate_;
         type = type_;
         
-        int zombieType = arc4random()%4;
-        sprite = [CCSprite spriteWithFile: [NSString stringWithFormat: @"zombies/zombie%i.png", zombieType]];
+        skinIndex = arc4random()%4;
+        sprite = [CCSprite node];
         sprite.anchorPoint = ccp(0.5f, 0);
         [self addChild: sprite];
         
@@ -160,7 +170,7 @@
     
     onFinish = YES;
     
-    [self stopAllActions];
+//    [self stopAllActions];
     
     [self runAction:
                 [CCSequence actions:
@@ -228,6 +238,14 @@
     ];
     
     [self moveToNextKeyPoint];
+    
+    NSString *animationName = [NSString stringWithFormat: @"zombieMoving%i", skinIndex];
+    CCAnimate *movingAnimation = [CCAnimate actionWithAnimation: 
+                                                    [[CCAnimationCache sharedAnimationCache] animationByName: animationName]
+                                          restoreOriginalFrame: NO];
+    [sprite runAction:
+                [CCRepeatForever actionWithAction: movingAnimation]
+    ];
 }
 
 - (void) capture
