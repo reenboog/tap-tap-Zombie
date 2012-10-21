@@ -103,6 +103,11 @@
         isStarting = NO;
         onFinish = NO;
         isCaptured = NO;
+        
+        sprite.scale = 1;
+        sprite.opacity = 0;
+        
+        self.scale = 0.2f;
     }
     
     return self;
@@ -223,18 +228,28 @@
     
     self.position = [[keyPoints objectAtIndex: nCurrentKeyPoint] CGPointValue];
     
-    sprite.scale = 0.2f;
-    sprite.opacity = 0;
-    
     [sprite runAction:
                     [CCSpawn actions:
                                     [CCFadeIn actionWithDuration: 0.3f],
-                                    [CCEaseSineIn actionWithAction: 
-                                                            [CCScaleTo actionWithDuration: movingTime 
-                                                                                    scale: 0.8f]
-                                    ],
                                     nil
                     ]
+    ];
+    
+    [sprite runAction:
+                [CCRepeatForever actionWithAction:
+                                    [CCSequence actions:
+                                                    [CCScaleTo actionWithDuration: 0.25f scaleX: 0.95f scaleY: 1.05f],
+                                                    [CCScaleBy actionWithDuration: 0.25f scaleX: 1.05f scaleY: 0.95f],
+                                                    nil
+                                    ]
+                ]
+    ];
+    
+    [self runAction:
+                [CCEaseSineIn actionWithAction: 
+                                        [CCScaleTo actionWithDuration: movingTime 
+                                                                scale: 0.8f]
+                ] 
     ];
     
     [self moveToNextKeyPoint];
