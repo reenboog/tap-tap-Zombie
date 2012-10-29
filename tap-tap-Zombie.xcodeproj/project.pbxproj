@@ -15,6 +15,8 @@
 		19890746161D8B56002E47C0 /* GameOverPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19890745161D8B56002E47C0 /* GameOverPopup.m */; };
 		1995629A162AF6FF0030811F /* Background3.m in Sources */ = {isa = PBXBuildFile; fileRef = 19956297162AF6FF0030811F /* Background3.m */; };
 		1995629B162AF6FF0030811F /* Background4.m in Sources */ = {isa = PBXBuildFile; fileRef = 19956299162AF6FF0030811F /* Background4.m */; };
+		199620FF163E7BE0005A52D3 /* GameLoadingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 199620FE163E7BE0005A52D3 /* GameLoadingScene.m */; };
+		19962104163E871C005A52D3 /* MainMenuLoadingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 19962103163E871C005A52D3 /* MainMenuLoadingScene.m */; };
 		19A5D90E1627FB1F006E4A95 /* Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D90D1627FB1F006E4A95 /* Wave.m */; };
 		19A5D9111627FB3A006E4A95 /* WaveCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D9101627FB3A006E4A95 /* WaveCache.m */; };
 		19BAA4EF161C825100A43A5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BAA4EE161C825100A43A5F /* QuartzCore.framework */; };
@@ -186,6 +188,10 @@
 		19956297162AF6FF0030811F /* Background3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background3.m; sourceTree = "<group>"; };
 		19956298162AF6FF0030811F /* Background4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background4.h; sourceTree = "<group>"; };
 		19956299162AF6FF0030811F /* Background4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background4.m; sourceTree = "<group>"; };
+		199620FE163E7BE0005A52D3 /* GameLoadingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLoadingScene.m; sourceTree = "<group>"; };
+		19962100163E7ED0005A52D3 /* GameLoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLoadingScene.h; sourceTree = "<group>"; };
+		19962102163E871C005A52D3 /* MainMenuLoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLoadingScene.h; sourceTree = "<group>"; };
+		19962103163E871C005A52D3 /* MainMenuLoadingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuLoadingScene.m; sourceTree = "<group>"; };
 		19A5D90C1627FB1F006E4A95 /* Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wave.h; sourceTree = "<group>"; };
 		19A5D90D1627FB1F006E4A95 /* Wave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wave.m; sourceTree = "<group>"; };
 		19A5D90F1627FB3A006E4A95 /* WaveCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveCache.h; sourceTree = "<group>"; };
@@ -522,6 +528,24 @@
 				191D0EE31626CCE000B6235B /* AnimationLoader.m */,
 			);
 			name = "Animation Loader";
+			sourceTree = "<group>";
+		};
+		199620F9163E7B63005A52D3 /* GameLoadingScene */ = {
+			isa = PBXGroup;
+			children = (
+				19962100163E7ED0005A52D3 /* GameLoadingScene.h */,
+				199620FE163E7BE0005A52D3 /* GameLoadingScene.m */,
+			);
+			name = GameLoadingScene;
+			sourceTree = "<group>";
+		};
+		19962101163E8701005A52D3 /* MainMenuLoadingScene */ = {
+			isa = PBXGroup;
+			children = (
+				19962102163E871C005A52D3 /* MainMenuLoadingScene.h */,
+				19962103163E871C005A52D3 /* MainMenuLoadingScene.m */,
+			);
+			name = MainMenuLoadingScene;
 			sourceTree = "<group>";
 		};
 		19A5D90A1627FAE9006E4A95 /* WaveCache */ = {
@@ -958,6 +982,8 @@
 				19A5D90A1627FAE9006E4A95 /* WaveCache */,
 				19BAA69B161C8BAE00A43A5F /* MapCache */,
 				19BAA6A2161C8E4D00A43A5F /* Shop */,
+				199620F9163E7B63005A52D3 /* GameLoadingScene */,
+				19962101163E8701005A52D3 /* MainMenuLoadingScene */,
 				19BAA67B161C84EB00A43A5F /* MainMenuScene */,
 				19BAA6BA161C9DE000A43A5F /* GameScene */,
 			);
@@ -1362,6 +1388,8 @@
 				1995629A162AF6FF0030811F /* Background3.m in Sources */,
 				1995629B162AF6FF0030811F /* Background4.m in Sources */,
 				1909A4AC162EACA600F52B43 /* GameConfig.m in Sources */,
+				199620FF163E7BE0005A52D3 /* GameLoadingScene.m in Sources */,
+				19962104163E871C005A52D3 /* MainMenuLoadingScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1408,19 +1436,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey McLeod (ZKHCZ235BN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeffrey McLeod (ZKHCZ235BN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matt Weight (RW443MMV8G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matt Weight (RW443MMV8G)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tap-tap-Zombie/Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "tap-tap-Zombie/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2936297B-67B8-4EA2-95F1-5E041F021B30";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2936297B-67B8-4EA2-95F1-5E041F021B30";
+				PROVISIONING_PROFILE = "45BDAF01-061C-4388-B8CC-EBB5A59B6648";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "45BDAF01-061C-4388-B8CC-EBB5A59B6648";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1429,18 +1457,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: McLeod Agency, Inc.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: McLeod Agency, Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matt Weight (RW443MMV8G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matt Weight (RW443MMV8G)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tap-tap-Zombie/Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "tap-tap-Zombie/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2C4D1E08-9B74-4DC0-A5F6-85A1FCE813B9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C4D1E08-9B74-4DC0-A5F6-85A1FCE813B9";
+				PROVISIONING_PROFILE = "45BDAF01-061C-4388-B8CC-EBB5A59B6648";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "45BDAF01-061C-4388-B8CC-EBB5A59B6648";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

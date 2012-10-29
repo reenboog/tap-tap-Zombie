@@ -138,6 +138,7 @@ NSArray* parseTracks(NSArray *tracks)
         {
             NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
             [dict setObject: [NSNumber numberWithBool: NO] forKey: @"isPassed"];
+            [dict setObject: [NSNumber numberWithFloat: 0] forKey: @"score"];
             
             [data addObject: dict];
             
@@ -165,6 +166,7 @@ NSArray* parseTracks(NSArray *tracks)
     {
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         [dict setObject: [NSNumber numberWithBool: mi.isPassed] forKey: @"isPassed"];
+        [dict setObject: [NSNumber numberWithBool: mi.score] forKey: @"score"];
         
         [data addObject: dict];
         

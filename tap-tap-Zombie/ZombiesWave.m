@@ -74,8 +74,6 @@ static void shuffleArray(int *arr, int size)
             
             if([path count] > 1)
             {
-                zombieType = ZombieTypeJumper;
-                
                 NSMutableArray *kp = [[NSMutableArray alloc] init];
                 float h = [[keyPoints objectAtIndex: 0] CGPointValue].y - [[keyPoints lastObject] CGPointValue].y;
                 
@@ -117,37 +115,35 @@ static void shuffleArray(int *arr, int size)
                     for(int k = s; k < e; k++)
                     {
                         [kp addObject: [map.tracks[pi].keyPoints objectAtIndex: k]];
-//                        CGPoint p = [[map.tracks[pi].keyPoints objectAtIndex: k] CGPointValue];
-//                        NSLog(@"%i: (%i, %i] p(%.0f, %.0f)", j, s, e, p.x, p.y);
                     }
                 }
                 
                 keyPoints = [NSArray arrayWithArray: kp];
                 [kp release];
             }
-            else
+            
+            // set zombie type
+            if(isBonusAllowed && !isBonusUsed && chance(20))
             {
-                if(isBonusAllowed && !isBonusUsed && chance(20))
-                {
-                    zombieType = ZombieTypeBonus;
-                    isBonusUsed = YES;
-                }
-                else if(isBadAllowed && !isBadUsed && chance(10))
-                {
-                    zombieType = ZombieTypeBad;
-                    isBadUsed = YES;
-                }
-                else if(isShieldAllowed && !isShieldUsed && !delegate.isShieldModActivated && chance(30))
-                {
-                    zombieType = ZombieTypeShield;
-                    isShieldUsed = YES;
-                }
-                if(isTimeBonusAllowed && !isTimeBonusUsed && chance(30))
-                {
-                    zombieType = ZombieTypeTimeBonus;
-                    isTimeBonusUsed = YES;
-                }
+                zombieType = ZombieTypeBonus;
+                isBonusUsed = YES;
             }
+            else if(isBadAllowed && !isBadUsed && chance(10))
+            {
+                zombieType = ZombieTypeBad;
+                isBadUsed = YES;
+            }
+            else if(isShieldAllowed && !isShieldUsed && !delegate.isShieldModActivated && chance(30))
+            {
+                zombieType = ZombieTypeShield;
+                isShieldUsed = YES;
+            }
+            else if(isTimeBonusAllowed && !isTimeBonusUsed && chance(30))
+            {
+                zombieType = ZombieTypeTimeBonus;
+                isTimeBonusUsed = YES;
+            }
+            
             
             Zombie *zombie = [Zombie zombieWithDelegate: self type: zombieType awardFactor: af];
             zombie.tag = index;

@@ -11,8 +11,6 @@
 #import "GameConfig.h"
 
 
-#define kMaxLabelPositionIndex 4
-
 @interface GameOverPopup()
 
 - (void) showAndEnable;
@@ -37,14 +35,7 @@ static NSString* ccTimeToString(ccTime time)
 - (id) initWithDelegate: (id<GameOverPopupDelegate>) delegate_
 {
     if(self = [super initWithDelegate: delegate_])
-    {
-        CGPoint labelPositions[kMaxLabelPositionIndex] = {
-            ccp(kScreenCenterX, kScreenCenterY + 96.0f),
-            ccp(kScreenCenterX, kScreenCenterY + 64.0f),
-            ccp(kScreenCenterX, kScreenCenterY + 32.0f),
-            ccp(kScreenCenterX, kScreenCenterY + 0.0f),
-        };
-        
+    { 
         CCMenu *menu;
         CCSprite *btnSprite;
         CCSprite *btnOnSprite;
@@ -53,41 +44,27 @@ static NSString* ccTimeToString(ccTime time)
         background = [CCLayerColor layerWithColor: ccc4(0, 0, 0, 255)];
         [self addChild: background];
         
-        int positionIndex = kMaxLabelPositionIndex - 1;
-        
         // game over status
-        
-        NSString *scoreStr = [NSString stringWithFormat: @"score: %.0f", self.delegate.score];
-        scoreLabel = [CCLabelBMFont labelWithString: scoreStr fntFile: kFontDefault];
-        scoreLabel.position = labelPositions[positionIndex--];
-        [self addChild: scoreLabel];
-        
-        if(self.delegate.isGameFailed)
-        {
-            scoreLabel.visible = NO;
-            positionIndex++;
-        }
-        
-        NSString *perfectTapsStr = [NSString stringWithFormat: @"perfect taps: %i", self.delegate.longestPerfectCycleLength];
-        perfectTapsLabel = [CCLabelBMFont labelWithString: perfectTapsStr fntFile: kFontDefault];
-        perfectTapsLabel.position = labelPositions[positionIndex--];
-        [self addChild: perfectTapsLabel];
-        
-        NSString *timeStr = [NSString stringWithFormat: @"time %@", ccTimeToString(self.delegate.timer)];
-        timeLabel = [CCLabelBMFont labelWithString: timeStr fntFile: kFontDefault];
-        timeLabel.position = labelPositions[positionIndex--];
-        [self addChild: timeLabel];
-        
-        if(self.delegate.isArcadeGame)
-        {
-            timeLabel.visible = NO;
-            positionIndex++;
-        }
         
         NSString *statusStr = self.delegate.isGameFailed || self.delegate.isArcadeGame ? @"Game over" : @"You are winner!";
         statusLabel = [CCLabelBMFont labelWithString: statusStr fntFile: kFontDefault];
-        statusLabel.position = labelPositions[positionIndex];
+        statusLabel.position = ccp(kScreenCenterX, kScreenCenterY + 96.0f);
         [self addChild: statusLabel];
+        
+        NSString *timeStr = [NSString stringWithFormat: @"time %@", ccTimeToString(self.delegate.timer)];
+        timeLabel = [CCLabelBMFont labelWithString: timeStr fntFile: kFontDefault];
+        timeLabel.position = ccp(kScreenCenterX, kScreenCenterY + 64.0f);
+        [self addChild: timeLabel];
+        
+        NSString *perfectTapsStr = [NSString stringWithFormat: @"perfect taps: %i", self.delegate.longestPerfectCycleLength];
+        perfectTapsLabel = [CCLabelBMFont labelWithString: perfectTapsStr fntFile: kFontDefault];
+        perfectTapsLabel.position = ccp(kScreenCenterX, kScreenCenterY + 32.0f);
+        [self addChild: perfectTapsLabel];
+        
+        NSString *scoreStr = [NSString stringWithFormat: @"score: %.0f", self.delegate.score];
+        scoreLabel = [CCLabelBMFont labelWithString: scoreStr fntFile: kFontDefault];
+        scoreLabel.position = ccp(kScreenCenterX, kScreenCenterY + 0.0f);
+        [self addChild: scoreLabel];
         
         // buttons
         btnSprite = [CCSprite spriteWithFile: @"buttons/resetBtn.png"];

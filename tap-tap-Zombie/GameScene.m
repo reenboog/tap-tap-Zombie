@@ -13,7 +13,7 @@
 #import "GameLayer.h"
 #import "HUDLayer.h"
 
-#import "MainMenuLayer.h"
+#import "MainMenuLoadingScene.h"
 
 #import "GamePausePopup.h"
 #import "GameOverPopup.h"
@@ -170,7 +170,7 @@
 {
     // go to main menu
     CCTransitionFade *sceneTransition = [CCTransitionFade transitionWithDuration: 0.3f
-                                                                           scene: [MainMenuLayer scene]
+                                                                           scene: [MainMenuLoadingScene scene]
                                                                        withColor: ccc3(0, 0, 0)];
     
     [[CCDirector sharedDirector] replaceScene: sceneTransition];

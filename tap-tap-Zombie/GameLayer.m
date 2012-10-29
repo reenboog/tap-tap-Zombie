@@ -121,7 +121,6 @@
         switch(zombie.type)
         { 
             case ZombieTypeNormal:
-            case ZombieTypeJumper:
             case ZombieTypeShield:
             case ZombieTypeBonus:
             case ZombieTypeTimeBonus:
@@ -161,7 +160,6 @@
         } break;
             
         case ZombieTypeNormal:
-        case ZombieTypeJumper:
         {
             [delegate decreaseSuccess];
         } break;
@@ -197,7 +195,6 @@
         } break;
             
         case ZombieTypeNormal:
-        case ZombieTypeJumper:
         {
             [delegate increaseSuccess];
             [delegate giveAward: zombie.award];
@@ -333,6 +330,10 @@
         if(waveWeight == map.nTracks)
         {
             waveWeight--;
+        }
+        else if(waveWeight == 0)
+        {
+            waveWeight++;
         }
         else
         {

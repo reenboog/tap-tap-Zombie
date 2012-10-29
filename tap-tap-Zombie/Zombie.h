@@ -18,7 +18,6 @@ typedef enum
     ZombieTypeBad,
     ZombieTypeBonus,
     ZombieTypeTimeBonus,
-    ZombieTypeJumper,
     ZombieTypeShield
 } ZombieType;
 

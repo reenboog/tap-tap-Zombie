@@ -44,61 +44,58 @@
         delegate = delegate_;
         type = type_;
         
-        skinIndex = arc4random()%4;
         sprite = [CCSprite node];
         sprite.anchorPoint = ccp(0.5f, 0);
         [self addChild: sprite];
         
-        NSString *labelStr;
-        ccColor3B c;
+//        NSString *labelStr;
+//        ccColor3B c;
         switch(type)
         {
             case ZombieTypeNormal:  
             {
-                labelStr = @"normal";
-                c = ccc3(0, 255, 0);
+                skinIndex = arc4random()%5;
+//                labelStr = @"normal";
+//                c = ccc3(0, 255, 0);
                 award = 10*af;
             } break;
                 
             case ZombieTypeBad:
             {
-                labelStr = @"bad";
-                c = ccc3(255, 0, 0);
+//                labelStr = @"bad";
+//                c = ccc3(255, 0, 0);
                 award = 5*af;
+                skinIndex = 5;
             } break;
                 
             case ZombieTypeBonus: 
             {
-                labelStr = @"bonus"; 
-                c = ccc3(0, 255, 0);
+//                labelStr = @"bonus"; 
+//                c = ccc3(0, 255, 0);
                 award = 20*af;
+                skinIndex = 7;
             } break;
                 
             case ZombieTypeTimeBonus: 
             {
-                labelStr = @"time bonus"; 
-                c = ccc3(0, 255, 0);
+//                labelStr = @"time bonus"; 
+//                c = ccc3(0, 255, 0);
                 award = 5.0f;
-            } break;
-                
-            case ZombieTypeJumper:
-            {
-                labelStr = @"jumper";
-                c = ccc3(0, 255, 0);
-                award = 15*af;
+                skinIndex = 7;
             } break;
                 
             case ZombieTypeShield:
             {
-                labelStr = @"shield";
-                c = ccc3(0, 0, 255);
+//                labelStr = @"shield";
+//                c = ccc3(0, 0, 255);
                 award = 0;
+                skinIndex = 6;
             } break;
         }
-        CCLabelBMFont *label = [CCLabelBMFont labelWithString: labelStr fntFile: kFontDefault];
-        label.color = c;
-        label.anchorPoint = ccp(0.5f, 0);
-        [self addChild: label];
+//        CCLabelBMFont *label = [CCLabelBMFont labelWithString: labelStr fntFile: kFontDefault];
+//        label.color = c;
+//        label.anchorPoint = ccp(0.5f, 0);
+//        [self addChild: label];
         
         isStarting = NO;
         onFinish = NO;

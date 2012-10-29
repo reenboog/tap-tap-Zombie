@@ -12,18 +12,46 @@
 	<key>zombieMoving1</key>
 	<dict>
 		<key>frames</key>
-		<string>0</string>
+		<string>0,1,2,3,4</string>
 		<key>delay</key>
 		<real>0.12</real>
 	</dict>
 	<key>zombieMoving2</key>
 	<dict>
 		<key>frames</key>
-		<string>0</string>
+		<string>0,1,2,3,4</string>
 		<key>delay</key>
 		<real>0.12</real>
 	</dict>
 	<key>zombieMoving3</key>
+	<dict>
+		<key>frames</key>
+		<string>0,1,2,3,4</string>
+		<key>delay</key>
+		<real>0.12</real>
+	</dict>
+	<key>zombieMoving4</key>
+	<dict>
+		<key>frames</key>
+		<string>0,1,2,3,4</string>
+		<key>delay</key>
+		<real>0.12</real>
+	</dict>
+	<key>zombieMoving5</key>
+	<dict>
+		<key>frames</key>
+		<string>0</string>
+		<key>delay</key>
+		<real>0.12</real>
+	</dict>
+	<key>zombieMoving6</key>
+	<dict>
+		<key>frames</key>
+		<string>0</string>
+		<key>delay</key>
+		<real>0.12</real>
+	</dict>
+	<key>zombieMoving7</key>
 	<dict>
 		<key>frames</key>
 		<string>0</string>

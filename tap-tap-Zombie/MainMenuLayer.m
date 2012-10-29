@@ -21,6 +21,8 @@
 
 #import "MapDifficultyPopup.h"
 
+#import "GameLoadingScene.h"
+
 
 
 @interface MainMenuLayer()
@@ -33,9 +35,11 @@
 + (CCScene *) scene
 {
     CCScene *scene = [CCScene node];
-    MainMenuLayer *mainMenuLayer = [MainMenuLayer node];
+    MainMenuLayer *mainMenuLayer = [[MainMenuLayer alloc] init];
     
     [scene addChild: mainMenuLayer];
+    
+    [mainMenuLayer release];
     
     return scene;
 }
@@ -201,8 +205,9 @@
 {
     // start game on map
     Map *map = [[MapCache sharedMapCache] mapAtIndex: mapIndex withDifficulty: mapDifficulty];
+    GameLoadingScene *loadingScene = [GameLoadingScene sceneWithMap: map];
     CCTransitionFade *sceneTransition = [CCTransitionFade transitionWithDuration: 0.3f
-                                                                           scene: [GameScene gameSceneWithMap: map]
+                                                                           scene: loadingScene
                                                                        withColor: ccc3(0, 0, 0)];
     
     [[CCDirector sharedDirector] replaceScene: sceneTransition];

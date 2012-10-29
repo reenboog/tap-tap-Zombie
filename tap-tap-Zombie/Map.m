@@ -100,13 +100,14 @@
 @implementation MapInfo
 
 @synthesize isPassed;
-//@synthesize isEnable;
+@synthesize score;
 
 - (id) initWithDictionary: (NSDictionary *) dict
 {
     if(self = [super init])
     {
         isPassed = [[dict objectForKey: @"isPassed"] boolValue];
+        score = [[dict objectForKey: @"score"] floatValue];
     }
     
     return self;

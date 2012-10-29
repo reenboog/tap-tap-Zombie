@@ -45,11 +45,11 @@ typedef struct
 @interface MapInfo : NSObject
 {
     BOOL isPassed;
-//    BOOL isEnable;
+    float score;
 }
 
 @property (nonatomic) BOOL isPassed;
-//@property (nonatomic, readonly) BOOL isEnable;
+@property (nonatomic) float score;;
 
 - (id) initWithDictionary: (NSDictionary *) dict;
 + (id) mapInfoWithDictionary: (NSDictionary *) dict;
