@@ -81,7 +81,7 @@
 //                labelStr = @"time bonus"; 
 //                c = ccc3(0, 255, 0);
                 award = 5.0f;
-                skinIndex = 7;
+                skinIndex = 8;
             } break;
                 
             case ZombieTypeShield:

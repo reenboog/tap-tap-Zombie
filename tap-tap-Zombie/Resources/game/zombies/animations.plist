@@ -58,5 +58,12 @@
 		<key>delay</key>
 		<real>0.12</real>
 	</dict>
+	<key>zombieMoving8</key>
+	<dict>
+		<key>frames</key>
+		<string>0</string>
+		<key>delay</key>
+		<real>0.12</real>
+	</dict>
 </dict>
 </plist>

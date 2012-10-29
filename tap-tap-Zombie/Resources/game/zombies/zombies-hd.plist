@@ -358,7 +358,7 @@
             <key>zombieMoving60.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{248,1008},{194,193}}</string>
+                <string>{{2,1065},{194,193}}</string>
                 <key>offset</key>
                 <string>{-4,7}</string>
                 <key>rotated</key>
@@ -381,6 +381,19 @@
                 <key>sourceSize</key>
                 <string>{220,229}</string>
             </dict>
+            <key>zombieMoving80.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{248,1008},{198,191}}</string>
+                <key>offset</key>
+                <string>{-3,9}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,10},{198,191}}</string>
+                <key>sourceSize</key>
+                <string>{220,229}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -391,7 +404,7 @@
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:246793922eab6909b44a2c0a4fd0d7ae$</string>
+            <string>$TexturePacker:SmartUpdate:e2d6a64ebcde3fab854eaff4b880cdce$</string>
             <key>textureFileName</key>
             <string>zombies-hd.png</string>
         </dict>
