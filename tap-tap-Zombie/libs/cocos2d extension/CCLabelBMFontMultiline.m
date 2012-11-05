@@ -17,6 +17,9 @@
 @synthesize alignment = alignment_;
 @synthesize fntFile = fntFile_;
 
+@synthesize opacity;
+@synthesize color;
+
 #pragma mark -
 #pragma mark Lifecycle Methods
 
@@ -187,6 +190,39 @@
 /** returns the string that is rendered */
 -(NSString*)string {
     return [self.label string];
+}
+
+#pragma mark LabelBMFont - CCRGBAProtocol protocol
+
+-(void) setColor:(ccColor3B)c
+{
+	label_.color = c;
+	
+	CCSprite *child;
+	CCARRAY_FOREACH(children_, child)
+		[child setColor:label_.color];
+}
+
+-(void) setOpacity:(GLubyte)op
+{
+	label_.opacity = op;
+
+	id<CCRGBAProtocol> child;
+	CCARRAY_FOREACH(children_, child)
+		[child setOpacity:label_.opacity];
+}
+-(void) setOpacityModifyRGB:(BOOL)modify
+{
+    [label_ setOpacityModifyRGB: modify];
+	
+	id<CCRGBAProtocol> child;
+	CCARRAY_FOREACH(children_, child)
+		[child setOpacityModifyRGB:modify];
+}
+
+-(BOOL) doesOpacityModifyRGB
+{
+	return [label_ doesOpacityModifyRGB];
 }
 
 @end

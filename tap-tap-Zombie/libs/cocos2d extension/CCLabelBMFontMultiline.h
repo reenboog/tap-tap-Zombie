@@ -10,7 +10,7 @@
 
 typedef enum {CenterAlignment, LeftAlignment} CCLabelBMFontMultilineAlignment;
 
-@interface CCLabelBMFontMultiline : CCNode <CCLabelProtocol> {
+@interface CCLabelBMFontMultiline : CCNode <CCLabelProtocol, CCRGBAProtocol> {
     CCLabelBMFont *label_;
     CGSize dimension_;
     CCLabelBMFontMultilineAlignment alignment_;
@@ -35,5 +35,10 @@ typedef enum {CenterAlignment, LeftAlignment} CCLabelBMFontMultilineAlignment;
 -(void) setString:(NSString*)label;
 /** returns the string that is rendered */
 -(NSString*) string;
+
+/** conforms to CCRGBAProtocol protocol */
+@property (nonatomic,readwrite) GLubyte opacity;
+/** conforms to CCRGBAProtocol protocol */
+@property (nonatomic,readwrite) ccColor3B color;
 
 @end

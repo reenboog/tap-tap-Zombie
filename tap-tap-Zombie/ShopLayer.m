@@ -187,6 +187,7 @@
                                                                              alignment: LeftAlignment];
 //    CCLabelBMFont *descriptionLabel = [CCLabelBMFont labelWithString: shopItem.desc fntFile: kFontDefault];
 //    descriptionLabel.scale = 0.7f;
+    descriptionLabel.color = ccc3(50, 50, 50);
     descriptionLabel.anchorPoint = ccp(0, 1);
     descriptionLabel.position = ccp(16.0f, itemHeight - 32.0f);
     [pageItem addChild: descriptionLabel];
