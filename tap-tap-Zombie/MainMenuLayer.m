@@ -95,8 +95,8 @@
         facebookBtn.scale = 0.5f;
         
         topMenu = [CCMenu menuWithItems: shopBtn, twitterBtn, facebookBtn, nil];
-        [topMenu alignItemsVertically];
-        topMenu.position = ccp(kScreenWidth - 8.0f, kScreenHeight - 8.0f - shopBtn.contentSize.height*0.5f + kScreenCenterY);
+        [topMenu alignItemsHorizontally];
+        topMenu.position = ccp(kScreenWidth - 8.0f - shopBtn.contentSize.width*0.5f, kScreenHeight - 8.0f + kScreenCenterY/2);
         [self addChild: topMenu];
         
         playBtn = [CCMenuItemImage  itemFromNormalImage: @"buttons/playBtn.png"
@@ -105,6 +105,8 @@
                                                selector: @selector(playBtnCallback)];
         playBtn.anchorPoint = ccp(1, 0);
         playBtn.scale = 0.7f;
+        playBtn.isEnabled = NO;
+        playBtn.visible = NO;
         
         bottomMenu = [CCMenu menuWithItems: playBtn, nil];
         bottomMenu.position = ccp(kScreenWidth - 8.0f, 8.0f - kScreenCenterY/2);
@@ -184,7 +186,7 @@
     [topMenu runAction:
                 [CCEaseBackIn actionWithAction:
                                     [CCMoveBy actionWithDuration: 0.3f
-                                                        position: ccp(0, kScreenCenterY)]
+                                                        position: ccp(0, kScreenCenterY/2)]
                 ]
     ];
     
@@ -216,7 +218,7 @@
     [topMenu runAction:
                 [CCEaseBackOut actionWithAction:
                                     [CCMoveBy actionWithDuration: 0.3f
-                                                        position: ccp(0, -kScreenCenterY)]
+                                                        position: ccp(0, -kScreenCenterY/2)]
                 ]
     ];
     
@@ -393,7 +395,7 @@
     [topMenu runAction:
                 [CCEaseBackOut actionWithAction:
                                     [CCMoveBy actionWithDuration: 0.3f
-                                                        position: ccp(0, -kScreenCenterY)]
+                                                        position: ccp(0, -kScreenCenterY/2)]
                 ]
     ];
     
