@@ -18,13 +18,13 @@ typedef enum
     PurchaseStatusError
 } PurchaseStatus;
 
-#define kDefault0       @"Default0"
-#define kDefault1       @"Default1"
-#define kDefault2       @"Default2"
-#define kDefault3       @"Default3"
-#define kDefault4       @"Default4"
-#define kMoneyPack0     @"MoneyPack0"
-#define kMoneyPack1     @"MoneyPack1"
+#define kSuperblast     @"Superblast"
+#define kTimeCheater    @"Time cheater"
+#define kShield         @"The S.H.I.E.L.D."
+#define kGreatLottery   @"The Great Lottery"
+#define kResurrection   @"The resurrection"
+#define kMoneyPack0     @"Money pack #1"
+#define kMoneyPack1     @"Money pack #2"
 
 @interface Shop : NSObject
 {

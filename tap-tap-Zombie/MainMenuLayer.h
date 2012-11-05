@@ -15,8 +15,13 @@
 
 @interface MainMenuLayer : CCLayer <CCPopupLayerDelegate, GlobalMapLayerDelegate, MapDifficultyPopupDelegate>
 {
-    CCMenuItem *playBtn;
-    CCMenuItem *shopBtn;
+    CCMenuItemImage *playBtn;
+    CCMenu *bottomMenu;
+    
+    CCMenuItemImage *shopBtn;
+    CCMenuItemImage *twitterBtn;
+    CCMenuItemImage *facebookBtn;
+    CCMenu *topMenu;
     
     GlobalMapLayer *globalMap;
     

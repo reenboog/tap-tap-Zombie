@@ -175,16 +175,27 @@
     
     // header
     CCLabelBMFont *headerLabel = [CCLabelBMFont labelWithString: shopItem.header fntFile: kFontDefault];
-    headerLabel.anchorPoint = ccp(0, 0.5f);
-    headerLabel.position = ccp(14.0f, itemHeight/2 + 16.0f);
+    headerLabel.scale = 0.9f;
+    headerLabel.anchorPoint = ccp(0, 1);
+    headerLabel.position = ccp(14.0f, itemHeight - 10.0f);
     [pageItem addChild: headerLabel];
     
     // description
-    CCLabelBMFont *descriptionLabel = [CCLabelBMFont labelWithString: shopItem.desc fntFile: kFontDefault];
-    descriptionLabel.scale = 0.8f;
-    descriptionLabel.anchorPoint = ccp(0, 0.5f);
-    descriptionLabel.position = ccp(16.0f, itemHeight/2 - 6.0f);
+    CCLabelBMFontMultiline *descriptionLabel = [CCLabelBMFontMultiline labelWithString: shopItem.desc
+                                                                               fntFile: kFontShopItemDescription
+                                                                            dimensions: CGSizeMake(itemWidth*0.7f, itemHeight)
+                                                                             alignment: LeftAlignment];
+//    CCLabelBMFont *descriptionLabel = [CCLabelBMFont labelWithString: shopItem.desc fntFile: kFontDefault];
+//    descriptionLabel.scale = 0.7f;
+    descriptionLabel.anchorPoint = ccp(0, 1);
+    descriptionLabel.position = ccp(16.0f, itemHeight - 32.0f);
     [pageItem addChild: descriptionLabel];
+    
+    // icon
+    CCSprite *icon = [CCSprite spriteWithSpriteFrameName: shopItem.icon];
+    icon.anchorPoint = ccp(1, 1);
+    icon.position = ccp(itemWidth - 10.0f, itemHeight - 10.0f);
+    [pageItem addChild: icon z: -1];
     
     // cost
     NSString *costLabelText = shopItem.isMoneyPack  ? [NSString stringWithFormat: @"%.2f", shopItem.cost]

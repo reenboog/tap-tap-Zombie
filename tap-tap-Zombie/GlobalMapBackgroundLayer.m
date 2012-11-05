@@ -26,19 +26,24 @@
 
 static CCSprite *movableSprite = nil;
 
-+ (void) initialize
-{
-    [[CCTextureCache sharedTextureCache] addImage: @"globalMap/fir.png"];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"globalMap/fir.plist"];
-    
-    [AnimationLoader loadAnimationsWithPlist: @"globalMap/animations"];
-}
+//+ (void) initialize
+//{
+//    [[CCTextureCache sharedTextureCache] addImage: @"globalMap/fir.png"];
+//    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"globalMap/fir.plist"];
+//    
+//    [AnimationLoader loadAnimationsWithPlist: @"globalMap/animations"];
+//}
 
 #pragma mark init and dealloc
 - (id) init
 {
     if(self = [super init])
     {
+        [[CCTextureCache sharedTextureCache] addImage: @"globalMap/fir.png"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"globalMap/fir.plist"];
+        
+        [AnimationLoader loadAnimationsWithPlist: @"globalMap/animations"];
+        
         [self initSky];
         [self initMoon];
         [self initHills];

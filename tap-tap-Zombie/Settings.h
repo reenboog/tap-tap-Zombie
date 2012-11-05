@@ -6,10 +6,12 @@
 {
     int coins;
     NSMutableDictionary *purchases;
+    NSMutableArray *showedTutorials;
 }
 
 @property (nonatomic) int coins;
 @property (nonatomic, readonly) NSMutableDictionary *purchases;
+@property (nonatomic, readonly) NSMutableArray *showedTutorials;
 
 + (Settings *) sharedSettings;
 + (void) releaseSettings;

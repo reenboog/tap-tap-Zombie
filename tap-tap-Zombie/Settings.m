@@ -3,13 +3,15 @@
 #import "GameConfig.h"
 
 
-#define kCoinsKey       @"coins"
-#define kPurchasesKey   @"purchases"
+#define kCoinsKey           @"coins"
+#define kPurchasesKey       @"purchases"
+#define kShowedTutorials    @"showedTutorials"
 
 @implementation Settings
 
 @synthesize coins;
 @synthesize purchases;
+@synthesize showedTutorials;
 
 Settings *sharedSettings = nil;
 + (Settings *) sharedSettings
@@ -42,6 +44,7 @@ Settings *sharedSettings = nil;
     [self save];
     
     [purchases release];
+    [showedTutorials release];
     
     [super dealloc];
 }
@@ -55,10 +58,13 @@ Settings *sharedSettings = nil;
     id data;
     
     data = [defaults objectForKey: kCoinsKey];
-    coins = data ? [data intValue] : 635;
+    coins = data ? [data intValue] : 0;
     
     data = [defaults objectForKey: kPurchasesKey];
     purchases = data ? [data retain] : [[NSMutableDictionary alloc] init];
+    
+    data = [defaults objectForKey: kShowedTutorials];
+    showedTutorials = data ? [data retain] : [[NSMutableArray alloc] init];
 }
 
 - (void) save
@@ -67,6 +73,7 @@ Settings *sharedSettings = nil;
     
     [defaults setObject: [NSNumber numberWithInt: coins] forKey: kCoinsKey];
     [defaults setObject: purchases forKey: kPurchasesKey];
+    [defaults setObject: showedTutorials forKey: kShowedTutorials];
     
     [defaults synchronize];
 }

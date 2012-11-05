@@ -14,9 +14,11 @@
 			<key>cost</key>
 			<integer>100</integer>
 			<key>header</key>
-			<string>Default0</string>
+			<string>Superblast</string>
 			<key>description</key>
-			<string>Default description</string>
+			<string>To hard to play, kid? Use this one to destroy all enemies.</string>
+			<key>ico</key>
+			<string>shopIcoBomb.png</string>
 		</dict>
 		<dict>
 			<key>isMoneyPack</key>
@@ -28,9 +30,11 @@
 			<key>cost</key>
 			<integer>100</integer>
 			<key>header</key>
-			<string>Default1</string>
+			<string>Time cheater</string>
 			<key>description</key>
-			<string>Default description</string>
+			<string>Give you those desirable 10 seconds to complete level.</string>
+			<key>ico</key>
+			<string>shopIcoTime.png</string>
 		</dict>
 		<dict>
 			<key>isMoneyPack</key>
@@ -42,9 +46,11 @@
 			<key>cost</key>
 			<integer>999</integer>
 			<key>header</key>
-			<string>Default2</string>
+			<string>The S.H.I.E.L.D.</string>
 			<key>description</key>
-			<string>Default description</string>
+			<string>Have a rest for 5 seconds. This guy will be catching all incomng ghosts.</string>
+			<key>ico</key>
+			<string>shopIcoShield.png</string>
 		</dict>
 		<dict>
 			<key>isMoneyPack</key>
@@ -56,9 +62,11 @@
 			<key>cost</key>
 			<integer>100</integer>
 			<key>header</key>
-			<string>Default3</string>
+			<string>The Great Lottery</string>
 			<key>description</key>
-			<string>Default description</string>
+			<string>Who knows what surprises the destiny prepared for you...</string>
+			<key>ico</key>
+			<string>shopIcoRandom.png</string>
 		</dict>
 		<dict>
 			<key>isMoneyPack</key>
@@ -70,9 +78,11 @@
 			<key>cost</key>
 			<integer>100</integer>
 			<key>header</key>
-			<string>Default4</string>
+			<string>The resurrection</string>
 			<key>description</key>
-			<string>Default description</string>
+			<string>Use this injection to continue the level from your last point.</string>
+			<key>ico</key>
+			<string>shopIcoResurrection.png</string>
 		</dict>
 		<dict>
 			<key>isMoneyPack</key>
@@ -84,9 +94,11 @@
 			<key>cost</key>
 			<real>0.99</real>
 			<key>header</key>
-			<string>MoneyPack0</string>
+			<string>Money pack #1</string>
 			<key>description</key>
-			<string>Default description</string>
+			<string>You need zombie bucks to progress faster and easier.</string>
+			<key>ico</key>
+			<string>shopIcoMoney0.png</string>
 		</dict>
 		<dict>
 			<key>isMoneyPack</key>
@@ -98,9 +110,11 @@
 			<key>cost</key>
 			<real>1.99</real>
 			<key>header</key>
-			<string>MoneyPack1</string>
+			<string>Money pack #2</string>
 			<key>description</key>
-			<string>Default description</string>
+			<string>Really big pack of zombie bucks. The best offer!</string>
+			<key>ico</key>
+			<string>shopIcoMoney1.png</string>
 		</dict>
 	</array>
 </dict>

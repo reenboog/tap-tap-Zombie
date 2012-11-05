@@ -44,7 +44,7 @@
     return scene;
 }
 
-+ (void) initialize
+- (void) loadResources
 {
     [[CCTextureCache sharedTextureCache] addImage: @"mainMenu/evilDoctor.png"];
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctor.plist"];
@@ -54,6 +54,9 @@
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctorGhost1.plist"];
     
     [AnimationLoader loadAnimationsWithPlist: @"mainMenu/animations"];
+    
+    [[CCTextureCache sharedTextureCache] addImage: @"shop/icons/shopIcons.png"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"shop/icons/shopIcons.plist"];
 }
 
 #pragma mark init and dealloc
@@ -61,42 +64,51 @@
 {
     if(self = [super init])
     {
-        [[CCDirector sharedDirector] purgeCachedData];
-    
+        [self loadResources];
+        
         globalMap = [GlobalMapLayer globalMapLayerWithDelegate: self];
         [self addChild: globalMap z: -1];
         [globalMap disableWithChildren];
         
         // main menu
-        CCMenu *menu;
-        CCSprite *btnSprite;
-        CCSprite *btnOnSprite;
+//        CCMenu *menu;
         
-        btnSprite = [CCSprite spriteWithFile: @"buttons/shopBtn.png"];
-        btnOnSprite = [CCSprite spriteWithFile: @"buttons/shopBtnOn.png"];
-        shopBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
-                                          selectedSprite: btnOnSprite
-                                                  target: self
-                                                selector: @selector(shopBtnCallback)];
-        shopBtn.anchorPoint = ccp(1, 0);
-        shopBtn.scale = 0.7f;
+        shopBtn = [CCMenuItemImage  itemFromNormalImage: @"buttons/shopBtn.png"
+                                          selectedImage: @"buttons/shopBtnOn.png"
+                                                 target: self
+                                               selector: @selector(shopBtnCallback)];
+        shopBtn.anchorPoint = ccp(1, 1);
+        shopBtn.scale = 0.5f;
         
-        shopBtn.visible = NO;
-        shopBtn.isEnabled = NO;
+        twitterBtn = [CCMenuItemImage  itemFromNormalImage: @"buttons/twitterBtn.png"
+                                             selectedImage: @"buttons/twitterBtnOn.png"
+                                                    target: self
+                                                  selector: @selector(twitterBtnCallback)];
+        twitterBtn.anchorPoint = ccp(1, 1);
+        twitterBtn.scale = 0.5f;
         
-        btnSprite = [CCSprite spriteWithFile: @"buttons/playBtn.png"];
-        btnOnSprite = [CCSprite spriteWithFile: @"buttons/playBtnOn.png"];
-        playBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
-                                          selectedSprite: btnOnSprite
-                                                  target: self
-                                                selector: @selector(playBtnCallback)];
+        facebookBtn = [CCMenuItemImage  itemFromNormalImage: @"buttons/facebookBtn.png"
+                                              selectedImage: @"buttons/facebookBtnOn.png"
+                                                     target: self
+                                                   selector: @selector(facebookBtnCallback)];
+        facebookBtn.anchorPoint = ccp(1, 1);
+        facebookBtn.scale = 0.5f;
+        
+        topMenu = [CCMenu menuWithItems: shopBtn, twitterBtn, facebookBtn, nil];
+        [topMenu alignItemsVertically];
+        topMenu.position = ccp(kScreenWidth - 8.0f, kScreenHeight - 8.0f - shopBtn.contentSize.height*0.5f + kScreenCenterY);
+        [self addChild: topMenu];
+        
+        playBtn = [CCMenuItemImage  itemFromNormalImage: @"buttons/playBtn.png"
+                                          selectedImage: @"buttons/playBtnOn.png"
+                                                 target: self
+                                               selector: @selector(playBtnCallback)];
         playBtn.anchorPoint = ccp(1, 0);
         playBtn.scale = 0.7f;
         
-        menu = [CCMenu menuWithItems: shopBtn, playBtn, nil];
-//        [menu alignItemsHorizontally];
-        menu.position = ccp(kScreenWidth - 8.0f, 8.0f);
-        [self addChild: menu];
+        bottomMenu = [CCMenu menuWithItems: playBtn, nil];
+        bottomMenu.position = ccp(kScreenWidth - 8.0f, 8.0f - kScreenCenterY/2);
+        [self addChild: bottomMenu];
         
         // evil doctor
         evilDoctor = [CCSprite node];
@@ -167,6 +179,21 @@
                                     nil
                     ]
     ];
+    
+    
+    [topMenu runAction:
+                [CCEaseBackIn actionWithAction:
+                                    [CCMoveBy actionWithDuration: 0.3f
+                                                        position: ccp(0, kScreenCenterY)]
+                ]
+    ];
+    
+    [bottomMenu runAction:
+                [CCEaseBackIn actionWithAction:
+                                    [CCMoveBy actionWithDuration: 0.3f
+                                                        position: ccp(0, -kScreenCenterY/2)]
+                ]
+    ];
 }
 
 - (void) popupDidFinishClosing: (CCPopupLayer *) popup
@@ -184,6 +211,20 @@
                                     [CCCallFunc actionWithTarget: self selector: @selector(runRandomAnimation)],
                                     nil
                     ]
+    ];
+    
+    [topMenu runAction:
+                [CCEaseBackOut actionWithAction:
+                                    [CCMoveBy actionWithDuration: 0.3f
+                                                        position: ccp(0, -kScreenCenterY)]
+                ]
+    ];
+    
+    [bottomMenu runAction:
+                [CCEaseBackOut actionWithAction:
+                                    [CCMoveBy actionWithDuration: 0.3f
+                                                        position: ccp(0, kScreenCenterY/2)]
+                ]
     ];
 }
 
@@ -348,6 +389,20 @@
                                     nil
                     ]
     ];
+    
+    [topMenu runAction:
+                [CCEaseBackOut actionWithAction:
+                                    [CCMoveBy actionWithDuration: 0.3f
+                                                        position: ccp(0, -kScreenCenterY)]
+                ]
+    ];
+    
+    [bottomMenu runAction:
+                [CCEaseBackOut actionWithAction:
+                                    [CCMoveBy actionWithDuration: 0.3f
+                                                        position: ccp(0, kScreenCenterY/2)]
+                ]
+    ];
 }
 
 #pragma mark -
@@ -362,6 +417,16 @@
 {
     // mapIndex == 0 for arcade game
     [self mapChanged: 0];
+}
+
+- (void) twitterBtnCallback
+{
+
+}
+
+- (void) facebookBtnCallback
+{
+
 }
 
 #pragma mark -

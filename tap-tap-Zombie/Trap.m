@@ -15,13 +15,13 @@
 
 @implementation Trap
 
-+ (void) initialize
-{
-    [[CCTextureCache sharedTextureCache] addImage: @"levels/traps/0/gate.png"];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"levels/traps/0/gate.plist"];
-    
-    [AnimationLoader loadAnimationsWithPlist: @"levels/traps/animations"];
-}
+//+ (void) initialize
+//{
+//    [[CCTextureCache sharedTextureCache] addImage: @"levels/traps/0/gate.png"];
+//    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"levels/traps/0/gate.plist"];
+//    
+//    [AnimationLoader loadAnimationsWithPlist: @"levels/traps/animations"];
+//}
 
 #pragma mark init and dealloc
 - (id) init

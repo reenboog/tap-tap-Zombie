@@ -17,8 +17,13 @@
 
 #import "GamePausePopup.h"
 #import "GameOverPopup.h"
+#import "TutorialPopup.h"
 
 #import "MapCache.h"
+
+#import "AnimationLoader.h"
+
+#import "Settings.h"
 
 
 #define kTimeForArcadeGame 30.0f
@@ -45,8 +50,16 @@
 {
     if(self = [super init])
     {
-        [[CCDirector sharedDirector] purgeCachedData];
+        // load resources
+        [[CCTextureCache sharedTextureCache] addImage: @"zombies/zombies.png"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"zombies/zombies.plist"];
+        [[CCTextureCache sharedTextureCache] addImage: @"levels/traps/0/gate.png"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"levels/traps/0/gate.plist"];
         
+        [AnimationLoader loadAnimationsWithPlist: @"zombies/animations"];
+        [AnimationLoader loadAnimationsWithPlist: @"levels/traps/animations"];
+     
+        // init
         map = [map_ retain];
         
         isArcadeGame = map.index == 0;
@@ -116,6 +129,55 @@
     
     gameStatus.isStarted = YES;
     gameStatus.isActive = YES;
+    
+    NSMutableArray *showedTutorials = [Settings sharedSettings].showedTutorials;
+    NSMutableArray *tutorialPages = [NSMutableArray arrayWithCapacity: 10];
+    
+    if(![showedTutorials containsObject: kGhostsTutorial])
+    {
+        [showedTutorials addObject: kGhostsTutorial];
+        [tutorialPages addObject: kGhostsTutorial];
+    }
+    
+    if(![showedTutorials containsObject: kBombTutorial])
+    {
+        [showedTutorials addObject: kBombTutorial];
+        [tutorialPages addObject: kBombTutorial];
+    }
+    
+    if((map.index > 4) || (map.index == 0))
+    {
+        if(![showedTutorials containsObject: kBonusTutorial])
+        {
+            [showedTutorials addObject: kBonusTutorial];
+            [tutorialPages addObject: kBonusTutorial];
+        }
+    }
+    
+    if((map.index > 10) || (map.index == 0))
+    {
+        if(![showedTutorials containsObject: kShieldTutorial])
+        {
+            [showedTutorials addObject: kShieldTutorial];
+            [tutorialPages addObject: kShieldTutorial];
+        }
+    }
+    
+    if(map.index == 0)
+    {
+        if(![showedTutorials containsObject: kTimeBonusTutorial])
+        {
+            [showedTutorials addObject: kTimeBonusTutorial];
+            [tutorialPages addObject: kTimeBonusTutorial];
+        }
+    }
+    
+    [[Settings sharedSettings] save];
+    
+    if([tutorialPages count] > 0)
+    {
+        [self addChild: [TutorialPopup popupWithDelegate: self pages: tutorialPages] z: kPopupZOrder];
+    }
 }
 
 #pragma mark -
@@ -129,6 +191,7 @@
         [[MapCache sharedMapCache] mapInfoAtIndex: map.index].isPassed = true;
         [[MapCache sharedMapCache] saveMapsInfo];
     }
+    
     [GameOverPopup showOnRunningSceneWithDelegate: self];
 }
 

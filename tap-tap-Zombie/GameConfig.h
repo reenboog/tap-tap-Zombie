@@ -49,6 +49,7 @@
 #define kScreenCenter ccp(kScreenCenterX, kScreenCenterY)
 
 #define kFontDefault @"font/gameFont.fnt"
+#define kFontShopItemDescription @"font/shopItemDescriptionFont.fnt"
 
 // game rules
 #define kMinGameWays 3
@@ -72,6 +73,13 @@ extern GameStatus gameStatus;
 
 // return YES in one case from N
 extern BOOL chance(unsigned N);
+
+// tutorials
+#define kGhostsTutorial @"ghostsTutorial"
+#define kBonusTutorial @"bonusTutorial"
+#define kTimeBonusTutorial @"timeBonusTutorial"
+#define kBombTutorial @"bombTutorial"
+#define kShieldTutorial @"shieldTutorial"
 
 #endif // __GAME_CONFIG_H
 

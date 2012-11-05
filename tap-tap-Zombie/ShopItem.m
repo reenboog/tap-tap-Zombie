@@ -17,6 +17,7 @@
 #define kPackSizeKey        @"packSize"
 #define kHeaderKey          @"header"
 #define kDescriptionKey     @"description"
+#define kIconKey            @"ico"
 
 @implementation ShopItem
 
@@ -26,6 +27,7 @@
 @synthesize packSize;
 @synthesize header;
 @synthesize desc;
+@synthesize icon;
 
 - (id) initWithDictionary: (NSDictionary *) dict
 {
@@ -56,6 +58,10 @@
         data = [dict objectForKey: kDescriptionKey];
         assert(data);
         desc = (NSString *)[data retain];
+        
+        data = [dict objectForKey: kIconKey];
+        assert(data);
+        icon = (NSString *)[data retain];
     }
     
     return self;
@@ -70,6 +76,7 @@
 {
     [header release];
     [desc release];
+    [icon release];
     
     [super dealloc];
 }
@@ -81,13 +88,14 @@
 
 - (NSString *) description
 {
-    return [NSString stringWithFormat: @"isMoneyPack: %@; isConsumable: %@; cost: %.2f; packSize: %i; header: %@; desc: %@",
+    return [NSString stringWithFormat: @"isMoneyPack: %@; isConsumable: %@; cost: %.2f; packSize: %i; header: %@; desc: %@; icon: %@",
                                         isMoneyPack ? @"YES" : @"NO", 
                                         isConsumable ? @"YES" : @"NO", 
                                         cost, 
                                         packSize, 
                                         header, 
-                                        desc];
+                                        desc,
+                                        icon];
 }
 
 @end

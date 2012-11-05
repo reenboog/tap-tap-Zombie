@@ -28,13 +28,13 @@
 @synthesize award;
 @synthesize type;
 
-+ (void) initialize
-{
-    [[CCTextureCache sharedTextureCache] addImage: @"zombies/zombies.png"];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"zombies/zombies.plist"];
-    
-    [AnimationLoader loadAnimationsWithPlist: @"zombies/animations"];
-}
+//+ (void) initialize
+//{
+//    [[CCTextureCache sharedTextureCache] addImage: @"zombies/zombies.png"];
+//    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"zombies/zombies.plist"];
+//    
+//    [AnimationLoader loadAnimationsWithPlist: @"zombies/animations"];
+//}
 
 #pragma mark init and dealloc
 - (id) initWithDelegate: (id<ZombieDelegate>) delegate_  type: (ZombieType) type_ awardFactor: (float) af

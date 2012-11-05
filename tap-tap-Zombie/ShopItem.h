@@ -19,6 +19,8 @@
     
     NSString *header;
     NSString *desc;
+    
+    NSString *icon;
 }
 
 @property (nonatomic, readonly) BOOL isMoneyPack;
@@ -27,6 +29,7 @@
 @property (nonatomic, readonly) int packSize;
 @property (nonatomic, readonly) NSString *header;
 @property (nonatomic, readonly) NSString *desc;
+@property (nonatomic, readonly) NSString *icon;
 
 - (id) initWithDictionary: (NSDictionary *) dict;
 + (id) shopItemWithDictionary: (NSDictionary *) dict;

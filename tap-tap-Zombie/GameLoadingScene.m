@@ -59,6 +59,7 @@
 - (void) cleanMemoryAndLoadGameScene
 {
     [[CCDirector sharedDirector] purgeCachedData];
+    [CCAnimationCache purgeSharedAnimationCache];
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
     [[CCTextureCache sharedTextureCache] removeUnusedTextures];
     

@@ -19,6 +19,8 @@
 		19962104163E871C005A52D3 /* MainMenuLoadingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 19962103163E871C005A52D3 /* MainMenuLoadingScene.m */; };
 		19A5D90E1627FB1F006E4A95 /* Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D90D1627FB1F006E4A95 /* Wave.m */; };
 		19A5D9111627FB3A006E4A95 /* WaveCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D9101627FB3A006E4A95 /* WaveCache.m */; };
+		19A67A54164144E800C06623 /* TutorialPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A67A53164144E800C06623 /* TutorialPopup.m */; };
+		19B72EE11647C7980016F778 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19B72EE01647C7980016F778 /* Default@2x.png */; };
 		19BAA4EF161C825100A43A5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BAA4EE161C825100A43A5F /* QuartzCore.framework */; };
 		19BAA4F1161C825100A43A5F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BAA4F0161C825100A43A5F /* OpenGLES.framework */; };
 		19BAA4F3161C825100A43A5F /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BAA4F2161C825100A43A5F /* OpenAL.framework */; };
@@ -196,6 +198,9 @@
 		19A5D90D1627FB1F006E4A95 /* Wave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wave.m; sourceTree = "<group>"; };
 		19A5D90F1627FB3A006E4A95 /* WaveCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveCache.h; sourceTree = "<group>"; };
 		19A5D9101627FB3A006E4A95 /* WaveCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveCache.m; sourceTree = "<group>"; };
+		19A67A52164144E800C06623 /* TutorialPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPopup.h; sourceTree = "<group>"; };
+		19A67A53164144E800C06623 /* TutorialPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPopup.m; sourceTree = "<group>"; };
+		19B72EE01647C7980016F778 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 		19BAA4EA161C825100A43A5F /* tap-tap-Zombie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tap-tap-Zombie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19BAA4EE161C825100A43A5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		19BAA4F0161C825100A43A5F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -559,6 +564,15 @@
 			name = WaveCache;
 			sourceTree = "<group>";
 		};
+		19A67A50164144C200C06623 /* TutorialPopup */ = {
+			isa = PBXGroup;
+			children = (
+				19A67A52164144E800C06623 /* TutorialPopup.h */,
+				19A67A53164144E800C06623 /* TutorialPopup.m */,
+			);
+			name = TutorialPopup;
+			sourceTree = "<group>";
+		};
 		19BAA4DF161C825000A43A5F = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +624,7 @@
 				19BAA675161C839D00A43A5F /* font */,
 				19BAA685161C894100A43A5F /* game */,
 				19BAA500161C825100A43A5F /* Default.png */,
+				19B72EE01647C7980016F778 /* Default@2x.png */,
 				19BAA502161C825100A43A5F /* fps_images.png */,
 				19BAA504161C825100A43A5F /* Icon-72.png */,
 				19BAA506161C825100A43A5F /* Icon-Small-50.png */,
@@ -1072,6 +1087,7 @@
 		19BAA6BA161C9DE000A43A5F /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
+				19A67A50164144C200C06623 /* TutorialPopup */,
 				19BAA6BC161C9E0500A43A5F /* GameLayer */,
 				19BAA6BB161C9DFD00A43A5F /* HUDLayer */,
 				19BAA6BD161C9E3300A43A5F /* GamePausePopup */,
@@ -1247,6 +1263,7 @@
 				19BAA697161C895600A43A5F /* zombies in Resources */,
 				191D0EEA1626F4C400B6235B /* waves.plist in Resources */,
 				19C0C1E8162C3ED000F46DE9 /* mainMenu in Resources */,
+				19B72EE11647C7980016F778 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1390,6 +1407,7 @@
 				1909A4AC162EACA600F52B43 /* GameConfig.m in Sources */,
 				199620FF163E7BE0005A52D3 /* GameLoadingScene.m in Sources */,
 				19962104163E871C005A52D3 /* MainMenuLoadingScene.m in Sources */,
+				19A67A54164144E800C06623 /* TutorialPopup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
