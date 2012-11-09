@@ -15,6 +15,8 @@
 
 #import "MainMenuLayer.h"
 
+#import "IAPHelperExtended.h"
+
 @implementation AppDelegate
 
 @synthesize window;
@@ -42,6 +44,8 @@
 }
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
+    [[SKPaymentQueue defaultQueue] addTransactionObserver: [IAPHelperExtended sharedHelper]];
+    
 	// Init the window
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	

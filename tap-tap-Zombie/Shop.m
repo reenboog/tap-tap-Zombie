@@ -111,6 +111,20 @@ static Shop *sharedShop = nil;
     return [self amountOfItem: [self itemWithName: name]];
 }
 
+- (void) spendItem: (ShopItem *) item
+{
+    int i = [self amountOfItem: item] - 1;
+    if(i < 0) return;
+    
+    [[Settings sharedSettings].purchases setObject: [NSNumber numberWithInt: i] forKey: item.header];
+    [[Settings sharedSettings] save];
+}
+
+- (void) spendItemWithName: (NSString *) name
+{
+    [self spendItem: [self itemWithName: name]];
+}
+
 #pragma mark -
 
 #pragma mark purchase

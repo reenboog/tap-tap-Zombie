@@ -22,6 +22,8 @@
     CCLabelBMFont *superModeLabel;
     
     CCLabelBMFont *timerLabel;
+    
+    CCMenu *abilitiesMenu;
 }
 
 - (id) initWithDelegate: (id<HUDLayerDelegate>) delegate;
@@ -36,5 +38,7 @@
 
 // for arcade game mode
 - (void) setTimerValue: (float) timer;
+
+- (void) reset;
 
 @end

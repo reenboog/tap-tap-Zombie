@@ -227,4 +227,12 @@ static void shuffleArray(int *arr, int size)
     }
 }
 
+- (void) destroy
+{
+    for(Zombie *z in [self children])
+    {
+        [z capture];
+    }
+}
+
 @end

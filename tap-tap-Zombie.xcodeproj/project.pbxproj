@@ -17,6 +17,12 @@
 		1995629B162AF6FF0030811F /* Background4.m in Sources */ = {isa = PBXBuildFile; fileRef = 19956299162AF6FF0030811F /* Background4.m */; };
 		199620FF163E7BE0005A52D3 /* GameLoadingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 199620FE163E7BE0005A52D3 /* GameLoadingScene.m */; };
 		19962104163E871C005A52D3 /* MainMenuLoadingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 19962103163E871C005A52D3 /* MainMenuLoadingScene.m */; };
+		19A3F94D164A87520011829A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A3F94C164A87520011829A /* StoreKit.framework */; };
+		19A3F957164A89A30011829A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A3F950164A89A30011829A /* IAPHelper.m */; };
+		19A3F958164A89A30011829A /* IAPHelperExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A3F952164A89A30011829A /* IAPHelperExtended.m */; };
+		19A3F959164A89A30011829A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A3F954164A89A30011829A /* MBProgressHUD.m */; };
+		19A3F95A164A89A30011829A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A3F956164A89A30011829A /* Reachability.m */; };
+		19A3F95C164A92370011829A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A3F95B164A92370011829A /* SystemConfiguration.framework */; };
 		19A5D90E1627FB1F006E4A95 /* Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D90D1627FB1F006E4A95 /* Wave.m */; };
 		19A5D9111627FB3A006E4A95 /* WaveCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D9101627FB3A006E4A95 /* WaveCache.m */; };
 		19A67A54164144E800C06623 /* TutorialPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A67A53164144E800C06623 /* TutorialPopup.m */; };
@@ -171,6 +177,8 @@
 		19BAA6E2161CB10200A43A5F /* ZombiesWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAA6E1161CB10200A43A5F /* ZombiesWave.m */; };
 		19BAA6E5161CB11900A43A5F /* Zombie.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAA6E4161CB11900A43A5F /* Zombie.m */; };
 		19C0C1E8162C3ED000F46DE9 /* mainMenu in Resources */ = {isa = PBXBuildFile; fileRef = 19C0C1E7162C3ED000F46DE9 /* mainMenu */; };
+		19EDD404164CD5A00037CC6D /* Default-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 19EDD403164CD5A00037CC6D /* Default-hd.png */; };
+		19EDD40B164CF6270037CC6D /* abilities in Resources */ = {isa = PBXBuildFile; fileRef = 19EDD40A164CF6270037CC6D /* abilities */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -194,6 +202,17 @@
 		19962100163E7ED0005A52D3 /* GameLoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLoadingScene.h; sourceTree = "<group>"; };
 		19962102163E871C005A52D3 /* MainMenuLoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLoadingScene.h; sourceTree = "<group>"; };
 		19962103163E871C005A52D3 /* MainMenuLoadingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuLoadingScene.m; sourceTree = "<group>"; };
+		19A3F94A164A865D0011829A /* IAPConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPConfig.h; sourceTree = "<group>"; };
+		19A3F94C164A87520011829A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		19A3F94F164A89A30011829A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		19A3F950164A89A30011829A /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		19A3F951164A89A30011829A /* IAPHelperExtended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelperExtended.h; sourceTree = "<group>"; };
+		19A3F952164A89A30011829A /* IAPHelperExtended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelperExtended.m; sourceTree = "<group>"; };
+		19A3F953164A89A30011829A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		19A3F954164A89A30011829A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		19A3F955164A89A30011829A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		19A3F956164A89A30011829A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		19A3F95B164A92370011829A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		19A5D90C1627FB1F006E4A95 /* Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wave.h; sourceTree = "<group>"; };
 		19A5D90D1627FB1F006E4A95 /* Wave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wave.m; sourceTree = "<group>"; };
 		19A5D90F1627FB3A006E4A95 /* WaveCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveCache.h; sourceTree = "<group>"; };
@@ -505,6 +524,8 @@
 		19BAA6E8161CB40D00A43A5F /* ZombiesWaveDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZombiesWaveDelegate.h; sourceTree = "<group>"; };
 		19C0C1E6162C2D6800F46DE9 /* GlobalMapLayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalMapLayerDelegate.h; sourceTree = "<group>"; };
 		19C0C1E7162C3ED000F46DE9 /* mainMenu */ = {isa = PBXFileReference; lastKnownFileType = folder; name = mainMenu; path = Resources/game/mainMenu; sourceTree = "<group>"; };
+		19EDD403164CD5A00037CC6D /* Default-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-hd.png"; path = "Resources/Default-hd.png"; sourceTree = "<group>"; };
+		19EDD40A164CF6270037CC6D /* abilities */ = {isa = PBXFileReference; lastKnownFileType = folder; name = abilities; path = Resources/game/abilities; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -512,6 +533,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19A3F95C164A92370011829A /* SystemConfiguration.framework in Frameworks */,
+				19A3F94D164A87520011829A /* StoreKit.framework in Frameworks */,
 				19BAA4EF161C825100A43A5F /* QuartzCore.framework in Frameworks */,
 				19BAA4F1161C825100A43A5F /* OpenGLES.framework in Frameworks */,
 				19BAA4F3161C825100A43A5F /* OpenAL.framework in Frameworks */,
@@ -551,6 +574,22 @@
 				19962103163E871C005A52D3 /* MainMenuLoadingScene.m */,
 			);
 			name = MainMenuLoadingScene;
+			sourceTree = "<group>";
+		};
+		19A3F94E164A898E0011829A /* IAPs */ = {
+			isa = PBXGroup;
+			children = (
+				19A3F94A164A865D0011829A /* IAPConfig.h */,
+				19A3F94F164A89A30011829A /* IAPHelper.h */,
+				19A3F950164A89A30011829A /* IAPHelper.m */,
+				19A3F951164A89A30011829A /* IAPHelperExtended.h */,
+				19A3F952164A89A30011829A /* IAPHelperExtended.m */,
+				19A3F953164A89A30011829A /* MBProgressHUD.h */,
+				19A3F954164A89A30011829A /* MBProgressHUD.m */,
+				19A3F955164A89A30011829A /* Reachability.h */,
+				19A3F956164A89A30011829A /* Reachability.m */,
+			);
+			name = IAPs;
 			sourceTree = "<group>";
 		};
 		19A5D90A1627FAE9006E4A95 /* WaveCache */ = {
@@ -593,6 +632,8 @@
 		19BAA4ED161C825100A43A5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19A3F95B164A92370011829A /* SystemConfiguration.framework */,
+				19A3F94C164A87520011829A /* StoreKit.framework */,
 				19BAA4EE161C825100A43A5F /* QuartzCore.framework */,
 				19BAA4F0161C825100A43A5F /* OpenGLES.framework */,
 				19BAA4F2161C825100A43A5F /* OpenAL.framework */,
@@ -608,6 +649,7 @@
 		19BAA4FE161C825100A43A5F /* tap-tap-Zombie */ = {
 			isa = PBXGroup;
 			children = (
+				19A3F94E164A898E0011829A /* IAPs */,
 				19BAA66F161C82A900A43A5F /* Config&Settings */,
 				19BAA66E161C829800A43A5F /* Application */,
 				19BAA670161C82BF00A43A5F /* Game */,
@@ -621,6 +663,7 @@
 		19BAA4FF161C825100A43A5F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				19EDD403164CD5A00037CC6D /* Default-hd.png */,
 				19BAA675161C839D00A43A5F /* font */,
 				19BAA685161C894100A43A5F /* game */,
 				19BAA500161C825100A43A5F /* Default.png */,
@@ -1031,6 +1074,7 @@
 		19BAA685161C894100A43A5F /* game */ = {
 			isa = PBXGroup;
 			children = (
+				19EDD40A164CF6270037CC6D /* abilities */,
 				19C0C1E7162C3ED000F46DE9 /* mainMenu */,
 				19BAA686161C895600A43A5F /* buttons */,
 				19BAA687161C895600A43A5F /* clouds */,
@@ -1264,6 +1308,8 @@
 				191D0EEA1626F4C400B6235B /* waves.plist in Resources */,
 				19C0C1E8162C3ED000F46DE9 /* mainMenu in Resources */,
 				19B72EE11647C7980016F778 /* Default@2x.png in Resources */,
+				19EDD404164CD5A00037CC6D /* Default-hd.png in Resources */,
+				19EDD40B164CF6270037CC6D /* abilities in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1408,6 +1454,10 @@
 				199620FF163E7BE0005A52D3 /* GameLoadingScene.m in Sources */,
 				19962104163E871C005A52D3 /* MainMenuLoadingScene.m in Sources */,
 				19A67A54164144E800C06623 /* TutorialPopup.m in Sources */,
+				19A3F957164A89A30011829A /* IAPHelper.m in Sources */,
+				19A3F958164A89A30011829A /* IAPHelperExtended.m in Sources */,
+				19A3F959164A89A30011829A /* MBProgressHUD.m in Sources */,
+				19A3F95A164A89A30011829A /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

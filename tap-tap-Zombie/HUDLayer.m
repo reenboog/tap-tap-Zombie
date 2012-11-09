@@ -7,9 +7,21 @@
 //
 
 #import "GameConfig.h"
+#import "Shop.h"
 
 #import "HUDLayer.h"
 
+
+#define kBombAbilityBtn         kSuperblast
+#define kBombAbilityBtnTag      11
+#define kShieldAbilityBtn       kShield
+#define kShieldAbilityBtnTag    12
+#define kRandomAbilityBtn       kGreatLottery
+#define kRandomAbilityBtnTag    13
+#define kTimeAbilityBtn         kTimeCheater
+#define kTimeAbilityBtnTag      14
+
+#define kAmountTag 21
 
 // return string with format "mm:ss"
 static NSString* ccTimeToString(ccTime time)
@@ -25,6 +37,55 @@ static NSString* ccTimeToString(ccTime time)
 @implementation HUDLayer
 
 #pragma mark init and dealloc
+- (void) initAbilitiesMenu
+{
+    static NSString *abilities[4] = { kSuperblast, kShield, kGreatLottery, kTimeCheater };
+    static const int abilityTags[4] = { kBombAbilityBtnTag, kShieldAbilityBtnTag, kRandomAbilityBtnTag, kTimeAbilityBtnTag };
+    
+    CCSprite *buttonSrites[4][2] = {
+        {[CCSprite spriteWithSpriteFrameName: @"bombBtn.png"], [CCSprite spriteWithSpriteFrameName: @"bombBtnOn.png"]},
+        {[CCSprite spriteWithSpriteFrameName: @"shieldBtn.png"], [CCSprite spriteWithSpriteFrameName: @"shieldBtnOn.png"]},
+        {[CCSprite spriteWithSpriteFrameName: @"randomBtn.png"], [CCSprite spriteWithSpriteFrameName: @"randomBtnOn.png"]},
+        {[CCSprite spriteWithSpriteFrameName: @"timeBtn.png"], [CCSprite spriteWithSpriteFrameName: @"timeBtnOn.png"]}
+    };
+    
+    abilitiesMenu = [CCMenu menuWithItems: nil];
+    for(int i = 0; i < 4; i++)
+    {
+        if([abilities[i] isEqualToString: kTimeCheater] && !delegate.isArcadeGame)
+        {
+            continue;
+        }
+        
+        ShopItem *shopItem = [[Shop sharedShop] itemWithName: abilities[i]];
+        
+        if([shopItem amount] < 1)
+        {
+            continue;
+        }
+        
+        CCMenuItemSprite *item = [CCMenuItemSprite itemFromNormalSprite: buttonSrites[i][0]
+                                                         selectedSprite: buttonSrites[i][1]
+                                                                 target: self
+                                                               selector: @selector(abilityBtnCallback:)];
+        item.anchorPoint = ccp(0, 0.5f);
+        item.tag = abilityTags[i];
+        
+        CCLabelBMFont *amount = [CCLabelBMFont labelWithString: [NSString stringWithFormat: @"%i", [shopItem amount]] 
+                                                       fntFile: kFontDefault];
+        amount.anchorPoint = ccp(0, 0);
+        amount.position = ccp(0, 0);
+        amount.tag = kAmountTag;
+        [item addChild: amount];
+        
+        [abilitiesMenu addChild: item];
+    }
+    [abilitiesMenu alignItemsVertically];
+    abilitiesMenu.position = ccp(8.0f, kScreenCenterY);
+    
+    [self addChild: abilitiesMenu];
+}
+
 - (id) initWithDelegate: (id<HUDLayerDelegate>) delegate_
 {
     if(self = [super init])
@@ -84,6 +145,9 @@ static NSString* ccTimeToString(ccTime time)
         superModeLabel = [CCLabelBMFont labelWithString: @"" fntFile: kFontDefault];
         superModeLabel.position = ccp(kScreenCenterX, kScreenHeight - 48.f);
         [self addChild: superModeLabel];
+        
+        // abilities
+        [self initAbilitiesMenu];
     }
     
     return self;
@@ -97,6 +161,15 @@ static NSString* ccTimeToString(ccTime time)
 - (void) dealloc
 {
     [super dealloc];
+}
+
+#pragma mark -
+
+#pragma mark reset
+- (void) reset
+{
+    [abilitiesMenu removeFromParentAndCleanup: YES];
+    [self initAbilitiesMenu];
 }
 
 #pragma mark -
@@ -148,6 +221,51 @@ static NSString* ccTimeToString(ccTime time)
 - (void) pauseBtnCallback
 {
     [delegate pause];
+}
+
+- (void) abilityBtnCallback: (CCNode *) sender
+{
+    ShopItem *it = nil;
+    
+    switch(sender.tag)
+    {
+        case kBombAbilityBtnTag:
+        {
+            it = [[Shop sharedShop] itemWithName: kSuperblast];
+            [delegate bombAbility];
+        } break;
+            
+        case kShieldAbilityBtnTag:
+        {
+            it = [[Shop sharedShop] itemWithName: kShield];
+            [delegate shieldAbility];
+        } break;
+            
+        case kRandomAbilityBtnTag:
+        {
+            it = [[Shop sharedShop] itemWithName: kGreatLottery];
+            [delegate randomAbility];
+        } break;
+            
+        case kTimeAbilityBtnTag:
+        {
+            it = [[Shop sharedShop] itemWithName: kTimeCheater];
+            [delegate timebBonusAbility];
+        } break;
+    }
+    
+    assert(it);
+    
+    if([it amount] < 1)
+    {
+        [abilitiesMenu removeChild: sender cleanup: YES];
+        [abilitiesMenu alignItemsVertically];
+    }
+    else
+    {
+        CCLabelBMFont *amountLabel = (CCLabelBMFont *)[sender getChildByTag: kAmountTag];
+        [amountLabel setString: [NSString stringWithFormat: @"%i", [it amount]]];
+    }
 }
 
 #pragma mark -

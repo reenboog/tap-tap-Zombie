@@ -17,6 +17,8 @@
 #import "ZombiesWave.h"
 #import "Zombie.h"
 
+#import "Shop.h"
+
 
 @implementation GameLayer
 
@@ -373,6 +375,122 @@
         
         [self updateDifficulty];
     }
+}
+
+#pragma mark -
+
+#pragma mark abilities
+- (void) bomb
+{
+    for(ZombiesWave *z in [waves children])
+    {
+        [z destroy];
+    }
+}
+
+- (void) timebBonus
+{
+    [delegate addTimeBonus: 10.0f];
+}
+
+- (void) shield
+{
+    [traps activateShieldModWithDuration: 5.0f];
+    
+    for(int index = 0; index < map.nTracks; index++)
+    {
+        for(ZombiesWave *wave in [waves children])
+        {
+            for(Zombie *zombie in [wave children])
+            {
+                if(zombie.onFinish && (zombie.tag == index) && (zombie.type != ZombieTypeBad))
+                {
+                    [zombie capture];
+                    [traps activateTrapAtIndex: index];
+                }
+            }
+        }
+    }
+}
+
+- (void) bombAbility
+{
+    ShopItem *it = [[Shop sharedShop] itemWithName: kSuperblast];
+    if([it amount] < 1) return;
+    
+    [it spend];
+    
+    [self bomb];
+}
+
+- (void) shieldAbility
+{
+    if(traps.isShieldModActivated) return;
+    
+    ShopItem *it = [[Shop sharedShop] itemWithName: kShield];
+    if([it amount] < 1) return;
+    
+    [it spend];
+    
+    [self shield];
+}
+
+- (void) randomAbility
+{
+    ShopItem *it = [[Shop sharedShop] itemWithName: kGreatLottery];
+    if([it amount] < 1) return;
+    
+    [it spend];
+    
+    if(delegate.isArcadeGame)
+    {
+        if(arc4random()%2)
+        {
+            [self timebBonus];
+        }
+        else if(arc4random()%3 > 0)
+        {
+            [self bomb];
+        }
+        else if(!traps.isShieldModActivated)
+        {
+            [self shield];
+        }
+        else
+        {
+            if(arc4random()%2)
+            {
+                [self bomb];
+            }
+            else
+            {
+                [self timebBonus];
+            }
+        }
+    }
+    else
+    {
+        if(arc4random()%3 && !traps.isShieldModActivated)
+        {
+            [self shield];
+        }
+        else
+        {
+            [self bomb];
+        }
+    }
+}
+
+- (void) timebBonusAbility
+{
+    if(!delegate.isArcadeGame) return;
+    
+    ShopItem *it = [[Shop sharedShop] itemWithName: kTimeCheater];
+    if([it amount] < 1) return;
+    
+    [it spend];
+    
+    [self timebBonus];
 }
 
 #pragma mark -

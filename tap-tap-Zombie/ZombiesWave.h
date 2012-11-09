@@ -39,4 +39,6 @@
                    movingTime: (float) mt
                  standingTime: (float) st;
 
+- (void) destroy;
+
 @end

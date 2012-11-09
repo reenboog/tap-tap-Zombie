@@ -86,6 +86,11 @@
     return [[Shop sharedShop] amountOfItem: self];
 }
 
+- (void) spend
+{
+    [[Shop sharedShop] spendItem: self];
+}
+
 - (NSString *) description
 {
     return [NSString stringWithFormat: @"isMoneyPack: %@; isConsumable: %@; cost: %.2f; packSize: %i; header: %@; desc: %@; icon: %@",

@@ -19,6 +19,11 @@
 {
     if(self = [super init])
     {
+        CCSprite *back = [CCSprite spriteWithFile: @"Default.png"];
+        back.rotation = 90;
+        back.position = kScreenCenter;
+        [self addChild: back];
+        
         CCLabelBMFont *loadingLabel = [CCLabelBMFont labelWithString: @"loading..." fntFile: kFontDefault];
         loadingLabel.position = kScreenCenter;
         [self addChild: loadingLabel];

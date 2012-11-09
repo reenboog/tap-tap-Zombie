@@ -40,6 +40,8 @@ typedef enum
 
 - (int) amountOfItem: (ShopItem *) item;
 - (int) amountOfItemWithName: (NSString *) name;
+- (void) spendItem: (ShopItem *) item;
+- (void) spendItemWithName: (NSString *) name;
 
 - (PurchaseStatus) purchaseItem: (ShopItem *) item;
 - (PurchaseStatus) purchaseItemWithName: (NSString *) name;

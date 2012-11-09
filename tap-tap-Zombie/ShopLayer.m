@@ -12,6 +12,8 @@
 #import "Shop.h"
 #import "Settings.h"
 
+#import "IAPConfig.h"
+
 
 #define kAmountLabelTag 11
 #define kPageMenuTag 12
@@ -107,6 +109,25 @@
         // set current page
         int nPage = [self pageNumberWithItem: itemName];
         nCurrentPage = nPage < 0 ? 0 : nPage;
+        
+        // IAPs
+        [[NSNotificationCenter defaultCenter] addObserver: self 
+                                                 selector: @selector(onItemPurchased:) 
+                                                     name: kProductPurchasedNotification
+                                                   object: nil
+        ];
+        
+        [[NSNotificationCenter defaultCenter] addObserver: self 
+                                                 selector: @selector(blockContent) 
+                                                     name: kIAPBlockContentTag
+                                                   object: nil
+        ];
+        
+        [[NSNotificationCenter defaultCenter] addObserver: self 
+                                                 selector: @selector(releaseContent) 
+                                                     name: kIAPReleaseContentTag
+                                                   object: nil
+        ];
     }
     
     return self;
@@ -214,7 +235,7 @@
         CCLabelBMFont *amountLabel = [CCLabelBMFont labelWithString: amountLabelText fntFile: kFontDefault];
         amountLabel.anchorPoint = ccp(1, 1);
         amountLabel.position = ccp(itemWidth - 18.0f, itemHeight - 8.0f);
-        amountLabel.color = ccc3(200, 200, 200);
+//        amountLabel.color = ccc3(200, 200, 200);
         [pageItem addChild: amountLabel z: 0 tag: kAmountLabelTag];
     }
     
@@ -374,34 +395,146 @@
 #pragma mark purchase
 - (void) pageItemBtnCallback: (CCNode *) sender
 {
-    ShopItem *shopItem = (ShopItem *)sender.userData;
-    PurchaseStatus purhaseStatus = [[Shop sharedShop] purchaseItem: shopItem];
+    itemForPurchasing = sender;
+    ShopItem *shopItem = (ShopItem *)itemForPurchasing.userData;
     
-    switch(purhaseStatus)
+    if([shopItem.header isEqualToString: kMoneyPack0])
     {
-        case PurchaseStatusSuccess:
+        [[NSNotificationCenter defaultCenter] postNotificationName: kIAPItemPurchaseRequestTag
+                                                            object: kMoney0ID
+                                                          userInfo: nil];
+    }
+    else if([shopItem.header isEqualToString: kMoneyPack1])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName: kIAPItemPurchaseRequestTag
+                                                            object: kMoney1ID
+                                                          userInfo: nil
+        ];
+    }
+    else
+    {
+        int cost = shopItem.cost;
+        
+        if([Settings sharedSettings].coins - cost >= 0)
         {
-            if(!shopItem.isMoneyPack)
-            {
-                int amount = [shopItem amount];
-                NSString *amountLabelText = [NSString stringWithFormat: @"%i", amount];
-                [(CCLabelBMFont *)[sender getChildByTag: kAmountLabelTag] setString: amountLabelText];
-            }
-            
-            [coinsLabel runAction: [CCNumericTransitionTo actionWithDuration: 1.0f value: [Settings sharedSettings].coins]];
-        } break;
-            
-        case PurchaseStatusNotEnoughMoney:
+            [[NSNotificationCenter defaultCenter] postNotificationName: kIAPItemPurchaseRequestTag
+                                                                object: kIngameFake
+                                                              userInfo: nil
+            ];
+        }
+        else
         {
             [notEnoughMoneyAlert show];
             [self showPageWithItem: kMoneyPack0 animated: YES];
-        } break;
-            
-        case PurchaseStatusError:
-        {
-        
-        } break;
+        }
     }
+
+//    ShopItem *shopItem = (ShopItem *)sender.userData;
+//    PurchaseStatus purhaseStatus = [[Shop sharedShop] purchaseItem: shopItem];
+//    
+//    switch(purhaseStatus)
+//    {
+//        case PurchaseStatusSuccess:
+//        {
+//            if(!shopItem.isMoneyPack)
+//            {
+//                int amount = [shopItem amount];
+//                NSString *amountLabelText = [NSString stringWithFormat: @"%i", amount];
+//                [(CCLabelBMFont *)[sender getChildByTag: kAmountLabelTag] setString: amountLabelText];
+//            }
+//            
+//            [coinsLabel runAction: [CCNumericTransitionTo actionWithDuration: 1.0f value: [Settings sharedSettings].coins]];
+//        } break;
+//            
+//        case PurchaseStatusNotEnoughMoney:
+//        {
+//            [notEnoughMoneyAlert show];
+//            [self showPageWithItem: kMoneyPack0 animated: YES];
+//        } break;
+//            
+//        case PurchaseStatusError:
+//        {
+//        
+//        } break;
+//    }
+}
+
+#pragma mark IAPs notifications
+- (void) onItemPurchased: (NSNotification *) notification;
+{
+    //
+    ShopItem *shopItem = (ShopItem *)itemForPurchasing.userData;
+    
+    NSString *productID = notification.object;
+    
+//    int cost = shopItem.cost;
+    
+    if([productID isEqualToString: kIngameFake])
+    {
+        [[Shop sharedShop] purchaseItem: shopItem];
+        
+        int amount = [shopItem amount];
+        NSString *amountLabelText = [NSString stringWithFormat: @"%i", amount];
+        [(CCLabelBMFont *)[itemForPurchasing getChildByTag: kAmountLabelTag] setString: amountLabelText];
+        
+        [coinsLabel runAction: [CCNumericTransitionTo actionWithDuration: 1.0f value: [Settings sharedSettings].coins]];
+//        
+//        int num = [(NSNumber *)[[Settings sharedSettings].purchasedItems objectAtIndex: itemForPurchasing] intValue];
+//        num += shopItemPackSizes[itemForPurchasing];
+//        
+//        [Settings sharedSettings].coins -= cost;
+//        [[Settings sharedSettings].purchasedItems replaceObjectAtIndex: itemForPurchasing withObject: [NSNumber numberWithInt: num]];
+//        [[Settings sharedSettings] save];
+//        
+//        CCNode *item = [items objectAtIndex: itemForPurchasing];
+//        [(CCLabelBMFont *)[item getChildByTag: kNumberTag] setString: [NSString stringWithFormat: @"%i", num]];
+//        
+//        [coinsLabelNumeric runAction: [CCNumericTransitionTo actionWithDuration: 1.0f value: [Settings sharedSettings].coins]];
+    }
+    else if([productID isEqualToString: kMoney0ID])
+    {
+        [Settings sharedSettings].coins += kMoney0Value;
+        [[Settings sharedSettings] save];
+        
+        [coinsLabel runAction: [CCNumericTransitionTo actionWithDuration: 1.0f value: [Settings sharedSettings].coins]];
+    }
+    else if([productID isEqualToString: kMoney1ID])
+    {
+        [Settings sharedSettings].coins += kMoney1Value;
+        [[Settings sharedSettings] save];
+        
+        [coinsLabel runAction: [CCNumericTransitionTo actionWithDuration: 1.0f value: [Settings sharedSettings].coins]];
+    }
+
+    [self releaseContent];
+}
+
+- (void) blockContent
+{
+    if([self getChildByTag: kIAPFakeMenuTag])
+    {
+        return;
+    }
+    
+    CCMenuItem *fakeItem = [CCMenuItem itemWithTarget: self selector: nil];
+    fakeItem.contentSize = CGSizeMake(480, 320);
+    
+    fakeItem.position = ccp(240, 160);
+    
+    CCMenu *fakeMenu = [CCMenu menuWithItems: fakeItem, nil];
+    fakeMenu.position = ccp(0, 0);
+    
+    [self addChild: fakeMenu z: zIAPFakeMenu tag: kIAPFakeMenuTag];
+    
+    //show awaiting View
+}
+
+//money purchased or out of time to wait
+- (void) releaseContent
+{
+    [self removeChildByTag: kIAPFakeMenuTag cleanup: YES];
+    
+    //remove awaiting UI
 }
 
 @end

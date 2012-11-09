@@ -55,6 +55,8 @@
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"zombies/zombies.plist"];
         [[CCTextureCache sharedTextureCache] addImage: @"levels/traps/0/gate.png"];
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"levels/traps/0/gate.plist"];
+        [[CCTextureCache sharedTextureCache] addImage: @"abilities/abilities.png"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"abilities/abilities.plist"];
         
         [AnimationLoader loadAnimationsWithPlist: @"zombies/animations"];
         [AnimationLoader loadAnimationsWithPlist: @"levels/traps/animations"];
@@ -226,6 +228,28 @@
 - (void) pause
 {
     [GamePausePopup showOnRunningSceneWithDelegate: self];
+}
+
+- (void) bombAbility
+{
+    [gameLayer bombAbility];
+}
+
+- (void) shieldAbility
+{
+    [gameLayer shieldAbility];
+}
+
+- (void) randomAbility
+{
+    [gameLayer randomAbility];
+}
+
+- (void) timebBonusAbility
+{
+    if(!isArcadeGame) return;
+    
+    [gameLayer timebBonusAbility];
 }
 
 #pragma mark GamePausePopupDelegate and GameOverPopupDelegate methods implementation

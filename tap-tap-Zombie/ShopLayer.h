@@ -12,6 +12,8 @@
 #import "NotEnoughMoneyAlert.h"
 
 
+@class ShopItem;
+
 @interface ShopLayer : CCLayer
 {
     CCLayer *pagesLayer;
@@ -23,6 +25,8 @@
     CCLabelBMFontNumeric *coinsLabel;
     
     NotEnoughMoneyAlert *notEnoughMoneyAlert;
+    
+    CCNode *itemForPurchasing;
 }
 
 - (id) initWithCurrentPageItem: (NSString *) itemName;

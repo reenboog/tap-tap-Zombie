@@ -35,5 +35,6 @@
 + (id) shopItemWithDictionary: (NSDictionary *) dict;
 
 - (int) amount;
+- (void) spend;
 
 @end

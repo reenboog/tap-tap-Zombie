@@ -15,4 +15,9 @@
 
 @property (nonatomic, readonly) BOOL isArcadeGame;
 
+- (void) bombAbility;
+- (void) shieldAbility;
+- (void) randomAbility;
+- (void) timebBonusAbility;
+
 @end
