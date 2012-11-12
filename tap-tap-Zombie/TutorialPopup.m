@@ -75,12 +75,13 @@
         [self addChild: menu z: 0];
         
         // skip btn
-        skipBtn = [CCMenuItemImage itemFromNormalImage: @"buttons/exitBtn.png"
-                                         selectedImage: @"buttons/exitBtn.png"
-                                                target: self
-                                              selector: @selector(skipBtnCallback)];
+        CCLabelBMFont *btnLabel = [CCLabelBMFont labelWithString: @"skip" fntFile: kFontDefault];
+        btnLabel.color = ccc3(200, 200, 200);
+        skipBtn = [CCMenuItemLabel itemWithLabel: btnLabel 
+                                          target: self
+                                        selector: @selector(skipBtnCallback)];
         skipBtn.anchorPoint = ccp(1, 0);
-        skipBtn.scale = 0.7f;
+        skipBtn.scale = 0.9f;
         menu = [CCMenu menuWithItems: skipBtn, nil];
         menu.position = ccp(kScreenWidth - 8.0f, 8.0f);
         [self addChild: menu];
@@ -391,11 +392,14 @@
 
 - (CCLayer *) shopPage
 {
-    CCSprite *shop = [CCSprite spriteWithFile: @"buttons/shopBtn.png"];
+    CCNode *node = [CCNode node];
+    CCSprite *shop = [CCSprite spriteWithFile: @"tutorial/shop.png"];
+    shop.position = ccp(0, 50);
+    [node addChild: shop];
     
     NSString *description = @"Purchase items from zombo store|to become the ultimate survivor!";
     
-    return [self bonusPageWithPicture: shop andDescription: description];
+    return [self bonusPageWithPicture: node andDescription: description];
 }
 
 - (CCLayer *) timeBonusPage
@@ -517,6 +521,7 @@
         rightBtn.isEnabled = NO;
         
         [rightBtn runAction: [CCFadeOut actionWithDuration: 0.2f]];
+        [(CCMenuItemLabel *)skipBtn setString: @"close"];
     }
     
     if(currentPageNumber == 1)
@@ -551,6 +556,8 @@
         rightBtn.isEnabled = YES;
         
         [rightBtn runAction: [CCFadeIn actionWithDuration: 0.2f]];
+        
+        [(CCMenuItemLabel *)skipBtn setString: @"skip"];
     }
 }
 
