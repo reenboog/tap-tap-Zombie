@@ -27,6 +27,8 @@
         CCLabelBMFont *loadingLabel = [CCLabelBMFont labelWithString: @"loading..." fntFile: kFontDefault];
         loadingLabel.position = kScreenCenter;
         [self addChild: loadingLabel];
+        loadingLabel.anchorPoint = ccp(1, 0);
+        loadingLabel.position = ccp(kScreenWidth - 8.0f, 8.0f);
     }
     
     return self;

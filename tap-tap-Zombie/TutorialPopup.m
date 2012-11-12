@@ -57,7 +57,8 @@
                                                  target: self
                                                selector: @selector(rightBtnCallback)];
         menu = [CCMenu menuWithItems: rightBtn, nil];
-        menu.position = ccp(kScreenWidth - 8.0f - rightBtn.contentSize.width/2, kScreenCenterY);
+        menu.position = ccp(kScreenWidth - 8.0f - rightBtn.contentSize.width/2, 8.0f);
+        rightBtn.anchorPoint = ccp(0.5f, 0);
         rightBtn.position = ccp(0, 0);
         rightBtn.scale = 0.8f;
         [self addChild: menu z: 0];
@@ -67,7 +68,8 @@
                                                 target: self
                                               selector: @selector(leftBtnCallback)];
         menu = [CCMenu menuWithItems: leftBtn, nil];
-        menu.position = ccp(8.0f + leftBtn.contentSize.width/2, kScreenCenterY);
+        menu.position = ccp(8.0f + leftBtn.contentSize.width/2, 8.0f);
+        leftBtn.anchorPoint = ccp(0.5f, 0);
         leftBtn.position = ccp(0, 0);
         leftBtn.scale = 0.8f;
         leftBtn.opacity = 0;
@@ -76,14 +78,14 @@
         
         // skip btn
         CCLabelBMFont *btnLabel = [CCLabelBMFont labelWithString: @"skip" fntFile: kFontDefault];
-        btnLabel.color = ccc3(200, 200, 200);
+        btnLabel.color = ccc3(180, 180, 180);
         skipBtn = [CCMenuItemLabel itemWithLabel: btnLabel 
                                           target: self
                                         selector: @selector(skipBtnCallback)];
         skipBtn.anchorPoint = ccp(1, 0);
         skipBtn.scale = 0.9f;
         menu = [CCMenu menuWithItems: skipBtn, nil];
-        menu.position = ccp(kScreenWidth - 8.0f, 8.0f);
+        menu.position = ccp(kScreenCenterX, 8.0f);
         [self addChild: menu];
         
         // pages
@@ -180,6 +182,11 @@
         }
         
         currentPageNumber = 0;
+        
+        if([pages count] < 2)
+        {
+            [(CCMenuItemLabel *)skipBtn setString: @"close"];
+        }
     }
     
     return self;
@@ -312,6 +319,11 @@
     progressScale.position = ccp(w/2, h/2);
     progressScale.percentage = 75;
     [progressScaleWrapper addChild: progressScale];
+    
+    CCLabelBMFont *label = [CCLabelBMFont labelWithString: @"Supermode-3" fntFile:kFontDefault];
+    label.color = ccc3(255, 0, 0);
+    label.position = ccp(0, 70);
+    [node addChild: label];
     
     NSString *description = @"Enter supermodes|with accurate taps to progress faster.";
     
