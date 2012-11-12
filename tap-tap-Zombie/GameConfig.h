@@ -75,11 +75,27 @@ extern GameStatus gameStatus;
 extern BOOL chance(unsigned N);
 
 // tutorials
-#define kGhostsTutorial @"ghostsTutorial"
-#define kBonusTutorial @"bonusTutorial"
-#define kTimeBonusTutorial @"timeBonusTutorial"
-#define kBombTutorial @"bombTutorial"
-#define kShieldTutorial @"shieldTutorial"
+// lvl 1
+#define kGhostsTutorial     @"ghostsTutorial"
+#define kTrapTutorial       @"trapTutorial"
+#define kProgressTutorial   @"progressTutorial"
+
+// lvl 3
+#define kBombTutorial       @"bombTutorial"
+#define kSuperModeTutorial  @"superModeTutorial"
+
+// lvl 4
+#define kJumperTutorial     @"jumperTutorial"
+
+// lvl 7
+#define kShieldTutorial     @"shieldTutorial"
+
+// lvl 8
+#define kBonusTutorial      @"bonusTutorial"
+#define kShopTutorial       @"shopTutorial"
+
+// other
+#define kTimeBonusTutorial  @"timeBonusTutorial"
 
 #endif // __GAME_CONFIG_H
 

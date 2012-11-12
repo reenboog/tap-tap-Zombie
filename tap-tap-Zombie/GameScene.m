@@ -141,27 +141,63 @@
         [tutorialPages addObject: kGhostsTutorial];
     }
     
-    if(![showedTutorials containsObject: kBombTutorial])
+    if(![showedTutorials containsObject: kTrapTutorial])
     {
-        [showedTutorials addObject: kBombTutorial];
-        [tutorialPages addObject: kBombTutorial];
+        [showedTutorials addObject: kTrapTutorial];
+        [tutorialPages addObject: kTrapTutorial];
     }
     
-    if((map.index > 4) || (map.index == 0))
+    if(![showedTutorials containsObject: kProgressTutorial])
+    {
+        [showedTutorials addObject: kProgressTutorial];
+        [tutorialPages addObject: kProgressTutorial];
+    }
+    
+    if((map.index > 2) || (map.index == 0))
+    {
+        if(![showedTutorials containsObject: kBombTutorial])
+        {
+            [showedTutorials addObject: kBombTutorial];
+            [tutorialPages addObject: kBombTutorial];
+        }
+        
+        if(![showedTutorials containsObject: kSuperModeTutorial])
+        {
+            [showedTutorials addObject: kSuperModeTutorial];
+            [tutorialPages addObject: kSuperModeTutorial];
+        }
+    }
+    
+    if((map.index > 3) || (map.index == 0))
+    {
+        if(![showedTutorials containsObject: kJumperTutorial])
+        {
+            [showedTutorials addObject: kJumperTutorial];
+            [tutorialPages addObject: kJumperTutorial];
+        }
+    }
+    
+    if((map.index > 6) || (map.index == 0))
+    {
+        if(![showedTutorials containsObject: kShieldTutorial])
+        {
+            [showedTutorials addObject: kShieldTutorial];
+            [tutorialPages addObject: kShieldTutorial];
+        }
+    }
+    
+    if((map.index > 7) || (map.index == 0))
     {
         if(![showedTutorials containsObject: kBonusTutorial])
         {
             [showedTutorials addObject: kBonusTutorial];
             [tutorialPages addObject: kBonusTutorial];
         }
-    }
-    
-    if((map.index > 10) || (map.index == 0))
-    {
-        if(![showedTutorials containsObject: kShieldTutorial])
+        
+        if(![showedTutorials containsObject: kShopTutorial])
         {
-            [showedTutorials addObject: kShieldTutorial];
-            [tutorialPages addObject: kShieldTutorial];
+            [showedTutorials addObject: kShopTutorial];
+            [tutorialPages addObject: kShopTutorial];
         }
     }
     

@@ -13,6 +13,8 @@
 
 #import "AnimationLoader.h"
 
+#import "Trap.h"
+
 
 #define kPicTag 11
 
@@ -21,10 +23,20 @@
 - (CCLayer *) bonusPageWithPicture: (CCNode *) pic andDescription: (NSString *) desc;
 
 - (CCLayer *) ghostsPage;
-- (CCLayer *) bonusPage;
+- (CCLayer *) trapPage;
+- (CCLayer *) progressPage;
+
 - (CCLayer *) bombPage;
-- (CCLayer *) timeBonusPage;
+- (CCLayer *) superModePage;
+
+- (CCLayer *) jumperPage;
+
 - (CCLayer *) shieldPage;
+
+- (CCLayer *) bonusPage;
+- (CCLayer *) shopPage;
+
+- (CCLayer *) timeBonusPage;
 @end
 
 @implementation TutorialPopup
@@ -88,9 +100,41 @@
             [pagesLayer addChild: page];
         }
         
+        if([pages containsObject: kTrapTutorial])
+        {
+            page = [self trapPage];
+            page.position = ccp(pageShift, 0);
+            pageShift += kScreenWidth;
+            [pagesLayer addChild: page];
+        }
+        
+        if([pages containsObject: kProgressTutorial])
+        {
+            page = [self progressPage];
+            page.position = ccp(pageShift, 0);
+            pageShift += kScreenWidth;
+            [pagesLayer addChild: page];
+        }
+        
         if([pages containsObject: kBombTutorial])
         {
             page = [self bombPage];
+            page.position = ccp(pageShift, 0);
+            pageShift += kScreenWidth;
+            [pagesLayer addChild: page];
+        }
+        
+        if([pages containsObject: kSuperModeTutorial])
+        {
+            page = [self superModePage];
+            page.position = ccp(pageShift, 0);
+            pageShift += kScreenWidth;
+            [pagesLayer addChild: page];
+        }
+        
+        if([pages containsObject: kJumperTutorial])
+        {
+            page = [self jumperPage];
             page.position = ccp(pageShift, 0);
             pageShift += kScreenWidth;
             [pagesLayer addChild: page];
@@ -107,6 +151,14 @@
         if([pages containsObject: kBonusTutorial])
         {
             page = [self bonusPage];
+            page.position = ccp(pageShift, 0);
+            pageShift += kScreenWidth;
+            [pagesLayer addChild: page];
+        }
+        
+        if([pages containsObject: kShopTutorial])
+        {
+            page = [self shopPage];
             page.position = ccp(pageShift, 0);
             pageShift += kScreenWidth;
             [pagesLayer addChild: page];
@@ -154,9 +206,71 @@
         [ghosts addChild: ghost];
     }
     
-    NSString *description = @"this is|a multiline|description";
+    NSString *description = @"These deadly zombie ghosts|are trying to get your brains.";
     
     return [self pageWithPicture: ghosts andDescription: description];
+}
+
+- (CCLayer *) trapPage
+{
+    CCNode *zombieInTrap = [CCNode node];
+    
+    CCSprite *backLight = [CCSprite spriteWithFile: @"levels/traps/0/back_light.png"];
+    backLight.anchorPoint = ccp(0.5f, 0);
+    backLight.color = ccc3(0, 255, 0);
+    [zombieInTrap addChild: backLight];
+    
+    CCSprite *gate = [CCSprite node];
+    gate.anchorPoint = ccp(0.5f, 0);
+    [zombieInTrap addChild: gate];
+    [gate runAction: 
+                [CCAnimate actionWithAnimation: [[CCAnimationCache sharedAnimationCache] animationByName: @"gate0"]
+                           restoreOriginalFrame: NO
+                ]
+    ];
+    
+    CCSprite *body = [CCSprite spriteWithFile: @"levels/traps/0/body.png"];
+    body.anchorPoint = ccp(0.5f, 0);
+    [zombieInTrap addChild: body];
+    
+    CCSprite *zombie = [CCSprite spriteWithSpriteFrameName: @"zombieMoving00.png"];
+    zombie.anchorPoint = ccp(0.5f, 0);
+    zombie.position = ccp(0, 30);
+    zombie.scale = 0.8f;
+    [zombieInTrap addChild: zombie];
+    
+    CCSprite *light = [CCSprite spriteWithFile: @"levels/traps/0/light.png"];
+    light.anchorPoint = ccp(0.5f, 0);
+    light.color = ccc3(0, 255, 0);
+    [zombieInTrap addChild: light];
+    
+    NSString *description = @"Use this secret weapon for defence.";
+    
+    return [self pageWithPicture: zombieInTrap andDescription: description];
+}
+
+- (CCLayer *) progressPage
+{
+    CCNode *node = [CCNode node];
+    [node setContentSize: CGSizeMake(0, 100)];
+    
+    CCSprite *progressScaleWrapper = [CCSprite spriteWithFile: @"HUD/damageScaleOuter.png"];
+    progressScaleWrapper.anchorPoint = ccp(0.5f, 0.5f);
+    progressScaleWrapper.position = ccp(0, 100);
+    progressScaleWrapper.scaleX = 0.8f;
+    [node addChild: progressScaleWrapper];
+    
+    CCProgressTimer *progressScale = [CCProgressTimer progressWithFile: @"HUD/damageScaleInner.png"];
+    progressScale.type = kCCProgressTimerTypeHorizontalBarLR;
+    float w = progressScaleWrapper.contentSize.width;
+    float h = progressScaleWrapper.contentSize.height;
+    progressScale.position = ccp(w/2, h/2);
+    progressScale.percentage = 50;
+    [progressScaleWrapper addChild: progressScale];
+    
+    NSString *description = @"Catch required amount of zomboghosts|to pass the level.";
+    
+    return [self pageWithPicture: node andDescription: description];
 }
 
 - (CCLayer *) bombPage
@@ -174,9 +288,65 @@
     CCNode *pic = [CCNode node];
     [pic addChild: sprite];
     
-    NSString *description = @"this is|a multiline|description";
+    NSString *description = @"Do not any bombs!";
     
     return [self bonusPageWithPicture: pic andDescription: description];
+}
+
+- (CCLayer *) superModePage
+{
+    CCNode *node = [CCNode node];
+    [node setContentSize: CGSizeMake(0, 100)];
+    
+    CCSprite *progressScaleWrapper = [CCSprite spriteWithFile: @"HUD/damageScaleOuter.png"];
+    progressScaleWrapper.anchorPoint = ccp(0.5f, 0.5f);
+    progressScaleWrapper.position = ccp(0, 100);
+    progressScaleWrapper.scaleX = 0.8f;
+    [node addChild: progressScaleWrapper];
+    
+    CCProgressTimer *progressScale = [CCProgressTimer progressWithFile: @"HUD/damageScaleInner.png"];
+    progressScale.type = kCCProgressTimerTypeHorizontalBarLR;
+    float w = progressScaleWrapper.contentSize.width;
+    float h = progressScaleWrapper.contentSize.height;
+    progressScale.position = ccp(w/2, h/2);
+    progressScale.percentage = 75;
+    [progressScaleWrapper addChild: progressScale];
+    
+    NSString *description = @"Enter supermodes|with accurate taps to progress faster.";
+    
+    return [self pageWithPicture: node andDescription: description];
+}
+
+- (CCLayer *) jumperPage
+{
+    CCNode *roads = [CCSprite spriteWithFile: @"tutorial/roads.png"];
+    
+    CCSprite *zombie = [CCSprite node];
+    [zombie runAction: [CCRepeatForever actionWithAction:
+                [CCAnimate actionWithAnimation: [[CCAnimationCache sharedAnimationCache] animationByName: @"zombieMoving3"]
+                           restoreOriginalFrame: NO
+                ]]
+    ];
+    zombie.anchorPoint = ccp(0.5f, 0);
+    zombie.position = ccp(40, 30);
+    
+    [zombie runAction:
+                [CCRepeatForever actionWithAction:
+                                    [CCSequence actions:
+                                                    [CCDelayTime actionWithDuration: 2.0f],
+                                                    [CCMoveBy actionWithDuration: 0.3f position: ccp(110, 0)],
+                                                    [CCDelayTime actionWithDuration: 2.0f],
+                                                    [CCMoveBy actionWithDuration: 0.3f position: ccp(-110, 0)],
+                                                    nil
+                                    ]
+                ]
+    ];
+    
+    [roads addChild: zombie];
+    
+    NSString *description = @"Beware of jumpers:|they can change their direction.";
+    
+    return [self pageWithPicture: roads andDescription: description];
 }
 
 - (CCLayer *) shieldPage
@@ -194,7 +364,7 @@
     CCNode *pic = [CCNode node];
     [pic addChild: sprite];
     
-    NSString *description = @"this is|a multiline|description";
+    NSString *description = @"The Shield automatically catches|all zombies for a limited time.";
     
     return [self bonusPageWithPicture: pic andDescription: description];
 }
@@ -214,9 +384,18 @@
     CCNode *pic = [CCNode node];
     [pic addChild: sprite];
     
-    NSString *description = @"this is|a multiline|description";
+    NSString *description = @"Collect bonuses and earn zombo bucks.";
     
     return [self bonusPageWithPicture: pic andDescription: description];
+}
+
+- (CCLayer *) shopPage
+{
+    CCSprite *shop = [CCSprite spriteWithFile: @"buttons/shopBtn.png"];
+    
+    NSString *description = @"Purchase items from zombo store|to become the ultimate survivor!";
+    
+    return [self bonusPageWithPicture: shop andDescription: description];
 }
 
 - (CCLayer *) timeBonusPage

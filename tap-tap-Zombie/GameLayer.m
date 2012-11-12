@@ -271,17 +271,24 @@
     
     NSMutableSet *a = [[NSMutableSet alloc] initWithCapacity: 5];
     
-    [a addObject: @"bad"];
-    
-    if(map.index > 4)
+    if(map.index > 2)
     {
-        [a addObject: @"jumper"];
-        [a addObject: @"bonus"];
+        [a addObject: @"bad"];
     }
     
-    if(map.index > 10)
+    if(map.index > 3)
+    {
+        [a addObject: @"jumper"];
+    }
+    
+    if(map.index > 6)
     {
         [a addObject: @"shield"];
+    }
+    
+    if(map.index > 7)
+    {
+        [a addObject: @"bonus"];
     }
     
     NSSet *allowedObjects = [NSSet setWithSet: a];

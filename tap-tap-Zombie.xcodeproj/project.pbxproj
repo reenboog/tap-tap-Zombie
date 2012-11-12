@@ -23,6 +23,7 @@
 		19A3F959164A89A30011829A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A3F954164A89A30011829A /* MBProgressHUD.m */; };
 		19A3F95A164A89A30011829A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A3F956164A89A30011829A /* Reachability.m */; };
 		19A3F95C164A92370011829A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A3F95B164A92370011829A /* SystemConfiguration.framework */; };
+		19A520BB16511775005303E8 /* tutorial in Resources */ = {isa = PBXBuildFile; fileRef = 19A520BA16511775005303E8 /* tutorial */; };
 		19A5D90E1627FB1F006E4A95 /* Wave.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D90D1627FB1F006E4A95 /* Wave.m */; };
 		19A5D9111627FB3A006E4A95 /* WaveCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D9101627FB3A006E4A95 /* WaveCache.m */; };
 		19A67A54164144E800C06623 /* TutorialPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A67A53164144E800C06623 /* TutorialPopup.m */; };
@@ -213,6 +214,7 @@
 		19A3F955164A89A30011829A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		19A3F956164A89A30011829A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		19A3F95B164A92370011829A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		19A520BA16511775005303E8 /* tutorial */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tutorial; path = Resources/game/tutorial; sourceTree = "<group>"; };
 		19A5D90C1627FB1F006E4A95 /* Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wave.h; sourceTree = "<group>"; };
 		19A5D90D1627FB1F006E4A95 /* Wave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wave.m; sourceTree = "<group>"; };
 		19A5D90F1627FB3A006E4A95 /* WaveCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveCache.h; sourceTree = "<group>"; };
@@ -1074,6 +1076,7 @@
 		19BAA685161C894100A43A5F /* game */ = {
 			isa = PBXGroup;
 			children = (
+				19A520BA16511775005303E8 /* tutorial */,
 				19EDD40A164CF6270037CC6D /* abilities */,
 				19C0C1E7162C3ED000F46DE9 /* mainMenu */,
 				19BAA686161C895600A43A5F /* buttons */,
@@ -1310,6 +1313,7 @@
 				19B72EE11647C7980016F778 /* Default@2x.png in Resources */,
 				19EDD404164CD5A00037CC6D /* Default-hd.png in Resources */,
 				19EDD40B164CF6270037CC6D /* abilities in Resources */,
+				19A520BB16511775005303E8 /* tutorial in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1504,8 +1508,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Matt Weight (RW443MMV8G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matt Weight (RW443MMV8G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey McLeod (ZKHCZ235BN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeffrey McLeod (ZKHCZ235BN)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1515,8 +1519,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "45BDAF01-061C-4388-B8CC-EBB5A59B6648";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "45BDAF01-061C-4388-B8CC-EBB5A59B6648";
+				PROVISIONING_PROFILE = "BC116D71-D2CF-4DFD-A637-78B546510851";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BC116D71-D2CF-4DFD-A637-78B546510851";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1525,8 +1529,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Matt Weight (RW443MMV8G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matt Weight (RW443MMV8G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jeffrey McLeod (ZKHCZ235BN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jeffrey McLeod (ZKHCZ235BN)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tap-tap-Zombie/Prefix.pch";
@@ -1535,8 +1539,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "45BDAF01-061C-4388-B8CC-EBB5A59B6648";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "45BDAF01-061C-4388-B8CC-EBB5A59B6648";
+				PROVISIONING_PROFILE = "BC116D71-D2CF-4DFD-A637-78B546510851";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BC116D71-D2CF-4DFD-A637-78B546510851";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
