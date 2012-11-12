@@ -289,7 +289,7 @@
     CCNode *pic = [CCNode node];
     [pic addChild: sprite];
     
-    NSString *description = @"Do not any bombs!";
+    NSString *description = @"Do not touch any bombs!";
     
     return [self bonusPageWithPicture: pic andDescription: description];
 }
