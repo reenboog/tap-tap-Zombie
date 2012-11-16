@@ -15,11 +15,16 @@
 @interface GamePausePopup : CCPopupLayer
 {
     CCLayerColor *background;
+    CCLabelBMFont *header;
     
     CCMenuItem *restartBtn;
     CCMenuItem *exitBtn;
     
-    CCMenuItem *closePopupBtn; 
+    CCMenuItem *closePopupBtn;
+    
+    CCNode *score;
+    CCNode *bestScore;
+    CCNode *zombiesLeft;
 }
 
 @property (nonatomic, readonly) id<GamePausePopupDelegate> delegate;

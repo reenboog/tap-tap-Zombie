@@ -50,6 +50,7 @@
 
 #define kFontDefault @"font/gameFont.fnt"
 #define kFontShopItemDescription @"font/shopItemDescriptionFont.fnt"
+#define kFontDifficulty @"font/difficultyFont.fnt"
 
 // game rules
 #define kMinGameWays 3
@@ -58,6 +59,7 @@
 
 typedef enum 
 {
+    GameDifficultyArcade = -1,
     GameDifficultyEasy,
     GameDifficultyMedium,
     GameDifficultyHard,
@@ -96,6 +98,10 @@ extern BOOL chance(unsigned N);
 
 // other
 #define kTimeBonusTutorial  @"timeBonusTutorial"
+
+#define kMapsCount 23
+
+extern BOOL runGameInArcadeMode;
 
 #endif // __GAME_CONFIG_H
 

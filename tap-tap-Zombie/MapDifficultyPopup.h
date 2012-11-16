@@ -15,9 +15,11 @@
 @interface MapDifficultyPopup : CCPopupLayer
 {
     CCLayerColor *background;
+    CCLabelBMFont *header;
     
-    CCMenuItem *difficultyBtn[kMaxGameDifficulty + 1];
-    CCMenuItem *closePopupBtn;
+    CCMenuItemLabel *difficultyBtn[kMaxGameDifficulty + 1];
+    CCMenuItemLabel *closePopupBtn;
+    CCMenuItemLabel *arcadeModeBtn;
 }
 
 @property (nonatomic, readonly) id<MapDifficultyPopupDelegate> delegate;

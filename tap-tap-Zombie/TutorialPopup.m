@@ -7,6 +7,7 @@
 //
 
 #import "GameConfig.h"
+#import "SoundsConfig.h"
 
 #import "TutorialPopup.h"
 #import "Settings.h"
@@ -82,7 +83,7 @@
         skipBtn = [CCMenuItemLabel itemWithLabel: btnLabel 
                                           target: self
                                         selector: @selector(skipBtnCallback)];
-        skipBtn.anchorPoint = ccp(1, 0);
+        skipBtn.anchorPoint = ccp(0.5f, 0);
         skipBtn.scale = 0.9f;
         menu = [CCMenu menuWithItems: skipBtn, nil];
         menu.position = ccp(kScreenCenterX, 8.0f);
@@ -542,6 +543,8 @@
         
         [leftBtn runAction: [CCFadeIn actionWithDuration: 0.2f]];
     }
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 - (void) leftBtnCallback
@@ -571,11 +574,15 @@
         
         [(CCMenuItemLabel *)skipBtn setString: @"skip"];
     }
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 - (void) skipBtnCallback
 {
     [self hideAndClose];
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 #pragma mark -

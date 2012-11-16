@@ -128,7 +128,7 @@
             case ZombieTypeTimeBonus:
             {
                 [zombie capture];
-                [traps activateTrapAtIndex: zombie.tag];
+//                [traps activateTrapAtIndex: zombie.tag];
             } break;
                 
             default: break;

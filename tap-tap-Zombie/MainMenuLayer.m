@@ -7,6 +7,7 @@
 //
 
 #import "GameConfig.h"
+#import "SoundsConfig.h"
 
 #import "MainMenuLayer.h"
 #import "ShopPopup.h"
@@ -22,6 +23,8 @@
 #import "MapDifficultyPopup.h"
 
 #import "GameLoadingScene.h"
+
+#import "Settings.h"
 
 
 
@@ -80,6 +83,13 @@
         shopBtn.anchorPoint = ccp(1, 1);
         shopBtn.scale = 0.5f;
         
+        gameCenterBtn = [CCMenuItemImage  itemFromNormalImage: @"buttons/scoresBtn.png"
+                                                selectedImage: @"buttons/scoresBtnOn.png"
+                                                       target: self
+                                                     selector: @selector(gameCenterBtnCallback)];
+        gameCenterBtn.anchorPoint = ccp(1, 1);
+        gameCenterBtn.scale = 0.5f;
+        
         twitterBtn = [CCMenuItemImage  itemFromNormalImage: @"buttons/twitterBtn.png"
                                              selectedImage: @"buttons/twitterBtnOn.png"
                                                     target: self
@@ -94,23 +104,10 @@
         facebookBtn.anchorPoint = ccp(1, 1);
         facebookBtn.scale = 0.5f;
         
-        topMenu = [CCMenu menuWithItems: shopBtn, twitterBtn, facebookBtn, nil];
+        topMenu = [CCMenu menuWithItems: shopBtn, gameCenterBtn, twitterBtn, facebookBtn, nil];
         [topMenu alignItemsHorizontally];
-        topMenu.position = ccp(kScreenWidth - 8.0f - shopBtn.contentSize.width*0.5f, kScreenHeight - 8.0f + kScreenCenterY/2);
+        topMenu.position = ccp(kScreenWidth - 16.0f - shopBtn.contentSize.width*0.75f, kScreenHeight - 8.0f + kScreenCenterY/2);
         [self addChild: topMenu];
-        
-        playBtn = [CCMenuItemImage  itemFromNormalImage: @"buttons/playBtn.png"
-                                          selectedImage: @"buttons/playBtnOn.png"
-                                                 target: self
-                                               selector: @selector(playBtnCallback)];
-        playBtn.anchorPoint = ccp(1, 0);
-        playBtn.scale = 0.7f;
-        playBtn.isEnabled = NO;
-        playBtn.visible = NO;
-        
-        bottomMenu = [CCMenu menuWithItems: playBtn, nil];
-        bottomMenu.position = ccp(kScreenWidth - 8.0f, 8.0f - kScreenCenterY/2);
-        [self addChild: bottomMenu];
         
         // evil doctor
         evilDoctor = [CCSprite node];
@@ -189,13 +186,6 @@
                                                         position: ccp(0, kScreenCenterY/2)]
                 ]
     ];
-    
-    [bottomMenu runAction:
-                [CCEaseBackIn actionWithAction:
-                                    [CCMoveBy actionWithDuration: 0.3f
-                                                        position: ccp(0, -kScreenCenterY/2)]
-                ]
-    ];
 }
 
 - (void) popupDidFinishClosing: (CCPopupLayer *) popup
@@ -221,13 +211,6 @@
                                                         position: ccp(0, -kScreenCenterY/2)]
                 ]
     ];
-    
-    [bottomMenu runAction:
-                [CCEaseBackOut actionWithAction:
-                                    [CCMoveBy actionWithDuration: 0.3f
-                                                        position: ccp(0, kScreenCenterY/2)]
-                ]
-    ];
 }
 
 #pragma mark -
@@ -238,6 +221,18 @@
 {
     mapIndex = mapIndex_;
     
+    if([Settings sharedSettings].gameCycle > 0)
+    {
+        NSNumber *i = [NSNumber numberWithInt: mapIndex];
+        
+        if([[Settings sharedSettings].arcadeMaps containsObject: i])
+        {
+            [self mapDifficultyChanged: GameDifficultyArcade];
+            
+            return;
+        }
+    }
+    
     [MapDifficultyPopup showOnRunningSceneWithDelegate: self];
 }
 
@@ -246,6 +241,16 @@
 #pragma mark GameDifficultyPopupDelegate methods implementation
 - (void) mapDifficultyChanged: (GameDifficulty) mapDifficulty
 {
+    if(mapDifficulty == GameDifficultyArcade)
+    {
+        mapDifficulty = [self minMapDifficulty];
+        runGameInArcadeMode = YES;
+    }
+    else
+    {
+        runGameInArcadeMode = NO;
+    }
+    
     // start game on map
     Map *map = [[MapCache sharedMapCache] mapAtIndex: mapIndex withDifficulty: mapDifficulty];
     GameLoadingScene *loadingScene = [GameLoadingScene sceneWithMap: map];
@@ -254,6 +259,11 @@
                                                                        withColor: ccc3(0, 0, 0)];
     
     [[CCDirector sharedDirector] replaceScene: sceneTransition];
+}
+
+- (int) minMapDifficulty
+{
+    return [Settings sharedSettings].gameCycle;
 }
 
 #pragma mark -
@@ -398,37 +408,61 @@
                                                         position: ccp(0, -kScreenCenterY/2)]
                 ]
     ];
-    
-    [bottomMenu runAction:
-                [CCEaseBackOut actionWithAction:
-                                    [CCMoveBy actionWithDuration: 0.3f
-                                                        position: ccp(0, kScreenCenterY/2)]
-                ]
-    ];
 }
 
 #pragma mark -
 
 #pragma mark callbacks
+- (void) gameCenterBtnCallback
+{
+    leaderboardViewController = [[UIViewController alloc] init];
+    
+    GKLeaderboardViewController *leaderboardController = [[[GKLeaderboardViewController alloc] init] autorelease];
+    
+    if (leaderboardController != nil)
+    {
+        leaderboardController.leaderboardDelegate = self;
+        [[[CCDirector sharedDirector] openGLView] addSubview: leaderboardViewController.view];
+        [leaderboardViewController presentModalViewController: leaderboardController animated: NO];
+        
+        leaderboardController.view.transform = CGAffineTransformMakeRotation(CC_DEGREES_TO_RADIANS(0.0f));
+        //        leaderboardController.view.bounds = CGRectMake(0, 0, 480, 320);
+        leaderboardController.view.center = CGPointMake(240, 160);
+    }
+    
+    PLAY_BUTTON_CLICK_SOUND();
+}
+
 - (void) shopBtnCallback
 {
     [ShopPopup showOnRunningSceneWithDelegate: self];
-}
-
-- (void) playBtnCallback
-{
-    // mapIndex == 0 for arcade game
-    [self mapChanged: 0];
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 - (void) twitterBtnCallback
 {
-
+    
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 - (void) facebookBtnCallback
 {
+    
+    
+    PLAY_BUTTON_CLICK_SOUND();
+}
 
+#pragma mark -
+
+#pragma mark game kit
+-(void) leaderboardViewControllerDidFinish: (GKLeaderboardViewController *) viewController
+{
+    [leaderboardViewController dismissModalViewControllerAnimated: NO];
+    [leaderboardViewController.view removeFromSuperview];
+    
+    [leaderboardViewController release];
 }
 
 #pragma mark -

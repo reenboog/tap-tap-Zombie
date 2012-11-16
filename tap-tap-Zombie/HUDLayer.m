@@ -7,6 +7,8 @@
 //
 
 #import "GameConfig.h"
+#import "SoundsConfig.h"
+
 #import "Shop.h"
 
 #import "HUDLayer.h"
@@ -129,25 +131,35 @@ static NSString* ccTimeToString(ccTime time)
         }
         else
         {
-            timerLabel = [CCLabelBMFont labelWithString: @"00:00" fntFile: kFontDefault];
+            timerLabel = [CCLabelBMFont labelWithString: @"00:00" fntFile: kFontDifficulty];
             timerLabel.anchorPoint = ccp(0.5f, 1);
             timerLabel.position = ccp(kScreenCenterX, kScreenHeight - 8.0f);
             [self addChild: timerLabel];
         }
         
         // score label
-        scoreLabel = [CCLabelBMFont labelWithString: @"0" fntFile: kFontDefault];
+        scoreLabel = [CCLabelBMFont labelWithString: @"0" fntFile: kFontDifficulty];
         scoreLabel.anchorPoint = ccp(1, 1);
-        scoreLabel.position = ccp(kScreenWidth - 8.0f, kScreenHeight - 8.0f);
+        scoreLabel.position = ccp(kScreenWidth - 8.0f, kScreenHeight + 0.0f);
+        scoreLabel.color = ccc3(255, 165, 0);
         [self addChild: scoreLabel];
         
         // super mode label
-        superModeLabel = [CCLabelBMFont labelWithString: @"" fntFile: kFontDefault];
+        superModeLabel = [CCLabelBMFont labelWithString: @"" fntFile: kFontDifficulty];
         superModeLabel.position = ccp(kScreenCenterX, kScreenHeight - 48.f);
         [self addChild: superModeLabel];
         
         // abilities
         [self initAbilitiesMenu];
+        
+        // cheat bitton
+        CCMenuItemLabel *winBtn = [CCMenuItemLabel itemWithLabel: [CCLabelBMFont labelWithString: @"win" fntFile: kFontDefault]
+                                                          target: self
+                                                        selector: @selector(win)];
+        [winBtn setAnchorPoint: ccp(0, 0)];
+        menu = [CCMenu menuWithItems: winBtn, nil];
+        [menu setPosition: ccp(8, 8)];
+        [self addChild: menu];
     }
     
     return self;
@@ -170,6 +182,7 @@ static NSString* ccTimeToString(ccTime time)
 {
     [abilitiesMenu removeFromParentAndCleanup: YES];
     [self initAbilitiesMenu];
+    [self hideSuperModeLabel];
 }
 
 #pragma mark -
@@ -221,6 +234,8 @@ static NSString* ccTimeToString(ccTime time)
 - (void) pauseBtnCallback
 {
     [delegate pause];
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 - (void) abilityBtnCallback: (CCNode *) sender
@@ -266,29 +281,34 @@ static NSString* ccTimeToString(ccTime time)
         CCLabelBMFont *amountLabel = (CCLabelBMFont *)[sender getChildByTag: kAmountTag];
         [amountLabel setString: [NSString stringWithFormat: @"%i", [it amount]]];
     }
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 #pragma mark -
 
 - (void) updateSuperModeLabelWithValue: (int) value
 {
-    [superModeLabel setString: [NSString stringWithFormat: @"super mode %i", value]];
+    [superModeLabel setString: [NSString stringWithFormat: @"Supermode %i", value + 1]];
     
     switch(value)
     {
         case 0:
         {
-            superModeLabel.color = ccc3(255, 255, 255);
+            superModeLabel.color = ccc3(255, 255, 0);
+            [self showSuperModeLabel];
         } break;
             
         case 1:
         {
-            superModeLabel.color = ccc3(255, 255, 0);
+            superModeLabel.color = ccc3(255, 165, 0);
+            [self showSuperModeLabel];
         } break;
             
         case 2:
         {
-            superModeLabel.color = ccc3(0, 255, 0);
+            superModeLabel.color = ccc3(255, 0, 0);
+            [self showSuperModeLabel];
         } break;
             
         default: break;
@@ -299,14 +319,49 @@ static NSString* ccTimeToString(ccTime time)
 {
     [superModeLabel stopAllActions];
     
-    [superModeLabel runAction: [CCFadeIn actionWithDuration: 0.2f]];
+    float delay = 0;
+    float delayStep = 0.15f;
+    CCSprite *ch = nil;
+    CCARRAY_FOREACH([superModeLabel children], ch)
+    {
+        [ch stopAllActions];
+        
+        ch.scale = 3.0f;
+        ch.position = ccp(ch.position.x, kScreenCenterY);
+        ch.opacity = 0;
+        
+        [ch runAction:
+                [CCSequence actions:
+                                [CCDelayTime actionWithDuration: delay],
+                                [CCSpawn actions:
+                                            [CCScaleTo actionWithDuration: 0.3f scale: 1.0f],
+                                            [CCMoveBy actionWithDuration: 0.3f position: ccp(0, -kScreenCenterY)],
+                                            [CCFadeTo actionWithDuration: 0.2f opacity: 255],
+                                            nil
+                                ],
+                                nil
+                ]
+        ];
+        
+        delay += delayStep;
+    }
 }
 
 - (void) hideSuperModeLabel
 {
     [superModeLabel stopAllActions];
+    CCSprite *ch = nil;
+    CCARRAY_FOREACH([superModeLabel children], ch)
+    {
+        [ch stopAllActions];
+    }
     
-    [superModeLabel runAction: [CCFadeOut actionWithDuration: 0.2f]];
+    [superModeLabel runAction: [CCFadeTo actionWithDuration: 0.2f opacity: 0]];
+}
+
+- (void) win
+{
+    [delegate win];
 }
 
 @end

@@ -14,4 +14,10 @@
 - (void) exit;
 - (void) restart;
 
+- (float) score;
+- (float) bestScore;
+- (int) zombiesLeft;
+
+- (BOOL) isArcadeGame;
+
 @end

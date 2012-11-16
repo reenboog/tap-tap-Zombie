@@ -10,6 +10,7 @@
 
 
 GameStatus gameStatus = {NO, NO};
+BOOL runGameInArcadeMode = NO;
 
 BOOL chance(unsigned N)
 {

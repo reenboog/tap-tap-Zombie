@@ -7,6 +7,7 @@
 //
 
 #import "GameConfig.h"
+#import "SoundsConfig.h"
 
 #import "Zombie.h"
 
@@ -286,6 +287,17 @@
     ];
     
     [delegate zombieCaptured: self];
+    
+    switch(type)
+    {
+        case ZombieTypeNormal:
+        {
+            PLAY_ZOMBIE_CAPTURED_SOUND();
+        } break;
+            
+        default:
+            break;
+    }
 }
 
 @end

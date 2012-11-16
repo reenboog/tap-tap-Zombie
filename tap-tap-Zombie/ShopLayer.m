@@ -7,6 +7,8 @@
 //
 
 #import "GameConfig.h"
+#import "SoundsConfig.h"
+
 #import "ShopLayer.h"
 
 #import "Shop.h"
@@ -382,6 +384,8 @@
     nPage = nPage > [[pagesLayer children] count] - 1 ? 0 : nPage;
     
     [self setCurrentPage: nPage animated: YES];
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 - (void) leftBtnCallback
@@ -390,6 +394,8 @@
     nPage = nPage < 0 ? [[pagesLayer children] count] - 1 : nPage;
     
     [self setCurrentPage: nPage animated: YES];
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 #pragma mark purchase
@@ -457,6 +463,8 @@
 //        
 //        } break;
 //    }
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 #pragma mark IAPs notifications
@@ -507,6 +515,8 @@
     }
 
     [self releaseContent];
+    
+    PLAY_SHOP_PURCHASE_SOUND();
 }
 
 - (void) blockContent

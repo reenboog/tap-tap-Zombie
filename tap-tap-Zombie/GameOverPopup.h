@@ -11,17 +11,21 @@
 
 #import "GameOverPopupDelegate.h"
 
-@interface GameOverPopup : CCPopupLayer
+@interface GameOverPopup : CCPopupLayer <CCPopupLayerDelegate>
 {
     CCLayerColor *background;
     
     CCMenuItem *resetBtn;
+    CCMenuItem *shopBtn;
     CCMenuItem *exitBtn;
     
-    CCLabelBMFont *statusLabel;
-    CCLabelBMFont *timeLabel;
-    CCLabelBMFont *perfectTapsLabel;
-    CCLabelBMFont *scoreLabel;
+    CCNode *time;
+    CCNode *perfectTaps;
+    CCNode *score;
+    
+    CCMenuItemLabel *resurrection;
+    
+    CCLabelBMFont *header;
 }
 
 @property (nonatomic, readonly) id<GameOverPopupDelegate> delegate;

@@ -25,6 +25,8 @@
 
 #import "Settings.h"
 
+#import "Shop.h"
+
 
 #define kTimeForArcadeGame 30.0f
 
@@ -60,11 +62,14 @@
         
         [AnimationLoader loadAnimationsWithPlist: @"zombies/animations"];
         [AnimationLoader loadAnimationsWithPlist: @"levels/traps/animations"];
+        
+        [[CCTextureCache sharedTextureCache] addImage: @"shop/icons/shopIcons.png"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"shop/icons/shopIcons.plist"];
      
         // init
         map = [map_ retain];
         
-        isArcadeGame = map.index == 0;
+        isArcadeGame = runGameInArcadeMode;
 
         gameLayer = [GameLayer gameLayerWithDelegate: self andMap: map];
         [self addChild: gameLayer];
@@ -72,12 +77,12 @@
         hudLayer = [HUDLayer hudLayerWithDelegate: self];
         [self addChild: hudLayer];
         
-        float n = ((map.difficulty + 1.0f)/2.0f + 1.0f)*(25.0f + map.index);
+        zombiesLeft = ((map.difficulty + 1.0f)/2.0f + 1.0f)*(25.0f + map.index);
         
 //        NSLog(@">> %f", n);
         
-        successIncrementValue = 100.0f/n;
-        successDecrementValue = 1.0f + map.difficulty;
+        successIncrementValue = 100.0f/zombiesLeft;
+        successDecrementValue = 3.0f + map.difficulty;
         
         [self reset];
         
@@ -224,10 +229,21 @@
 {
     isGameOver = YES;
     isGameFailed = success == kMinSuccess;
-    if(!isGameFailed)
+    if(!isGameFailed && !isArcadeGame)
     {
         [[MapCache sharedMapCache] mapInfoAtIndex: map.index].isPassed = true;
         [[MapCache sharedMapCache] saveMapsInfo];
+    }
+    
+    if(!isArcadeGame && (score > [Settings sharedSettings].bestScore))
+    {
+        [Settings sharedSettings].bestScore = score;
+        [[Settings sharedSettings] save];
+    }
+    else if(isArcadeGame && (score > [Settings sharedSettings].bestArcadeScore))
+    {
+        [Settings sharedSettings].bestArcadeScore = score;
+        [[Settings sharedSettings] save];
     }
     
     [GameOverPopup showOnRunningSceneWithDelegate: self];
@@ -288,6 +304,12 @@
     [gameLayer timebBonusAbility];
 }
 
+- (void) win
+{
+    success = 100500;
+    timer = 0;
+}
+
 #pragma mark GamePausePopupDelegate and GameOverPopupDelegate methods implementation
 - (void) exit
 {
@@ -303,6 +325,7 @@
 {
     [self reset];
     [gameLayer reset];
+    [hudLayer reset];
     
     if(!isArcadeGame)
     {
@@ -312,6 +335,42 @@
     {
         [hudLayer setTimerValue: timer];
     }
+    
+    [hudLayer setScoreValue: score];
+}
+
+- (void) resurrection
+{
+    int resurrectionNum = [[[Shop sharedShop] itemWithName: kResurrection] amount];
+    
+    if(resurrectionNum > 0)
+    {
+        isGameOver = NO;
+        isGameFailed = NO;
+        
+        timer = isArcadeGame ? kTimeForArcadeGame/2 : timer;
+        
+        [[[Shop sharedShop] itemWithName: kResurrection] spend];
+        
+        success = -50;
+        
+        [hudLayer setProgressScaleValue: success];
+    }
+}
+
+- (float) bestScore
+{
+    return isArcadeGame ? [Settings sharedSettings].bestArcadeScore : [Settings sharedSettings].bestScore;
+}
+
+- (int) zombiesLeft
+{
+    return  (int)((kMaxSuccess - success)/successIncrementValue);
+}
+
+- (Map *) map
+{
+    return map;
 }
 
 #pragma mark GameLayerDelegate methods implementation

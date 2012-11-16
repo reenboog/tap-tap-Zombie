@@ -10,6 +10,8 @@
 
 #import "MapCache.h"
 
+#import "Settings.h"
+
 
 @interface MapCache()
 
@@ -198,6 +200,45 @@ NSArray* parseTracks(NSArray *tracks)
 - (MapInfo *) mapInfoAtIndex: (int) index
 {
     return [mapsInfo objectAtIndex: index];
+}
+
+- (BOOL) allMapsPassed
+{
+    for(MapInfo *m in mapsInfo)
+    {
+        if(!m.isPassed)
+        {
+            return  NO;
+        }
+    }
+    
+    return YES;
+}
+
+- (void) dropProgress
+{
+    for(MapInfo *m in mapsInfo)
+    {
+        m.isPassed = NO;
+    }
+    
+    [self saveMapsInfo];
+}
+
+- (void) nextCycle
+{
+    [self dropProgress];
+    
+    unsigned nextGameCycle = [Settings sharedSettings].gameCycle + 1;
+    nextGameCycle = nextGameCycle > kMaxGameCycle ? 0 : nextGameCycle;
+    [Settings sharedSettings].gameCycle = nextGameCycle;
+    [Settings sharedSettings].arcadeMaps = [NSMutableArray arrayWithObjects: [NSNumber numberWithInt: 2],
+                                                                             [NSNumber numberWithInt: 4],
+                                                                             [NSNumber numberWithInt: 14],
+                                                                             [NSNumber numberWithInt: 19],
+                                                                             nil];
+    
+    [[Settings sharedSettings] save];
 }
 
 @end

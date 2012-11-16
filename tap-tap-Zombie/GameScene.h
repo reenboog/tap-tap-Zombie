@@ -54,6 +54,8 @@
     int currentPerfectCycleLength;
     
     ccTime timer;
+    
+    int zombiesLeft;
 }
 
 @property (nonatomic, readonly) BOOL isGameFailed;
@@ -66,5 +68,7 @@
 
 - (id) initWithMap: (Map *) map;
 + (id) gameSceneWithMap: (Map *) map;
+
+- (Map *) map;
 
 @end

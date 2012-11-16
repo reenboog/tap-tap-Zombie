@@ -13,5 +13,6 @@
 @protocol GlobalMapLayerDelegate <CCPopupLayerDelegate>
 
 - (void) mapChanged: (int) mapIndex;
+- (void) mapDifficultyChanged: (GameDifficulty) mapDifficulty;
 
 @end

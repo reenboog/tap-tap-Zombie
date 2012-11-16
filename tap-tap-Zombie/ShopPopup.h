@@ -19,4 +19,6 @@
     ShopLayer *shopLayer;
 }
 
++ (void) showOnRunningSceneWithDelegate: (id<CCPopupLayerDelegate>) delegate currentPageItem: (NSString *) itemName;
+
 @end

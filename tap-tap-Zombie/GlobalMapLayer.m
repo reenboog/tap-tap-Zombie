@@ -6,6 +6,8 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "SoundsConfig.h"
+
 #import "GameConfig.h"
 
 #import "MapCache.h"
@@ -15,8 +17,8 @@
 
 #import "GameScene.h"
 
+#import "Settings.h"
 
-#define kMapsCount 23
 
 @implementation GlobalMapLayer
 
@@ -58,7 +60,7 @@ static CCSprite *movableSprite = nil;
                                                        selectedSprite: btnOnSprite 
                                                                target: self 
                                                              selector: @selector(selectMapBtnCallback:)];
-            item.tag = i + 1;
+            item.tag = i;
             
             [selectMapMenu addChild: item];
             
@@ -71,7 +73,14 @@ static CCSprite *movableSprite = nil;
             {
                 if(isOldMapPassed)
                 {
-                    [(CCSprite *)item setColor: ccc3(0, 255, 0)];
+                    if([Settings sharedSettings].gameCycle > 0)
+                    {
+                        [(CCSprite *)item setColor: ccc3(255, 0, 0)];
+                    }
+                    else
+                    {
+                        [(CCSprite *)item setColor: ccc3(0, 255, 0)];
+                    }
                 }
                 else
                 {
@@ -127,12 +136,14 @@ static CCSprite *movableSprite = nil;
     int mapIndex = sender.tag;
     
     BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex].isPassed;
-    BOOL isOldMapPassed = mapIndex > 1 ? [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex - 1].isPassed : YES;
+    BOOL isOldMapPassed = mapIndex > 0 ? [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex - 1].isPassed : YES;
     
     if(isOldMapPassed || isMapPassed)
     {
         [delegate mapChanged: mapIndex];
     }
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 #pragma mark -

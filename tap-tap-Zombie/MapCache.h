@@ -27,4 +27,7 @@
 
 - (void) saveMapsInfo;
 
+- (BOOL) allMapsPassed;
+- (void) nextCycle;
+
 @end

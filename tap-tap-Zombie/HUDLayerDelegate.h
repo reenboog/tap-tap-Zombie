@@ -20,4 +20,6 @@
 - (void) randomAbility;
 - (void) timebBonusAbility;
 
+- (void) win;
+
 @end

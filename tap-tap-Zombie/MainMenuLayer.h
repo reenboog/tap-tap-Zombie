@@ -12,13 +12,13 @@
 #import "GlobalMapLayer.h"
 #import "MapDifficultyPopupDelegate.h"
 
+#import <GameKit/GameKit.h>
 
-@interface MainMenuLayer : CCLayer <CCPopupLayerDelegate, GlobalMapLayerDelegate, MapDifficultyPopupDelegate>
+
+@interface MainMenuLayer : CCLayer <CCPopupLayerDelegate, GlobalMapLayerDelegate, MapDifficultyPopupDelegate, GKLeaderboardViewControllerDelegate>
 {
-    CCMenuItemImage *playBtn;
-    CCMenu *bottomMenu;
-    
     CCMenuItemImage *shopBtn;
+    CCMenuItemImage *gameCenterBtn;
     CCMenuItemImage *twitterBtn;
     CCMenuItemImage *facebookBtn;
     CCMenu *topMenu;
@@ -29,6 +29,8 @@
     CCLayerColor *blackOut;
     
     int mapIndex;
+    
+    UIViewController *leaderboardViewController;
 }
 
 + (CCScene *) scene;

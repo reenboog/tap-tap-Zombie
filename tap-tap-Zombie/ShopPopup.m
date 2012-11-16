@@ -7,9 +7,13 @@
 //
 
 #import "GameConfig.h"
+#import "SoundsConfig.h"
+
 #import "ShopPopup.h"
 
 #import "ShopLayer.h"
+
+#import "Settings.h"
 
 
 @interface ShopPopup()
@@ -23,10 +27,11 @@
 @implementation ShopPopup
 
 #pragma mark init and dealloc
-- (id) initWithDelegate: (id<CCPopupLayerDelegate>) delegate_
+- (id) initWithDelegate:(id<CCPopupLayerDelegate>)delegate_ currentPageItem: (NSString *) item
 {
     if(self = [super initWithDelegate: delegate_])
     {
+        
         CCSprite *btnSprite;
         CCSprite *btnSpriteOn;
         CCMenu *menu;
@@ -36,7 +41,7 @@
         [self addChild: background];
         
         // shop layer
-        shopLayer = [ShopLayer shopLayerWithCurrentPageItem: @"Default3"];
+        shopLayer = [ShopLayer shopLayerWithCurrentPageItem: item];
         [self addChild: shopLayer];
         
         // close popup button
@@ -54,9 +59,19 @@
     return self;
 }
 
+- (id) initWithDelegate: (id<CCPopupLayerDelegate>) delegate_
+{
+    return [self initWithDelegate: delegate_ currentPageItem: nil];
+}
+
 - (void) dealloc
 {
     [super dealloc];
+}
+
++ (void) showOnRunningSceneWithDelegate: (id<CCPopupLayerDelegate>) delegate currentPageItem: (NSString *) itemName;
+{
+    [[[CCDirector sharedDirector] runningScene] addChild: [[[self alloc] initWithDelegate: delegate currentPageItem: itemName] autorelease] z: kPopupZOrder];
 }
 
 #pragma mark -
@@ -138,6 +153,8 @@
 {
     [self disableWithChildren];
     [self hideAndClose];
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 @end

@@ -8,11 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Map.h"
+
 
 @protocol GameOverPopupDelegate <CCPopupLayerDelegate>
 
 - (void) restart;
 - (void) exit;
+
+- (void) resurrection;
+
+- (Map *) map;
 
 @property (nonatomic, readonly) BOOL isGameFailed;
 @property (nonatomic, readonly) float score;

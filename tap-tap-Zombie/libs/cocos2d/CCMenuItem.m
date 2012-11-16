@@ -258,10 +258,12 @@ const uint32_t	kZoomActionTag = 0xc0c05002;
 	if( isEnabled_ != enabled ) {
 		if(enabled == NO) {
 			colorBackup = [label_ color];
-			[label_ setColor: disabledColor_];
+//			[label_ setColor: disabledColor_];
 		}
 		else
-			[label_ setColor:colorBackup];
+        {
+//			[label_ setColor:colorBackup];
+        }
 	}
     
 	[super setIsEnabled:enabled];

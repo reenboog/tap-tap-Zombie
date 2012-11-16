@@ -6,6 +6,8 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "SoundsConfig.h"
+
 #import "GamePausePopup.h"
 
 #import "GameConfig.h"
@@ -34,9 +36,61 @@
         background = [CCLayerColor layerWithColor: ccc4(0, 0, 0, 255)];
         [self addChild: background];
         
+        // header
+        header = [CCLabelBMFont labelWithString: @"Pause" fntFile: kFontDifficulty];
+        header.anchorPoint = ccp(0.5f, 1);
+        header.position = ccp(kScreenCenterX, kScreenHeight - 8.0f);
+        header.color = ccc3(0, 255, 0);
+        [self addChild: header];
+        
+        // info
+        CCLabelBMFont *name;
+        CCLabelBMFont *value;
+        
+        // score
+        score = [CCNode node];
+        score.position = ccp(kScreenCenterX, kScreenHeight - 72.0f);
+        [self addChild: score];
+        
+        name = [CCLabelBMFont labelWithString: @"Score:" fntFile: kFontDifficulty];
+        name.anchorPoint = ccp(1, 0.5f);
+        [score addChild: name];
+        value = [CCLabelBMFont labelWithString: [NSString stringWithFormat: @" %.0f", [self.delegate score]]
+                                       fntFile: kFontDifficulty];
+        value.anchorPoint = ccp(0, 0.5f);
+        [score addChild: value];
+        
+        // best score
+        bestScore = [CCNode node];
+        bestScore.position = ccp(kScreenCenterX, kScreenHeight - 104.0f);
+        [self addChild: bestScore];
+        
+        name = [CCLabelBMFont labelWithString: @"Best score:" fntFile: kFontDifficulty];
+        name.anchorPoint = ccp(1, 0.5f);
+        [bestScore addChild: name];
+        value = [CCLabelBMFont labelWithString: [NSString stringWithFormat: @" %.0f", [self.delegate bestScore]]
+                                       fntFile: kFontDifficulty];
+        value.anchorPoint = ccp(0, 0.5f);
+        [bestScore addChild: value];
+        
+        // zombies left
+        zombiesLeft = [CCNode node];
+        zombiesLeft.position = ccp(kScreenCenterX, kScreenHeight - 136.0f);
+        [self addChild: zombiesLeft];
+        
+        name = [CCLabelBMFont labelWithString: @"Zombies left:" fntFile: kFontDifficulty];
+        name.anchorPoint = ccp(1, 0.5f);
+        [zombiesLeft addChild: name];
+        value = [CCLabelBMFont labelWithString: [NSString stringWithFormat: @" %i", [self.delegate zombiesLeft]]
+                                       fntFile: kFontDifficulty];
+        value.anchorPoint = ccp(0, 0.5f);
+        [zombiesLeft addChild: value];
+        
+        zombiesLeft.visible = ![self.delegate isArcadeGame];
+        
         // buttons
-        btnSprite = [CCSprite spriteWithFile: @"buttons/returnBtn.png"];
-        btnOnSprite = [CCSprite spriteWithFile: @"buttons/returnBtnOn.png"];
+        btnSprite = [CCSprite spriteWithFile: @"buttons/rightBtn.png"];
+        btnOnSprite = [CCSprite spriteWithFile: @"buttons/rightBtnOn.png"];
         closePopupBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
                                                 selectedSprite: btnOnSprite
                                                         target: self
@@ -56,9 +110,9 @@
                                                   target: self 
                                                 selector: @selector(exitBtnCallback)];
         
-        menu = [CCMenu menuWithItems: closePopupBtn, restartBtn, exitBtn, nil];
+        menu = [CCMenu menuWithItems: exitBtn, restartBtn, closePopupBtn, nil];
         [menu alignItemsHorizontally];
-        menu.position = kScreenCenter;
+        menu.position = ccp(kScreenCenterX, kScreenCenterY - 32.0f);
         [self addChild: menu];
     }
     
@@ -97,17 +151,59 @@
     [background setOpacity: 0];
     [background runAction:
                     [CCSequence actions:
-                                    [CCFadeTo actionWithDuration: 0.3f opacity: 150],
+                                    [CCFadeTo actionWithDuration: 0.3f opacity: 200],
                                     [CCCallFunc actionWithTarget: self selector: @selector(enableWithChildren)],
                                     nil
                     ]
     ];
     
+    header.position = ccp(header.position.x, header.position.y + 64.0f);
+    [header runAction: [CCEaseBackOut actionWithAction: [CCMoveBy actionWithDuration: 0.2f position: ccp(0, -64.0f)]]];
     
+    // info
+    score.scale = 0;
+    [score runAction:
+                    [CCSequence actions:
+                                    [CCDelayTime actionWithDuration: 0],
+                                    [CCEaseBackOut actionWithAction:
+                                                        [CCScaleTo actionWithDuration: 0.2f 
+                                                                                scale: 1]
+                                    ],
+                                    nil
+                    ]
+    ];
+    
+    
+    bestScore.scale = 0;
+    [bestScore runAction:
+                    [CCSequence actions:
+                                    [CCDelayTime actionWithDuration: 0.03f],
+                                    [CCEaseBackOut actionWithAction:
+                                                        [CCScaleTo actionWithDuration: 0.2f 
+                                                                                scale: 1]
+                                    ],
+                                    nil
+                    ]
+    ];
+    
+    
+    zombiesLeft.scale = 0;
+    [zombiesLeft runAction:
+                    [CCSequence actions:
+                                    [CCDelayTime actionWithDuration: 0.06f],
+                                    [CCEaseBackOut actionWithAction:
+                                                        [CCScaleTo actionWithDuration: 0.2f 
+                                                                                scale: 1]
+                                    ],
+                                    nil
+                    ]
+    ];
+    
+    // buttons
     closePopupBtn.scale = 0;
     [closePopupBtn runAction:
                     [CCSequence actions:
-                                    [CCDelayTime actionWithDuration: 0],
+                                    [CCDelayTime actionWithDuration: 0.06f],
                                     [CCSpawn actions:
                                                 [CCEaseBackOut actionWithAction:
                                                                     [CCScaleTo actionWithDuration: 0.2f 
@@ -141,7 +237,7 @@
     exitBtn.scale = 0;
     [exitBtn runAction:
                     [CCSequence actions:
-                                    [CCDelayTime actionWithDuration: 0.06f],
+                                    [CCDelayTime actionWithDuration: 0],
                                     [CCSpawn actions:
                                                 [CCEaseBackOut actionWithAction:
                                                                     [CCScaleTo actionWithDuration: 0.2f 
@@ -165,9 +261,48 @@
                     ]
     ];
     
-    [closePopupBtn runAction:
+    [header runAction: [CCEaseBackIn actionWithAction: [CCMoveBy actionWithDuration: 0.2f position: ccp(0, 64.0f)]]];
+    
+    // info
+    [score runAction:
                     [CCSequence actions:
                                     [CCDelayTime actionWithDuration: 0],
+                                    [CCEaseBackIn actionWithAction:
+                                                        [CCScaleTo actionWithDuration: 0.2f 
+                                                                                scale: 0]
+                                    ],
+                                    nil
+                    ]
+    ];
+    
+    
+    [bestScore runAction:
+                    [CCSequence actions:
+                                    [CCDelayTime actionWithDuration: 0.03f],
+                                    [CCEaseBackIn actionWithAction:
+                                                        [CCScaleTo actionWithDuration: 0.2f 
+                                                                                scale: 0]
+                                    ],
+                                    nil
+                    ]
+    ];
+    
+    
+    [zombiesLeft runAction:
+                    [CCSequence actions:
+                                    [CCDelayTime actionWithDuration: 0.06f],
+                                    [CCEaseBackIn actionWithAction:
+                                                        [CCScaleTo actionWithDuration: 0.2f 
+                                                                                scale: 0]
+                                    ],
+                                    nil
+                    ]
+    ];
+
+    // buttons
+    [closePopupBtn runAction:
+                    [CCSequence actions:
+                                    [CCDelayTime actionWithDuration: 0.06f],
                                     [CCSpawn actions:
                                                 [CCEaseBackIn actionWithAction:
                                                                     [CCScaleTo actionWithDuration: 0.2f 
@@ -197,7 +332,7 @@
     
     [exitBtn runAction:
                     [CCSequence actions:
-                                    [CCDelayTime actionWithDuration: 0.06f],
+                                    [CCDelayTime actionWithDuration: 0],
                                     [CCSpawn actions:
                                                 [CCEaseBackIn actionWithAction:
                                                                     [CCScaleTo actionWithDuration: 0.2f 
@@ -220,17 +355,23 @@
     
     [self disableWithChildren];
     [self hideAndClose];
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 - (void) exitBtnCallback
 {
     [self.delegate exit];
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 - (void) closePopupBtnCallback
 {
     [self disableWithChildren];
     [self hideAndClose];
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 

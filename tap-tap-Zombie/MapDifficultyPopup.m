@@ -6,6 +6,8 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "SoundsConfig.h"
+
 #import "MapDifficultyPopup.h"
 
 #import "GameConfig.h"
@@ -18,6 +20,9 @@
 
 @end
 
+static NSString *itemHeaders[kMaxGameDifficulty + 1] = {
+    @"Normal", @"Hard", @"Ultra Hard", @"Insane"
+};
 
 @implementation MapDifficultyPopup
 
@@ -30,16 +35,23 @@
         background = [CCLayerColor layerWithColor: ccc4(0, 0, 0, 255)];
         [self addChild: background];
         
+        // header
+        header = [CCLabelBMFont labelWithString: @"Select Difficulty" fntFile: kFontDifficulty];
+        header.anchorPoint = ccp(0.5f, 1);
+        header.position = ccp(kScreenCenterX, kScreenHeight - 8.0f);
+        header.color = ccc3(0, 255, 0);
+        [self addChild: header];
+        
         
         CCMenu *menu;
         CCLabelBMFont *label;
         
         // difficulty buttons
         menu = [CCMenu menuWithItems: nil];
-        for(int i = 0; i < kMaxGameDifficulty + 1; i++)
+        for(int i = [self.delegate minMapDifficulty]; i < kMaxGameDifficulty + 1; i++)
         {
-            label = [CCLabelBMFont labelWithString: [NSString stringWithFormat: @"difficulty %i", i] 
-                                           fntFile: kFontDefault];
+            label = [CCLabelBMFont labelWithString: itemHeaders[i]
+                                           fntFile: kFontDifficulty];
             
             difficultyBtn[i] = [CCMenuItemLabel itemWithLabel: label
                                                        target: self
@@ -48,18 +60,31 @@
             [menu addChild: difficultyBtn[i] z: 0 tag: i];
         }
         
-        [menu alignItemsVertically];
-        menu.position = ccp(kScreenCenterX, kScreenCenterY + 64.0f);
+        [menu alignItemsVerticallyWithPadding: -8.0f];
+        menu.position = ccp(kScreenCenterX, kScreenCenterY + 48.0f);
+        [self addChild: menu];
+        
+        // arcade mode button
+        arcadeModeBtn = [CCMenuItemLabel itemWithLabel: [CCLabelBMFont labelWithString: @"Arcade Mode" fntFile: kFontDifficulty]
+                                                target: self
+                                              selector: @selector(arcadeModeBtnCallback)];
+        arcadeModeBtn.color = ccc3(255, 165, 0);
+        arcadeModeBtn.scale = 1.1f;
+        
+        menu = [CCMenu menuWithItems: arcadeModeBtn, nil];
+        menu.position = ccp(kScreenCenterX, kScreenCenterY/2 + 32.0f);
         [self addChild: menu];
         
         // close popup button
-        label = [CCLabelBMFont labelWithString: @"cancel" fntFile: kFontDefault];
+        label = [CCLabelBMFont labelWithString: @"Back" fntFile: kFontDifficulty];
         closePopupBtn = [CCMenuItemLabel itemWithLabel: label
                                                 target: self
                                               selector: @selector(closePopupBtnCallback)];
+        [(CCMenuItemLabel *)closePopupBtn setColor: ccc3(150, 0, 0)];
+        closePopupBtn.scale = 0.9f;
         
         menu = [CCMenu menuWithItems: closePopupBtn, nil];
-        menu.position = ccp(kScreenCenterX, 48.0f);
+        menu.position = ccp(kScreenCenterX, 8.0f + closePopupBtn.contentSize.height/2);
         [self addChild: menu];
     }
     
@@ -107,7 +132,10 @@
                     ]
     ];
     
-    for(int i = 0; i < kMaxGameDifficulty + 1; i++)
+    header.position = ccp(header.position.x, header.position.y + 64.0f);
+    [header runAction: [CCEaseBackOut actionWithAction: [CCMoveBy actionWithDuration: 0.2f position: ccp(0, -64.0f)]]];
+    
+    for(int i = [self.delegate minMapDifficulty]; i < kMaxGameDifficulty + 1; i++)
     {
         difficultyBtn[i].scale = 0;
         [difficultyBtn[i] runAction:
@@ -125,6 +153,22 @@
                                 ]
         ];
     }
+    
+    
+    arcadeModeBtn.scale = 0;
+    [arcadeModeBtn runAction:
+                    [CCSequence actions:
+                                    [CCSpawn actions:
+                                                [CCEaseBackOut actionWithAction:
+                                                                    [CCScaleTo actionWithDuration: 0.2f 
+                                                                                            scale: 1]
+                                                ],
+                                                [CCFadeIn actionWithDuration: 0.15f],
+                                                nil
+                                    ],
+                                    nil
+                    ]
+    ];
     
     
     closePopupBtn.scale = 0;
@@ -152,9 +196,11 @@
                                     [CCCallFunc actionWithTarget: self selector: @selector(removeFromParentWithCleanup)],
                                     nil
                     ]
-    ];
+     ];
     
-    for(int i = kMaxGameDifficulty; i >= 0; i--)
+    [header runAction: [CCEaseBackIn actionWithAction: [CCMoveBy actionWithDuration: 0.2f position: ccp(0, 64.0f)]]];
+    
+    for(int i = kMaxGameDifficulty; i >= [self.delegate minMapDifficulty]; i--)
     {
         [difficultyBtn[i] runAction:
                                 [CCSequence actions:
@@ -171,6 +217,20 @@
                                 ]
         ];
     }
+    
+    [arcadeModeBtn runAction:
+                        [CCSequence actions:
+                                        [CCSpawn actions:
+                                                    [CCEaseBackIn actionWithAction:
+                                                                        [CCScaleTo actionWithDuration: 0.2f 
+                                                                                                scale: 0]
+                                                    ],
+                                                    [CCFadeOut actionWithDuration: 0.2f],
+                                                    nil
+                                        ],
+                                        nil
+                        ]
+    ];
     
     [closePopupBtn runAction:
                         [CCSequence actions:
@@ -194,12 +254,23 @@
 - (void) difficultyBtnCallback: (CCNode *) sender
 {
     [self.delegate mapDifficultyChanged: sender.tag];
+    
+    PLAY_BUTTON_CLICK_SOUND();
+}
+
+- (void) arcadeModeBtnCallback
+{
+    [self.delegate mapDifficultyChanged: GameDifficultyArcade];
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 - (void) closePopupBtnCallback
 {
     [self disableWithChildren];
     [self hideAndClose];
+    
+    PLAY_BUTTON_CLICK_SOUND();
 }
 
 @end

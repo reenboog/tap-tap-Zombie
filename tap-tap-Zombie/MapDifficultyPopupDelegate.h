@@ -12,6 +12,8 @@
 
 @protocol MapDifficultyPopupDelegate <CCPopupLayerDelegate>
 
+- (int) minMapDifficulty;
+
 - (void) mapDifficultyChanged: (GameDifficulty) mapDifficulty;
 
 @end

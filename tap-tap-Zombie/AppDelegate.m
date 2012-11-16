@@ -17,6 +17,8 @@
 
 #import "IAPHelperExtended.h"
 
+#import "SimpleAudioEngine.h"
+
 @implementation AppDelegate
 
 @synthesize window;
@@ -42,8 +44,29 @@
 	
 #endif // GAME_AUTOROTATION == kGameAutorotationUIViewController	
 }
+
+
+- (void) authenticateLocalPlayer
+{
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    
+    [localPlayer authenticateWithCompletionHandler:
+     ^(NSError *error)
+     {
+         if (localPlayer.isAuthenticated)
+         {
+             // Perform additional tasks for the authenticated player.
+         }
+     }
+     ];
+}
+
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic: @"sounds/music.mp3" loop: YES];
+    
+    [self authenticateLocalPlayer];
+    
     [[SKPaymentQueue defaultQueue] addTransactionObserver: [IAPHelperExtended sharedHelper]];
     
 	// Init the window
