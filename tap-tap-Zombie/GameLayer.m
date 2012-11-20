@@ -264,11 +264,6 @@
 
 - (NSSet *) getAllowedObjects
 {
-    if(delegate.isArcadeGame)
-    {
-        return [NSSet setWithObjects: @"bad", @"jumper", @"bonus", @"timeBonus", @"shield", nil];
-    }
-    
     NSMutableSet *a = [[NSMutableSet alloc] initWithCapacity: 5];
     
     if(map.index > 2)
@@ -289,6 +284,11 @@
     if(map.index > 7)
     {
         [a addObject: @"bonus"];
+    }
+    
+    if(delegate.isArcadeGame)
+    {
+        [a addObject: @"timeBonus"];
     }
     
     NSSet *allowedObjects = [NSSet setWithSet: a];

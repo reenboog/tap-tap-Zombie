@@ -158,7 +158,7 @@
         [tutorialPages addObject: kProgressTutorial];
     }
     
-    if((map.index > 2) || (map.index == 0))
+    if(map.index > 2)
     {
         if(![showedTutorials containsObject: kBombTutorial])
         {
@@ -173,7 +173,7 @@
         }
     }
     
-    if((map.index > 3) || (map.index == 0))
+    if(map.index > 3)
     {
         if(![showedTutorials containsObject: kJumperTutorial])
         {
@@ -182,7 +182,7 @@
         }
     }
     
-    if((map.index > 6) || (map.index == 0))
+    if(map.index > 6)
     {
         if(![showedTutorials containsObject: kShieldTutorial])
         {
@@ -191,7 +191,7 @@
         }
     }
     
-    if((map.index > 7) || (map.index == 0))
+    if(map.index > 7)
     {
         if(![showedTutorials containsObject: kBonusTutorial])
         {
@@ -206,7 +206,7 @@
         }
     }
     
-    if(map.index == 0)
+    if(isArcadeGame)
     {
         if(![showedTutorials containsObject: kTimeBonusTutorial])
         {
