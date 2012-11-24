@@ -320,7 +320,7 @@ static NSString* ccTimeToString(ccTime time)
     [superModeLabel stopAllActions];
     
     float delay = 0;
-    float delayStep = 0.15f;
+    float delayStep = 0.05f;
     CCSprite *ch = nil;
     CCARRAY_FOREACH([superModeLabel children], ch)
     {
@@ -334,9 +334,9 @@ static NSString* ccTimeToString(ccTime time)
                 [CCSequence actions:
                                 [CCDelayTime actionWithDuration: delay],
                                 [CCSpawn actions:
-                                            [CCScaleTo actionWithDuration: 0.3f scale: 1.0f],
-                                            [CCMoveBy actionWithDuration: 0.3f position: ccp(0, -kScreenCenterY)],
-                                            [CCFadeTo actionWithDuration: 0.2f opacity: 255],
+                                            [CCScaleTo actionWithDuration: 0.2f scale: 1.0f],
+                                            [CCMoveBy actionWithDuration: 0.2f position: ccp(0, -kScreenCenterY)],
+                                            [CCFadeTo actionWithDuration: 0.1f opacity: 255],
                                             nil
                                 ],
                                 nil

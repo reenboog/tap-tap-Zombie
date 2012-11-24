@@ -57,6 +57,10 @@
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"zombies/zombies.plist"];
         [[CCTextureCache sharedTextureCache] addImage: @"levels/traps/0/gate.png"];
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"levels/traps/0/gate.plist"];
+        [[CCTextureCache sharedTextureCache] addImage: @"levels/traps/1/gate.png"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"levels/traps/1/gate.plist"];
+        [[CCTextureCache sharedTextureCache] addImage: @"levels/traps/2/gate.png"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"levels/traps/2/gate.plist"];
         [[CCTextureCache sharedTextureCache] addImage: @"abilities/abilities.png"];
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"abilities/abilities.plist"];
         
@@ -77,7 +81,7 @@
         hudLayer = [HUDLayer hudLayerWithDelegate: self];
         [self addChild: hudLayer];
         
-        zombiesLeft = ((map.difficulty + 1.0f)/2.0f + 1.0f)*(25.0f + map.index);
+        zombiesLeft = ((map.difficulty + 1.0f) + 1.0f)*(25.0f + map.index);//((map.difficulty + 1.0f)/2.0f + 1.0f)*(25.0f + map.index);
         
 //        NSLog(@">> %f", n);
         
@@ -208,6 +212,12 @@
     
     if(isArcadeGame)
     {
+        if(![showedTutorials containsObject: kArcadeTutorial])
+        {
+            [showedTutorials addObject: kArcadeTutorial];
+            [tutorialPages addObject: kArcadeTutorial];
+        }
+        
         if(![showedTutorials containsObject: kTimeBonusTutorial])
         {
             [showedTutorials addObject: kTimeBonusTutorial];
@@ -439,9 +449,9 @@
     totalPerfectWavesCounter++;
     superModePerfectWavesCounter++;
     
-    if(((superMode == -1) && (superModePerfectWavesCounter >= 10)) || 
-       ((superMode == 0) && (superModePerfectWavesCounter >= 8)) || 
-       ((superMode == 1) && (superModePerfectWavesCounter >= 8)))
+    if(((superMode == -1) && (superModePerfectWavesCounter >= 30)) ||
+       ((superMode == 0) && (superModePerfectWavesCounter >= 10)) ||
+       ((superMode == 1) && (superModePerfectWavesCounter >= 10)))
     {
         [self increaseSuperMode];
     }
@@ -486,13 +496,13 @@
     if(superMode == 0)
     {
         [hudLayer showSuperModeLabel];
-        superModeTimer = 10.0f;
+        superModeTimer = 12.0f;
         
         if(isArcadeGame) [self addTimeBonus: 5.0f];
     }
     else if(superMode == 1)
     {
-        superModeTimer = 10.0f;
+        superModeTimer = 12.0f;
         
         if(isArcadeGame) [self addTimeBonus: 5.0f];
     }

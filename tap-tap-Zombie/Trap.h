@@ -30,6 +30,8 @@ typedef enum
     BOOL isShieldModActivated;
     
     BOOL isTrapActivated;
+    
+    int trapIndex;
 }
 
 + (id) trap;

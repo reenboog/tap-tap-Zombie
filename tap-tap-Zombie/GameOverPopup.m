@@ -27,6 +27,10 @@
 
 @end
 
+static NSString *itemHeaders[kMaxGameDifficulty + 1] = {
+    @"Normal", @"Hard", @"Ultra Hard", @"Insane"
+};
+
 // return string with format "mm:ss"
 static NSString* ccTimeToString(ccTime time)
 {
@@ -68,10 +72,18 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
         float headerScale = 1.0f;
         if([[MapCache sharedMapCache] allMapsPassed])
         {
-            headerStr = @"Now try the same in Insane mode!";
-            headerScale = 0.9f;
-            
             [[MapCache sharedMapCache] nextCycle];
+            
+            if([Settings sharedSettings].gameCycle > 0)
+            {
+                headerStr = [NSString stringWithFormat: @"Now try the same in %@ mode!", itemHeaders[[Settings sharedSettings].gameCycle]];
+            }
+            else
+            {
+                headerStr = @"Well done!";
+            }
+            
+            headerScale = 0.9f;
         }
         else if(self.delegate.isArcadeGame || !self.delegate.isGameFailed)
         {
@@ -104,9 +116,10 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
         CCLabelBMFont *name;
         CCLabelBMFont *value;
         
+        float shiftTop = 72.0f;
+        
         // time
         time = [CCNode node];
-        time.position = ccp(kScreenCenterX, kScreenCenterY + 72.0f);
         [self addChild: time];
         
         name = [CCLabelBMFont labelWithString: @"Time:" fntFile: kFontDifficulty];
@@ -116,10 +129,13 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
                                        fntFile: kFontDifficulty];
         value.anchorPoint = ccp(0, 0.5f);
         [time addChild: value];
+        float nw = name.contentSize.width;
+        float vw = value.contentSize.width;
+        time.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenCenterY + shiftTop);
+        shiftTop -= 32.0f;
         
         // perfect taps
         perfectTaps = [CCNode node];
-        perfectTaps.position = ccp(kScreenCenterX, kScreenCenterY + 40.0f);
         [self addChild: perfectTaps];
         
         name = [CCLabelBMFont labelWithString: @"Perfect taps:" fntFile: kFontDifficulty];
@@ -129,10 +145,13 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
                                        fntFile: kFontDifficulty];
         value.anchorPoint = ccp(0, 0.5f);
         [perfectTaps addChild: value];
+        nw = name.contentSize.width;
+        vw = value.contentSize.width;
+        perfectTaps.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenCenterY + shiftTop);
+        shiftTop -= 32.0f;
         
         // perfect taps
         score = [CCNode node];
-        score.position = ccp(kScreenCenterX, kScreenCenterY + 8.0f);
         [self addChild: score];
         
         name = [CCLabelBMFont labelWithString: @"Score:" fntFile: kFontDifficulty];
@@ -142,6 +161,10 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
                                        fntFile: kFontDifficulty];
         value.anchorPoint = ccp(0, 0.5f);
         [score addChild: value];
+        nw = name.contentSize.width;
+        vw = value.contentSize.width;
+        score.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenCenterY + shiftTop);
+        shiftTop -= 32.0f;
         
         // resurrection
         int resurrectionNum = [[[Shop sharedShop] itemWithName: kResurrection] amount];

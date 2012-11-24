@@ -228,9 +228,13 @@
         if([[Settings sharedSettings].arcadeMaps containsObject: i])
         {
             [self mapDifficultyChanged: GameDifficultyArcade];
-            
-            return;
         }
+        else
+        {
+            [self mapDifficultyChanged: [Settings sharedSettings].gameCycle];
+        }
+        
+        return;
     }
     
     [MapDifficultyPopup showOnRunningSceneWithDelegate: self];
@@ -263,6 +267,10 @@
 
 - (int) minMapDifficulty
 {
+    if(mapIndex > 18) return GameDifficultyVeryHard;
+    if(mapIndex > 13) return GameDifficultyHard;
+    if(mapIndex > 3) return GameDifficultyMedium;
+    
     return [Settings sharedSettings].gameCycle;
 }
 

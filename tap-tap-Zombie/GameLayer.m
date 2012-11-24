@@ -55,9 +55,18 @@
         }
         [self addChild: background];
         
-        timeBetweenWaves = 1.0f - ((float)map.index)/100.0f - ((float)map.difficulty)/20.0f;
-        movingTime = 1.5f - ((float)map.index)/100.0f - ((float)map.difficulty)/20.0f;
-        standingTime = 0.6f - (((float)map.index)/100.0f - ((float)map.difficulty + 1.0f)/20.0f)/3.5f;
+        float mi = map.index;
+        float md = map.difficulty;
+        
+        if(runGameInArcadeMode)
+        {
+            mi = 23;
+            md = 2;
+        }
+        
+        timeBetweenWaves = 1.0f - (mi)/200.0f - (md)/15.0f;
+        movingTime = 1.0f - (mi)/200.0f - (md)/15.0f;
+        standingTime = 0.5f - ((mi)/200.0f - (md + 1.0f)/20.0f)/3.5f;
         
         [self reset];
         
@@ -346,7 +355,15 @@
         }
         else
         {
-            if(arc4random()%3 == 0)
+            if(arc4random()%2)
+            {
+                waveWeight++;
+            }
+            else if(arc4random()%2)
+            {
+                waveWeight += 2;
+            }
+            else if(arc4random()%3 == 0)
             {
                 waveWeight--;
             }

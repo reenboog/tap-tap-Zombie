@@ -48,7 +48,8 @@ static NSString *itemHeaders[kMaxGameDifficulty + 1] = {
         
         // difficulty buttons
         menu = [CCMenu menuWithItems: nil];
-        for(int i = [self.delegate minMapDifficulty]; i < kMaxGameDifficulty + 1; i++)
+        NSUInteger minMapDifficulty = [self.delegate minMapDifficulty];
+        for(int i = minMapDifficulty; i < kMaxGameDifficulty + 1; i++)
         {
             label = [CCLabelBMFont labelWithString: itemHeaders[i]
                                            fntFile: kFontDifficulty];
@@ -126,7 +127,7 @@ static NSString *itemHeaders[kMaxGameDifficulty + 1] = {
     [background setOpacity: 0];
     [background runAction:
                     [CCSequence actions:
-                                    [CCFadeTo actionWithDuration: 0.3f opacity: 150],
+                                    [CCFadeTo actionWithDuration: 0.3f opacity: 200],
                                     [CCCallFunc actionWithTarget: self selector: @selector(enableWithChildren)],
                                     nil
                     ]

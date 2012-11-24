@@ -47,9 +47,10 @@
         CCLabelBMFont *name;
         CCLabelBMFont *value;
         
+        float shiftTop = -24.0f;
+        
         // score
         score = [CCNode node];
-        score.position = ccp(kScreenCenterX, kScreenHeight - 72.0f);
         [self addChild: score];
         
         name = [CCLabelBMFont labelWithString: @"Score:" fntFile: kFontDifficulty];
@@ -59,10 +60,12 @@
                                        fntFile: kFontDifficulty];
         value.anchorPoint = ccp(0, 0.5f);
         [score addChild: value];
+        float nw = name.contentSize.width;
+        float vw = value.contentSize.width;
+        score.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenHeight - 72.0f + shiftTop);
         
         // best score
         bestScore = [CCNode node];
-        bestScore.position = ccp(kScreenCenterX, kScreenHeight - 104.0f);
         [self addChild: bestScore];
         
         name = [CCLabelBMFont labelWithString: @"Best score:" fntFile: kFontDifficulty];
@@ -72,10 +75,12 @@
                                        fntFile: kFontDifficulty];
         value.anchorPoint = ccp(0, 0.5f);
         [bestScore addChild: value];
+        nw = name.contentSize.width;
+        vw = value.contentSize.width;
+        bestScore.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenHeight - 104.0f + shiftTop);
         
         // zombies left
         zombiesLeft = [CCNode node];
-        zombiesLeft.position = ccp(kScreenCenterX, kScreenHeight - 136.0f);
         [self addChild: zombiesLeft];
         
         name = [CCLabelBMFont labelWithString: @"Zombies left:" fntFile: kFontDifficulty];
@@ -85,7 +90,9 @@
                                        fntFile: kFontDifficulty];
         value.anchorPoint = ccp(0, 0.5f);
         [zombiesLeft addChild: value];
-        
+        nw = name.contentSize.width;
+        vw = value.contentSize.width;
+        zombiesLeft.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenHeight - 136.0f + shiftTop);
         zombiesLeft.visible = ![self.delegate isArcadeGame];
         
         // buttons
@@ -112,7 +119,7 @@
         
         menu = [CCMenu menuWithItems: exitBtn, restartBtn, closePopupBtn, nil];
         [menu alignItemsHorizontally];
-        menu.position = ccp(kScreenCenterX, kScreenCenterY - 32.0f);
+        menu.position = ccp(kScreenCenterX, kScreenCenterY - 96.0f);
         [self addChild: menu];
     }
     

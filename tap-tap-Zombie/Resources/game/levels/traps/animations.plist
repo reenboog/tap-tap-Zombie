@@ -2,13 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>closeGate0</key>
-	<dict>
-		<key>frames</key>
-		<string>0,1,2</string>
-		<key>delay</key>
-		<real>0.05</real>
-	</dict>
 	<key>openGate0</key>
 	<dict>
 		<key>frames</key>
@@ -16,12 +9,40 @@
 		<key>delay</key>
 		<real>0.05</real>
 	</dict>
-	<key>gate0</key>
+	<key>closeGate0</key>
+	<dict>
+		<key>frames</key>
+		<string>0,1,2</string>
+		<key>delay</key>
+		<real>0.05</real>
+	</dict>
+	<key>openGate1</key>
 	<dict>
 		<key>frames</key>
 		<string>0</string>
 		<key>delay</key>
-		<integer>0</integer>
+		<real>0.05</real>
+	</dict>
+	<key>closeGate1</key>
+	<dict>
+		<key>frames</key>
+		<string>0</string>
+		<key>delay</key>
+		<real>0.05</real>
+	</dict>
+	<key>openGate2</key>
+	<dict>
+		<key>frames</key>
+		<string>0,1,2,3,4</string>
+		<key>delay</key>
+		<real>0.05</real>
+	</dict>
+	<key>closeGate2</key>
+	<dict>
+		<key>frames</key>
+		<string>0,1,2,3,4</string>
+		<key>delay</key>
+		<real>0.05</real>
 	</dict>
 </dict>
 </plist>

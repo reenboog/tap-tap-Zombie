@@ -138,7 +138,7 @@ static void shuffleArray(int *arr, int size)
                 zombieType = ZombieTypeShield;
                 isShieldUsed = YES;
             }
-            else if(isTimeBonusAllowed && !isTimeBonusUsed && chance(30))
+            else if(isTimeBonusAllowed && !isTimeBonusUsed && chance(60))
             {
                 zombieType = ZombieTypeTimeBonus;
                 isTimeBonusUsed = YES;

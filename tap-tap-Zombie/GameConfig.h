@@ -77,6 +77,9 @@ extern GameStatus gameStatus;
 extern BOOL chance(unsigned N);
 
 // tutorials
+// arcade
+#define kArcadeTutorial     @"arcadeTutorial"
+
 // lvl 1
 #define kGhostsTutorial     @"ghostsTutorial"
 #define kTrapTutorial       @"trapTutorial"

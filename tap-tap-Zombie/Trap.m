@@ -24,11 +24,23 @@
 //}
 
 #pragma mark init and dealloc
+- (NSString *) resource: (NSString *) r
+{
+    return [NSString stringWithFormat: @"levels/traps/%i/%@", trapIndex, r];
+}
+
+- (NSString *) gateAnimation: (NSString *) an
+{
+    return [NSString stringWithFormat: @"%@%i", an, trapIndex];
+}
+
 - (id) init
 {
     if(self = [super init])
     {
-        backLight = [CCSprite spriteWithFile: @"levels/traps/0/back_light.png"];
+        trapIndex = arc4random()%3;
+        
+        backLight = [CCSprite spriteWithFile: [self resource: @"back_light.png"]];
         backLight.anchorPoint = ccp(0, 0);
         [self addChild: backLight];
         
@@ -36,16 +48,16 @@
         gate.anchorPoint = ccp(0, 0);
         [self addChild: gate];
         [gate runAction: 
-                    [CCAnimate actionWithAnimation: [[CCAnimationCache sharedAnimationCache] animationByName: @"gate0"]
+                    [CCAnimate actionWithAnimation: [[CCAnimationCache sharedAnimationCache] animationByName: [self gateAnimation: @"openGate"]]
                                restoreOriginalFrame: NO
                     ]
         ];
         
-        body = [CCSprite spriteWithFile: @"levels/traps/0/body.png"];
+        body = [CCSprite spriteWithFile: [self resource: @"body.png"]];
         body.anchorPoint = ccp(0, 0);
         [self addChild: body];
         
-        light = [CCSprite spriteWithFile: @"levels/traps/0/light.png"];
+        light = [CCSprite spriteWithFile: [self resource: @"light.png"]];
         light.anchorPoint = ccp(0, 0);
         [self addChild: light];
         
@@ -137,11 +149,11 @@
     if(isTrapActivated) return;
     
     CCAnimate *closeAnimation = [CCAnimate actionWithAnimation: 
-                                                    [[CCAnimationCache sharedAnimationCache] animationByName: @"closeGate0"]
+                                                    [[CCAnimationCache sharedAnimationCache] animationByName: [self gateAnimation: @"closeGate"]]
                                            restoreOriginalFrame: NO];
     
     CCAnimate *openAnimation = [CCAnimate actionWithAnimation: 
-                                                    [[CCAnimationCache sharedAnimationCache] animationByName: @"openGate0"]
+                                                    [[CCAnimationCache sharedAnimationCache] animationByName: [self gateAnimation: @"openGate"]]
                                           restoreOriginalFrame: NO];
     
     isTrapActivated = YES;

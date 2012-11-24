@@ -23,6 +23,8 @@
 - (CCLayer *) pageWithPicture: (CCNode *) pic andDescription: (NSString *) desc;
 - (CCLayer *) bonusPageWithPicture: (CCNode *) pic andDescription: (NSString *) desc;
 
+- (CCLayer *) arcadePage;
+
 - (CCLayer *) ghostsPage;
 - (CCLayer *) trapPage;
 - (CCLayer *) progressPage;
@@ -95,6 +97,14 @@
         
         CCLayer *page;
         float pageShift = 0;
+        
+        if([pages containsObject: kArcadeTutorial])
+        {
+            page = [self arcadePage];
+            page.position = ccp(pageShift, 0);
+            pageShift += kScreenWidth;
+            [pagesLayer addChild: page];
+        }
         
         if([pages containsObject: kGhostsTutorial])
         {
@@ -191,6 +201,15 @@
     }
     
     return self;
+}
+
+- (CCLayer *) arcadePage
+{
+    CCNode *node = [CCNode node];
+    
+    NSString *description = @"Arcade mode. 30 seconds only!|Tap! Smash! Collect points!";
+    
+    return [self pageWithPicture: node andDescription: description];
 }
 
 - (CCLayer *) ghostsPage
