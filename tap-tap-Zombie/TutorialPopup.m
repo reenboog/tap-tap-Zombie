@@ -252,7 +252,7 @@
     gate.anchorPoint = ccp(0.5f, 0);
     [zombieInTrap addChild: gate];
     [gate runAction: 
-                [CCAnimate actionWithAnimation: [[CCAnimationCache sharedAnimationCache] animationByName: @"gate0"]
+                [CCAnimate actionWithAnimation: [[CCAnimationCache sharedAnimationCache] animationByName: @"openGate0"]
                            restoreOriginalFrame: NO
                 ]
     ];
