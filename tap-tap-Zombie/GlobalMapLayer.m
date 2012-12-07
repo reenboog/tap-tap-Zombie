@@ -42,17 +42,19 @@ static CCSprite *movableSprite = nil;
         
         // map's points
         CGPoint mapsPositions[kMapsCount] = {
-            ccp(330, 16), ccp(357, 39), ccp(249, 48), ccp(223, 79), ccp(273, 93), ccp(311, 93), ccp(350, 83),
-            ccp(391, 85), ccp(429, 95), ccp(442, 126), ccp(408, 139), ccp(371, 133), ccp(344, 156), ccp(305, 146),
-            ccp(213, 131), ccp(176, 138), ccp(141, 152), ccp(134, 185), ccp(171, 200), ccp(275, 201), ccp(310, 209),
-            ccp(342, 230), ccp(374, 249)
+            ccp(675, 58), ccp(757, 153),
+            ccp(524, 196), ccp(472, 255),
+            ccp(579, 278), ccp(672, 274), ccp(761, 255), ccp(852, 270), ccp(940, 297), ccp(919, 367), ccp(839, 375), ccp(771, 399), ccp(696, 406), ccp(615, 396),
+            ccp(443, 363), ccp(360, 379), ccp(287, 423), ccp(307, 493), ccp(386, 516),
+            ccp(586, 523), ccp(673, 531), ccp(731, 584), ccp(802, 617)
         };
         
         selectMapMenu = [CCMenu menuWithItems: nil];
         selectMapMenu.position = ccp(0, 0);
         [self addChild: selectMapMenu];
         BOOL isOldMapPassed = YES;
-        for(int i = 0; i < MIN([[MapCache sharedMapCache] count], kMapsCount); i++)
+        int mapsCount = MIN([[MapCache sharedMapCache] count], kMapsCount);
+        for(int i = 0; i < mapsCount; i++)
         {
             btnSprite = [CCSprite spriteWithFile: @"globalMap/mapBtn.png"];
             btnOnSprite = [CCSprite spriteWithFile: @"globalMap/mapBtnOn.png"];
@@ -89,6 +91,8 @@ static CCSprite *movableSprite = nil;
             } 
             
             isOldMapPassed = isMapPassed;
+            
+//            movableSprite = item;
         }
         
         // global map's background top layer
@@ -98,7 +102,7 @@ static CCSprite *movableSprite = nil;
         [self addChild: backgroundTop];
         
         // firs
-        CGPoint positions[kMaxFirs] = {ccp(429, 162), /*ccp(387, 154),*/ ccp(472, 139)};
+        CGPoint positions[kMaxFirs] = {ccp(916, 427), ccp(990, 388)};
         isFirsShown = NO;
         for(int i = 0; i < kMaxFirs; i++)
         {
@@ -112,6 +116,8 @@ static CCSprite *movableSprite = nil;
             [self addChild: fir];
             
             firs[i] = fir;
+            
+            movableSprite = fir;
         }
     }
     

@@ -34,6 +34,9 @@ static CDBufferManager *bufferManager = nil;
 // Init
 + (SimpleAudioEngine *) sharedEngine
 {
+    // MARK: look at here!
+    return nil;
+    
 	@synchronized(self)     {
 		if (!sharedEngine)
 			sharedEngine = [[SimpleAudioEngine alloc] init];

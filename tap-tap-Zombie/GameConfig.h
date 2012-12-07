@@ -42,8 +42,8 @@
 #endif
 
 // game config
-#define kScreenWidth 480.0f
-#define kScreenHeight 320.0f
+#define kScreenWidth 1024.0f
+#define kScreenHeight 768.0f
 #define kScreenCenterX (kScreenWidth/2)
 #define kScreenCenterY (kScreenHeight/2)
 #define kScreenCenter ccp(kScreenCenterX, kScreenCenterY)

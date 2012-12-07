@@ -178,7 +178,6 @@
 		19BAA6E2161CB10200A43A5F /* ZombiesWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAA6E1161CB10200A43A5F /* ZombiesWave.m */; };
 		19BAA6E5161CB11900A43A5F /* Zombie.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAA6E4161CB11900A43A5F /* Zombie.m */; };
 		19C0C1E8162C3ED000F46DE9 /* mainMenu in Resources */ = {isa = PBXBuildFile; fileRef = 19C0C1E7162C3ED000F46DE9 /* mainMenu */; };
-		19EDD404164CD5A00037CC6D /* Default-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 19EDD403164CD5A00037CC6D /* Default-hd.png */; };
 		19EDD40B164CF6270037CC6D /* abilities in Resources */ = {isa = PBXBuildFile; fileRef = 19EDD40A164CF6270037CC6D /* abilities */; };
 		842792521656532F000EA385 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 842792511656532F000EA385 /* sounds */; };
 		84B17DCA1656DF0E0034D4C3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B17DC91656DF0E0034D4C3 /* GameKit.framework */; };
@@ -528,7 +527,6 @@
 		19BAA6E8161CB40D00A43A5F /* ZombiesWaveDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZombiesWaveDelegate.h; sourceTree = "<group>"; };
 		19C0C1E6162C2D6800F46DE9 /* GlobalMapLayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalMapLayerDelegate.h; sourceTree = "<group>"; };
 		19C0C1E7162C3ED000F46DE9 /* mainMenu */ = {isa = PBXFileReference; lastKnownFileType = folder; name = mainMenu; path = Resources/game/mainMenu; sourceTree = "<group>"; };
-		19EDD403164CD5A00037CC6D /* Default-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-hd.png"; path = "Resources/Default-hd.png"; sourceTree = "<group>"; };
 		19EDD40A164CF6270037CC6D /* abilities */ = {isa = PBXFileReference; lastKnownFileType = folder; name = abilities; path = Resources/game/abilities; sourceTree = "<group>"; };
 		842792511656532F000EA385 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sounds; path = Resources/game/sounds; sourceTree = "<group>"; };
 		842792541656553F000EA385 /* SoundsConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundsConfig.h; sourceTree = "<group>"; };
@@ -672,7 +670,6 @@
 		19BAA4FF161C825100A43A5F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				19EDD403164CD5A00037CC6D /* Default-hd.png */,
 				19BAA675161C839D00A43A5F /* font */,
 				19BAA685161C894100A43A5F /* game */,
 				19BAA500161C825100A43A5F /* Default.png */,
@@ -1320,7 +1317,6 @@
 				191D0EEA1626F4C400B6235B /* waves.plist in Resources */,
 				19C0C1E8162C3ED000F46DE9 /* mainMenu in Resources */,
 				19B72EE11647C7980016F778 /* Default@2x.png in Resources */,
-				19EDD404164CD5A00037CC6D /* Default-hd.png in Resources */,
 				19EDD40B164CF6270037CC6D /* abilities in Resources */,
 				19A520BB16511775005303E8 /* tutorial in Resources */,
 				842792521656532F000EA385 /* sounds in Resources */,
@@ -1526,11 +1522,12 @@
 				GCC_PREFIX_HEADER = "tap-tap-Zombie/Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "tap-tap-Zombie/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BC116D71-D2CF-4DFD-A637-78B546510851";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BC116D71-D2CF-4DFD-A637-78B546510851";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1546,11 +1543,12 @@
 				GCC_PREFIX_HEADER = "tap-tap-Zombie/Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "tap-tap-Zombie/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BC116D71-D2CF-4DFD-A637-78B546510851";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BC116D71-D2CF-4DFD-A637-78B546510851";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -12,7 +12,7 @@
 	<key>firDisappearence0</key>
 	<dict>
 		<key>frames</key>
-		<string>8,7,6,5,4,3,2,1,0</string>
+		<string>0,1,2,3,4,5,6,7,8</string>
 		<key>delay</key>
 		<real>0.06</real>
 	</dict>
@@ -26,21 +26,7 @@
 	<key>firDisappearence1</key>
 	<dict>
 		<key>frames</key>
-		<string>8,7,6,5,4,3,2,1,0</string>
-		<key>delay</key>
-		<real>0.06</real>
-	</dict>
-	<key>firEmergence2</key>
-	<dict>
-		<key>frames</key>
-		<string>0,1,2,3,4,5,6,7,8,9</string>
-		<key>delay</key>
-		<real>0.06</real>
-	</dict>
-	<key>firDisappearence2</key>
-	<dict>
-		<key>frames</key>
-		<string>9,8,7,6,5,4,3,2,1,0</string>
+		<string>0,1,2,3,4,5,6,7,8</string>
 		<key>delay</key>
 		<real>0.06</real>
 	</dict>

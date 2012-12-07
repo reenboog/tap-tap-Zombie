@@ -81,32 +81,32 @@
                                                  target: self
                                                selector: @selector(shopBtnCallback)];
         shopBtn.anchorPoint = ccp(1, 1);
-        shopBtn.scale = 0.5f;
+//        shopBtn.scale = 0.5f;
         
         gameCenterBtn = [CCMenuItemImage  itemFromNormalImage: @"buttons/scoresBtn.png"
                                                 selectedImage: @"buttons/scoresBtnOn.png"
                                                        target: self
                                                      selector: @selector(gameCenterBtnCallback)];
         gameCenterBtn.anchorPoint = ccp(1, 1);
-        gameCenterBtn.scale = 0.5f;
+//        gameCenterBtn.scale = 0.5f;
         
         twitterBtn = [CCMenuItemImage  itemFromNormalImage: @"buttons/twitterBtn.png"
                                              selectedImage: @"buttons/twitterBtnOn.png"
                                                     target: self
                                                   selector: @selector(twitterBtnCallback)];
         twitterBtn.anchorPoint = ccp(1, 1);
-        twitterBtn.scale = 0.5f;
+//        twitterBtn.scale = 0.5f;
         
         facebookBtn = [CCMenuItemImage  itemFromNormalImage: @"buttons/facebookBtn.png"
                                               selectedImage: @"buttons/facebookBtnOn.png"
                                                      target: self
                                                    selector: @selector(facebookBtnCallback)];
         facebookBtn.anchorPoint = ccp(1, 1);
-        facebookBtn.scale = 0.5f;
+//        facebookBtn.scale = 0.5f;
         
         topMenu = [CCMenu menuWithItems: shopBtn, gameCenterBtn, twitterBtn, facebookBtn, nil];
-        [topMenu alignItemsHorizontally];
-        topMenu.position = ccp(kScreenWidth - 16.0f - shopBtn.contentSize.width*0.75f, kScreenHeight - 8.0f + kScreenCenterY/2);
+        [topMenu alignItemsHorizontallyWithPadding: 16.0f];
+        topMenu.position = ccp(kScreenWidth - 16.0f - shopBtn.contentSize.width*1.8f, kScreenHeight - 8.0f + kScreenCenterY/2);
         [self addChild: topMenu];
         
         // evil doctor

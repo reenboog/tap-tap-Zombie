@@ -7,730 +7,470 @@
             <key>firDisappearence00.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{202,161},{0,0}}</string>
+                <string>{{2,2},{297,396}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{1,-2}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{0,0}}</string>
+                <string>{{5,4},{297,396}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firDisappearence01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{111,592},{27,28}}</string>
+                <string>{{2,400},{295,344}}</string>
                 <key>offset</key>
-                <string>{4,-84}</string>
+                <string>{1,-25}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{67,170},{27,28}}</string>
+                <string>{{6,53},{295,344}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firDisappearence02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{383,724},{57,56}}</string>
+                <string>{{299,400},{295,300}}</string>
                 <key>offset</key>
-                <string>{2,-72}</string>
+                <string>{2,-49}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{50,144},{57,56}}</string>
+                <string>{{7,99},{295,300}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firDisappearence03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{442,740},{67,72}}</string>
+                <string>{{2,746},{243,238}}</string>
                 <key>offset</key>
-                <string>{-2,-63}</string>
+                <string>{-4,-81}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{41,127},{67,72}}</string>
+                <string>{{27,162},{243,238}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firDisappearence04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{346,626},{97,96}}</string>
+                <string>{{642,2},{193,190}}</string>
                 <key>offset</key>
-                <string>{-3,-50}</string>
+                <string>{-7,-100}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{25,102},{97,96}}</string>
+                <string>{{49,205},{193,190}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firDisappearence05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{390,245},{107,120}}</string>
+                <string>{{301,194},{133,144}}</string>
                 <key>offset</key>
-                <string>{-9,-40}</string>
+                <string>{-4,-126}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{14,80},{107,120}}</string>
+                <string>{{82,254},{133,144}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firDisappearence06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{350,485},{139,152}}</string>
+                <string>{{429,2},{111,112}}</string>
                 <key>offset</key>
-                <string>{6,-24}</string>
+                <string>{5,-144}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{13,48},{139,152}}</string>
+                <string>{{102,288},{111,112}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firDisappearence07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{202,298},{149,174}}</string>
+                <string>{{301,344},{53,52}}</string>
                 <key>offset</key>
-                <string>{1,-12}</string>
+                <string>{7,-169}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{3,25},{149,174}}</string>
+                <string>{{133,343},{53,52}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firDisappearence08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,161},{151,198}}</string>
+                <string>{{2,991},{1,1}}</string>
                 <key>offset</key>
-                <string>{0,-1}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{1,2},{151,198}}</string>
+                <string>{{0,0},{1,1}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{1,1}</string>
             </dict>
             <key>firDisappearence10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{202,161},{0,0}}</string>
+                <string>{{242,746},{204,240}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-2}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{0,0}}</string>
+                <string>{{0,4},{204,240}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firDisappearence11.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{305,608},{39,28}}</string>
+                <string>{{448,702},{180,208}}</string>
                 <key>offset</key>
-                <string>{1,-86}</string>
+                <string>{5,-18}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{65,172},{39,28}}</string>
+                <string>{{17,36},{180,208}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firDisappearence12.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{445,626},{65,50}}</string>
+                <string>{{837,2},{180,180}}</string>
                 <key>offset</key>
-                <string>{6,-75}</string>
+                <string>{7,-32}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{57,150},{65,50}}</string>
+                <string>{{19,64},{180,180}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firDisappearence13.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,592},{107,82}}</string>
+                <string>{{837,184},{158,158}}</string>
                 <key>offset</key>
-                <string>{9,-59}</string>
+                <string>{18,-41}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{39,118},{107,82}}</string>
+                <string>{{41,84},{158,158}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firDisappearence14.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{404,2},{117,104}}</string>
+                <string>{{301,2},{142,126}}</string>
                 <key>offset</key>
-                <string>{4,-48}</string>
+                <string>{5,-59}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{29,96},{117,104}}</string>
+                <string>{{36,118},{142,126}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firDisappearence15.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{378,354},{129,130}}</string>
+                <string>{{448,912},{130,98}}</string>
                 <key>offset</key>
-                <string>{15,-34}</string>
+                <string>{11,-73}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{34,69},{129,130}}</string>
+                <string>{{48,146},{130,98}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firDisappearence16.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,576},{149,148}}</string>
+                <string>{{580,912},{78,60}}</string>
                 <key>offset</key>
-                <string>{5,-26}</string>
+                <string>{7,-92}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{14,52},{149,148}}</string>
+                <string>{{70,184},{78,60}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firDisappearence17.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,314},{149,172}}</string>
+                <string>{{242,988},{46,34}}</string>
                 <key>offset</key>
-                <string>{4,-14}</string>
+                <string>{1,-105}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{13,28},{149,172}}</string>
+                <string>{{80,210},{46,34}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firDisappearence18.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{204,2},{167,198}}</string>
-                <key>offset</key>
-                <string>{0,-1}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{167,198}}</string>
-                <key>sourceSize</key>
-                <string>{167,200}</string>
-            </dict>
-            <key>firDisappearence20.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{202,161},{0,0}}</string>
+                <string>{{2,991},{1,1}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{0,0}}</string>
+                <string>{{0,0},{1,1}}</string>
                 <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firDisappearence21.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{305,576},{39,30}}</string>
-                <key>offset</key>
-                <string>{-9,-85}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{50,170},{39,30}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firDisappearence22.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{445,678},{61,60}}</string>
-                <key>offset</key>
-                <string>{-8,-70}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{40,140},{61,60}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firDisappearence23.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{305,724},{75,76}}</string>
-                <key>offset</key>
-                <string>{-5,-62}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{36,124},{75,76}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firDisappearence24.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,676},{99,94}}</string>
-                <key>offset</key>
-                <string>{-15,-53}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{14,106},{99,94}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firDisappearence25.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{404,121},{103,122}}</string>
-                <key>offset</key>
-                <string>{-21,-39}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{6,78},{103,122}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firDisappearence26.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,465},{125,150}}</string>
-                <key>offset</key>
-                <string>{-14,-25}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{2,50},{125,150}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firDisappearence27.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{176,449},{125,172}}</string>
-                <key>offset</key>
-                <string>{-16,-14}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,28},{125,172}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firDisappearence28.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{202,171},{125,186}}</string>
-                <key>offset</key>
-                <string>{-16,-7}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,14},{125,186}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firDisappearence29.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{157,200}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{157,200}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
+                <string>{1,1}</string>
             </dict>
             <key>firEmergence00.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{202,161},{0,0}}</string>
+                <string>{{2,991},{1,1}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{0,0}}</string>
+                <string>{{0,0},{1,1}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{1,1}</string>
             </dict>
             <key>firEmergence01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{111,592},{27,28}}</string>
+                <string>{{301,344},{53,52}}</string>
                 <key>offset</key>
-                <string>{4,-84}</string>
+                <string>{7,-169}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{67,170},{27,28}}</string>
+                <string>{{133,343},{53,52}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firEmergence02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{383,724},{57,56}}</string>
+                <string>{{429,2},{111,112}}</string>
                 <key>offset</key>
-                <string>{2,-72}</string>
+                <string>{5,-144}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{50,144},{57,56}}</string>
+                <string>{{102,288},{111,112}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firEmergence03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{442,740},{67,72}}</string>
+                <string>{{301,194},{133,144}}</string>
                 <key>offset</key>
-                <string>{-2,-63}</string>
+                <string>{-4,-126}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{41,127},{67,72}}</string>
+                <string>{{82,254},{133,144}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firEmergence04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{346,626},{97,96}}</string>
+                <string>{{642,2},{193,190}}</string>
                 <key>offset</key>
-                <string>{-3,-50}</string>
+                <string>{-7,-100}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{25,102},{97,96}}</string>
+                <string>{{49,205},{193,190}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firEmergence05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{390,245},{107,120}}</string>
+                <string>{{2,746},{243,238}}</string>
                 <key>offset</key>
-                <string>{-9,-40}</string>
+                <string>{-4,-81}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{14,80},{107,120}}</string>
+                <string>{{27,162},{243,238}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firEmergence06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{350,485},{139,152}}</string>
+                <string>{{299,400},{295,300}}</string>
                 <key>offset</key>
-                <string>{6,-24}</string>
+                <string>{2,-49}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{13,48},{139,152}}</string>
+                <string>{{7,99},{295,300}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firEmergence07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{202,298},{149,174}}</string>
+                <string>{{2,400},{295,344}}</string>
                 <key>offset</key>
-                <string>{1,-12}</string>
+                <string>{1,-25}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{3,25},{149,174}}</string>
+                <string>{{6,53},{295,344}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firEmergence08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,161},{151,198}}</string>
+                <string>{{2,2},{297,396}}</string>
                 <key>offset</key>
-                <string>{0,-1}</string>
+                <string>{1,-2}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{1,2},{151,198}}</string>
+                <string>{{5,4},{297,396}}</string>
                 <key>sourceSize</key>
-                <string>{153,200}</string>
+                <string>{305,400}</string>
             </dict>
             <key>firEmergence10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{202,161},{0,0}}</string>
+                <string>{{2,991},{1,1}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{0,0}}</string>
+                <string>{{0,0},{1,1}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{1,1}</string>
             </dict>
             <key>firEmergence11.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{305,608},{39,28}}</string>
+                <string>{{242,988},{46,34}}</string>
                 <key>offset</key>
-                <string>{1,-86}</string>
+                <string>{1,-105}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{65,172},{39,28}}</string>
+                <string>{{80,210},{46,34}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firEmergence12.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{445,626},{65,50}}</string>
+                <string>{{580,912},{78,60}}</string>
                 <key>offset</key>
-                <string>{6,-75}</string>
+                <string>{7,-92}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{57,150},{65,50}}</string>
+                <string>{{70,184},{78,60}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firEmergence13.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,592},{107,82}}</string>
+                <string>{{448,912},{130,98}}</string>
                 <key>offset</key>
-                <string>{9,-59}</string>
+                <string>{11,-73}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{39,118},{107,82}}</string>
+                <string>{{48,146},{130,98}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firEmergence14.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{404,2},{117,104}}</string>
+                <string>{{301,2},{142,126}}</string>
                 <key>offset</key>
-                <string>{4,-48}</string>
+                <string>{5,-59}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{29,96},{117,104}}</string>
+                <string>{{36,118},{142,126}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firEmergence15.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{378,354},{129,130}}</string>
+                <string>{{837,184},{158,158}}</string>
                 <key>offset</key>
-                <string>{15,-34}</string>
+                <string>{18,-41}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{34,69},{129,130}}</string>
+                <string>{{41,84},{158,158}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firEmergence16.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,576},{149,148}}</string>
+                <string>{{837,2},{180,180}}</string>
                 <key>offset</key>
-                <string>{5,-26}</string>
+                <string>{7,-32}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{14,52},{149,148}}</string>
+                <string>{{19,64},{180,180}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firEmergence17.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,314},{149,172}}</string>
+                <string>{{448,702},{180,208}}</string>
                 <key>offset</key>
-                <string>{4,-14}</string>
+                <string>{5,-18}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{13,28},{149,172}}</string>
+                <string>{{17,36},{180,208}}</string>
                 <key>sourceSize</key>
-                <string>{167,200}</string>
+                <string>{204,244}</string>
             </dict>
             <key>firEmergence18.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{204,2},{167,198}}</string>
+                <string>{{242,746},{204,240}}</string>
                 <key>offset</key>
-                <string>{0,-1}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{167,198}}</string>
-                <key>sourceSize</key>
-                <string>{167,200}</string>
-            </dict>
-            <key>firEmergence20.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{202,161},{0,0}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-2}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{0,0}}</string>
+                <string>{{0,4},{204,240}}</string>
                 <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firEmergence21.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{305,576},{39,30}}</string>
-                <key>offset</key>
-                <string>{-9,-85}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{50,170},{39,30}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firEmergence22.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{445,678},{61,60}}</string>
-                <key>offset</key>
-                <string>{-8,-70}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{40,140},{61,60}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firEmergence23.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{305,724},{75,76}}</string>
-                <key>offset</key>
-                <string>{-5,-62}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{36,124},{75,76}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firEmergence24.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,676},{99,94}}</string>
-                <key>offset</key>
-                <string>{-15,-53}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{14,106},{99,94}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firEmergence25.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{404,121},{103,122}}</string>
-                <key>offset</key>
-                <string>{-21,-39}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{6,78},{103,122}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firEmergence26.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,465},{125,150}}</string>
-                <key>offset</key>
-                <string>{-14,-25}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{2,50},{125,150}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firEmergence27.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{176,449},{125,172}}</string>
-                <key>offset</key>
-                <string>{-16,-14}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,28},{125,172}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firEmergence28.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{202,171},{125,186}}</string>
-                <key>offset</key>
-                <string>{-16,-7}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,14},{125,186}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
-            </dict>
-            <key>firEmergence29.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{157,200}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{157,200}}</string>
-                <key>sourceSize</key>
-                <string>{157,200}</string>
+                <string>{204,244}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -740,9 +480,9 @@
             <key>realTextureFileName</key>
             <string>fir-hd.png</string>
             <key>size</key>
-            <string>{512,1024}</string>
+            <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8c6fdd11b53b1d43af1abe361d55e3aa$</string>
+            <string>$TexturePacker:SmartUpdate:19ea94331d4c61628feb13b122e9745f$</string>
             <key>textureFileName</key>
             <string>fir-hd.png</string>
         </dict>
