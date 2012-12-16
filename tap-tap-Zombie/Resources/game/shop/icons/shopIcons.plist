@@ -7,93 +7,93 @@
             <key>shopIcoBomb.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{153,77},{74,73}}</string>
+                <string>{{157,314},{153,155}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{74,73}}</string>
+                <string>{{0,0},{153,155}}</string>
                 <key>sourceSize</key>
-                <string>{74,73}</string>
+                <string>{153,155}</string>
             </dict>
             <key>shopIcoMoney0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{77,77},{74,73}}</string>
+                <string>{{157,157},{153,155}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{74,73}}</string>
+                <string>{{0,0},{153,155}}</string>
                 <key>sourceSize</key>
-                <string>{74,73}</string>
+                <string>{153,155}</string>
             </dict>
             <key>shopIcoMoney1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,153},{74,73}}</string>
+                <string>{{314,2},{153,155}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{74,73}}</string>
+                <string>{{0,0},{153,155}}</string>
                 <key>sourceSize</key>
-                <string>{74,73}</string>
+                <string>{153,155}</string>
             </dict>
             <key>shopIcoRandom.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,77},{74,73}}</string>
+                <string>{{157,2},{153,155}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{74,73}}</string>
+                <string>{{0,0},{153,155}}</string>
                 <key>sourceSize</key>
-                <string>{74,73}</string>
+                <string>{153,155}</string>
             </dict>
             <key>shopIcoResurrection.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,2},{74,73}}</string>
+                <string>{{2,316},{153,155}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{74,73}}</string>
+                <string>{{0,0},{153,155}}</string>
                 <key>sourceSize</key>
-                <string>{74,73}</string>
+                <string>{153,155}</string>
             </dict>
             <key>shopIcoShield.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{78,2},{74,73}}</string>
+                <string>{{2,159},{153,155}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{74,73}}</string>
+                <string>{{0,0},{153,155}}</string>
                 <key>sourceSize</key>
-                <string>{74,73}</string>
+                <string>{153,155}</string>
             </dict>
             <key>shopIcoTime.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{74,73}}</string>
+                <string>{{2,2},{153,155}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{74,73}}</string>
+                <string>{{0,0},{153,155}}</string>
                 <key>sourceSize</key>
-                <string>{74,73}</string>
+                <string>{153,155}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -103,9 +103,9 @@
             <key>realTextureFileName</key>
             <string>shopIcons.png</string>
             <key>size</key>
-            <string>{256,256}</string>
+            <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1a3fde665a2a22f13d8442912bd59976$</string>
+            <string>$TexturePacker:SmartUpdate:95fc0642789682c9a2b27edfe18767b6$</string>
             <key>textureFileName</key>
             <string>shopIcons.png</string>
         </dict>

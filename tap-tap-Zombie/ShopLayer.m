@@ -82,8 +82,8 @@
                                                    target: self
                                                  selector: @selector(rightBtnCallback)];
         menu = [CCMenu menuWithItems: rightBtn, nil];
-        menu.position = ccp(kScreenWidth - 8.0f - rightBtn.contentSize.width/2, kScreenCenterY);
-        rightBtn.position = ccp(rightBtn.contentSize.width + 16.0f, 0);
+        menu.position = ccp(kScreenWidth - 20.0f - rightBtn.contentSize.width/2, kScreenCenterY);
+        rightBtn.position = ccp(rightBtn.contentSize.width + 40.0f, 0);
         [self addChild: menu z: 0];
         
         btnSprite = [CCSprite spriteWithFile: @"buttons/leftBtn.png"];
@@ -93,14 +93,14 @@
                                                   target: self
                                                 selector: @selector(leftBtnCallback)];
         menu = [CCMenu menuWithItems: leftBtn, nil];
-        menu.position = ccp(8.0f + leftBtn.contentSize.width/2, kScreenCenterY);
-        leftBtn.position = ccp(-leftBtn.contentSize.width - 16.0f, 0);
+        menu.position = ccp(20.0f + leftBtn.contentSize.width/2, kScreenCenterY);
+        leftBtn.position = ccp(-leftBtn.contentSize.width - 40.0f, 0);
         [self addChild: menu z: 0];
         
         // coins label
         coinsLabel = [CCLabelBMFontNumeric labelWithValue: [Settings sharedSettings].coins fntFile: kFontDefault];
         coinsLabel.anchorPoint = ccp(1, 0);
-        coinsLabel.position = ccp(kScreenWidth - 8.0f, 8.0f);
+        coinsLabel.position = ccp(kScreenWidth - 20.0f, 20.0f);
         coinsLabel.opacity = 0;
         [self addChild: coinsLabel];
         
@@ -193,14 +193,14 @@
     // icon
     CCSprite *iconSprite = [CCSprite spriteWithFile: @"shop/icon.png"];
     iconSprite.anchorPoint = ccp(1, 0.5f);
-    iconSprite.position = ccp(itemWidth - 16.0f, itemHeight/2 - 1.0f);
+    iconSprite.position = ccp(itemWidth - 40.0f, itemHeight/2 - 2.0f);
     [pageItem addChild: iconSprite z: -1];
     
     // header
     CCLabelBMFont *headerLabel = [CCLabelBMFont labelWithString: shopItem.header fntFile: kFontDefault];
     headerLabel.scale = 0.9f;
     headerLabel.anchorPoint = ccp(0, 1);
-    headerLabel.position = ccp(14.0f, itemHeight - 10.0f);
+    headerLabel.position = ccp(34.0f, itemHeight - 20.0f);
     [pageItem addChild: headerLabel];
     
     // description
@@ -212,13 +212,13 @@
 //    descriptionLabel.scale = 0.7f;
     descriptionLabel.color = ccc3(50, 50, 50);
     descriptionLabel.anchorPoint = ccp(0, 1);
-    descriptionLabel.position = ccp(16.0f, itemHeight - 32.0f);
+    descriptionLabel.position = ccp(36.0f, itemHeight - 70.0f);
     [pageItem addChild: descriptionLabel];
     
     // icon
     CCSprite *icon = [CCSprite spriteWithSpriteFrameName: shopItem.icon];
     icon.anchorPoint = ccp(1, 1);
-    icon.position = ccp(itemWidth - 10.0f, itemHeight - 10.0f);
+    icon.position = ccp(itemWidth - 25.0f, itemHeight - 25.0f);
     [pageItem addChild: icon z: -1];
     
     // cost
@@ -227,7 +227,7 @@
     CCLabelBMFont *costLabel = [CCLabelBMFont labelWithString: costLabelText fntFile: kFontDefault]; 
     costLabel.scale = 0.7f;
     costLabel.anchorPoint = ccp(1, 0);
-    costLabel.position = ccp(itemWidth - 18.0f, 6.0f);
+    costLabel.position = ccp(itemWidth - 32.0f, 10.0f);
     [pageItem addChild: costLabel];
     
     // amount
@@ -236,7 +236,7 @@
         NSString *amountLabelText = [NSString stringWithFormat: @"%i", [shopItem amount]];
         CCLabelBMFont *amountLabel = [CCLabelBMFont labelWithString: amountLabelText fntFile: kFontDefault];
         amountLabel.anchorPoint = ccp(1, 1);
-        amountLabel.position = ccp(itemWidth - 18.0f, itemHeight - 8.0f);
+        amountLabel.position = ccp(itemWidth - 40.0f, itemHeight - 20.0f);
 //        amountLabel.color = ccc3(200, 200, 200);
         [pageItem addChild: amountLabel z: 0 tag: kAmountLabelTag];
     }
@@ -271,10 +271,10 @@
     CGPoint p = ccp(kScreenCenterX, kScreenCenterY + kScreenHeight);
     [currentPage runAction: [CCEaseBackIn actionWithAction: [CCMoveTo actionWithDuration: 0.3f position: p]]];
     
-    p = ccp(rightBtn.contentSize.width + 16.0f, 0);
+    p = ccp(rightBtn.contentSize.width + 40.0f, 0);
     [rightBtn runAction: [CCEaseBackIn actionWithAction: [CCMoveTo actionWithDuration: 0.3f position: p]]];
     
-    p = ccp(-leftBtn.contentSize.width - 16.0f, 0);
+    p = ccp(-leftBtn.contentSize.width - 40.0f, 0);
     [leftBtn runAction: [CCEaseBackIn actionWithAction: [CCMoveTo actionWithDuration: 0.3f position: p]]];
     
     [coinsLabel runAction: [CCFadeOut actionWithDuration: 0.3f]];
@@ -527,9 +527,9 @@
     }
     
     CCMenuItem *fakeItem = [CCMenuItem itemWithTarget: self selector: nil];
-    fakeItem.contentSize = CGSizeMake(480, 320);
+    fakeItem.contentSize = CGSizeMake(1024, 768);
     
-    fakeItem.position = ccp(240, 160);
+    fakeItem.position = ccp(512, 384);
     
     CCMenu *fakeMenu = [CCMenu menuWithItems: fakeItem, nil];
     fakeMenu.position = ccp(0, 0);
