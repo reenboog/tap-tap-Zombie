@@ -181,6 +181,60 @@
 		19EDD40B164CF6270037CC6D /* abilities in Resources */ = {isa = PBXBuildFile; fileRef = 19EDD40A164CF6270037CC6D /* abilities */; };
 		842792521656532F000EA385 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 842792511656532F000EA385 /* sounds */; };
 		84B17DCA1656DF0E0034D4C3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B17DC91656DF0E0034D4C3 /* GameKit.framework */; };
+		FA6EEFB2167E70CA00CB9CE1 /* SpriteFramesLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6EEFB1167E70CA00CB9CE1 /* SpriteFramesLoader.m */; };
+		FA6EEFE9167E717F00CB9CE1 /* evilDoctorAfterGhost0.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFB4167E717F00CB9CE1 /* evilDoctorAfterGhost0.png */; };
+		FA6EEFEA167E717F00CB9CE1 /* evilDoctorAfterGhost1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFB5167E717F00CB9CE1 /* evilDoctorAfterGhost1.png */; };
+		FA6EEFEB167E717F00CB9CE1 /* evilDoctorAfterGhost2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFB6167E717F00CB9CE1 /* evilDoctorAfterGhost2.png */; };
+		FA6EEFEC167E717F00CB9CE1 /* evilDoctorAfterGhost3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFB7167E717F00CB9CE1 /* evilDoctorAfterGhost3.png */; };
+		FA6EEFED167E717F00CB9CE1 /* evilDoctorAfterGhost4.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFB8167E717F00CB9CE1 /* evilDoctorAfterGhost4.png */; };
+		FA6EEFEE167E717F00CB9CE1 /* evilDoctorAfterGhost5.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFB9167E717F00CB9CE1 /* evilDoctorAfterGhost5.png */; };
+		FA6EEFEF167E717F00CB9CE1 /* evilDoctorAfterGhost6.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFBA167E717F00CB9CE1 /* evilDoctorAfterGhost6.png */; };
+		FA6EEFF0167E717F00CB9CE1 /* evilDoctorAfterGhost7.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFBB167E717F00CB9CE1 /* evilDoctorAfterGhost7.png */; };
+		FA6EEFF1167E717F00CB9CE1 /* evilDoctorBecomesGhost0.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFBC167E717F00CB9CE1 /* evilDoctorBecomesGhost0.png */; };
+		FA6EEFF2167E717F00CB9CE1 /* evilDoctorBecomesGhost1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFBD167E717F00CB9CE1 /* evilDoctorBecomesGhost1.png */; };
+		FA6EEFF3167E717F00CB9CE1 /* evilDoctorBecomesGhost10.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFBE167E717F00CB9CE1 /* evilDoctorBecomesGhost10.png */; };
+		FA6EEFF4167E717F00CB9CE1 /* evilDoctorBecomesGhost2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFBF167E717F00CB9CE1 /* evilDoctorBecomesGhost2.png */; };
+		FA6EEFF5167E717F00CB9CE1 /* evilDoctorBecomesGhost3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFC0167E717F00CB9CE1 /* evilDoctorBecomesGhost3.png */; };
+		FA6EEFF6167E717F00CB9CE1 /* evilDoctorBecomesGhost4.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFC1167E717F00CB9CE1 /* evilDoctorBecomesGhost4.png */; };
+		FA6EEFF7167E717F00CB9CE1 /* evilDoctorBecomesGhost5.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFC2167E717F00CB9CE1 /* evilDoctorBecomesGhost5.png */; };
+		FA6EEFF8167E717F00CB9CE1 /* evilDoctorBecomesGhost6.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFC3167E717F00CB9CE1 /* evilDoctorBecomesGhost6.png */; };
+		FA6EEFF9167E717F00CB9CE1 /* evilDoctorBecomesGhost7.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFC4167E717F00CB9CE1 /* evilDoctorBecomesGhost7.png */; };
+		FA6EEFFA167E717F00CB9CE1 /* evilDoctorBecomesGhost8.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFC5167E717F00CB9CE1 /* evilDoctorBecomesGhost8.png */; };
+		FA6EEFFB167E717F00CB9CE1 /* evilDoctorBecomesGhost9.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFC6167E717F00CB9CE1 /* evilDoctorBecomesGhost9.png */; };
+		FA6EEFFC167E717F00CB9CE1 /* evilDoctorBecomesHuman0.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFC7167E717F00CB9CE1 /* evilDoctorBecomesHuman0.png */; };
+		FA6EEFFD167E717F00CB9CE1 /* evilDoctorBecomesHuman1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFC8167E717F00CB9CE1 /* evilDoctorBecomesHuman1.png */; };
+		FA6EEFFE167E717F00CB9CE1 /* evilDoctorBecomesHuman10.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFC9167E717F00CB9CE1 /* evilDoctorBecomesHuman10.png */; };
+		FA6EEFFF167E717F00CB9CE1 /* evilDoctorBecomesHuman2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFCA167E717F00CB9CE1 /* evilDoctorBecomesHuman2.png */; };
+		FA6EF000167E717F00CB9CE1 /* evilDoctorBecomesHuman3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFCB167E717F00CB9CE1 /* evilDoctorBecomesHuman3.png */; };
+		FA6EF001167E717F00CB9CE1 /* evilDoctorBecomesHuman4.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFCC167E717F00CB9CE1 /* evilDoctorBecomesHuman4.png */; };
+		FA6EF002167E717F00CB9CE1 /* evilDoctorBecomesHuman5.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFCD167E717F00CB9CE1 /* evilDoctorBecomesHuman5.png */; };
+		FA6EF003167E717F00CB9CE1 /* evilDoctorBecomesHuman6.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFCE167E717F00CB9CE1 /* evilDoctorBecomesHuman6.png */; };
+		FA6EF004167E717F00CB9CE1 /* evilDoctorBecomesHuman7.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFCF167E717F00CB9CE1 /* evilDoctorBecomesHuman7.png */; };
+		FA6EF005167E717F00CB9CE1 /* evilDoctorBecomesHuman8.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFD0167E717F00CB9CE1 /* evilDoctorBecomesHuman8.png */; };
+		FA6EF006167E717F00CB9CE1 /* evilDoctorBecomesHuman9.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFD1167E717F00CB9CE1 /* evilDoctorBecomesHuman9.png */; };
+		FA6EF007167E717F00CB9CE1 /* evilDoctorEyes0.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFD2167E717F00CB9CE1 /* evilDoctorEyes0.png */; };
+		FA6EF008167E717F00CB9CE1 /* evilDoctorEyes1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFD3167E717F00CB9CE1 /* evilDoctorEyes1.png */; };
+		FA6EF009167E717F00CB9CE1 /* evilDoctorEyes2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFD4167E717F00CB9CE1 /* evilDoctorEyes2.png */; };
+		FA6EF00A167E717F00CB9CE1 /* evilDoctorEyes3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFD5167E717F00CB9CE1 /* evilDoctorEyes3.png */; };
+		FA6EF00B167E717F00CB9CE1 /* evilDoctorFrames.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFD6167E717F00CB9CE1 /* evilDoctorFrames.plist */; };
+		FA6EF00C167E717F00CB9CE1 /* evilDoctorGhost0.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFD7167E717F00CB9CE1 /* evilDoctorGhost0.png */; };
+		FA6EF00D167E717F00CB9CE1 /* evilDoctorLaugh0.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFD8167E717F00CB9CE1 /* evilDoctorLaugh0.png */; };
+		FA6EF00E167E717F00CB9CE1 /* evilDoctorLaugh1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFD9167E717F00CB9CE1 /* evilDoctorLaugh1.png */; };
+		FA6EF00F167E717F00CB9CE1 /* evilDoctorLaugh2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFDA167E717F00CB9CE1 /* evilDoctorLaugh2.png */; };
+		FA6EF010167E717F00CB9CE1 /* evilDoctorLaugh3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFDB167E717F00CB9CE1 /* evilDoctorLaugh3.png */; };
+		FA6EF011167E717F00CB9CE1 /* evilDoctorLaugh4.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFDC167E717F00CB9CE1 /* evilDoctorLaugh4.png */; };
+		FA6EF012167E717F00CB9CE1 /* evilDoctorLaugh5.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFDD167E717F00CB9CE1 /* evilDoctorLaugh5.png */; };
+		FA6EF013167E717F00CB9CE1 /* evilDoctorLaugh6.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFDE167E717F00CB9CE1 /* evilDoctorLaugh6.png */; };
+		FA6EF014167E717F00CB9CE1 /* evilDoctorLaugh7.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFDF167E717F00CB9CE1 /* evilDoctorLaugh7.png */; };
+		FA6EF015167E717F00CB9CE1 /* evilDoctorLaugh8.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFE0167E717F00CB9CE1 /* evilDoctorLaugh8.png */; };
+		FA6EF016167E717F00CB9CE1 /* evilDoctorStand0.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFE1167E717F00CB9CE1 /* evilDoctorStand0.png */; };
+		FA6EF017167E717F00CB9CE1 /* evilDoctorSwitch0.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFE2167E717F00CB9CE1 /* evilDoctorSwitch0.png */; };
+		FA6EF018167E717F00CB9CE1 /* evilDoctorSwitch1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFE3167E717F00CB9CE1 /* evilDoctorSwitch1.png */; };
+		FA6EF019167E717F00CB9CE1 /* evilDoctorSwitch2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFE4167E717F00CB9CE1 /* evilDoctorSwitch2.png */; };
+		FA6EF01A167E717F00CB9CE1 /* evilDoctorSwitch3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFE5167E717F00CB9CE1 /* evilDoctorSwitch3.png */; };
+		FA6EF01B167E717F00CB9CE1 /* evilDoctorSwitch4.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFE6167E717F00CB9CE1 /* evilDoctorSwitch4.png */; };
+		FA6EF01C167E717F00CB9CE1 /* evilDoctorSwitch5.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFE7167E717F00CB9CE1 /* evilDoctorSwitch5.png */; };
+		FA6EF01D167E717F00CB9CE1 /* evilDoctorSwitch6.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EEFE8167E717F00CB9CE1 /* evilDoctorSwitch6.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -531,6 +585,61 @@
 		842792511656532F000EA385 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sounds; path = Resources/game/sounds; sourceTree = "<group>"; };
 		842792541656553F000EA385 /* SoundsConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundsConfig.h; sourceTree = "<group>"; };
 		84B17DC91656DF0E0034D4C3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		FA6EEFB0167E70CA00CB9CE1 /* SpriteFramesLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteFramesLoader.h; sourceTree = "<group>"; };
+		FA6EEFB1167E70CA00CB9CE1 /* SpriteFramesLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteFramesLoader.m; sourceTree = "<group>"; };
+		FA6EEFB4167E717F00CB9CE1 /* evilDoctorAfterGhost0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorAfterGhost0.png; sourceTree = "<group>"; };
+		FA6EEFB5167E717F00CB9CE1 /* evilDoctorAfterGhost1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorAfterGhost1.png; sourceTree = "<group>"; };
+		FA6EEFB6167E717F00CB9CE1 /* evilDoctorAfterGhost2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorAfterGhost2.png; sourceTree = "<group>"; };
+		FA6EEFB7167E717F00CB9CE1 /* evilDoctorAfterGhost3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorAfterGhost3.png; sourceTree = "<group>"; };
+		FA6EEFB8167E717F00CB9CE1 /* evilDoctorAfterGhost4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorAfterGhost4.png; sourceTree = "<group>"; };
+		FA6EEFB9167E717F00CB9CE1 /* evilDoctorAfterGhost5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorAfterGhost5.png; sourceTree = "<group>"; };
+		FA6EEFBA167E717F00CB9CE1 /* evilDoctorAfterGhost6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorAfterGhost6.png; sourceTree = "<group>"; };
+		FA6EEFBB167E717F00CB9CE1 /* evilDoctorAfterGhost7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorAfterGhost7.png; sourceTree = "<group>"; };
+		FA6EEFBC167E717F00CB9CE1 /* evilDoctorBecomesGhost0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesGhost0.png; sourceTree = "<group>"; };
+		FA6EEFBD167E717F00CB9CE1 /* evilDoctorBecomesGhost1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesGhost1.png; sourceTree = "<group>"; };
+		FA6EEFBE167E717F00CB9CE1 /* evilDoctorBecomesGhost10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesGhost10.png; sourceTree = "<group>"; };
+		FA6EEFBF167E717F00CB9CE1 /* evilDoctorBecomesGhost2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesGhost2.png; sourceTree = "<group>"; };
+		FA6EEFC0167E717F00CB9CE1 /* evilDoctorBecomesGhost3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesGhost3.png; sourceTree = "<group>"; };
+		FA6EEFC1167E717F00CB9CE1 /* evilDoctorBecomesGhost4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesGhost4.png; sourceTree = "<group>"; };
+		FA6EEFC2167E717F00CB9CE1 /* evilDoctorBecomesGhost5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesGhost5.png; sourceTree = "<group>"; };
+		FA6EEFC3167E717F00CB9CE1 /* evilDoctorBecomesGhost6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesGhost6.png; sourceTree = "<group>"; };
+		FA6EEFC4167E717F00CB9CE1 /* evilDoctorBecomesGhost7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesGhost7.png; sourceTree = "<group>"; };
+		FA6EEFC5167E717F00CB9CE1 /* evilDoctorBecomesGhost8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesGhost8.png; sourceTree = "<group>"; };
+		FA6EEFC6167E717F00CB9CE1 /* evilDoctorBecomesGhost9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesGhost9.png; sourceTree = "<group>"; };
+		FA6EEFC7167E717F00CB9CE1 /* evilDoctorBecomesHuman0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesHuman0.png; sourceTree = "<group>"; };
+		FA6EEFC8167E717F00CB9CE1 /* evilDoctorBecomesHuman1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesHuman1.png; sourceTree = "<group>"; };
+		FA6EEFC9167E717F00CB9CE1 /* evilDoctorBecomesHuman10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesHuman10.png; sourceTree = "<group>"; };
+		FA6EEFCA167E717F00CB9CE1 /* evilDoctorBecomesHuman2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesHuman2.png; sourceTree = "<group>"; };
+		FA6EEFCB167E717F00CB9CE1 /* evilDoctorBecomesHuman3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesHuman3.png; sourceTree = "<group>"; };
+		FA6EEFCC167E717F00CB9CE1 /* evilDoctorBecomesHuman4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesHuman4.png; sourceTree = "<group>"; };
+		FA6EEFCD167E717F00CB9CE1 /* evilDoctorBecomesHuman5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesHuman5.png; sourceTree = "<group>"; };
+		FA6EEFCE167E717F00CB9CE1 /* evilDoctorBecomesHuman6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesHuman6.png; sourceTree = "<group>"; };
+		FA6EEFCF167E717F00CB9CE1 /* evilDoctorBecomesHuman7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesHuman7.png; sourceTree = "<group>"; };
+		FA6EEFD0167E717F00CB9CE1 /* evilDoctorBecomesHuman8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesHuman8.png; sourceTree = "<group>"; };
+		FA6EEFD1167E717F00CB9CE1 /* evilDoctorBecomesHuman9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorBecomesHuman9.png; sourceTree = "<group>"; };
+		FA6EEFD2167E717F00CB9CE1 /* evilDoctorEyes0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorEyes0.png; sourceTree = "<group>"; };
+		FA6EEFD3167E717F00CB9CE1 /* evilDoctorEyes1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorEyes1.png; sourceTree = "<group>"; };
+		FA6EEFD4167E717F00CB9CE1 /* evilDoctorEyes2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorEyes2.png; sourceTree = "<group>"; };
+		FA6EEFD5167E717F00CB9CE1 /* evilDoctorEyes3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorEyes3.png; sourceTree = "<group>"; };
+		FA6EEFD6167E717F00CB9CE1 /* evilDoctorFrames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = evilDoctorFrames.plist; sourceTree = "<group>"; };
+		FA6EEFD7167E717F00CB9CE1 /* evilDoctorGhost0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorGhost0.png; sourceTree = "<group>"; };
+		FA6EEFD8167E717F00CB9CE1 /* evilDoctorLaugh0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorLaugh0.png; sourceTree = "<group>"; };
+		FA6EEFD9167E717F00CB9CE1 /* evilDoctorLaugh1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorLaugh1.png; sourceTree = "<group>"; };
+		FA6EEFDA167E717F00CB9CE1 /* evilDoctorLaugh2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorLaugh2.png; sourceTree = "<group>"; };
+		FA6EEFDB167E717F00CB9CE1 /* evilDoctorLaugh3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorLaugh3.png; sourceTree = "<group>"; };
+		FA6EEFDC167E717F00CB9CE1 /* evilDoctorLaugh4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorLaugh4.png; sourceTree = "<group>"; };
+		FA6EEFDD167E717F00CB9CE1 /* evilDoctorLaugh5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorLaugh5.png; sourceTree = "<group>"; };
+		FA6EEFDE167E717F00CB9CE1 /* evilDoctorLaugh6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorLaugh6.png; sourceTree = "<group>"; };
+		FA6EEFDF167E717F00CB9CE1 /* evilDoctorLaugh7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorLaugh7.png; sourceTree = "<group>"; };
+		FA6EEFE0167E717F00CB9CE1 /* evilDoctorLaugh8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorLaugh8.png; sourceTree = "<group>"; };
+		FA6EEFE1167E717F00CB9CE1 /* evilDoctorStand0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorStand0.png; sourceTree = "<group>"; };
+		FA6EEFE2167E717F00CB9CE1 /* evilDoctorSwitch0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorSwitch0.png; sourceTree = "<group>"; };
+		FA6EEFE3167E717F00CB9CE1 /* evilDoctorSwitch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorSwitch1.png; sourceTree = "<group>"; };
+		FA6EEFE4167E717F00CB9CE1 /* evilDoctorSwitch2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorSwitch2.png; sourceTree = "<group>"; };
+		FA6EEFE5167E717F00CB9CE1 /* evilDoctorSwitch3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorSwitch3.png; sourceTree = "<group>"; };
+		FA6EEFE6167E717F00CB9CE1 /* evilDoctorSwitch4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorSwitch4.png; sourceTree = "<group>"; };
+		FA6EEFE7167E717F00CB9CE1 /* evilDoctorSwitch5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorSwitch5.png; sourceTree = "<group>"; };
+		FA6EEFE8167E717F00CB9CE1 /* evilDoctorSwitch6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evilDoctorSwitch6.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1043,6 +1152,7 @@
 		19BAA670161C82BF00A43A5F /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				FA6EEFAE167E707F00CB9CE1 /* SpriteFrames Loader */,
 				191D0EE01626CCC000B6235B /* Animation Loader */,
 				19A5D90A1627FAE9006E4A95 /* WaveCache */,
 				19BAA69B161C8BAE00A43A5F /* MapCache */,
@@ -1081,6 +1191,7 @@
 		19BAA685161C894100A43A5F /* game */ = {
 			isa = PBXGroup;
 			children = (
+				FA6EEFB3167E717F00CB9CE1 /* evilDoctor */,
 				842792511656532F000EA385 /* sounds */,
 				19A520BA16511775005303E8 /* tutorial */,
 				19EDD40A164CF6270037CC6D /* abilities */,
@@ -1245,6 +1356,76 @@
 			name = Zombie;
 			sourceTree = "<group>";
 		};
+		FA6EEFAE167E707F00CB9CE1 /* SpriteFrames Loader */ = {
+			isa = PBXGroup;
+			children = (
+				FA6EEFB0167E70CA00CB9CE1 /* SpriteFramesLoader.h */,
+				FA6EEFB1167E70CA00CB9CE1 /* SpriteFramesLoader.m */,
+			);
+			name = "SpriteFrames Loader";
+			sourceTree = "<group>";
+		};
+		FA6EEFB3167E717F00CB9CE1 /* evilDoctor */ = {
+			isa = PBXGroup;
+			children = (
+				FA6EEFB4167E717F00CB9CE1 /* evilDoctorAfterGhost0.png */,
+				FA6EEFB5167E717F00CB9CE1 /* evilDoctorAfterGhost1.png */,
+				FA6EEFB6167E717F00CB9CE1 /* evilDoctorAfterGhost2.png */,
+				FA6EEFB7167E717F00CB9CE1 /* evilDoctorAfterGhost3.png */,
+				FA6EEFB8167E717F00CB9CE1 /* evilDoctorAfterGhost4.png */,
+				FA6EEFB9167E717F00CB9CE1 /* evilDoctorAfterGhost5.png */,
+				FA6EEFBA167E717F00CB9CE1 /* evilDoctorAfterGhost6.png */,
+				FA6EEFBB167E717F00CB9CE1 /* evilDoctorAfterGhost7.png */,
+				FA6EEFBC167E717F00CB9CE1 /* evilDoctorBecomesGhost0.png */,
+				FA6EEFBD167E717F00CB9CE1 /* evilDoctorBecomesGhost1.png */,
+				FA6EEFBE167E717F00CB9CE1 /* evilDoctorBecomesGhost10.png */,
+				FA6EEFBF167E717F00CB9CE1 /* evilDoctorBecomesGhost2.png */,
+				FA6EEFC0167E717F00CB9CE1 /* evilDoctorBecomesGhost3.png */,
+				FA6EEFC1167E717F00CB9CE1 /* evilDoctorBecomesGhost4.png */,
+				FA6EEFC2167E717F00CB9CE1 /* evilDoctorBecomesGhost5.png */,
+				FA6EEFC3167E717F00CB9CE1 /* evilDoctorBecomesGhost6.png */,
+				FA6EEFC4167E717F00CB9CE1 /* evilDoctorBecomesGhost7.png */,
+				FA6EEFC5167E717F00CB9CE1 /* evilDoctorBecomesGhost8.png */,
+				FA6EEFC6167E717F00CB9CE1 /* evilDoctorBecomesGhost9.png */,
+				FA6EEFC7167E717F00CB9CE1 /* evilDoctorBecomesHuman0.png */,
+				FA6EEFC8167E717F00CB9CE1 /* evilDoctorBecomesHuman1.png */,
+				FA6EEFC9167E717F00CB9CE1 /* evilDoctorBecomesHuman10.png */,
+				FA6EEFCA167E717F00CB9CE1 /* evilDoctorBecomesHuman2.png */,
+				FA6EEFCB167E717F00CB9CE1 /* evilDoctorBecomesHuman3.png */,
+				FA6EEFCC167E717F00CB9CE1 /* evilDoctorBecomesHuman4.png */,
+				FA6EEFCD167E717F00CB9CE1 /* evilDoctorBecomesHuman5.png */,
+				FA6EEFCE167E717F00CB9CE1 /* evilDoctorBecomesHuman6.png */,
+				FA6EEFCF167E717F00CB9CE1 /* evilDoctorBecomesHuman7.png */,
+				FA6EEFD0167E717F00CB9CE1 /* evilDoctorBecomesHuman8.png */,
+				FA6EEFD1167E717F00CB9CE1 /* evilDoctorBecomesHuman9.png */,
+				FA6EEFD2167E717F00CB9CE1 /* evilDoctorEyes0.png */,
+				FA6EEFD3167E717F00CB9CE1 /* evilDoctorEyes1.png */,
+				FA6EEFD4167E717F00CB9CE1 /* evilDoctorEyes2.png */,
+				FA6EEFD5167E717F00CB9CE1 /* evilDoctorEyes3.png */,
+				FA6EEFD6167E717F00CB9CE1 /* evilDoctorFrames.plist */,
+				FA6EEFD7167E717F00CB9CE1 /* evilDoctorGhost0.png */,
+				FA6EEFD8167E717F00CB9CE1 /* evilDoctorLaugh0.png */,
+				FA6EEFD9167E717F00CB9CE1 /* evilDoctorLaugh1.png */,
+				FA6EEFDA167E717F00CB9CE1 /* evilDoctorLaugh2.png */,
+				FA6EEFDB167E717F00CB9CE1 /* evilDoctorLaugh3.png */,
+				FA6EEFDC167E717F00CB9CE1 /* evilDoctorLaugh4.png */,
+				FA6EEFDD167E717F00CB9CE1 /* evilDoctorLaugh5.png */,
+				FA6EEFDE167E717F00CB9CE1 /* evilDoctorLaugh6.png */,
+				FA6EEFDF167E717F00CB9CE1 /* evilDoctorLaugh7.png */,
+				FA6EEFE0167E717F00CB9CE1 /* evilDoctorLaugh8.png */,
+				FA6EEFE1167E717F00CB9CE1 /* evilDoctorStand0.png */,
+				FA6EEFE2167E717F00CB9CE1 /* evilDoctorSwitch0.png */,
+				FA6EEFE3167E717F00CB9CE1 /* evilDoctorSwitch1.png */,
+				FA6EEFE4167E717F00CB9CE1 /* evilDoctorSwitch2.png */,
+				FA6EEFE5167E717F00CB9CE1 /* evilDoctorSwitch3.png */,
+				FA6EEFE6167E717F00CB9CE1 /* evilDoctorSwitch4.png */,
+				FA6EEFE7167E717F00CB9CE1 /* evilDoctorSwitch5.png */,
+				FA6EEFE8167E717F00CB9CE1 /* evilDoctorSwitch6.png */,
+			);
+			name = evilDoctor;
+			path = Resources/game/evilDoctor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1320,6 +1501,59 @@
 				19EDD40B164CF6270037CC6D /* abilities in Resources */,
 				19A520BB16511775005303E8 /* tutorial in Resources */,
 				842792521656532F000EA385 /* sounds in Resources */,
+				FA6EEFE9167E717F00CB9CE1 /* evilDoctorAfterGhost0.png in Resources */,
+				FA6EEFEA167E717F00CB9CE1 /* evilDoctorAfterGhost1.png in Resources */,
+				FA6EEFEB167E717F00CB9CE1 /* evilDoctorAfterGhost2.png in Resources */,
+				FA6EEFEC167E717F00CB9CE1 /* evilDoctorAfterGhost3.png in Resources */,
+				FA6EEFED167E717F00CB9CE1 /* evilDoctorAfterGhost4.png in Resources */,
+				FA6EEFEE167E717F00CB9CE1 /* evilDoctorAfterGhost5.png in Resources */,
+				FA6EEFEF167E717F00CB9CE1 /* evilDoctorAfterGhost6.png in Resources */,
+				FA6EEFF0167E717F00CB9CE1 /* evilDoctorAfterGhost7.png in Resources */,
+				FA6EEFF1167E717F00CB9CE1 /* evilDoctorBecomesGhost0.png in Resources */,
+				FA6EEFF2167E717F00CB9CE1 /* evilDoctorBecomesGhost1.png in Resources */,
+				FA6EEFF3167E717F00CB9CE1 /* evilDoctorBecomesGhost10.png in Resources */,
+				FA6EEFF4167E717F00CB9CE1 /* evilDoctorBecomesGhost2.png in Resources */,
+				FA6EEFF5167E717F00CB9CE1 /* evilDoctorBecomesGhost3.png in Resources */,
+				FA6EEFF6167E717F00CB9CE1 /* evilDoctorBecomesGhost4.png in Resources */,
+				FA6EEFF7167E717F00CB9CE1 /* evilDoctorBecomesGhost5.png in Resources */,
+				FA6EEFF8167E717F00CB9CE1 /* evilDoctorBecomesGhost6.png in Resources */,
+				FA6EEFF9167E717F00CB9CE1 /* evilDoctorBecomesGhost7.png in Resources */,
+				FA6EEFFA167E717F00CB9CE1 /* evilDoctorBecomesGhost8.png in Resources */,
+				FA6EEFFB167E717F00CB9CE1 /* evilDoctorBecomesGhost9.png in Resources */,
+				FA6EEFFC167E717F00CB9CE1 /* evilDoctorBecomesHuman0.png in Resources */,
+				FA6EEFFD167E717F00CB9CE1 /* evilDoctorBecomesHuman1.png in Resources */,
+				FA6EEFFE167E717F00CB9CE1 /* evilDoctorBecomesHuman10.png in Resources */,
+				FA6EEFFF167E717F00CB9CE1 /* evilDoctorBecomesHuman2.png in Resources */,
+				FA6EF000167E717F00CB9CE1 /* evilDoctorBecomesHuman3.png in Resources */,
+				FA6EF001167E717F00CB9CE1 /* evilDoctorBecomesHuman4.png in Resources */,
+				FA6EF002167E717F00CB9CE1 /* evilDoctorBecomesHuman5.png in Resources */,
+				FA6EF003167E717F00CB9CE1 /* evilDoctorBecomesHuman6.png in Resources */,
+				FA6EF004167E717F00CB9CE1 /* evilDoctorBecomesHuman7.png in Resources */,
+				FA6EF005167E717F00CB9CE1 /* evilDoctorBecomesHuman8.png in Resources */,
+				FA6EF006167E717F00CB9CE1 /* evilDoctorBecomesHuman9.png in Resources */,
+				FA6EF007167E717F00CB9CE1 /* evilDoctorEyes0.png in Resources */,
+				FA6EF008167E717F00CB9CE1 /* evilDoctorEyes1.png in Resources */,
+				FA6EF009167E717F00CB9CE1 /* evilDoctorEyes2.png in Resources */,
+				FA6EF00A167E717F00CB9CE1 /* evilDoctorEyes3.png in Resources */,
+				FA6EF00B167E717F00CB9CE1 /* evilDoctorFrames.plist in Resources */,
+				FA6EF00C167E717F00CB9CE1 /* evilDoctorGhost0.png in Resources */,
+				FA6EF00D167E717F00CB9CE1 /* evilDoctorLaugh0.png in Resources */,
+				FA6EF00E167E717F00CB9CE1 /* evilDoctorLaugh1.png in Resources */,
+				FA6EF00F167E717F00CB9CE1 /* evilDoctorLaugh2.png in Resources */,
+				FA6EF010167E717F00CB9CE1 /* evilDoctorLaugh3.png in Resources */,
+				FA6EF011167E717F00CB9CE1 /* evilDoctorLaugh4.png in Resources */,
+				FA6EF012167E717F00CB9CE1 /* evilDoctorLaugh5.png in Resources */,
+				FA6EF013167E717F00CB9CE1 /* evilDoctorLaugh6.png in Resources */,
+				FA6EF014167E717F00CB9CE1 /* evilDoctorLaugh7.png in Resources */,
+				FA6EF015167E717F00CB9CE1 /* evilDoctorLaugh8.png in Resources */,
+				FA6EF016167E717F00CB9CE1 /* evilDoctorStand0.png in Resources */,
+				FA6EF017167E717F00CB9CE1 /* evilDoctorSwitch0.png in Resources */,
+				FA6EF018167E717F00CB9CE1 /* evilDoctorSwitch1.png in Resources */,
+				FA6EF019167E717F00CB9CE1 /* evilDoctorSwitch2.png in Resources */,
+				FA6EF01A167E717F00CB9CE1 /* evilDoctorSwitch3.png in Resources */,
+				FA6EF01B167E717F00CB9CE1 /* evilDoctorSwitch4.png in Resources */,
+				FA6EF01C167E717F00CB9CE1 /* evilDoctorSwitch5.png in Resources */,
+				FA6EF01D167E717F00CB9CE1 /* evilDoctorSwitch6.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1468,6 +1702,7 @@
 				19A3F958164A89A30011829A /* IAPHelperExtended.m in Sources */,
 				19A3F959164A89A30011829A /* MBProgressHUD.m in Sources */,
 				19A3F95A164A89A30011829A /* Reachability.m in Sources */,
+				FA6EEFB2167E70CA00CB9CE1 /* SpriteFramesLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

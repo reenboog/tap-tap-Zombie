@@ -19,6 +19,8 @@
 
 #import "SimpleAudioEngine.h"
 
+#import "SpriteFramesLoader.h"
+
 @implementation AppDelegate
 
 @synthesize window;

@@ -20,7 +20,7 @@
     if(self = [super init])
     {
         CCSprite *back = [CCSprite spriteWithFile: @"Default.png"];
-        back.rotation = 90;
+        back.rotation = -90;
         back.position = kScreenCenter;
         [self addChild: back];
         

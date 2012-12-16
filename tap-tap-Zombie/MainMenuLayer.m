@@ -26,6 +26,8 @@
 
 #import "Settings.h"
 
+#import "SpriteFramesLoader.h"
+
 
 
 @interface MainMenuLayer()
@@ -49,12 +51,13 @@
 
 - (void) loadResources
 {
-    [[CCTextureCache sharedTextureCache] addImage: @"mainMenu/evilDoctor.png"];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctor.plist"];
-    [[CCTextureCache sharedTextureCache] addImage: @"mainMenu/evilDoctorGhost.png"];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctorGhost.plist"];
-    [[CCTextureCache sharedTextureCache] addImage: @"mainMenu/evilDoctorGhost1.png"];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctorGhost1.plist"];
+//    [[CCTextureCache sharedTextureCache] addImage: @"mainMenu/evilDoctor.png"];
+//    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctor.plist"];
+//    [[CCTextureCache sharedTextureCache] addImage: @"mainMenu/evilDoctorGhost.png"];
+//    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctorGhost.plist"];
+//    [[CCTextureCache sharedTextureCache] addImage: @"mainMenu/evilDoctorGhost1.png"];
+//    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"mainMenu/evilDoctorGhost1.plist"];
+    [SpriteFramesLoader loadSpriteFramesWithPlistFile: @"evilDoctorFrames"];
     
     [AnimationLoader loadAnimationsWithPlist: @"mainMenu/animations"];
     
@@ -197,7 +200,7 @@
                     [CCSequence actions:
                                     [CCEaseBackOut actionWithAction:
                                                     [CCMoveTo actionWithDuration: 0.3f 
-                                                                        position: ccp(-24.0f, 0)
+                                                                        position: ccp(-60.0f, 0)
                                                     ]
                                     ],
                                     [CCCallFunc actionWithTarget: self selector: @selector(runRandomAnimation)],
@@ -394,7 +397,7 @@
                     [CCSequence actions:
                                     [CCEaseBackOut actionWithAction:
                                                         [CCMoveTo actionWithDuration: 0.5f
-                                                                            position: ccp(-24.0f, 0)
+                                                                            position: ccp(-60.0f, 0)
                                                         ]
                                     ],
                                     [CCCallFunc actionWithTarget: globalMap selector: @selector(enableWithChildren)],
