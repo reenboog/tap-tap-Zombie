@@ -433,9 +433,8 @@
         [[[CCDirector sharedDirector] openGLView] addSubview: leaderboardViewController.view];
         [leaderboardViewController presentModalViewController: leaderboardController animated: NO];
         
-        leaderboardController.view.transform = CGAffineTransformMakeRotation(CC_DEGREES_TO_RADIANS(0.0f));
-        //        leaderboardController.view.bounds = CGRectMake(0, 0, 480, 320);
-        leaderboardController.view.center = CGPointMake(240, 160);
+        leaderboardController.view.transform = CGAffineTransformMakeRotation(CC_DEGREES_TO_RADIANS(90.0f));
+//        leaderboardController.view.center = CGPointMake(512, 384);
     }
     
     PLAY_BUTTON_CLICK_SOUND();
