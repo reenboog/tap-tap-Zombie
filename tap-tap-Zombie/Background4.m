@@ -74,11 +74,11 @@ static CCSprite *movableSprite = nil;
 - (void) initMoon
 {
     CCSprite *moon = [CCSprite spriteWithFile: @"levels/moon.png"];
-    moon.position = ccp(429, 297);
+    moon.position = ccp(413, 708);
     [self addChild: moon];
     
     CCSprite *moonLight = [CCSprite spriteWithFile: @"levels/moon.png"];
-    moonLight.position = ccp(429, 297);
+    moonLight.position = moon.position;
     [self addChild: moonLight];
     
     moonLight.opacity = 0;
@@ -130,7 +130,7 @@ static CCSprite *movableSprite = nil;
 
 - (void) initTrees
 {
-    CGPoint treesPositions[5] = {ccp(20, 247), ccp(95, 266), ccp(293, 280), ccp(364, 262), ccp(447, 218)};
+    CGPoint treesPositions[5] = {ccp(51, 624), ccp(209, 646), ccp(618, 653), ccp(777, 640), ccp(952, 544)};
     for(int i = 1; i < 5; i++)
     {
         CCSprite *tree = [CCSprite spriteWithFile: resource([NSString stringWithFormat: @"trees/%i.png", i])];

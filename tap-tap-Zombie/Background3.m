@@ -71,11 +71,11 @@ static CCSprite *movableSprite = nil;
 - (void) initMoon
 {
     CCSprite *moon = [CCSprite spriteWithFile: @"levels/moon.png"];
-    moon.position = ccp(429, 297);
+    moon.position = ccp(413, 708);
     [self addChild: moon];
     
     CCSprite *moonLight = [CCSprite spriteWithFile: @"levels/moon.png"];
-    moonLight.position = ccp(429, 297);
+    moonLight.position = moon.position;
     [self addChild: moonLight];
     
     moonLight.opacity = 0;

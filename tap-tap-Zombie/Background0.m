@@ -45,7 +45,7 @@ static CCSprite *movableSprite = nil;
         
         // moon
         CCSprite *moon = [CCSprite spriteWithFile: @"levels/moon.png"];
-        moon.position = ccp(204, 295);
+        moon.position = ccp(394, 712);
         [self addChild: moon];
         
         CCSprite *moonLight = [CCSprite spriteWithFile: @"levels/moon.png"];
@@ -76,15 +76,15 @@ static CCSprite *movableSprite = nil;
         
         // houses
         CCSprite *house0 = [CCSprite spriteWithFile: resource(@"house0.png")];
-        house0.position = ccp(85, 291);
+        house0.position = ccp(229, 705);
         [self addChild: house0];
         
         CCSprite *house1 = [CCSprite spriteWithFile: resource(@"house1.png")];
-        house1.position = ccp(380, 285);
+        house1.position = ccp(812, 694);
         [self addChild: house1];
         
         // trees
-        CGPoint treesPositions[4] = {ccp(40, 252), ccp(203, 281), ccp(375, 243), ccp(439, 219)};
+        CGPoint treesPositions[4] = {ccp(22, 627), ccp(481, 687), ccp(802, 602), ccp(925, 624)};
         for(int i = 0; i < 4; i++)
         {
             CCSprite *tree = [CCSprite spriteWithFile: resource([NSString stringWithFormat: @"trees/%i.png", i])];
@@ -122,7 +122,7 @@ static CCSprite *movableSprite = nil;
         [self addChild: dump];
         
         // ufo lights
-        [self initUFOLights];
+//        [self initUFOLights];
         
         // roads
         [self initRoads: num];

@@ -70,27 +70,27 @@ static CCSprite *movableSprite = nil;
             item.position = ccp(p.x, p.y);
             item.scale = 0;
             
-            BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: item.tag].isPassed;
-            if(!isMapPassed)
-            {
-                if(isOldMapPassed)
-                {
-                    if([Settings sharedSettings].gameCycle > 0)
-                    {
-                        [(CCSprite *)item setColor: ccc3(255, 0, 0)];
-                    }
-                    else
-                    {
-                        [(CCSprite *)item setColor: ccc3(0, 255, 0)];
-                    }
-                }
-                else
-                {
-                    [(CCSprite *)item setOpacity: 100];
-                }
-            } 
-            
-            isOldMapPassed = isMapPassed;
+//            BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: item.tag].isPassed;
+//            if(!isMapPassed)
+//            {
+//                if(isOldMapPassed)
+//                {
+//                    if([Settings sharedSettings].gameCycle > 0)
+//                    {
+//                        [(CCSprite *)item setColor: ccc3(255, 0, 0)];
+//                    }
+//                    else
+//                    {
+//                        [(CCSprite *)item setColor: ccc3(0, 255, 0)];
+//                    }
+//                }
+//                else
+//                {
+//                    [(CCSprite *)item setOpacity: 100];
+//                }
+//            } 
+//            
+//            isOldMapPassed = isMapPassed;
             
 //            movableSprite = item;
         }
@@ -144,10 +144,10 @@ static CCSprite *movableSprite = nil;
     BOOL isMapPassed = [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex].isPassed;
     BOOL isOldMapPassed = mapIndex > 0 ? [[MapCache sharedMapCache] mapInfoAtIndex: mapIndex - 1].isPassed : YES;
     
-    if(isOldMapPassed || isMapPassed)
-    {
+//    if(isOldMapPassed || isMapPassed)
+//    {
         [delegate mapChanged: mapIndex];
-    }
+//    }
     
     PLAY_BUTTON_CLICK_SOUND();
 }

@@ -7,7 +7,7 @@
             <key>closeGate20.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{96,92},{0,0}}</string>
+                <string>{{249,2},{0,0}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -15,116 +15,90 @@
                 <key>sourceColorRect</key>
                 <string>{{0,0},{0,0}}</string>
                 <key>sourceSize</key>
-                <string>{248,174}</string>
+                <string>{489,325}</string>
             </dict>
             <key>closeGate21.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{108,28}}</string>
+                <string>{{2,2},{245,59}}</string>
                 <key>offset</key>
-                <string>{2,-29}</string>
+                <string>{-1,-37}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{72,102},{108,28}}</string>
+                <string>{{121,170},{245,59}}</string>
                 <key>sourceSize</key>
-                <string>{248,174}</string>
+                <string>{489,325}</string>
             </dict>
             <key>closeGate22.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,32},{104,28}}</string>
+                <string>{{2,63},{207,59}}</string>
                 <key>offset</key>
-                <string>{9,-28}</string>
+                <string>{-2,-37}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{81,101},{104,28}}</string>
+                <string>{{139,170},{207,59}}</string>
                 <key>sourceSize</key>
-                <string>{248,174}</string>
+                <string>{489,325}</string>
             </dict>
             <key>closeGate23.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,62},{98,28}}</string>
+                <string>{{2,124},{195,59}}</string>
                 <key>offset</key>
-                <string>{5,-28}</string>
+                <string>{-2,-37}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{80,101},{98,28}}</string>
+                <string>{{145,170},{195,59}}</string>
                 <key>sourceSize</key>
-                <string>{248,174}</string>
-            </dict>
-            <key>closeGate24.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,92},{92,28}}</string>
-                <key>offset</key>
-                <string>{7,-28}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{85,101},{92,28}}</string>
-                <key>sourceSize</key>
-                <string>{248,174}</string>
+                <string>{489,325}</string>
             </dict>
             <key>openGate20.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,92},{92,28}}</string>
+                <string>{{2,124},{195,59}}</string>
                 <key>offset</key>
-                <string>{7,-28}</string>
+                <string>{-2,-37}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{85,101},{92,28}}</string>
+                <string>{{145,170},{195,59}}</string>
                 <key>sourceSize</key>
-                <string>{248,174}</string>
+                <string>{489,325}</string>
             </dict>
             <key>openGate21.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,62},{98,28}}</string>
+                <string>{{2,63},{207,59}}</string>
                 <key>offset</key>
-                <string>{5,-28}</string>
+                <string>{-2,-37}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{80,101},{98,28}}</string>
+                <string>{{139,170},{207,59}}</string>
                 <key>sourceSize</key>
-                <string>{248,174}</string>
+                <string>{489,325}</string>
             </dict>
             <key>openGate22.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,32},{104,28}}</string>
+                <string>{{2,2},{245,59}}</string>
                 <key>offset</key>
-                <string>{9,-28}</string>
+                <string>{-1,-37}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{81,101},{104,28}}</string>
+                <string>{{121,170},{245,59}}</string>
                 <key>sourceSize</key>
-                <string>{248,174}</string>
+                <string>{489,325}</string>
             </dict>
             <key>openGate23.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{108,28}}</string>
-                <key>offset</key>
-                <string>{2,-29}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{72,102},{108,28}}</string>
-                <key>sourceSize</key>
-                <string>{248,174}</string>
-            </dict>
-            <key>openGate24.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{96,92},{0,0}}</string>
+                <string>{{249,2},{0,0}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -132,7 +106,7 @@
                 <key>sourceColorRect</key>
                 <string>{{0,0},{0,0}}</string>
                 <key>sourceSize</key>
-                <string>{248,174}</string>
+                <string>{489,325}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -142,9 +116,9 @@
             <key>realTextureFileName</key>
             <string>gate-hd.png</string>
             <key>size</key>
-            <string>{128,128}</string>
+            <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cb5407b1c8830b70fd2d16bb6c8e327e$</string>
+            <string>$TexturePacker:SmartUpdate:cd38b65fa1302a69dc774fcf325267c0$</string>
             <key>textureFileName</key>
             <string>gate-hd.png</string>
         </dict>

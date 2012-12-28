@@ -33,14 +33,14 @@
 	<key>openGate2</key>
 	<dict>
 		<key>frames</key>
-		<string>0,1,2,3,4</string>
+		<string>0,1,2,3</string>
 		<key>delay</key>
 		<real>0.05</real>
 	</dict>
 	<key>closeGate2</key>
 	<dict>
 		<key>frames</key>
-		<string>0,1,2,3,4</string>
+		<string>0,1,2,3</string>
 		<key>delay</key>
 		<real>0.05</real>
 	</dict>
