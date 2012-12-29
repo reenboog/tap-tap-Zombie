@@ -38,7 +38,7 @@ static NSString *itemHeaders[kMaxGameDifficulty + 1] = {
         // header
         header = [CCLabelBMFont labelWithString: @"Select Difficulty" fntFile: kFontDifficulty];
         header.anchorPoint = ccp(0.5f, 1);
-        header.position = ccp(kScreenCenterX, kScreenHeight - 8.0f);
+        header.position = ccp(kScreenCenterX, kScreenHeight - 20.0f);
         header.color = ccc3(0, 255, 0);
         [self addChild: header];
         
@@ -85,7 +85,7 @@ static NSString *itemHeaders[kMaxGameDifficulty + 1] = {
         closePopupBtn.scale = 0.9f;
         
         menu = [CCMenu menuWithItems: closePopupBtn, nil];
-        menu.position = ccp(kScreenCenterX, 8.0f + closePopupBtn.contentSize.height/2);
+        menu.position = ccp(kScreenCenterX, 20.0f + closePopupBtn.contentSize.height/2);
         [self addChild: menu];
     }
     

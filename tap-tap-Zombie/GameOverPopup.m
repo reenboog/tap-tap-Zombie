@@ -107,7 +107,7 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
         
         header = [CCLabelBMFont labelWithString: headerStr fntFile: kFontDifficulty];
         header.anchorPoint = ccp(0.5f, 1);
-        header.position = ccp(kScreenCenterX, kScreenHeight - 8.0f);
+        header.position = ccp(kScreenCenterX, kScreenHeight - 20.0f);
         header.color = ccc3(0, 255, 0);
         [self addChild: header];
         header.scale = headerScale;
@@ -116,7 +116,7 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
         CCLabelBMFont *name;
         CCLabelBMFont *value;
         
-        float shiftTop = 72.0f;
+        float shiftTop = 180.0f;
         
         // time
         time = [CCNode node];
@@ -132,7 +132,7 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
         float nw = name.contentSize.width;
         float vw = value.contentSize.width;
         time.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenCenterY + shiftTop);
-        shiftTop -= 32.0f;
+        shiftTop -= 60.0f;
         
         // perfect taps
         perfectTaps = [CCNode node];
@@ -148,7 +148,7 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
         nw = name.contentSize.width;
         vw = value.contentSize.width;
         perfectTaps.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenCenterY + shiftTop);
-        shiftTop -= 32.0f;
+        shiftTop -= 60.0f;
         
         // perfect taps
         score = [CCNode node];
@@ -164,7 +164,7 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
         nw = name.contentSize.width;
         vw = value.contentSize.width;
         score.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenCenterY + shiftTop);
-        shiftTop -= 32.0f;
+        shiftTop -= 60.0f;
         
         // resurrection
         int resurrectionNum = [[[Shop sharedShop] itemWithName: kResurrection] amount];
@@ -175,7 +175,7 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
         resurrection.color = ccc3(255, 165, 0);
         
         menu = [CCMenu menuWithItems: resurrection, nil];
-        menu.position = ccp(kScreenCenterX, kScreenCenterY - 32.0f);
+        menu.position = ccp(kScreenCenterX, kScreenCenterY - 80.0f);
         [self addChild: menu];
         
         if(self.delegate.isArcadeGame || !self.delegate.isGameFailed)
@@ -192,8 +192,8 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
                                                   target: self 
                                                 selector: @selector(exitBtnCallback)];
         
-        btnSprite = [CCSprite spriteWithFile: @"buttons/shopBtn.png"];
-        btnOnSprite = [CCSprite spriteWithFile: @"buttons/shopBtnOn.png"];
+        btnSprite = [CCSprite spriteWithFile: @"buttons/shopBigBtn.png"];
+        btnOnSprite = [CCSprite spriteWithFile: @"buttons/shopBigBtnOn.png"];
         shopBtn = [CCMenuItemSprite itemFromNormalSprite: btnSprite
                                            selectedSprite: btnOnSprite
                                                    target: self 
@@ -208,7 +208,7 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
         
         menu = [CCMenu menuWithItems: exitBtn, shopBtn, resetBtn, nil];
         [menu alignItemsHorizontally];
-        menu.position = ccp(kScreenCenterX, kScreenCenterY - 96.0f);
+        menu.position = ccp(kScreenCenterX, kScreenCenterY - 240.0f);
         [self addChild: menu];
     }
     
@@ -332,7 +332,7 @@ static NSString *gameOverStatusFail[kGameOverStatusFailCount] = {
                                     [CCSpawn actions:
                                                 [CCEaseBackOut actionWithAction:
                                                                     [CCScaleTo actionWithDuration: 0.2f 
-                                                                                            scale: 0.666f]
+                                                                                            scale: 1]
                                                 ],
                                                 [CCFadeIn actionWithDuration: 0.15f],
                                                 nil

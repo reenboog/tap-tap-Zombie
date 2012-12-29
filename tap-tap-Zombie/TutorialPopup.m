@@ -222,7 +222,7 @@
     {
         CCSprite *ghost = [CCSprite node];
         ghost.anchorPoint = ccp(0.5, 0);
-        ghost.position = ccp((2 - i)*70.0f, 0);
+        ghost.position = ccp((2 - i)*175.0f, 0);
         NSString *animationName = [NSString stringWithFormat: @"zombieMoving%i", i];
         CCAnimate *movingAnimation = [CCAnimate actionWithAnimation: 
                                                         [[CCAnimationCache sharedAnimationCache] animationByName: animationName]
@@ -263,7 +263,7 @@
     
     CCSprite *zombie = [CCSprite spriteWithSpriteFrameName: @"zombieMoving00.png"];
     zombie.anchorPoint = ccp(0.5f, 0);
-    zombie.position = ccp(0, 30);
+    zombie.position = ccp(0, 75);
     zombie.scale = 0.8f;
     [zombieInTrap addChild: zombie];
     

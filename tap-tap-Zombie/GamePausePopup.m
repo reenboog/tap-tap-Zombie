@@ -39,7 +39,7 @@
         // header
         header = [CCLabelBMFont labelWithString: @"Pause" fntFile: kFontDifficulty];
         header.anchorPoint = ccp(0.5f, 1);
-        header.position = ccp(kScreenCenterX, kScreenHeight - 8.0f);
+        header.position = ccp(kScreenCenterX, kScreenHeight - 20.0f);
         header.color = ccc3(0, 255, 0);
         [self addChild: header];
         
@@ -47,7 +47,7 @@
         CCLabelBMFont *name;
         CCLabelBMFont *value;
         
-        float shiftTop = -24.0f;
+        float shiftTop = -60.0f;
         
         // score
         score = [CCNode node];
@@ -62,7 +62,7 @@
         [score addChild: value];
         float nw = name.contentSize.width;
         float vw = value.contentSize.width;
-        score.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenHeight - 72.0f + shiftTop);
+        score.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenHeight - 160.0f + shiftTop);
         
         // best score
         bestScore = [CCNode node];
@@ -77,7 +77,7 @@
         [bestScore addChild: value];
         nw = name.contentSize.width;
         vw = value.contentSize.width;
-        bestScore.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenHeight - 104.0f + shiftTop);
+        bestScore.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenHeight - 220.0f + shiftTop);
         
         // zombies left
         zombiesLeft = [CCNode node];
@@ -92,7 +92,7 @@
         [zombiesLeft addChild: value];
         nw = name.contentSize.width;
         vw = value.contentSize.width;
-        zombiesLeft.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenHeight - 136.0f + shiftTop);
+        zombiesLeft.position = ccp(kScreenCenterX + (nw + vw)/2 - vw, kScreenHeight - 280.0f + shiftTop);
         zombiesLeft.visible = ![self.delegate isArcadeGame];
         
         // buttons
